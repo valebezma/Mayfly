@@ -505,7 +505,7 @@ namespace Mayfly.Fish.Explorer
                 ageNotice);   
         }
 
-        public static void AddSpeciesStatsReport(this CardStack stack, Report report, TaxonomicIndex.TaxonRow speciesRow, SpeciesStatsLevel level, ExpressionVariant variant)
+        public static void AddSpeciesStatsReport(this CardStack stack, Report report, TaxonomicIndex.TaxonRow speciesRow, SpeciesStatsLevel level, EffortExpression variant)
         {
             if (level.HasFlag(SpeciesStatsLevel.Totals))
             {
@@ -619,7 +619,7 @@ namespace Mayfly.Fish.Explorer
             return crib;
         }
 
-        public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level, ExpressionVariant variant)
+        public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level, EffortExpression variant)
         {
             foreach (TaxonomicIndex.TaxonRow speciesRow in stack.GetSpecies())
             {

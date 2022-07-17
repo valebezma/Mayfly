@@ -1,27 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Mayfly.Extensions;
+﻿using Mayfly.Extensions;
 using Mayfly.Geographics;
-using Mayfly.Software;
-using Mayfly.Species;
 using Mayfly.TaskDialogs;
-using Mayfly.Waters;
-using Mayfly.Waters.Controls;
 using Mayfly.Wild;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static Mayfly.Fish.UserSettings;
-using static Mayfly.Wild.UserSettings;
-using static Mayfly.UserSettings;
-using Mayfly.Extensions;
+using Mayfly.Controls;
 
 namespace Mayfly.Fish
 {
@@ -31,34 +16,32 @@ namespace Mayfly.Fish
         private System.Windows.Forms.DateTimePicker dateTimePickerStart;
         private System.Windows.Forms.PictureBox pictureBoxWarnExposure;
         private System.Windows.Forms.Label labelExposure;
-        private System.Windows.Forms.TextBox textBoxExposure;
-        private System.Windows.Forms.TextBox textBoxVelocity;
+        private Mayfly.Controls.NumberBox numericExposure;
+        private Mayfly.Controls.NumberBox numericVelocity;
         private System.Windows.Forms.Label labelVelocity;
-        private System.Windows.Forms.Label labelOperationEnd;
-        private System.Windows.Forms.Label labelOperation;
+        private System.Windows.Forms.Label labelStarted;
         private System.Windows.Forms.Label labelDuration;
-        private System.Windows.Forms.TextBox textBoxVolume;
-        private System.Windows.Forms.Label label17;
+        private Mayfly.Controls.NumberBox numericVolume;
+        private System.Windows.Forms.Label labelOperation;
         private System.Windows.Forms.Label labelVolume;
-        private System.Windows.Forms.TextBox textBoxEfforts;
-        private System.Windows.Forms.TextBox textBoxHook;
+        private Mayfly.Controls.NumberBox numericStandards;
+        private Mayfly.Controls.NumberBox numericHook;
         private System.Windows.Forms.Label labelEfforts;
-        private System.Windows.Forms.TextBox textBoxArea;
+        private Mayfly.Controls.NumberBox numericArea;
         private System.Windows.Forms.Label labelArea;
         private System.Windows.Forms.Label labelLength;
         private System.Windows.Forms.PictureBox pictureBoxWarnOpening;
         private System.Windows.Forms.Label labelOpening;
-        private System.Windows.Forms.TextBox textBoxLength;
+        private Mayfly.Controls.NumberBox numericLength;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBoxOpening;
-        private System.Windows.Forms.TextBox textBoxHeight;
+        private Mayfly.Controls.NumberBox numericOpening;
+        private Mayfly.Controls.NumberBox numericHeight;
         private System.Windows.Forms.Label labelHeight;
         private System.Windows.Forms.Label labelMesh;
         private System.Windows.Forms.Label labelHook;
-        private System.Windows.Forms.TextBox textBoxSquare;
+        private Mayfly.Controls.NumberBox numericSquare;
         private System.Windows.Forms.Label labelSquare;
-        private System.Windows.Forms.TextBox textBoxMesh;
-        private TextBox textBoxDepth;
+        private Mayfly.Controls.NumberBox numericMesh;
         private Label labelDepth;
         private IContainer components;
         private TaskDialog taskDialogTrackHandle;
@@ -69,6 +52,11 @@ namespace Mayfly.Fish
         private TaskDialogs.TaskDialogButton tdbExposure;
         private TaskDialogs.TaskDialogButton tdbSinking;
         private TaskDialogs.TaskDialogButton tdbRemoval;
+        private Controls.NumberBox numericDepth;
+        private Controls.NumberBox numericPortions;
+        private Label labelPortions;
+        private Label labelEffort;
+        private Label labelEnded;
 
         private bool AllowEffortCalculation { get; set; }
         private bool preciseMode;
@@ -81,7 +69,7 @@ namespace Mayfly.Fish
                 preciseMode = value;
                 dateTimePickerStart.Enabled =
                     dateTimePickerEnd.Enabled =
-                    textBoxExposure.Enabled =
+                    numericExposure.Enabled =
                     !preciseMode;
             }
         }
@@ -91,6 +79,11 @@ namespace Mayfly.Fish
         public FishCard() : base() {
             InitializeComponent();
             Initiate();
+            if (Wild.UserSettings.SelectedDate != null) {
+                dateTimePickerStart.Value =
+                     dateTimePickerEnd.Value =
+                     Wild.UserSettings.SelectedDate;
+            }
         }
 
         public FishCard(string filename) : this() {
@@ -102,39 +95,37 @@ namespace Mayfly.Fish
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FishCard));
-            this.textBoxHook = new System.Windows.Forms.TextBox();
+            this.numericHook = new Mayfly.Controls.NumberBox();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.pictureBoxWarnExposure = new System.Windows.Forms.PictureBox();
             this.labelExposure = new System.Windows.Forms.Label();
-            this.textBoxExposure = new System.Windows.Forms.TextBox();
-            this.textBoxVelocity = new System.Windows.Forms.TextBox();
+            this.numericExposure = new Mayfly.Controls.NumberBox();
+            this.numericVelocity = new Mayfly.Controls.NumberBox();
             this.labelVelocity = new System.Windows.Forms.Label();
-            this.labelOperationEnd = new System.Windows.Forms.Label();
-            this.labelOperation = new System.Windows.Forms.Label();
+            this.labelStarted = new System.Windows.Forms.Label();
             this.labelDuration = new System.Windows.Forms.Label();
             this.labelLength = new System.Windows.Forms.Label();
             this.pictureBoxWarnOpening = new System.Windows.Forms.PictureBox();
-            this.textBoxLength = new System.Windows.Forms.TextBox();
-            this.textBoxOpening = new System.Windows.Forms.TextBox();
+            this.numericLength = new Mayfly.Controls.NumberBox();
+            this.numericOpening = new Mayfly.Controls.NumberBox();
             this.labelHeight = new System.Windows.Forms.Label();
             this.labelHook = new System.Windows.Forms.Label();
             this.labelSquare = new System.Windows.Forms.Label();
-            this.textBoxMesh = new System.Windows.Forms.TextBox();
-            this.textBoxSquare = new System.Windows.Forms.TextBox();
+            this.numericMesh = new Mayfly.Controls.NumberBox();
+            this.numericSquare = new Mayfly.Controls.NumberBox();
             this.labelMesh = new System.Windows.Forms.Label();
-            this.textBoxHeight = new System.Windows.Forms.TextBox();
+            this.numericHeight = new Mayfly.Controls.NumberBox();
             this.label12 = new System.Windows.Forms.Label();
             this.labelOpening = new System.Windows.Forms.Label();
             this.labelArea = new System.Windows.Forms.Label();
-            this.textBoxArea = new System.Windows.Forms.TextBox();
+            this.numericArea = new Mayfly.Controls.NumberBox();
             this.labelEfforts = new System.Windows.Forms.Label();
-            this.textBoxEfforts = new System.Windows.Forms.TextBox();
+            this.numericStandards = new Mayfly.Controls.NumberBox();
             this.labelVolume = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBoxVolume = new System.Windows.Forms.TextBox();
+            this.labelOperation = new System.Windows.Forms.Label();
+            this.numericVolume = new Mayfly.Controls.NumberBox();
             this.labelDepth = new System.Windows.Forms.Label();
-            this.textBoxDepth = new System.Windows.Forms.TextBox();
             this.taskDialogTrackHandle = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbExposure = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbAsPoly = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
@@ -143,6 +134,11 @@ namespace Mayfly.Fish
             this.taskDialogLocationHandle = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbSinking = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbRemoval = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.numericDepth = new Mayfly.Controls.NumberBox();
+            this.numericPortions = new Mayfly.Controls.NumberBox();
+            this.labelPortions = new System.Windows.Forms.Label();
+            this.labelEffort = new System.Windows.Forms.Label();
+            this.labelEnded = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             this.tabPageCollect.SuspendLayout();
             this.tabPageLog.SuspendLayout();
@@ -155,7 +151,7 @@ namespace Mayfly.Fish
             // 
             // tabPageCollect
             // 
-            this.tabPageCollect.Controls.Add(this.textBoxDepth);
+            this.tabPageCollect.Controls.Add(this.numericDepth);
             this.tabPageCollect.Controls.Add(this.labelDepth);
             this.tabPageCollect.Controls.SetChildIndex(this.labelComments, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.textBoxComments, 0);
@@ -166,102 +162,134 @@ namespace Mayfly.Fish
             this.tabPageCollect.Controls.SetChildIndex(this.waypointControl1, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelDepth, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelTag, 0);
-            this.tabPageCollect.Controls.SetChildIndex(this.textBoxDepth, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelPosition, 0);
+            this.tabPageCollect.Controls.SetChildIndex(this.numericDepth, 0);
+            // 
+            // tabControl
+            // 
+            resources.ApplyResources(this.tabControl, "tabControl");
+            // 
+            // labelComments
+            // 
+            resources.ApplyResources(this.labelComments, "labelComments");
             // 
             // waypointControl1
             // 
+            this.waypointControl1.DateTimeFormat = "yyyy-MM-dd (ddd) HH:mm";
+            resources.ApplyResources(this.waypointControl1, "waypointControl1");
             this.waypointControl1.Changed += new System.EventHandler(this.waypointControl1_Changed);
             this.waypointControl1.LocationImported += new Mayfly.Geographics.LocationDataEventHandler(this.waypointControl1_LocationImported);
             // 
             // tabPageSampler
             // 
+            this.tabPageSampler.Controls.Add(this.numericPortions);
+            this.tabPageSampler.Controls.Add(this.labelPortions);
             this.tabPageSampler.Controls.Add(this.dateTimePickerEnd);
-            this.tabPageSampler.Controls.Add(this.textBoxVolume);
+            this.tabPageSampler.Controls.Add(this.numericVolume);
             this.tabPageSampler.Controls.Add(this.dateTimePickerStart);
             this.tabPageSampler.Controls.Add(this.pictureBoxWarnExposure);
-            this.tabPageSampler.Controls.Add(this.label17);
-            this.tabPageSampler.Controls.Add(this.labelExposure);
-            this.tabPageSampler.Controls.Add(this.textBoxExposure);
-            this.tabPageSampler.Controls.Add(this.labelVolume);
-            this.tabPageSampler.Controls.Add(this.labelOperationEnd);
-            this.tabPageSampler.Controls.Add(this.textBoxVelocity);
+            this.tabPageSampler.Controls.Add(this.labelEffort);
             this.tabPageSampler.Controls.Add(this.labelOperation);
+            this.tabPageSampler.Controls.Add(this.labelExposure);
+            this.tabPageSampler.Controls.Add(this.numericExposure);
+            this.tabPageSampler.Controls.Add(this.labelVolume);
+            this.tabPageSampler.Controls.Add(this.numericVelocity);
+            this.tabPageSampler.Controls.Add(this.labelEnded);
+            this.tabPageSampler.Controls.Add(this.labelStarted);
             this.tabPageSampler.Controls.Add(this.labelDuration);
             this.tabPageSampler.Controls.Add(this.labelVelocity);
-            this.tabPageSampler.Controls.Add(this.textBoxEfforts);
-            this.tabPageSampler.Controls.Add(this.textBoxHook);
+            this.tabPageSampler.Controls.Add(this.numericStandards);
+            this.tabPageSampler.Controls.Add(this.numericHook);
             this.tabPageSampler.Controls.Add(this.labelEfforts);
-            this.tabPageSampler.Controls.Add(this.textBoxArea);
+            this.tabPageSampler.Controls.Add(this.numericArea);
             this.tabPageSampler.Controls.Add(this.labelArea);
             this.tabPageSampler.Controls.Add(this.labelLength);
             this.tabPageSampler.Controls.Add(this.pictureBoxWarnOpening);
             this.tabPageSampler.Controls.Add(this.labelOpening);
-            this.tabPageSampler.Controls.Add(this.textBoxLength);
+            this.tabPageSampler.Controls.Add(this.numericLength);
             this.tabPageSampler.Controls.Add(this.label12);
-            this.tabPageSampler.Controls.Add(this.textBoxOpening);
-            this.tabPageSampler.Controls.Add(this.textBoxHeight);
+            this.tabPageSampler.Controls.Add(this.numericOpening);
+            this.tabPageSampler.Controls.Add(this.numericHeight);
             this.tabPageSampler.Controls.Add(this.labelHeight);
             this.tabPageSampler.Controls.Add(this.labelMesh);
             this.tabPageSampler.Controls.Add(this.labelHook);
-            this.tabPageSampler.Controls.Add(this.textBoxSquare);
+            this.tabPageSampler.Controls.Add(this.numericSquare);
             this.tabPageSampler.Controls.Add(this.labelSquare);
-            this.tabPageSampler.Controls.Add(this.textBoxMesh);
-            this.tabPageSampler.TextChanged += new System.EventHandler(this.sampler_Changed);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxMesh, 0);
+            this.tabPageSampler.Controls.Add(this.numericMesh);
+            this.tabPageSampler.TextChanged += new System.EventHandler(this.virtue_Changed);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericMesh, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelSquare, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxSquare, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericSquare, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelHook, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelMesh, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelHeight, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxHeight, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxOpening, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericHeight, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericOpening, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.label12, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxLength, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericLength, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelOpening, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.pictureBoxWarnOpening, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelLength, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelArea, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxArea, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericArea, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelEfforts, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxHook, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxEfforts, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericHook, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericStandards, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelSampler, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelMethod, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelVelocity, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelDuration, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.labelOperation, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxVelocity, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.labelOperationEnd, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelStarted, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelEnded, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericVelocity, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelVolume, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxExposure, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericExposure, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.comboBoxSampler, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelExposure, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.label17, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelOperation, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelEffort, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.pictureBoxWarnExposure, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.buttonEquipment, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.dateTimePickerStart, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxVolume, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericVolume, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.dateTimePickerEnd, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelPortions, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericPortions, 0);
             // 
             // labelSampler
             // 
             resources.ApplyResources(this.labelSampler, "labelSampler");
             // 
+            // labelPosition
+            // 
+            resources.ApplyResources(this.labelPosition, "labelPosition");
+            // 
+            // textBoxComments
+            // 
+            resources.ApplyResources(this.textBoxComments, "textBoxComments");
+            // 
             // comboBoxSampler
             // 
-            this.comboBoxSampler.SelectedIndexChanged += new System.EventHandler(this.sampler_Changed);
+            resources.ApplyResources(this.comboBoxSampler, "comboBoxSampler");
+            this.comboBoxSampler.SelectedIndexChanged += new System.EventHandler(this.comboBoxSampler_SelectedIndexChanged);
+            // 
+            // buttonEquipment
+            // 
+            resources.ApplyResources(this.buttonEquipment, "buttonEquipment");
             // 
             // Logger
             // 
-            this.Logger.IndividualsRequired += new System.EventHandler(this.Logger_IndividualsRequired);
+            this.Logger.IndividualsRequired += new System.EventHandler(this.logger_IndividualsRequired);
             // 
-            // textBoxHook
+            // numericHook
             // 
-            resources.ApplyResources(this.textBoxHook, "textBoxHook");
-            this.textBoxHook.Name = "textBoxHook";
-            this.textBoxHook.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxHook.TextChanged += new System.EventHandler(this.textBoxValue_TextChanged);
+            resources.ApplyResources(this.numericHook, "numericHook");
+            this.numericHook.Maximum = 100D;
+            this.numericHook.Minimum = 0D;
+            this.numericHook.Name = "numericHook";
+            this.numericHook.Value = -1D;
+            this.numericHook.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.numericHook.TextChanged += new System.EventHandler(this.numericValue_TextChanged);
             // 
             // dateTimePickerEnd
             // 
@@ -293,34 +321,35 @@ namespace Mayfly.Fish
             resources.ApplyResources(this.labelExposure, "labelExposure");
             this.labelExposure.Name = "labelExposure";
             // 
-            // textBoxExposure
+            // numericExposure
             // 
-            resources.ApplyResources(this.textBoxExposure, "textBoxExposure");
-            this.textBoxExposure.Name = "textBoxExposure";
-            this.textBoxExposure.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxExposure.TextChanged += new System.EventHandler(this.sampler_Changed);
+            resources.ApplyResources(this.numericExposure, "numericExposure");
+            this.numericExposure.Maximum = 100D;
+            this.numericExposure.Minimum = 0D;
+            this.numericExposure.Name = "numericExposure";
+            this.numericExposure.Value = -1D;
+            this.numericExposure.ValueChanged += new System.EventHandler(this.effort_Changed);
+            this.numericExposure.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
             // 
-            // textBoxVelocity
+            // numericVelocity
             // 
-            resources.ApplyResources(this.textBoxVelocity, "textBoxVelocity");
-            this.textBoxVelocity.Name = "textBoxVelocity";
-            this.textBoxVelocity.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxVelocity.TextChanged += new System.EventHandler(this.sampler_Changed);
+            resources.ApplyResources(this.numericVelocity, "numericVelocity");
+            this.numericVelocity.Maximum = 100D;
+            this.numericVelocity.Minimum = 0D;
+            this.numericVelocity.Name = "numericVelocity";
+            this.numericVelocity.Value = -1D;
+            this.numericVelocity.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.numericVelocity.TextChanged += new System.EventHandler(this.virtue_Changed);
             // 
             // labelVelocity
             // 
             resources.ApplyResources(this.labelVelocity, "labelVelocity");
             this.labelVelocity.Name = "labelVelocity";
             // 
-            // labelOperationEnd
+            // labelStarted
             // 
-            resources.ApplyResources(this.labelOperationEnd, "labelOperationEnd");
-            this.labelOperationEnd.Name = "labelOperationEnd";
-            // 
-            // labelOperation
-            // 
-            resources.ApplyResources(this.labelOperation, "labelOperation");
-            this.labelOperation.Name = "labelOperation";
+            resources.ApplyResources(this.labelStarted, "labelStarted");
+            this.labelStarted.Name = "labelStarted";
             // 
             // labelDuration
             // 
@@ -343,19 +372,25 @@ namespace Mayfly.Fish
             this.pictureBoxWarnOpening.MouseLeave += new System.EventHandler(this.pictureBoxWarnOpening_MouseLeave);
             this.pictureBoxWarnOpening.MouseHover += new System.EventHandler(this.pictureBoxWarnOpening_MouseHover);
             // 
-            // textBoxLength
+            // numericLength
             // 
-            resources.ApplyResources(this.textBoxLength, "textBoxLength");
-            this.textBoxLength.Name = "textBoxLength";
-            this.textBoxLength.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxLength.TextChanged += new System.EventHandler(this.sampler_Changed);
+            resources.ApplyResources(this.numericLength, "numericLength");
+            this.numericLength.Maximum = 100D;
+            this.numericLength.Minimum = 0D;
+            this.numericLength.Name = "numericLength";
+            this.numericLength.Value = -1D;
+            this.numericLength.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.numericLength.TextChanged += new System.EventHandler(this.virtue_Changed);
             // 
-            // textBoxOpening
+            // numericOpening
             // 
-            resources.ApplyResources(this.textBoxOpening, "textBoxOpening");
-            this.textBoxOpening.Name = "textBoxOpening";
-            this.textBoxOpening.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxOpening.TextChanged += new System.EventHandler(this.sampler_Changed);
+            resources.ApplyResources(this.numericOpening, "numericOpening");
+            this.numericOpening.Maximum = 100D;
+            this.numericOpening.Minimum = 0D;
+            this.numericOpening.Name = "numericOpening";
+            this.numericOpening.Value = -1D;
+            this.numericOpening.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.numericOpening.TextChanged += new System.EventHandler(this.virtue_Changed);
             // 
             // labelHeight
             // 
@@ -372,31 +407,40 @@ namespace Mayfly.Fish
             resources.ApplyResources(this.labelSquare, "labelSquare");
             this.labelSquare.Name = "labelSquare";
             // 
-            // textBoxMesh
+            // numericMesh
             // 
-            resources.ApplyResources(this.textBoxMesh, "textBoxMesh");
-            this.textBoxMesh.Name = "textBoxMesh";
-            this.textBoxMesh.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxMesh.TextChanged += new System.EventHandler(this.textBoxValue_TextChanged);
+            resources.ApplyResources(this.numericMesh, "numericMesh");
+            this.numericMesh.Maximum = 100D;
+            this.numericMesh.Minimum = 0D;
+            this.numericMesh.Name = "numericMesh";
+            this.numericMesh.Value = -1D;
+            this.numericMesh.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.numericMesh.TextChanged += new System.EventHandler(this.numericValue_TextChanged);
             // 
-            // textBoxSquare
+            // numericSquare
             // 
-            resources.ApplyResources(this.textBoxSquare, "textBoxSquare");
-            this.textBoxSquare.Name = "textBoxSquare";
-            this.textBoxSquare.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxSquare.TextChanged += new System.EventHandler(this.sampler_Changed);
+            resources.ApplyResources(this.numericSquare, "numericSquare");
+            this.numericSquare.Maximum = 100D;
+            this.numericSquare.Minimum = 0D;
+            this.numericSquare.Name = "numericSquare";
+            this.numericSquare.Value = -1D;
+            this.numericSquare.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.numericSquare.TextChanged += new System.EventHandler(this.virtue_Changed);
             // 
             // labelMesh
             // 
             resources.ApplyResources(this.labelMesh, "labelMesh");
             this.labelMesh.Name = "labelMesh";
             // 
-            // textBoxHeight
+            // numericHeight
             // 
-            resources.ApplyResources(this.textBoxHeight, "textBoxHeight");
-            this.textBoxHeight.Name = "textBoxHeight";
-            this.textBoxHeight.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxHeight.TextChanged += new System.EventHandler(this.sampler_Changed);
+            resources.ApplyResources(this.numericHeight, "numericHeight");
+            this.numericHeight.Maximum = 100D;
+            this.numericHeight.Minimum = 0D;
+            this.numericHeight.Name = "numericHeight";
+            this.numericHeight.Value = -1D;
+            this.numericHeight.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.numericHeight.TextChanged += new System.EventHandler(this.virtue_Changed);
             // 
             // label12
             // 
@@ -413,55 +457,56 @@ namespace Mayfly.Fish
             resources.ApplyResources(this.labelArea, "labelArea");
             this.labelArea.Name = "labelArea";
             // 
-            // textBoxArea
+            // numericArea
             // 
-            resources.ApplyResources(this.textBoxArea, "textBoxArea");
-            this.textBoxArea.Name = "textBoxArea";
-            this.textBoxArea.ReadOnly = true;
-            this.textBoxArea.TextChanged += new System.EventHandler(this.textBoxValue_TextChanged);
+            resources.ApplyResources(this.numericArea, "numericArea");
+            this.numericArea.Maximum = 100000D;
+            this.numericArea.Minimum = 0D;
+            this.numericArea.Name = "numericArea";
+            this.numericArea.ReadOnly = true;
+            this.numericArea.Value = -1D;
+            this.numericArea.TextChanged += new System.EventHandler(this.numericValue_TextChanged);
             // 
             // labelEfforts
             // 
             resources.ApplyResources(this.labelEfforts, "labelEfforts");
             this.labelEfforts.Name = "labelEfforts";
             // 
-            // textBoxEfforts
+            // numericStandards
             // 
-            resources.ApplyResources(this.textBoxEfforts, "textBoxEfforts");
-            this.textBoxEfforts.Name = "textBoxEfforts";
-            this.textBoxEfforts.ReadOnly = true;
-            this.textBoxEfforts.TextChanged += new System.EventHandler(this.textBoxValue_TextChanged);
+            resources.ApplyResources(this.numericStandards, "numericStandards");
+            this.numericStandards.Maximum = 100000D;
+            this.numericStandards.Minimum = 0D;
+            this.numericStandards.Name = "numericStandards";
+            this.numericStandards.ReadOnly = true;
+            this.numericStandards.Value = -1D;
+            this.numericStandards.TextChanged += new System.EventHandler(this.numericValue_TextChanged);
             // 
             // labelVolume
             // 
             resources.ApplyResources(this.labelVolume, "labelVolume");
             this.labelVolume.Name = "labelVolume";
             // 
-            // label17
+            // labelOperation
             // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label17.Name = "label17";
+            resources.ApplyResources(this.labelOperation, "labelOperation");
+            this.labelOperation.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelOperation.Name = "labelOperation";
             // 
-            // textBoxVolume
+            // numericVolume
             // 
-            resources.ApplyResources(this.textBoxVolume, "textBoxVolume");
-            this.textBoxVolume.Name = "textBoxVolume";
-            this.textBoxVolume.ReadOnly = true;
-            this.textBoxVolume.TextChanged += new System.EventHandler(this.textBoxValue_TextChanged);
+            resources.ApplyResources(this.numericVolume, "numericVolume");
+            this.numericVolume.Maximum = 100000D;
+            this.numericVolume.Minimum = 0D;
+            this.numericVolume.Name = "numericVolume";
+            this.numericVolume.ReadOnly = true;
+            this.numericVolume.Value = -1D;
+            this.numericVolume.TextChanged += new System.EventHandler(this.numericValue_TextChanged);
             // 
             // labelDepth
             // 
             resources.ApplyResources(this.labelDepth, "labelDepth");
             this.labelDepth.Name = "labelDepth";
-            // 
-            // textBoxDepth
-            // 
-            resources.ApplyResources(this.textBoxDepth, "textBoxDepth");
-            this.textBoxDepth.Name = "textBoxDepth";
-            this.textBoxDepth.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxDepth.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxDepth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
             // taskDialogTrackHandle
             // 
@@ -502,13 +547,46 @@ namespace Mayfly.Fish
             // 
             resources.ApplyResources(this.tdbRemoval, "tdbRemoval");
             // 
+            // numericDepth
+            // 
+            resources.ApplyResources(this.numericDepth, "numericDepth");
+            this.numericDepth.Maximum = 100D;
+            this.numericDepth.Minimum = 0D;
+            this.numericDepth.Name = "numericDepth";
+            this.numericDepth.Value = -1D;
+            // 
+            // numericPortions
+            // 
+            resources.ApplyResources(this.numericPortions, "numericPortions");
+            this.numericPortions.Maximum = 100D;
+            this.numericPortions.Minimum = 0D;
+            this.numericPortions.Name = "numericPortions";
+            this.numericPortions.Value = -1D;
+            this.numericPortions.ValueChanged += new System.EventHandler(this.effort_Changed);
+            this.numericPortions.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            // 
+            // labelPortions
+            // 
+            resources.ApplyResources(this.labelPortions, "labelPortions");
+            this.labelPortions.Name = "labelPortions";
+            // 
+            // labelEffort
+            // 
+            resources.ApplyResources(this.labelEffort, "labelEffort");
+            this.labelEffort.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelEffort.Name = "labelEffort";
+            // 
+            // labelEnded
+            // 
+            resources.ApplyResources(this.labelEnded, "labelEnded");
+            this.labelEnded.Name = "labelEnded";
+            // 
             // FishCard
             // 
             resources.ApplyResources(this, "$this");
             this.Name = "FishCard";
             this.OnSaved += new System.EventHandler(this.fishCard_OnSaved);
             this.OnCleared += new System.EventHandler(this.fishCard_OnCleared);
-            this.OnEquipmentSelected += new Mayfly.Wild.EquipmentEventHandler(this.fishCard_OnEquipmentSelected);
             this.OnEquipmentSaved += new Mayfly.Wild.EquipmentEventHandler(this.fishCard_OnEquipmentSaved);
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
             this.tabPageCollect.ResumeLayout(false);
@@ -526,43 +604,44 @@ namespace Mayfly.Fish
 
         }
 
-        private void clearGear()
-        {
-            textBoxLength.Text = string.Empty;
-            textBoxOpening.Text = string.Empty;
-            textBoxHeight.Text = string.Empty;
-            textBoxSquare.Text = string.Empty;
-            textBoxMesh.Text = string.Empty;
-            textBoxHook.Text = string.Empty;
+        private void clearGear() {
+            numericLength.Clear();
+            numericOpening.Clear();
+            numericHeight.Clear();
+            numericSquare.Clear();
+            numericMesh.Clear();
+            numericHook.Clear();
         }
 
-        private void clearEffort()
-        {
+        private void clearEffort() {
+
             dateTimePickerStart.Value = waypointControl1.Waypoint.TimeMark.AddHours(-12.0);
-            textBoxVelocity.Text = string.Empty;
-            textBoxExposure.Text = string.Empty;
-            textBoxDepth.Text = string.Empty;
+            numericVelocity.Clear();
+            numericExposure.Clear();
+            numericDepth.Clear();
         }
 
         private void saveEffort() {
 
-            if (textBoxDepth.Text.IsDoubleConvertible()) {
-                data.Solitary.Depth = double.Parse(textBoxDepth.Text);
+            if (numericDepth.IsSet) {
+                data.Solitary.Depth = numericDepth.Value;
             } else {
                 data.Solitary.SetDepthNull();
             }
 
             if (preciseAreaMode) {
 
-                if (textBoxArea.Text.IsDoubleConvertible())
-                    data.Solitary.Effort = -10000d * double.Parse(textBoxArea.Text);
+                if (numericArea.IsSet)
+                    data.Solitary.Effort = -10000 * numericArea.Value;
 
             } else {
 
                 if (dateTimePickerEnd.Enabled) {
                     data.Solitary.Effort = (int)(waypointControl1.Waypoint.TimeMark - dateTimePickerStart.Value).TotalMinutes;
-                } else if (textBoxExposure.Enabled) {
-                    data.Solitary.Effort = double.Parse(textBoxExposure.Text);
+                } else if (numericExposure.Enabled && numericExposure.IsSet) {
+                    data.Solitary.Effort = numericExposure.Value;
+                } else if (numericPortions.Enabled && numericPortions.IsSet) {
+                    data.Solitary.Effort = numericPortions.Value;
                 } else {
                     data.Solitary.SetEffortNull();
                 }
@@ -570,6 +649,7 @@ namespace Mayfly.Fish
         }
 
         private void setEndpoint(Waypoint waypoint) {
+
             waypointControl1.Waypoint.Latitude = waypoint.Latitude;
             waypointControl1.Waypoint.Longitude = waypoint.Longitude;
 
@@ -591,30 +671,25 @@ namespace Mayfly.Fish
 
 
 
-        private void fishCard_OnSaved(object sender, EventArgs e) {
-            saveEffort();
-        }
-
         private void fishCard_OnCleared(object sender, EventArgs e) {
+
             clearGear();
             clearEffort();
         }
 
-        private void fishCard_OnEquipmentSelected(object sender, EquipmentEventArgs e) {
+        private void fishCard_OnEquipmentSaved(object sender, EquipmentEventArgs e) {
 
-            foreach (Survey.EquipmentVirtueRow row in e.Row.GetEquipmentVirtueRows()) {
-                TextBox tb = tabPageSampler.Controls.Find("textBox" + row.VirtueRow.Name, true)?[0] as TextBox;
-                tb.Text = row.Value.ToString();
-            }
+            effort_Changed(sender, e);
         }
 
-        private void fishCard_OnEquipmentSaved(object sender, EquipmentEventArgs e) {
-            saveEffort();
+        private void fishCard_OnSaved(object sender, EventArgs e) {
+
         }
 
         private void waypointControl1_Changed(object sender, EventArgs e) {
             if (waypointControl1.ContainsFocus) {
                 dateTimePickerEnd.Value = waypointControl1.Waypoint.TimeMark;
+                isChanged = true;
             }
         }
 
@@ -645,12 +720,12 @@ namespace Mayfly.Fish
                 setEndpoint(waypoint);
             } else if (e.LocationObject is Polygon poly) {
                 preciseAreaMode = true;
-                textBoxArea.Text = (poly.Area / 10000d).ToString("N4");
+                numericArea.Value = poly.Area / 10000d;
                 setEndpoint(poly.Points.Last());
 
                 //HandlePolygon((Polygon)e.LocationObject);
             } else if (e.LocationObject is Track) {
-                tdbAsPoly.Enabled = (EffortValueSource)SelectedSampler.EffortType == EffortValueSource.Exposure;
+                tdbAsPoly.Enabled = (EffortType)SelectedSampler.EffortType == EffortType.Exposure;
 
                 TaskDialogButton tdb = taskDialogTrackHandle.ShowDialog();
 
@@ -670,9 +745,9 @@ namespace Mayfly.Fish
                     // Just insert exposure value
                     setEndpoint(wpts.Last());
 
-                    textBoxExposure.Text = Track.TotalLength(tracks).ToString("N1");
-                    if ((EffortValueSource)SelectedSampler.EffortType == EffortValueSource.Exposition) dateTimePickerStart.Value = tracks[0].Points[0].TimeMark;
-                    if (SelectedSampler.HasVirtue("Velocity")) textBoxVelocity.Text = Track.AverageKmph(tracks).ToString("N3");
+                    numericExposure.Value = Track.TotalLength(tracks);
+                    if ((EffortType)SelectedSampler.EffortType == EffortType.Exposition) dateTimePickerStart.Value = tracks[0].Points[0].TimeMark;
+                    if (SelectedSampler.HasVirtue("Velocity")) numericVelocity.Value = Track.AverageKmph(tracks);
                 } else if (tdb == tdbAsPoly) {
                     // Behave like polygon
 
@@ -683,7 +758,7 @@ namespace Mayfly.Fish
                     }
 
                     preciseAreaMode = true;
-                    textBoxArea.Text = (s / 10000d).ToString("N4");
+                    numericArea.Value = s / 10000d;
                     setEndpoint(wpts.Last());
 
                     //HandlePolygon(new Polygon(track));
@@ -694,7 +769,7 @@ namespace Mayfly.Fish
         }
 
 
-        private void Logger_IndividualsRequired(object sender, EventArgs e) {
+        private void logger_IndividualsRequired(object sender, EventArgs e) {
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
                 if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
 
@@ -709,9 +784,10 @@ namespace Mayfly.Fish
                     }
 
                     if (individuals == null) {
-                        individuals = new Individuals(logRow);
-                        //individuals.SetColumns(ColumnSpecies, ColumnQuantity, ColumnMass);
-                        individuals.LogLine = gridRow;
+                        individuals = new Individuals(logRow) {
+                            //individuals.SetColumns(ColumnSpecies, ColumnQuantity, ColumnMass);
+                            LogLine = gridRow
+                        };
                         individuals.SetFriendlyDesktopLocation(spreadSheetLog);
                         individuals.FormClosing += new FormClosingEventHandler(individuals_FormClosing);
                         individuals.Show(this);
@@ -731,20 +807,17 @@ namespace Mayfly.Fish
 
 
         private void dateTimePickerStart_ValueChanged(object sender, EventArgs e) {
+
             dateTimePickerStart.Value = dateTimePickerStart.Value.AddSeconds(
                 -dateTimePickerStart.Value.Second);
 
             //dateTimePickerEnd.MinDate = dateTimePickerStart.Value;
 
-            sampler_ValueChanged(sender, e);
-
-            if (data.Solitary.Duration != TimeSpan.Zero) {
-                labelDuration.ResetFormatted(Math.Floor(data.Solitary.Duration.TotalHours),
-                    data.Solitary.Duration.Minutes, data.Solitary.Duration.TotalHours);
-            }
+            effort_Changed(sender, e);
         }
 
         private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e) {
+
             dateTimePickerEnd.Value = dateTimePickerEnd.Value.AddSeconds(
                 -dateTimePickerEnd.Value.Second);
 
@@ -755,117 +828,87 @@ namespace Mayfly.Fish
 
             //dateTimePickerStart.MaxDate = dateTimePickerEnd.Value;
 
-            sampler_ValueChanged(sender, e);
-
-            if (data.Solitary.Duration != TimeSpan.Zero) {
-                labelDuration.ResetFormatted(Math.Floor(data.Solitary.Duration.TotalHours),
-                    data.Solitary.Duration.Minutes, data.Solitary.Duration.TotalHours);
-            }
+            effort_Changed(sender, e);
         }
 
         private void dateTimePickerStart_EnabledChanged(object sender, EventArgs e) {
-            labelDuration.Enabled = dateTimePickerStart.Enabled;
+            labelDuration.Visible = dateTimePickerStart.Enabled;
         }
 
-        private void sampler_ValueChanged(object sender, EventArgs e) {
-            if (AllowEffortCalculation) {
-                saveEffort();
+        private void comboBoxSampler_SelectedIndexChanged(object sender, EventArgs e) {
 
-                if (textBoxOpening.Enabled) {
-                    if (textBoxLength.Text.IsDoubleConvertible()) {
-                        if (textBoxOpening.Text.IsDoubleConvertible()) {
-                            if (Convert.ToDouble(textBoxOpening.Text) >=
-                                Convert.ToDouble(textBoxLength.Text)) {
-                                pictureBoxWarnOpening.Visible = true;
-                                statusCard.Message(Resources.Interface.Messages.EffectiveError);
-                            } else {
-                                pictureBoxWarnOpening.Visible = false;
-                            }
-                        } else {
-                            pictureBoxWarnOpening.Visible = true;
-                            statusCard.Message(Resources.Interface.Messages.EffectiveEmpty);
-                        }
+            if (SelectedSampler == null) return;
 
+            labelStarted.Enabled = labelEnded.Enabled = dateTimePickerStart.Enabled = dateTimePickerEnd.Enabled =
+                !SelectedSampler.IsEffortTypeNull() && SelectedSampler.EffortType == (int)EffortType.Exposition;
+        }
 
-                        if (textBoxExposure.Text.IsDoubleConvertible() &&
-                            Convert.ToDouble(textBoxExposure.Text) < 2 * Convert.ToDouble(textBoxLength.Text) / Math.PI) {
-                            pictureBoxWarnExposure.Visible = true;
-                            statusCard.Message(Resources.Interface.Messages.SeinSpreadError);
-                        } else {
-                            pictureBoxWarnExposure.Visible = false;
-                        }
-                    } else {
-                        pictureBoxWarnOpening.Visible = false;
-                        pictureBoxWarnExposure.Visible = false;
-                    }
-                } else {
-                    pictureBoxWarnOpening.Visible = false;
-                    pictureBoxWarnExposure.Visible = false;
-                }
+        private void virtue_Changed(object sender, EventArgs e) {
 
-                //if (textBoxExposure.Enabled && textBoxExposure.ReadOnly) {
-                //    textBoxExposure.Text = data.Solitary.Exposure.ToString("0.####");
-                //}
+            if (sender is NumberBox nb && !nb.ContainsFocus) return;
 
-                textBoxEfforts.Text = data.Solitary.GetEffort(ExpressionVariant.Efforts).ToString("0.####");
-                textBoxArea.Text = data.Solitary.GetEffort(ExpressionVariant.Area).ToString("0.####");
-                textBoxVolume.Text = data.Solitary.GetEffort(ExpressionVariant.Volume).ToString("0.####");
+            if (SelectedSampler == null) return;
+
+            saveSampler();
+        }
+
+        private void samplerValue_EnabledChanged(object sender, EventArgs e) {
+            if (!((NumberBox)sender).Enabled) {
+                ((NumberBox)sender).Clear();
             }
+        }
+
+        private void effort_Changed(object sender, EventArgs e) {
+
+            saveEffort();
+
+            numericArea.Value = data.Solitary.GetEffort(EffortExpression.Area);
+            numericVolume.Value = data.Solitary.GetEffort(EffortExpression.Volume);
+            numericStandards.Value = data.Solitary.GetEffort(EffortExpression.Standards);
+
+            numericArea.Format = 
+            numericVolume.Format = 
+            numericStandards.Format = "N3";
+
+            labelDuration.ResetFormatted(Math.Floor(data.Solitary.Duration.TotalHours),
+                data.Solitary.Duration.Minutes, data.Solitary.Duration.TotalHours);
 
             isChanged = true;
         }
 
-        private void samplerValue_EnabledChanged(object sender, EventArgs e) {
-            if (!((TextBox)sender).Enabled) {
-                ((TextBox)sender).Text = string.Empty;
-            }
-        }
-
-        private void sampler_Changed(object sender, EventArgs e) {
-            if (SelectedSampler == null) return;
-
-            EffortValueSource effort = (EffortValueSource)SelectedSampler.EffortType;
-
-            labelOperation.Enabled = dateTimePickerStart.Enabled = effort == EffortValueSource.Exposition;
-            labelExposure.Enabled = textBoxExposure.Enabled = effort == EffortValueSource.Exposure;
-            textBoxExposure.ReadOnly = effort == EffortValueSource.Exposition;
-            sampler_ValueChanged(sender, e);
-        }
-
 
         private void pictureBoxWarnOpening_MouseHover(object sender, EventArgs e) {
-            if (textBoxOpening.Text.IsDoubleConvertible()) {
-                textBoxOpening.NotifyInstantly(Resources.Interface.Messages.FixOpening,
-                    textBoxOpening.Text, textBoxLength.Text);
+            if (numericOpening.IsSet) {
+                numericOpening.NotifyInstantly(Resources.Interface.Messages.FixOpening,
+                    numericOpening.Value, numericLength.Value);
             } else {
-                textBoxOpening.NotifyInstantly(Resources.Interface.Messages.FixEmptyOpening);
+                numericOpening.NotifyInstantly(Resources.Interface.Messages.FixEmptyOpening);
             }
         }
 
         private void pictureBoxWarnOpening_MouseLeave(object sender, EventArgs e) {
-            //toolTipAttention.Hide(textBoxOpening);
+            //toolTipAttention.Hide(numericOpening);
         }
 
         private void pictureBoxWarnOpening_DoubleClick(object sender, EventArgs e) {
-            textBoxOpening.Text = (Convert.ToDouble(textBoxLength.Text) *
-                Service.DefaultOpening(SelectedSampler.ID)).ToString("N0");
+            numericOpening.Value = numericLength.Value * Service.DefaultOpening(SelectedSampler.ID);
         }
 
 
         private void pictureBoxWarnExposure_MouseHover(object sender, EventArgs e) {
-            textBoxExposure.NotifyInstantly(Resources.Interface.Messages.FixSpread,
-                textBoxExposure.Text, textBoxLength.Text);
+            numericExposure.NotifyInstantly(Resources.Interface.Messages.FixSpread,
+                numericExposure.Value, numericLength.Value);
         }
 
         private void pictureBoxWarnExposure_MouseLeave(object sender, EventArgs e) {
-            //toolTipAttention.Hide(textBoxExposure);
+            //toolTipAttention.Hide(numericExposure);
         }
 
         private void pictureBoxWarnExposure_DoubleClick(object sender, EventArgs e) {
-            textBoxExposure.Text = Math.Ceiling(2 * Convert.ToDouble(textBoxLength.Text) / Math.PI).ToString("N0");
+            numericExposure.Value = Math.Ceiling(2 * numericLength.Value / Math.PI);
         }
 
-        private void textBoxValue_TextChanged(object sender, EventArgs e) {
+        private void numericValue_TextChanged(object sender, EventArgs e) {
             value_Changed(sender, e);
         }
 

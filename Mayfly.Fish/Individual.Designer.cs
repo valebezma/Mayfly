@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Individual));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlInd = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.labelConditionFactor = new System.Windows.Forms.Label();
-            this.textBoxConditionSoma = new System.Windows.Forms.TextBox();
-            this.textBoxCondition = new System.Windows.Forms.TextBox();
+            this.numericConditionSoma = new Mayfly.Controls.NumberBox();
+            this.numericCondition = new Mayfly.Controls.NumberBox();
             this.textBoxComments = new System.Windows.Forms.TextBox();
             this.labelComments = new System.Windows.Forms.Label();
             this.labelFBA = new System.Windows.Forms.Label();
@@ -53,12 +53,12 @@
             this.labelMass = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelLength = new System.Windows.Forms.Label();
-            this.textBoxRegID = new System.Windows.Forms.TextBox();
+            this.textBoxTally = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
-            this.textBoxTL = new System.Windows.Forms.TextBox();
-            this.textBoxLength = new System.Windows.Forms.TextBox();
-            this.textBoxSomaticMass = new System.Windows.Forms.TextBox();
-            this.textBoxMass = new System.Windows.Forms.TextBox();
+            this.numericTL = new Mayfly.Controls.NumberBox();
+            this.numericLength = new Mayfly.Controls.NumberBox();
+            this.numericSomaticMass = new Mayfly.Controls.NumberBox();
+            this.numericMass = new Mayfly.Controls.NumberBox();
             this.tabPageFecundity = new System.Windows.Forms.TabPage();
             this.checkBoxIntermediate = new System.Windows.Forms.CheckBox();
             this.comboBoxMaturity = new System.Windows.Forms.ComboBox();
@@ -76,27 +76,32 @@
             this.labelGonadosomatic = new System.Windows.Forms.Label();
             this.labelFecundityRel = new System.Windows.Forms.Label();
             this.labelGonadMass = new System.Windows.Forms.Label();
-            this.textBoxMeanEggMass = new System.Windows.Forms.TextBox();
-            this.textBoxEggSize = new System.Windows.Forms.TextBox();
-            this.textBoxGonadSample = new System.Windows.Forms.TextBox();
-            this.textBoxGonadSampleMass = new System.Windows.Forms.TextBox();
-            this.textBoxAbsoluteFecundity = new System.Windows.Forms.TextBox();
-            this.textBoxGonadIndexSoma = new System.Windows.Forms.TextBox();
-            this.textBoxGonadIndex = new System.Windows.Forms.TextBox();
-            this.textBoxRelativeFecunditySoma = new System.Windows.Forms.TextBox();
-            this.textBoxRelativeFecundity = new System.Windows.Forms.TextBox();
-            this.textBoxGonadMass = new System.Windows.Forms.TextBox();
+            this.numericMeanEggMass = new Mayfly.Controls.NumberBox();
+            this.numericEggSize = new Mayfly.Controls.NumberBox();
+            this.numericGonadSample = new Mayfly.Controls.NumberBox();
+            this.numericGonadSampleMass = new Mayfly.Controls.NumberBox();
+            this.numericAbsoluteFecundity = new Mayfly.Controls.NumberBox();
+            this.numericGonadIndexSoma = new Mayfly.Controls.NumberBox();
+            this.numericGonadIndex = new Mayfly.Controls.NumberBox();
+            this.numericRelativeFecunditySoma = new Mayfly.Controls.NumberBox();
+            this.numericRelativeFecundity = new Mayfly.Controls.NumberBox();
+            this.numericGonadMass = new Mayfly.Controls.NumberBox();
             this.tabPageGrowth = new System.Windows.Forms.TabPage();
             this.spreadSheet1 = new Mayfly.Controls.SpreadSheet();
             this.ColumnRadius = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.numericTL2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxAge2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageTrophics = new System.Windows.Forms.TabPage();
             this.comboBoxSection = new System.Windows.Forms.ComboBox();
             this.spreadSheetTrophics = new Mayfly.Controls.SpreadSheet();
+            this.ColumnTrpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTrpSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTrpQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTrpMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTrpConsumption = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemKeys = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,8 +117,8 @@
             this.buttonTrophics = new System.Windows.Forms.Button();
             this.labelConsumedMass = new System.Windows.Forms.Label();
             this.labelConsumptionIndex = new System.Windows.Forms.Label();
-            this.textBoxConsumedMass = new System.Windows.Forms.TextBox();
-            this.textBoxConsumptionIndex = new System.Windows.Forms.TextBox();
+            this.numericConsumedMass = new Mayfly.Controls.NumberBox();
+            this.numericConsumptionIndex = new Mayfly.Controls.NumberBox();
             this.comboBoxFermentation = new System.Windows.Forms.ComboBox();
             this.comboBoxFatness = new System.Windows.Forms.ComboBox();
             this.comboBoxFullness = new System.Windows.Forms.ComboBox();
@@ -149,11 +154,6 @@
             this.tdbCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.speciesParasites = new Mayfly.Species.TaxonProvider(this.components);
             this.speciesTrophics = new Mayfly.Species.TaxonProvider(this.components);
-            this.ColumnTrpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTrpSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTrpQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTrpMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTrpConsumption = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlInd.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.tabPageFecundity.SuspendLayout();
@@ -183,10 +183,9 @@
             // 
             // tabPageGeneral
             // 
-            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.Controls.Add(this.labelConditionFactor);
-            this.tabPageGeneral.Controls.Add(this.textBoxConditionSoma);
-            this.tabPageGeneral.Controls.Add(this.textBoxCondition);
+            this.tabPageGeneral.Controls.Add(this.numericConditionSoma);
+            this.tabPageGeneral.Controls.Add(this.numericCondition);
             this.tabPageGeneral.Controls.Add(this.textBoxComments);
             this.tabPageGeneral.Controls.Add(this.labelComments);
             this.tabPageGeneral.Controls.Add(this.labelFBA);
@@ -196,12 +195,13 @@
             this.tabPageGeneral.Controls.Add(this.labelMass);
             this.tabPageGeneral.Controls.Add(this.label5);
             this.tabPageGeneral.Controls.Add(this.labelLength);
-            this.tabPageGeneral.Controls.Add(this.textBoxRegID);
+            this.tabPageGeneral.Controls.Add(this.textBoxTally);
             this.tabPageGeneral.Controls.Add(this.textBoxAge);
-            this.tabPageGeneral.Controls.Add(this.textBoxTL);
-            this.tabPageGeneral.Controls.Add(this.textBoxLength);
-            this.tabPageGeneral.Controls.Add(this.textBoxSomaticMass);
-            this.tabPageGeneral.Controls.Add(this.textBoxMass);
+            this.tabPageGeneral.Controls.Add(this.numericTL);
+            this.tabPageGeneral.Controls.Add(this.numericLength);
+            this.tabPageGeneral.Controls.Add(this.numericSomaticMass);
+            this.tabPageGeneral.Controls.Add(this.numericMass);
+            resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
@@ -210,17 +210,19 @@
             resources.ApplyResources(this.labelConditionFactor, "labelConditionFactor");
             this.labelConditionFactor.Name = "labelConditionFactor";
             // 
-            // textBoxConditionSoma
+            // numericConditionSoma
             // 
-            resources.ApplyResources(this.textBoxConditionSoma, "textBoxConditionSoma");
-            this.textBoxConditionSoma.Name = "textBoxConditionSoma";
-            this.textBoxConditionSoma.ReadOnly = true;
+            resources.ApplyResources(this.numericConditionSoma, "numericConditionSoma");
+            this.numericConditionSoma.Name = "numericConditionSoma";
+            this.numericConditionSoma.ReadOnly = true;
+            this.numericConditionSoma.Value = 0D;
             // 
-            // textBoxCondition
+            // numericCondition
             // 
-            resources.ApplyResources(this.textBoxCondition, "textBoxCondition");
-            this.textBoxCondition.Name = "textBoxCondition";
-            this.textBoxCondition.ReadOnly = true;
+            resources.ApplyResources(this.numericCondition, "numericCondition");
+            this.numericCondition.Name = "numericCondition";
+            this.numericCondition.ReadOnly = true;
+            this.numericCondition.Value = 0D;
             // 
             // textBoxComments
             // 
@@ -268,47 +270,50 @@
             resources.ApplyResources(this.labelLength, "labelLength");
             this.labelLength.Name = "labelLength";
             // 
-            // textBoxRegID
+            // textBoxTally
             // 
-            resources.ApplyResources(this.textBoxRegID, "textBoxRegID");
-            this.textBoxRegID.Name = "textBoxRegID";
+            resources.ApplyResources(this.textBoxTally, "textBoxTally");
+            this.textBoxTally.Name = "textBoxTally";
             // 
             // textBoxAge
             // 
             resources.ApplyResources(this.textBoxAge, "textBoxAge");
             this.textBoxAge.Name = "textBoxAge";
             // 
-            // textBoxTL
+            // numericTL
             // 
-            resources.ApplyResources(this.textBoxTL, "textBoxTL");
-            this.textBoxTL.Name = "textBoxTL";
-            this.textBoxTL.TextChanged += new System.EventHandler(this.textBoxLength_TextChanged);
-            this.textBoxTL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericTL, "numericTL");
+            this.numericTL.Name = "numericTL";
+            this.numericTL.Value = 0D;
+            this.numericTL.TextChanged += new System.EventHandler(this.numericLength_TextChanged);
+            this.numericTL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxLength
+            // numericLength
             // 
-            resources.ApplyResources(this.textBoxLength, "textBoxLength");
-            this.textBoxLength.Name = "textBoxLength";
-            this.textBoxLength.TextChanged += new System.EventHandler(this.textBoxLength_TextChanged);
-            this.textBoxLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericLength, "numericLength");
+            this.numericLength.Name = "numericLength";
+            this.numericLength.Value = 0D;
+            this.numericLength.TextChanged += new System.EventHandler(this.numericLength_TextChanged);
+            this.numericLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxSomaticMass
+            // numericSomaticMass
             // 
-            resources.ApplyResources(this.textBoxSomaticMass, "textBoxSomaticMass");
-            this.textBoxSomaticMass.Name = "textBoxSomaticMass";
-            this.textBoxSomaticMass.TextChanged += new System.EventHandler(this.mass_Changed);
-            this.textBoxSomaticMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericSomaticMass, "numericSomaticMass");
+            this.numericSomaticMass.Name = "numericSomaticMass";
+            this.numericSomaticMass.Value = 0D;
+            this.numericSomaticMass.TextChanged += new System.EventHandler(this.mass_Changed);
+            this.numericSomaticMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxMass
+            // numericMass
             // 
-            resources.ApplyResources(this.textBoxMass, "textBoxMass");
-            this.textBoxMass.Name = "textBoxMass";
-            this.textBoxMass.TextChanged += new System.EventHandler(this.mass_Changed);
-            this.textBoxMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericMass, "numericMass");
+            this.numericMass.Name = "numericMass";
+            this.numericMass.Value = 0D;
+            this.numericMass.TextChanged += new System.EventHandler(this.mass_Changed);
+            this.numericMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
             // tabPageFecundity
             // 
-            resources.ApplyResources(this.tabPageFecundity, "tabPageFecundity");
             this.tabPageFecundity.Controls.Add(this.checkBoxIntermediate);
             this.tabPageFecundity.Controls.Add(this.comboBoxMaturity);
             this.tabPageFecundity.Controls.Add(this.comboBoxGender);
@@ -325,16 +330,17 @@
             this.tabPageFecundity.Controls.Add(this.labelGonadosomatic);
             this.tabPageFecundity.Controls.Add(this.labelFecundityRel);
             this.tabPageFecundity.Controls.Add(this.labelGonadMass);
-            this.tabPageFecundity.Controls.Add(this.textBoxMeanEggMass);
-            this.tabPageFecundity.Controls.Add(this.textBoxEggSize);
-            this.tabPageFecundity.Controls.Add(this.textBoxGonadSample);
-            this.tabPageFecundity.Controls.Add(this.textBoxGonadSampleMass);
-            this.tabPageFecundity.Controls.Add(this.textBoxAbsoluteFecundity);
-            this.tabPageFecundity.Controls.Add(this.textBoxGonadIndexSoma);
-            this.tabPageFecundity.Controls.Add(this.textBoxGonadIndex);
-            this.tabPageFecundity.Controls.Add(this.textBoxRelativeFecunditySoma);
-            this.tabPageFecundity.Controls.Add(this.textBoxRelativeFecundity);
-            this.tabPageFecundity.Controls.Add(this.textBoxGonadMass);
+            this.tabPageFecundity.Controls.Add(this.numericMeanEggMass);
+            this.tabPageFecundity.Controls.Add(this.numericEggSize);
+            this.tabPageFecundity.Controls.Add(this.numericGonadSample);
+            this.tabPageFecundity.Controls.Add(this.numericGonadSampleMass);
+            this.tabPageFecundity.Controls.Add(this.numericAbsoluteFecundity);
+            this.tabPageFecundity.Controls.Add(this.numericGonadIndexSoma);
+            this.tabPageFecundity.Controls.Add(this.numericGonadIndex);
+            this.tabPageFecundity.Controls.Add(this.numericRelativeFecunditySoma);
+            this.tabPageFecundity.Controls.Add(this.numericRelativeFecundity);
+            this.tabPageFecundity.Controls.Add(this.numericGonadMass);
+            resources.ApplyResources(this.tabPageFecundity, "tabPageFecundity");
             this.tabPageFecundity.Name = "tabPageFecundity";
             this.tabPageFecundity.UseVisualStyleBackColor = true;
             // 
@@ -445,89 +451,99 @@
             resources.ApplyResources(this.labelGonadMass, "labelGonadMass");
             this.labelGonadMass.Name = "labelGonadMass";
             // 
-            // textBoxMeanEggMass
+            // numericMeanEggMass
             // 
-            resources.ApplyResources(this.textBoxMeanEggMass, "textBoxMeanEggMass");
-            this.textBoxMeanEggMass.Name = "textBoxMeanEggMass";
-            this.textBoxMeanEggMass.ReadOnly = true;
-            this.textBoxMeanEggMass.TextChanged += new System.EventHandler(this.fecundity_Changed);
+            resources.ApplyResources(this.numericMeanEggMass, "numericMeanEggMass");
+            this.numericMeanEggMass.Name = "numericMeanEggMass";
+            this.numericMeanEggMass.ReadOnly = true;
+            this.numericMeanEggMass.Value = 0D;
+            this.numericMeanEggMass.TextChanged += new System.EventHandler(this.fecundity_Changed);
             // 
-            // textBoxEggSize
+            // numericEggSize
             // 
-            resources.ApplyResources(this.textBoxEggSize, "textBoxEggSize");
-            this.textBoxEggSize.Name = "textBoxEggSize";
-            this.textBoxEggSize.TextChanged += new System.EventHandler(this.fecundity_Changed);
-            this.textBoxEggSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericEggSize, "numericEggSize");
+            this.numericEggSize.Name = "numericEggSize";
+            this.numericEggSize.Value = 0D;
+            this.numericEggSize.TextChanged += new System.EventHandler(this.fecundity_Changed);
+            this.numericEggSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxGonadSample
+            // numericGonadSample
             // 
-            resources.ApplyResources(this.textBoxGonadSample, "textBoxGonadSample");
-            this.textBoxGonadSample.Name = "textBoxGonadSample";
-            this.textBoxGonadSample.TextChanged += new System.EventHandler(this.fecundity_Changed);
-            this.textBoxGonadSample.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.intValue_KeyPress);
+            resources.ApplyResources(this.numericGonadSample, "numericGonadSample");
+            this.numericGonadSample.Name = "numericGonadSample";
+            this.numericGonadSample.Value = 0D;
+            this.numericGonadSample.TextChanged += new System.EventHandler(this.fecundity_Changed);
+            this.numericGonadSample.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.intValue_KeyPress);
             // 
-            // textBoxGonadSampleMass
+            // numericGonadSampleMass
             // 
-            resources.ApplyResources(this.textBoxGonadSampleMass, "textBoxGonadSampleMass");
-            this.textBoxGonadSampleMass.Name = "textBoxGonadSampleMass";
-            this.textBoxGonadSampleMass.TextChanged += new System.EventHandler(this.fecundity_Changed);
-            this.textBoxGonadSampleMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericGonadSampleMass, "numericGonadSampleMass");
+            this.numericGonadSampleMass.Name = "numericGonadSampleMass";
+            this.numericGonadSampleMass.Value = 0D;
+            this.numericGonadSampleMass.TextChanged += new System.EventHandler(this.fecundity_Changed);
+            this.numericGonadSampleMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxAbsoluteFecundity
+            // numericAbsoluteFecundity
             // 
-            resources.ApplyResources(this.textBoxAbsoluteFecundity, "textBoxAbsoluteFecundity");
-            this.textBoxAbsoluteFecundity.Name = "textBoxAbsoluteFecundity";
-            this.textBoxAbsoluteFecundity.ReadOnly = true;
+            resources.ApplyResources(this.numericAbsoluteFecundity, "numericAbsoluteFecundity");
+            this.numericAbsoluteFecundity.Name = "numericAbsoluteFecundity";
+            this.numericAbsoluteFecundity.ReadOnly = true;
+            this.numericAbsoluteFecundity.Value = 0D;
             // 
-            // textBoxGonadIndexSoma
+            // numericGonadIndexSoma
             // 
-            resources.ApplyResources(this.textBoxGonadIndexSoma, "textBoxGonadIndexSoma");
-            this.textBoxGonadIndexSoma.Name = "textBoxGonadIndexSoma";
-            this.textBoxGonadIndexSoma.ReadOnly = true;
+            resources.ApplyResources(this.numericGonadIndexSoma, "numericGonadIndexSoma");
+            this.numericGonadIndexSoma.Name = "numericGonadIndexSoma";
+            this.numericGonadIndexSoma.ReadOnly = true;
+            this.numericGonadIndexSoma.Value = 0D;
             // 
-            // textBoxGonadIndex
+            // numericGonadIndex
             // 
-            resources.ApplyResources(this.textBoxGonadIndex, "textBoxGonadIndex");
-            this.textBoxGonadIndex.Name = "textBoxGonadIndex";
-            this.textBoxGonadIndex.ReadOnly = true;
+            resources.ApplyResources(this.numericGonadIndex, "numericGonadIndex");
+            this.numericGonadIndex.Name = "numericGonadIndex";
+            this.numericGonadIndex.ReadOnly = true;
+            this.numericGonadIndex.Value = 0D;
             // 
-            // textBoxRelativeFecunditySoma
+            // numericRelativeFecunditySoma
             // 
-            resources.ApplyResources(this.textBoxRelativeFecunditySoma, "textBoxRelativeFecunditySoma");
-            this.textBoxRelativeFecunditySoma.Name = "textBoxRelativeFecunditySoma";
-            this.textBoxRelativeFecunditySoma.ReadOnly = true;
+            resources.ApplyResources(this.numericRelativeFecunditySoma, "numericRelativeFecunditySoma");
+            this.numericRelativeFecunditySoma.Name = "numericRelativeFecunditySoma";
+            this.numericRelativeFecunditySoma.ReadOnly = true;
+            this.numericRelativeFecunditySoma.Value = 0D;
             // 
-            // textBoxRelativeFecundity
+            // numericRelativeFecundity
             // 
-            resources.ApplyResources(this.textBoxRelativeFecundity, "textBoxRelativeFecundity");
-            this.textBoxRelativeFecundity.Name = "textBoxRelativeFecundity";
-            this.textBoxRelativeFecundity.ReadOnly = true;
+            resources.ApplyResources(this.numericRelativeFecundity, "numericRelativeFecundity");
+            this.numericRelativeFecundity.Name = "numericRelativeFecundity";
+            this.numericRelativeFecundity.ReadOnly = true;
+            this.numericRelativeFecundity.Value = 0D;
             // 
-            // textBoxGonadMass
+            // numericGonadMass
             // 
-            resources.ApplyResources(this.textBoxGonadMass, "textBoxGonadMass");
-            this.textBoxGonadMass.Name = "textBoxGonadMass";
-            this.textBoxGonadMass.TextChanged += new System.EventHandler(this.fecundity_Changed);
-            this.textBoxGonadMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericGonadMass, "numericGonadMass");
+            this.numericGonadMass.Name = "numericGonadMass";
+            this.numericGonadMass.Value = 0D;
+            this.numericGonadMass.TextChanged += new System.EventHandler(this.fecundity_Changed);
+            this.numericGonadMass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
             // tabPageGrowth
             // 
-            resources.ApplyResources(this.tabPageGrowth, "tabPageGrowth");
             this.tabPageGrowth.Controls.Add(this.spreadSheet1);
             this.tabPageGrowth.Controls.Add(this.label4);
-            this.tabPageGrowth.Controls.Add(this.textBox2);
+            this.tabPageGrowth.Controls.Add(this.numericTL2);
             this.tabPageGrowth.Controls.Add(this.label3);
-            this.tabPageGrowth.Controls.Add(this.textBox1);
+            this.tabPageGrowth.Controls.Add(this.textBoxAge2);
             this.tabPageGrowth.Controls.Add(this.label2);
+            resources.ApplyResources(this.tabPageGrowth, "tabPageGrowth");
             this.tabPageGrowth.Name = "tabPageGrowth";
             this.tabPageGrowth.UseVisualStyleBackColor = true;
             // 
             // spreadSheet1
             // 
-            resources.ApplyResources(this.spreadSheet1, "spreadSheet1");
             this.spreadSheet1.AllowUserToAddRows = true;
             this.spreadSheet1.AllowUserToDeleteRows = true;
             this.spreadSheet1.AllowUserToResizeColumns = false;
+            resources.ApplyResources(this.spreadSheet1, "spreadSheet1");
             this.spreadSheet1.AutoClearEmptyRows = true;
             this.spreadSheet1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnRadius});
@@ -538,9 +554,9 @@
             // ColumnRadius
             // 
             this.ColumnRadius.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.NullValue = null;
-            this.ColumnRadius.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnRadius.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.ColumnRadius, "ColumnRadius");
             this.ColumnRadius.Name = "ColumnRadius";
             // 
@@ -549,20 +565,20 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // textBox2
+            // numericTL2
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.numericTL2, "numericTL2");
+            this.numericTL2.Name = "numericTL2";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // textBox1
+            // textBoxAge2
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.textBoxAge2, "textBoxAge2");
+            this.textBoxAge2.Name = "textBoxAge2";
             // 
             // label2
             // 
@@ -572,7 +588,6 @@
             // 
             // tabPageTrophics
             // 
-            resources.ApplyResources(this.tabPageTrophics, "tabPageTrophics");
             this.tabPageTrophics.Controls.Add(this.comboBoxSection);
             this.tabPageTrophics.Controls.Add(this.spreadSheetTrophics);
             this.tabPageTrophics.Controls.Add(this.labelTractContent);
@@ -582,14 +597,15 @@
             this.tabPageTrophics.Controls.Add(this.buttonTrophics);
             this.tabPageTrophics.Controls.Add(this.labelConsumedMass);
             this.tabPageTrophics.Controls.Add(this.labelConsumptionIndex);
-            this.tabPageTrophics.Controls.Add(this.textBoxConsumedMass);
-            this.tabPageTrophics.Controls.Add(this.textBoxConsumptionIndex);
+            this.tabPageTrophics.Controls.Add(this.numericConsumedMass);
+            this.tabPageTrophics.Controls.Add(this.numericConsumptionIndex);
             this.tabPageTrophics.Controls.Add(this.comboBoxFermentation);
             this.tabPageTrophics.Controls.Add(this.comboBoxFatness);
             this.tabPageTrophics.Controls.Add(this.comboBoxFullness);
             this.tabPageTrophics.Controls.Add(this.labelFermentation);
             this.tabPageTrophics.Controls.Add(this.labelSection);
             this.tabPageTrophics.Controls.Add(this.labelFullness);
+            resources.ApplyResources(this.tabPageTrophics, "tabPageTrophics");
             this.tabPageTrophics.Name = "tabPageTrophics";
             this.tabPageTrophics.UseVisualStyleBackColor = true;
             // 
@@ -611,9 +627,9 @@
             // 
             // spreadSheetTrophics
             // 
-            resources.ApplyResources(this.spreadSheetTrophics, "spreadSheetTrophics");
             this.spreadSheetTrophics.AllowUserToAddRows = true;
             this.spreadSheetTrophics.AllowUserToDeleteRows = true;
+            resources.ApplyResources(this.spreadSheetTrophics, "spreadSheetTrophics");
             this.spreadSheetTrophics.AutoClearEmptyRows = true;
             this.spreadSheetTrophics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.spreadSheetTrophics.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -634,9 +650,47 @@
             this.spreadSheetTrophics.DragDrop += new System.Windows.Forms.DragEventHandler(this.GridLog_DragDrop);
             this.spreadSheetTrophics.DragEnter += new System.Windows.Forms.DragEventHandler(this.GridLog_DragEnter);
             // 
+            // ColumnTrpID
+            // 
+            resources.ApplyResources(this.ColumnTrpID, "ColumnTrpID");
+            this.ColumnTrpID.Name = "ColumnTrpID";
+            // 
+            // ColumnTrpSpecies
+            // 
+            this.ColumnTrpSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnTrpSpecies.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.ColumnTrpSpecies, "ColumnTrpSpecies");
+            this.ColumnTrpSpecies.Name = "ColumnTrpSpecies";
+            // 
+            // ColumnTrpQuantity
+            // 
+            this.ColumnTrpQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.ColumnTrpQuantity.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.ColumnTrpQuantity, "ColumnTrpQuantity");
+            this.ColumnTrpQuantity.Name = "ColumnTrpQuantity";
+            // 
+            // ColumnTrpMass
+            // 
+            this.ColumnTrpMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.ColumnTrpMass.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.ColumnTrpMass, "ColumnTrpMass");
+            this.ColumnTrpMass.Name = "ColumnTrpMass";
+            // 
+            // ColumnTrpConsumption
+            // 
+            this.ColumnTrpConsumption.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Format = "N1";
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.ColumnTrpConsumption.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.ColumnTrpConsumption, "ColumnTrpConsumption");
+            this.ColumnTrpConsumption.Name = "ColumnTrpConsumption";
+            // 
             // contextLog
             // 
-            resources.ApplyResources(this.contextLog, "contextLog");
             this.contextLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemIndividuals,
             this.ToolStripMenuItemKeys,
@@ -646,6 +700,7 @@
             this.ToolStripMenuItemPaste,
             this.ToolStripMenuItemDelete});
             this.contextLog.Name = "contextMenuStripLog";
+            resources.ApplyResources(this.contextLog, "contextLog");
             // 
             // ToolStripMenuItemIndividuals
             // 
@@ -655,25 +710,25 @@
             // 
             // ToolStripMenuItemKeys
             // 
-            resources.ApplyResources(this.ToolStripMenuItemKeys, "ToolStripMenuItemKeys");
             this.ToolStripMenuItemKeys.Name = "ToolStripMenuItemKeys";
+            resources.ApplyResources(this.ToolStripMenuItemKeys, "ToolStripMenuItemKeys");
             this.ToolStripMenuItemKeys.Click += new System.EventHandler(this.ToolStripMenuItemKeys_Click);
             // 
             // toolStripSeparator2
             // 
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // cutToolStripMenuItem
             // 
-            resources.ApplyResources(this.cutToolStripMenuItem, "cutToolStripMenuItem");
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            resources.ApplyResources(this.cutToolStripMenuItem, "cutToolStripMenuItem");
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCut_Click);
             // 
             // copyToolStripMenuItem
             // 
-            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItemCopy_Click);
             // 
             // ToolStripMenuItemPaste
@@ -728,17 +783,19 @@
             resources.ApplyResources(this.labelConsumptionIndex, "labelConsumptionIndex");
             this.labelConsumptionIndex.Name = "labelConsumptionIndex";
             // 
-            // textBoxConsumedMass
+            // numericConsumedMass
             // 
-            resources.ApplyResources(this.textBoxConsumedMass, "textBoxConsumedMass");
-            this.textBoxConsumedMass.Name = "textBoxConsumedMass";
-            this.textBoxConsumedMass.TextChanged += new System.EventHandler(this.TextBoxConsumedMass_TextChanged);
+            resources.ApplyResources(this.numericConsumedMass, "numericConsumedMass");
+            this.numericConsumedMass.Name = "numericConsumedMass";
+            this.numericConsumedMass.Value = 0D;
+            this.numericConsumedMass.TextChanged += new System.EventHandler(this.TextBoxConsumedMass_TextChanged);
             // 
-            // textBoxConsumptionIndex
+            // numericConsumptionIndex
             // 
-            resources.ApplyResources(this.textBoxConsumptionIndex, "textBoxConsumptionIndex");
-            this.textBoxConsumptionIndex.Name = "textBoxConsumptionIndex";
-            this.textBoxConsumptionIndex.ReadOnly = true;
+            resources.ApplyResources(this.numericConsumptionIndex, "numericConsumptionIndex");
+            this.numericConsumptionIndex.Name = "numericConsumptionIndex";
+            this.numericConsumptionIndex.ReadOnly = true;
+            this.numericConsumptionIndex.Value = 0D;
             // 
             // comboBoxFermentation
             // 
@@ -805,12 +862,12 @@
             // 
             // tabPageParasites
             // 
-            resources.ApplyResources(this.tabPageParasites, "tabPageParasites");
             this.tabPageParasites.Controls.Add(this.buttonAddParasite);
             this.tabPageParasites.Controls.Add(this.spreadSheetInfection);
             this.tabPageParasites.Controls.Add(this.labelOrgan);
             this.tabPageParasites.Controls.Add(this.comboBoxOrgan);
             this.tabPageParasites.Controls.Add(this.label8);
+            resources.ApplyResources(this.tabPageParasites, "tabPageParasites");
             this.tabPageParasites.Name = "tabPageParasites";
             this.tabPageParasites.UseVisualStyleBackColor = true;
             // 
@@ -822,11 +879,11 @@
             // 
             // spreadSheetInfection
             // 
-            resources.ApplyResources(this.spreadSheetInfection, "spreadSheetInfection");
             this.spreadSheetInfection.AllowStringSuggection = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.spreadSheetInfection.AllowUserToAddRows = true;
             this.spreadSheetInfection.AllowUserToDeleteRows = true;
             this.spreadSheetInfection.AllowUserToResizeColumns = false;
+            resources.ApplyResources(this.spreadSheetInfection, "spreadSheetInfection");
             this.spreadSheetInfection.AutoClearEmptyRows = true;
             this.spreadSheetInfection.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.spreadSheetInfection.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -848,8 +905,8 @@
             // ColumnInfSpecies
             // 
             this.ColumnInfSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnInfSpecies.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnInfSpecies.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnInfSpecies.FillWeight = 96.70051F;
             resources.ApplyResources(this.ColumnInfSpecies, "ColumnInfSpecies");
             this.ColumnInfSpecies.Name = "ColumnInfSpecies";
@@ -864,8 +921,8 @@
             // ColumnInfComments
             // 
             this.ColumnInfComments.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnInfComments.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnInfComments.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnInfComments.FillWeight = 96.70051F;
             resources.ApplyResources(this.ColumnInfComments, "ColumnInfComments");
             this.ColumnInfComments.Name = "ColumnInfComments";
@@ -906,9 +963,9 @@
             // 
             // tabPageAddt
             // 
-            resources.ApplyResources(this.tabPageAddt, "tabPageAddt");
             this.tabPageAddt.Controls.Add(this.label1);
             this.tabPageAddt.Controls.Add(this.spreadSheetAddt);
+            resources.ApplyResources(this.tabPageAddt, "tabPageAddt");
             this.tabPageAddt.Name = "tabPageAddt";
             this.tabPageAddt.UseVisualStyleBackColor = true;
             // 
@@ -920,10 +977,10 @@
             // 
             // spreadSheetAddt
             // 
-            resources.ApplyResources(this.spreadSheetAddt, "spreadSheetAddt");
             this.spreadSheetAddt.AllowUserToAddRows = true;
             this.spreadSheetAddt.AllowUserToDeleteRows = true;
             this.spreadSheetAddt.AllowUserToResizeColumns = false;
+            resources.ApplyResources(this.spreadSheetAddt, "spreadSheetAddt");
             this.spreadSheetAddt.AutoClearEmptyRows = true;
             this.spreadSheetAddt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAddtVariable,
@@ -935,18 +992,18 @@
             // ColumnAddtVariable
             // 
             this.ColumnAddtVariable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.NullValue = null;
-            this.ColumnAddtVariable.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.NullValue = null;
+            this.ColumnAddtVariable.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.ColumnAddtVariable, "ColumnAddtVariable");
             this.ColumnAddtVariable.Name = "ColumnAddtVariable";
             // 
             // ColumnAddtValue
             // 
             this.ColumnAddtValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N1";
-            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N1";
+            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.ColumnAddtValue, "ColumnAddtValue");
             this.ColumnAddtValue.Name = "ColumnAddtValue";
             // 
@@ -970,42 +1027,41 @@
             // 
             resources.ApplyResources(this.buttonBlank, "buttonBlank");
             this.buttonBlank.FlatAppearance.BorderSize = 0;
-            this.buttonBlank.Image = Pictogram.Blank;
             this.buttonBlank.Name = "buttonBlank";
             this.buttonBlank.UseVisualStyleBackColor = true;
             this.buttonBlank.Click += new System.EventHandler(this.buttonBlank_Click);
             // 
             // contextSaveTrophics
             // 
-            resources.ApplyResources(this.contextSaveTrophics, "contextSaveTrophics");
             this.contextSaveTrophics.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadFromCardToolStripMenuItem,
             this.toolStripSeparator1,
             this.currentSectionToolStripMenuItem,
             this.allSectionsToolStripMenuItem});
             this.contextSaveTrophics.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextSaveTrophics, "contextSaveTrophics");
             // 
             // loadFromCardToolStripMenuItem
             // 
-            resources.ApplyResources(this.loadFromCardToolStripMenuItem, "loadFromCardToolStripMenuItem");
             this.loadFromCardToolStripMenuItem.Name = "loadFromCardToolStripMenuItem";
+            resources.ApplyResources(this.loadFromCardToolStripMenuItem, "loadFromCardToolStripMenuItem");
             this.loadFromCardToolStripMenuItem.Click += new System.EventHandler(this.buttonLoadData_Click);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // currentSectionToolStripMenuItem
             // 
-            resources.ApplyResources(this.currentSectionToolStripMenuItem, "currentSectionToolStripMenuItem");
             this.currentSectionToolStripMenuItem.Name = "currentSectionToolStripMenuItem";
+            resources.ApplyResources(this.currentSectionToolStripMenuItem, "currentSectionToolStripMenuItem");
             this.currentSectionToolStripMenuItem.Click += new System.EventHandler(this.currentSectionToolStripMenuItem_Click);
             // 
             // allSectionsToolStripMenuItem
             // 
-            resources.ApplyResources(this.allSectionsToolStripMenuItem, "allSectionsToolStripMenuItem");
             this.allSectionsToolStripMenuItem.Name = "allSectionsToolStripMenuItem";
+            resources.ApplyResources(this.allSectionsToolStripMenuItem, "allSectionsToolStripMenuItem");
             this.allSectionsToolStripMenuItem.Click += new System.EventHandler(this.allSectionsToolStripMenuItem_Click);
             // 
             // taskDialogSaveChanges
@@ -1027,7 +1083,6 @@
             // tdbCancel
             // 
             this.tdbCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
-            resources.ApplyResources(this.tdbCancel, "tdbCancel");
             // 
             // speciesParasites
             // 
@@ -1045,49 +1100,10 @@
             this.speciesTrophics.RecentListCount = 0;
             this.speciesTrophics.SpeciesSelected += new Mayfly.Species.SpeciesSelectEventHandler(this.speciesTrophics_SpeciesSelected);
             // 
-            // ColumnTrpID
-            // 
-            resources.ApplyResources(this.ColumnTrpID, "ColumnTrpID");
-            this.ColumnTrpID.Name = "ColumnTrpID";
-            // 
-            // ColumnTrpSpecies
-            // 
-            this.ColumnTrpSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnTrpSpecies.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(this.ColumnTrpSpecies, "ColumnTrpSpecies");
-            this.ColumnTrpSpecies.Name = "ColumnTrpSpecies";
-            // 
-            // ColumnTrpQuantity
-            // 
-            this.ColumnTrpQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.ColumnTrpQuantity.DefaultCellStyle = dataGridViewCellStyle12;
-            resources.ApplyResources(this.ColumnTrpQuantity, "ColumnTrpQuantity");
-            this.ColumnTrpQuantity.Name = "ColumnTrpQuantity";
-            // 
-            // ColumnTrpMass
-            // 
-            this.ColumnTrpMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.ColumnTrpMass.DefaultCellStyle = dataGridViewCellStyle13;
-            resources.ApplyResources(this.ColumnTrpMass, "ColumnTrpMass");
-            this.ColumnTrpMass.Name = "ColumnTrpMass";
-            // 
-            // ColumnTrpConsumption
-            // 
-            this.ColumnTrpConsumption.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle14.Format = "N1";
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.ColumnTrpConsumption.DefaultCellStyle = dataGridViewCellStyle14;
-            resources.ApplyResources(this.ColumnTrpConsumption, "ColumnTrpConsumption");
-            this.ColumnTrpConsumption.Name = "ColumnTrpConsumption";
-            // 
             // Individual
             // 
-            resources.ApplyResources(this, "$this");
             this.AllowDrop = true;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControlInd);
             this.Controls.Add(this.buttonBlank);
@@ -1124,8 +1140,8 @@
         private System.Windows.Forms.TabPage tabPageGeneral;
         private System.Windows.Forms.TabPage tabPageTrophics;
         public System.Windows.Forms.TextBox textBoxAge;
-        public System.Windows.Forms.TextBox textBoxLength;
-        public System.Windows.Forms.TextBox textBoxMass;
+        public Mayfly.Controls.NumberBox numericLength;
+        public Mayfly.Controls.NumberBox numericMass;
         private System.Windows.Forms.Label labelAge;
         private System.Windows.Forms.Label labelMass;
         private System.Windows.Forms.Label labelLength;
@@ -1139,16 +1155,16 @@
         private System.Windows.Forms.Label labelGonadosomatic;
         private System.Windows.Forms.Label labelFecundityRel;
         private System.Windows.Forms.Label labelGonadMass;
-        public System.Windows.Forms.TextBox textBoxEggSize;
-        public System.Windows.Forms.TextBox textBoxGonadSample;
-        public System.Windows.Forms.TextBox textBoxGonadSampleMass;
-        public System.Windows.Forms.TextBox textBoxAbsoluteFecundity;
-        public System.Windows.Forms.TextBox textBoxGonadIndex;
-        public System.Windows.Forms.TextBox textBoxRelativeFecundity;
-        public System.Windows.Forms.TextBox textBoxGonadMass;
+        public Mayfly.Controls.NumberBox numericEggSize;
+        public Mayfly.Controls.NumberBox numericGonadSample;
+        public Mayfly.Controls.NumberBox numericGonadSampleMass;
+        public Mayfly.Controls.NumberBox numericAbsoluteFecundity;
+        public Mayfly.Controls.NumberBox numericGonadIndex;
+        public Mayfly.Controls.NumberBox numericRelativeFecundity;
+        public Mayfly.Controls.NumberBox numericGonadMass;
         private System.Windows.Forms.Label labelEgg;
         private System.Windows.Forms.Label labelEggMass;
-        public System.Windows.Forms.TextBox textBoxMeanEggMass;
+        public Mayfly.Controls.NumberBox numericMeanEggMass;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label labelFermentation;
         private System.Windows.Forms.Label labelFullness;
@@ -1163,16 +1179,16 @@
         private System.Windows.Forms.Label labelSex;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label labelSomaticMass;
-        public System.Windows.Forms.TextBox textBoxSomaticMass;
+        public Mayfly.Controls.NumberBox numericSomaticMass;
         private System.Windows.Forms.Label labelConsumptionIndex;
-        public System.Windows.Forms.TextBox textBoxConsumptionIndex;
+        public Mayfly.Controls.NumberBox numericConsumptionIndex;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDelete;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemKeys;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPaste;
         private System.Windows.Forms.ContextMenuStrip contextLog;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.Label labelConsumedMass;
-        public System.Windows.Forms.TextBox textBoxConsumedMass;
+        public Mayfly.Controls.NumberBox numericConsumedMass;
         private System.Windows.Forms.Label labelTractContent;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.TabPage tabPageParasites;
@@ -1209,23 +1225,23 @@
         private System.Windows.Forms.Button buttonAddParasite;
         private System.Windows.Forms.CheckBox checkBoxIntermediate;
         private System.Windows.Forms.Label labelRegID;
-        public System.Windows.Forms.TextBox textBoxRegID;
+        public System.Windows.Forms.TextBox textBoxTally;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInfID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInfSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInfQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInfComments;
-        public System.Windows.Forms.TextBox textBoxGonadIndexSoma;
-        public System.Windows.Forms.TextBox textBoxRelativeFecunditySoma;
+        public Mayfly.Controls.NumberBox numericGonadIndexSoma;
+        public Mayfly.Controls.NumberBox numericRelativeFecunditySoma;
         private System.Windows.Forms.Label labelConditionFactor;
-        public System.Windows.Forms.TextBox textBoxConditionSoma;
-        public System.Windows.Forms.TextBox textBoxCondition;
+        public Mayfly.Controls.NumberBox numericConditionSoma;
+        public Mayfly.Controls.NumberBox numericCondition;
         private System.Windows.Forms.TabPage tabPageGrowth;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox numericTL2;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBoxAge2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox textBoxTL;
+        public Mayfly.Controls.NumberBox numericTL;
         private System.Windows.Forms.Label label4;
         private Controls.SpreadSheet spreadSheet1;
         private System.Windows.Forms.Label labelSection;

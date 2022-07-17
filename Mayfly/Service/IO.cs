@@ -1,6 +1,5 @@
 ﻿using Mayfly.Extensions;
 using Microsoft.Win32;
-using Shell32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -389,7 +388,9 @@ namespace Mayfly
 
 
 
-        public static FileSystemInterface InterfacePictures = new FileSystemInterface(".png", ".jpg");
+        public static FileSystemInterface InterfacePictures = new FileSystemInterface(".png", ".jpg") {
+            FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+        };
 
         public static FileSystemInterface InterfaceLocation = new FileSystemInterface(new string[] { ".kml", ".gpx", ".wpt", ".jpg", ".jpeg" }, new string[] { ".kml" });
 
@@ -401,6 +402,7 @@ namespace Mayfly
     public class FileSystemInterface
     {
         readonly string[] SaveExtensions;
+        private string folderPath = string.Empty;
 
         public string[] OpenExtensions;
 
@@ -412,12 +414,22 @@ namespace Mayfly
 
         public SaveFileDialog ExportDialog { get; set; }
 
+        public string FolderPath {
+            get { return folderPath; }
+            set {
+                folderPath = value;
+
+                if (OpenDialog != null) OpenDialog.InitialDirectory = value;
+                if (SaveDialog != null) SaveDialog.InitialDirectory = value;
+                if (ExportDialog != null) ExportDialog.InitialDirectory = value;
+            }
+        }
+
 
         public FileSystemInterface(string[] openextensions, string[] saveextensions) {
 
             OpenExtensions = openextensions;
             SaveExtensions = saveextensions;
-
             resetDialogs();
         }
 
@@ -434,31 +446,33 @@ namespace Mayfly
 
 
         private void resetDialogs() {
+
             OpenDialog = new OpenFileDialog {
+                Title = OpenExtensions.Length == 1 ? string.Format(Resources.Interface.FileOpen, IO.GetFriendlyFiletypeName(Extension)) : Resources.Interface.FileOpenAny,
+                InitialDirectory = folderPath,
+                RestoreDirectory = true,
                 Filter = IO.FilterFromExt(OpenExtensions),
-                Title = OpenExtensions.Length == 1 ?
-                string.Format(Resources.Interface.FileOpen, IO.GetFriendlyFiletypeName(Extension)) :
-                Resources.Interface.FileOpenAny,
                 FilterIndex = OpenExtensions.Length == 1 ? 0 : 1
             };
-            OpenDialog.FileOk += new CancelEventHandler(openDialog_FileOk);
-            //OpenDialog.InitialDirectory = InitialDirectory;
+            OpenDialog.FileOk += new CancelEventHandler(dialog_FileOk);
 
             SaveDialog = new SaveFileDialog {
-                Filter = IO.FilterFromExt(Extension),
-                Title = string.Format(Resources.Interface.FileSave, IO.GetFriendlyFiletypeName(Extension))
+                Title = string.Format(Resources.Interface.FileSave, IO.GetFriendlyFiletypeName(Extension)),
+                InitialDirectory = folderPath,
+                RestoreDirectory = true,
+                Filter = IO.FilterFromExt(Extension)
             };
-            SaveDialog.FileOk += new CancelEventHandler(saveDialog_FileOk);
-            //SaveDialog.InitialDirectory = InitialDirectory;
+            SaveDialog.FileOk += new CancelEventHandler(dialog_FileOk);
 
             if (SaveExtensions.Length > 1) {
                 ExportDialog = new SaveFileDialog {
-                    Filter = IO.FilterFromExt(false, SaveExtensions),
                     Title = Resources.Interface.FileSaveAny,
+                    InitialDirectory = folderPath,
+                    RestoreDirectory = true,
+                    Filter = IO.FilterFromExt(false, SaveExtensions),
                     FilterIndex = 0
                 };
-                ExportDialog.FileOk += new CancelEventHandler(saveDialog_FileOk);
-                //SaveAsDialog.InitialDirectory = InitialDirectory;
+                ExportDialog.FileOk += new CancelEventHandler(dialog_FileOk);
             }
         }
 
@@ -476,21 +490,21 @@ namespace Mayfly
         }
 
         public string SuggestName(string shortFilename) {
-            string folder = FolderName(SaveDialog.FileName);
-            if (folder == null) return shortFilename + Extension;
-            if (string.IsNullOrEmpty(folder)) return shortFilename + Extension;
+
+            if (string.IsNullOrEmpty(FolderPath)) return shortFilename + Extension;
 
             FileInfo result = new FileInfo(string.Format(@"{0}\{1}{2}",
-                folder,
+                FolderPath,
                 shortFilename,
                 Extension));
 
             if (result.Directory.Exists) {
                 int counter = 2;
                 while (result.Exists) {
-                    result = new FileInfo(string.Format(@"{0}\{1}{2}",
-                        folder,
-                        shortFilename + counter.ToString(" (0)"),
+                    result = new FileInfo(string.Format(@"{0}\{1} ({2:0}){3}",
+                        FolderPath,
+                        shortFilename,
+                        counter,
                         Extension));
                     counter++;
                 }
@@ -503,13 +517,8 @@ namespace Mayfly
 
 
 
-        void openDialog_FileOk(object sender, CancelEventArgs e) {
-            OpenDialog.InitialDirectory = FolderName(((OpenFileDialog)sender).FileName);
-        }
-
-        void saveDialog_FileOk(object sender, CancelEventArgs e) {
-            SaveDialog.InitialDirectory = FolderName(((SaveFileDialog)sender).FileName);
-            if (ExportDialog != null) ExportDialog.InitialDirectory = SaveDialog.InitialDirectory;
+        void dialog_FileOk(object sender, CancelEventArgs e) {
+            FolderPath = FolderName(((FileDialog)sender).FileName);
         }
     }
 }

@@ -201,7 +201,7 @@ namespace Mayfly.Fish.Explorer
 
         private void cohortsDetector_DoWork(object sender, DoWorkEventArgs e)
         {
-            Cohorts = Data.GetCohorts(SpeciesRow, FishSamplerType.None, GearWeightType.None, ExpressionVariant.Square);
+            Cohorts = Data.GetCohorts(SpeciesRow, FishSamplerType.None, GearWeightType.None, EffortExpression.Square);
 
             GrowthModels.Clear();
             WeightModels.Clear();

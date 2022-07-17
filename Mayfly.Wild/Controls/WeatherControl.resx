@@ -186,142 +186,157 @@
   <data name="&gt;&gt;trackBarCloudage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBoxHumidity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericHumidity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="textBoxHumidity.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericHumidity.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericHumidity.Location" type="System.Drawing.Point, System.Drawing">
     <value>175, 1</value>
   </data>
-  <data name="textBoxHumidity.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericHumidity.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxHumidity.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericHumidity.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <data name="textBoxHumidity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericHumidity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxHumidity.Name" xml:space="preserve">
-    <value>textBoxHumidity</value>
+  <data name="&gt;&gt;numericHumidity.Name" xml:space="preserve">
+    <value>numericHumidity</value>
   </data>
-  <data name="&gt;&gt;textBoxHumidity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericHumidity.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxHumidity.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericHumidity.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxHumidity.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericHumidity.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="textBoxWindDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericWindDirection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="textBoxWindDirection.Enabled" type="System.Boolean, mscorlib">
+  <data name="numericWindDirection.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="textBoxWindDirection.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericWindDirection.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericWindDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>387, 53</value>
   </data>
-  <data name="textBoxWindDirection.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericWindDirection.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxWindDirection.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericWindDirection.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="textBoxWindDirection.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericWindDirection.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxWindDirection.Name" xml:space="preserve">
-    <value>textBoxWindDirection</value>
+  <data name="&gt;&gt;numericWindDirection.Name" xml:space="preserve">
+    <value>numericWindDirection</value>
   </data>
-  <data name="&gt;&gt;textBoxWindDirection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericWindDirection.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxWindDirection.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericWindDirection.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxWindDirection.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericWindDirection.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="textBoxWindRate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericWindRate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="textBoxWindRate.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericWindRate.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericWindRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>175, 53</value>
   </data>
-  <data name="textBoxWindRate.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericWindRate.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxWindRate.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericWindRate.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="textBoxWindRate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericWindRate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxWindRate.Name" xml:space="preserve">
-    <value>textBoxWindRate</value>
+  <data name="&gt;&gt;numericWindRate.Name" xml:space="preserve">
+    <value>numericWindRate</value>
   </data>
-  <data name="&gt;&gt;textBoxWindRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericWindRate.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxWindRate.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericWindRate.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxWindRate.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericWindRate.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="textBoxBaro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericBaro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="textBoxBaro.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBaro.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericBaro.Location" type="System.Drawing.Point, System.Drawing">
     <value>175, 27</value>
   </data>
-  <data name="textBoxBaro.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBaro.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxBaro.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBaro.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
   </data>
-  <data name="textBoxBaro.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericBaro.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxBaro.Name" xml:space="preserve">
-    <value>textBoxBaro</value>
+  <data name="&gt;&gt;numericBaro.Name" xml:space="preserve">
+    <value>numericBaro</value>
   </data>
-  <data name="&gt;&gt;textBoxBaro.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericBaro.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxBaro.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBaro.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxBaro.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBaro.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="textBoxTemperature.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericTemperature.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="textBoxTemperature.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericTemperature.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericTemperature.Location" type="System.Drawing.Point, System.Drawing">
     <value>387, 1</value>
   </data>
-  <data name="textBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericTemperature.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxTemperature.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericTemperature.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
   </data>
-  <data name="textBoxTemperature.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericTemperature.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxTemperature.Name" xml:space="preserve">
-    <value>textBoxTemperature</value>
+  <data name="&gt;&gt;numericTemperature.Name" xml:space="preserve">
+    <value>numericTemperature</value>
   </data>
-  <data name="&gt;&gt;textBoxTemperature.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericTemperature.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxTemperature.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericTemperature.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxTemperature.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericTemperature.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="comboBoxDiscretion.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">

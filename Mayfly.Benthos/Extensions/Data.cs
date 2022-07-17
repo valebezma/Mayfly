@@ -1,77 +1,72 @@
-﻿using Mayfly.Benthos;
-using Mayfly.Species;
+﻿using Mayfly.Extensions;
 using Mayfly.Wild;
-using Meta.Numerics.Statistics;
 using System.Collections.Generic;
-using Mayfly.Extensions;
 
 namespace Mayfly.Benthos
 {
     public static partial class DataExtensions
     {
-        public static Survey.DefinitionRow[] GetUnweightedSpecies(this Survey data) {
-            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
-
-            foreach (Survey.LogRow logRow in data.Log) {
-                if (!logRow.IsMassNull()) continue;
-                if (!result.Contains(logRow.DefinitionRow)) {
-                    result.Add(logRow.DefinitionRow);
-                }
-            }
-
-            return result.ToArray();
-        }
-
-        public static Survey.DefinitionRow[] GetSpeciesWithUnweightedIndividuals(this Survey data) {
-            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
-
-            foreach (Survey.IndividualRow individualRow in data.Individual) {
-                if (!individualRow.IsMassNull()) continue;
-                if (!result.Contains(individualRow.LogRow.DefinitionRow)) {
-                    result.Add(individualRow.LogRow.DefinitionRow);
-                }
-            }
-
-            return result.ToArray();
-        }
-
         public static SubstrateSample GetSubstrate(this Survey.CardRow cardRow) {
             return cardRow.IsSubstrateNull() ? null : new SubstrateSample(cardRow.Substrate);
         }
 
-        public static double GetAverageMass(this Survey.DefinitionRow spcRow) {
-            double result = 0;
-            int divider = 0;
+        public static double GetSquare(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetVirtue("Square") * .0001; // Converting sq. cm to sq. m
+        }
 
-            foreach (Survey.IndividualRow individualRow in spcRow.GetIndividualRows()) {
-                if (individualRow.IsMassNull()) continue;
-                result += individualRow.Mass;
-                divider++;
+        public static double GetWidth(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetVirtue("Width") * .01; // Converting cm to m
+        }
+
+        public static double GetCoveredArea(this Survey.EquipmentRow eqpRow, int replications) {
+
+            if (replications == -1) return double.NaN;
+
+            return replications * eqpRow.GetSquare();
+        }
+
+        public static double GetExposureArea(this Survey.EquipmentRow eqpRow, double e) {
+
+            if (double.IsNaN(e)) return double.NaN;
+
+            double w = eqpRow.GetWidth();
+
+            return w * e;
+        }
+
+        public static double GetArea(this Survey.CardRow cardRow) {
+
+            if (cardRow.IsEffortNull()) return double.NaN;
+
+            if (cardRow.Effort < 0) return -cardRow.Effort;
+
+            if (cardRow.IsEqpIDNull()) return double.NaN;
+
+            switch (cardRow.SamplerRow.GetSamplerType()) {
+
+                case BenthosSamplerType.Grabber:
+                    return cardRow.EquipmentRow.GetCoveredArea(cardRow.Portions);
+
+                case BenthosSamplerType.Scraper:
+                    return cardRow.EquipmentRow.GetExposureArea(cardRow.Exposure);
             }
 
-            if (divider > 0) // There are some weighted individuals of given length class
-            {
-                return result / divider;
-            } else {
-                return double.NaN;
-            }
+            return double.NaN;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logRow"></param>
-        /// <returns>Quantity per cubic meter in individuals</returns>
+        /// <returns>Quantity per square meter in individuals</returns>
         public static double GetAbundance(this Survey.LogRow logRow) {
-            if (logRow.IsQuantityNull()) return double.NaN;
-            if (logRow.CardRow.IsSquareNull()) return double.NaN;
 
-            return System.Math.Round((logRow.IsQuantityNull() ? (double)logRow.DetailedQuantity : (double)logRow.Quantity) /
-                (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) /
-                logRow.CardRow.Square, 6);
-            //return System.Math.Round((logRow.IsQuantityNull() ? (double)logRow.DetailedQuantity : (double)logRow.Quantity) /
-            //    (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) /
-            //    logRow.CardRow.Square, 0);
+            if (logRow.IsQuantityNull()) return double.NaN;
+
+            double n = logRow.IsQuantityNull() ? logRow.DetailedQuantity : logRow.Quantity;
+            double s = logRow.CardRow.GetArea();
+
+            return System.Math.Round(n / (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) / s, 6);
         }
 
         /// <summary>
@@ -80,11 +75,11 @@ namespace Mayfly.Benthos
         /// <param name="logRow"></param>
         /// <returns>Mass per square meter in grams</returns>
         public static double GetBiomass(this Survey.LogRow logRow) {
-            if (logRow.CardRow.IsSquareNull()) return double.NaN;
 
-            return 0.001 * (logRow.IsMassNull() ? logRow.DetailedMass : logRow.Mass /
-                (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) /
-                logRow.CardRow.Square);
+            double m = 0.001 * (logRow.IsMassNull() ? logRow.DetailedMass : logRow.Mass);
+            double s = logRow.CardRow.GetArea();
+
+            return m / (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) / s;
         }
 
         public static string GetDescription(this Survey.IndividualRow indRow) {
@@ -97,7 +92,7 @@ namespace Mayfly.Benthos
         }
 
         public static string GetDescription(this Survey.LogRow logRow) {
-            return string.Format(Resources.Interface.Interface.LogMask, logRow.DefinitionRow.KeyRecord, logRow.CardRow);
+            return string.Format(Wild.Resources.Interface.Interface.LogMask, logRow.DefinitionRow.KeyRecord, logRow.CardRow);
         }
     }
 }

@@ -1040,7 +1040,7 @@ namespace Mayfly.Fish.Explorer
                     CardStack stack = Survey.GetCombinedData().GetStack();
                     stack.AddCommon(report);
                     stack.Sort();
-                    stack.AddSpeciesStatsReport(report, SpeciesStatsLevel.Totals | SpeciesStatsLevel.Detailed | SpeciesStatsLevel.TreatmentSuggestion | SpeciesStatsLevel.SurveySuggestion, ExpressionVariant.Efforts);
+                    stack.AddSpeciesStatsReport(report, SpeciesStatsLevel.Totals | SpeciesStatsLevel.Detailed | SpeciesStatsLevel.TreatmentSuggestion | SpeciesStatsLevel.SurveySuggestion, EffortExpression.Standards);
                     report.EndBranded();
                     report.Run();
                 }

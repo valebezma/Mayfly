@@ -423,10 +423,10 @@ namespace Mayfly.Fish.Explorer
             table.EndRow();
 
             table.StartRow();
-            table.AddHeaderCell(Resources.Reports.Common.Ind + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ?
+            table.AddHeaderCell(Resources.Reports.Common.Ind + " / " + ue.Unit + (ue.Variant == EffortExpression.Standards ?
                 table.AddNotice(Resources.Reports.Notice.EffortHabitat, ue.Unit, ue.UnitCost).Holder : string.Empty));
             table.AddHeaderCell("%");
-            table.AddHeaderCell(Resources.Reports.Common.Kg + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ?
+            table.AddHeaderCell(Resources.Reports.Common.Kg + " / " + ue.Unit + (ue.Variant == EffortExpression.Standards ?
                 table.AddNotice(Resources.Reports.Notice.EffortHabitat, ue.Unit, ue.UnitCost).Holder : string.Empty));
             table.AddHeaderCell("%");
             table.EndRow();
@@ -457,7 +457,7 @@ namespace Mayfly.Fish.Explorer
             table.AddCell();
             table.EndRow();
 
-            if (ue.Variant == ExpressionVariant.Efforts)
+            if (ue.Variant == EffortExpression.Standards)
             {
                 ;
                 ;

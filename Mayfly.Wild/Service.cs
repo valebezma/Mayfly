@@ -432,5 +432,12 @@ namespace Mayfly.Wild
                 Server.GetUri("get/index/specieslists/" + groupName.ToLower().Replace(" ", "_") + "_default.txn", Application.CurrentCulture)
                 );
         }
+
+        public static void SaveEquipment() {
+
+            ReaderSettings.Equipment.SetAttributable();
+            string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", ReaderSettings.Feature.ToLowerInvariant()));
+            ReaderSettings.Equipment.WriteToFile(path);
+        }
     }
 }

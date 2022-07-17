@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Mayfly.Extensions;
+using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Mayfly.Extensions;
 
 namespace Mayfly.Wild.Controls
 {
@@ -18,10 +12,8 @@ namespace Mayfly.Wild.Controls
         [Browsable(false)]
         public AquaState AquaState { get; set; }
 
-        public bool IsStateAvailable
-        {
-            get
-            {
+        public bool IsStateAvailable {
+            get {
                 if (AquaState == null) return false;
                 if (AquaState.IsPhysicalsAvailable) return true;
                 if (AquaState.IsChemicalsAvailable) return true;
@@ -33,8 +25,7 @@ namespace Mayfly.Wild.Controls
 
 
 
-        public AquaControl()
-        {
+        public AquaControl() {
             InitializeComponent();
 
             AquaState = new AquaState();
@@ -44,261 +35,140 @@ namespace Mayfly.Wild.Controls
         }
 
         public AquaControl(string value1, string value2, string value3)
-            : this()
-        {
+            : this() {
             AquaState = new AquaState(value1, value2, value3);
             UpdateValues();
         }
 
 
 
-        public void UpdateValues()
-        {
-            if (AquaState.IsTemperatureBottomNull())
-            {
-                textBoxTempBottom.Text = string.Empty;
-            }
-            else
-            {
-                textBoxTempBottom.Text = AquaState.TemperatureBottom.ToString();
+        public void UpdateValues() {
+            if (AquaState.IsTemperatureBottomNull()) {
+                numericTempBottom.Clear();
+            } else {
+                numericTempBottom.Value = AquaState.TemperatureBottom;
             }
 
-            if (AquaState.IsTemperatureSurfaceNull())
-            {
-                textBoxTempSurface.Text = string.Empty;
-            }
-            else
-            {
-                textBoxTempSurface.Text = AquaState.TemperatureSurface.ToString();
+            if (AquaState.IsTemperatureSurfaceNull()) {
+                numericTempSurface.Clear();
+            } else {
+                numericTempSurface.Value = AquaState.TemperatureSurface;
             }
 
-            if (AquaState.IsFlowRateNull())
-            {
-                textBoxFlowRate.Text = string.Empty;
-            }
-            else
-            {
-                textBoxFlowRate.Text = AquaState.FlowRate.ToString();
+            if (AquaState.IsFlowRateNull()) {
+                numericFlowRate.Clear();
+            } else {
+                numericFlowRate.Value = AquaState.FlowRate;
             }
 
-            if (AquaState.IsLimpidityNull())
-            {
-                textBoxLimpidity.Text = string.Empty;
-            }
-            else
-            {
-                textBoxLimpidity.Text = AquaState.Limpidity.ToString();
+            if (AquaState.IsLimpidityNull()) {
+                numericLimpidity.Clear();
+            } else {
+                numericLimpidity.Value = AquaState.Limpidity;
             }
 
-            if (AquaState.IsColourNull())
-            {
+            if (AquaState.IsColourNull()) {
                 colorPicker1.SelectedIndex = -1;
-            }
-            else
-            {
+            } else {
                 colorPicker1.SelectedIndex = AquaState.Colour;
             }
 
-            if (AquaState.IsOdorNull())
-            {
+            if (AquaState.IsOdorNull()) {
                 checkBoxOdor.CheckState = CheckState.Indeterminate;
-            }
-            else
-            {
+            } else {
                 checkBoxOdor.CheckState = (CheckState)AquaState.Odor;
             }
 
-            if (AquaState.IsSewageNull())
-            {
+            if (AquaState.IsSewageNull()) {
                 checkBoxSewage.CheckState = CheckState.Indeterminate;
-            }
-            else
-            {
+            } else {
                 checkBoxSewage.CheckState = (CheckState)AquaState.Sewage;
             }
 
-            if (AquaState.IsFoamNull())
-            {
+            if (AquaState.IsFoamNull()) {
                 checkBoxFoam.CheckState = CheckState.Indeterminate;
-            }
-            else
-            {
+            } else {
                 checkBoxFoam.CheckState = (CheckState)AquaState.Foam;
             }
 
-            if (AquaState.IsTurbidityNull())
-            {
+            if (AquaState.IsTurbidityNull()) {
                 checkBoxTurbidity.CheckState = CheckState.Indeterminate;
-            }
-            else
-            {
+            } else {
                 checkBoxTurbidity.CheckState = (CheckState)AquaState.Turbidity;
             }
 
-            if (AquaState.IsConductivityNull())
-            {
-                textBoxConductivity.Text = string.Empty;
-            }
-            else
-            {
-                textBoxConductivity.Text = AquaState.Conductivity.ToString();
+            if (AquaState.IsConductivityNull()) {
+                numericConductivity.Clear();
+            } else {
+                numericConductivity.Value = AquaState.Conductivity;
             }
 
-            if (AquaState.IsDissolvedOxygenNull())
-            {
-                textBoxDissolvedOxygen.Text = string.Empty;
-            }
-            else
-            {
-                textBoxDissolvedOxygen.Text = AquaState.DissolvedOxygen.ToString();
+            if (AquaState.IsDissolvedOxygenNull()) {
+                numericDissolvedOxygen.Clear();
+            } else {
+                numericDissolvedOxygen.Value = AquaState.DissolvedOxygen;
             }
 
-            if (AquaState.IsOxygenSaturationNull())
-            {
-                textBoxOxygenSaturation.Text = string.Empty;
-            }
-            else
-            {
-                textBoxOxygenSaturation.Text = AquaState.OxygenSaturation.ToString();
+            if (AquaState.IsOxygenSaturationNull()) {
+                numericOxygenSaturation.Clear();
+            } else {
+                numericOxygenSaturation.Value = AquaState.OxygenSaturation;
             }
 
-            if (AquaState.IspHNull())
-            {
-                textBoxpH.Text = string.Empty;
-            }
-            else
-            {
-                textBoxpH.Text = AquaState.pH.ToString();
+            if (AquaState.IspHNull()) {
+                numericpH.Clear();
+            } else {
+                numericpH.Value = AquaState.pH;
             }
         }
 
-        public void Save()
-        {
-            if (textBoxTempBottom.Text.IsDoubleConvertible())
-            {
-                AquaState.TemperatureBottom = double.Parse(textBoxTempBottom.Text);
-            }
+        public void Save() {
 
-            if (textBoxTempSurface.Text.IsDoubleConvertible())
-            {
-                AquaState.TemperatureSurface = double.Parse(textBoxTempSurface.Text);
-            }
-
-            if (textBoxFlowRate.Text.IsDoubleConvertible())
-            {
-                AquaState.FlowRate = double.Parse(textBoxFlowRate.Text);
-            }
-
-            if (textBoxLimpidity.Text.IsDoubleConvertible())
-            {
-                AquaState.Limpidity = double.Parse(textBoxLimpidity.Text);
-            }
-
-            if (colorPicker1.SelectedIndex > -1)
-            {
-                AquaState.Colour = colorPicker1.SelectedIndex;
-            }
-
-
-
-            //switch (checkBoxOdor.CheckState)
-            //{
-            //    case CheckState.Checked:
-            //        AquaState.Odor = OrganolepticState.Present;
-            //        break;
-            //    case CheckState.Indeterminate:
-            //        AquaState.Odor = OrganolepticState.None;
-            //        break;
-            //    case CheckState.Unchecked:
-            //        AquaState.Odor = OrganolepticState.Absent;
-            //        break;
-            //}
+            AquaState.TemperatureBottom = numericTempBottom.IsSet ? numericTempBottom.Value : double.NaN;
+            AquaState.TemperatureSurface = numericTempSurface.IsSet ? numericTempSurface.Value : double.NaN;
+            AquaState.FlowRate = numericFlowRate.IsSet ? numericFlowRate.Value : double.NaN;
+            AquaState.Limpidity = numericLimpidity.IsSet ? numericLimpidity.Value : double.NaN;
+            AquaState.Colour = colorPicker1.SelectedIndex;
 
             AquaState.SetOrganoleptics((OrganolepticState)checkBoxOdor.CheckState,
                 (OrganolepticState)checkBoxSewage.CheckState,
                 (OrganolepticState)checkBoxFoam.CheckState,
                 (OrganolepticState)checkBoxTurbidity.CheckState);
 
-            //if (checkBoxOdor.CheckState == CheckState.Indeterminate)
-            //    AquaState.Odor = OrganolepticState.None;
-            //else
-            //{
-            //    AquaState.Odor = checkBoxOdor.Checked ? OrganolepticState.Present : OrganolepticState.Absent;
-            //}
-
-            //if (checkBoxSewage.CheckState == CheckState.Indeterminate)
-            //    AquaState.Sewage = OrganolepticState.None;
-            //else
-            //{
-            //    AquaState.Sewage = checkBoxSewage.Checked ? OrganolepticState.Present : OrganolepticState.Absent;
-            //}
-
-            //if (checkBoxFoam.CheckState == CheckState.Indeterminate)
-            //    AquaState.Foam = OrganolepticState.None;
-            //else
-            //{
-            //    AquaState.Foam = checkBoxFoam.Checked ? OrganolepticState.Present : OrganolepticState.Absent;
-            //}
-
-            //if (checkBoxTurbidity.CheckState == CheckState.Indeterminate)
-            //    AquaState.Turbidity = OrganolepticState.None;
-            //else
-            //{
-            //    AquaState.Turbidity = checkBoxTurbidity.Checked ? OrganolepticState.Present : OrganolepticState.Absent;
-            //}
-
-            if (textBoxConductivity.Text.IsDoubleConvertible())
-            {
-                AquaState.Conductivity = double.Parse(textBoxConductivity.Text);
-            }
-
-            if (textBoxDissolvedOxygen.Text.IsDoubleConvertible())
-            {
-                AquaState.DissolvedOxygen = double.Parse(textBoxDissolvedOxygen.Text);
-            }
-
-            if (textBoxOxygenSaturation.Text.IsDoubleConvertible())
-            {
-                AquaState.OxygenSaturation = double.Parse(textBoxOxygenSaturation.Text);
-            }
-
-            if (textBoxpH.Text.IsDoubleConvertible())
-            {
-                AquaState.pH = double.Parse(textBoxpH.Text);
-            }
+            AquaState.Conductivity = numericConductivity.IsSet ? numericConductivity.Value : double.NaN;
+            AquaState.DissolvedOxygen = numericDissolvedOxygen.IsSet ? numericDissolvedOxygen.Value : double.NaN;
+            AquaState.OxygenSaturation = numericOxygenSaturation.IsSet ? numericOxygenSaturation.Value : double.NaN;
+            AquaState.pH = numericpH.IsSet ? numericpH.Value : double.NaN;
         }
 
-        public void Clear()
-        {
-            textBoxTempBottom.Text = string.Empty;
-            textBoxTempSurface.Text = string.Empty;
-            textBoxFlowRate.Text = string.Empty;
-            textBoxLimpidity.Text = string.Empty;
+        public void Clear() {
+
+            numericTempBottom.Clear();
+            numericTempSurface.Clear();
+            numericFlowRate.Clear();
+            numericLimpidity.Clear();
             colorPicker1.SelectedIndex = -1;
             checkBoxOdor.CheckState = CheckState.Indeterminate;
             checkBoxSewage.CheckState = CheckState.Indeterminate;
             checkBoxFoam.CheckState = CheckState.Indeterminate;
             checkBoxTurbidity.CheckState = CheckState.Indeterminate;
-            textBoxConductivity.Text = string.Empty;
-            textBoxDissolvedOxygen.Text = string.Empty;
-            textBoxOxygenSaturation.Text = string.Empty;
-            textBoxpH.Text = string.Empty;
+            numericConductivity.Clear();
+            numericDissolvedOxygen.Clear();
+            numericOxygenSaturation.Clear();
+            numericpH.Clear();
         }
 
 
 
-        private void value_Changed(object sender, EventArgs e)
-        {
+        private void value_Changed(object sender, EventArgs e) {
             if (Changed != null) Changed.Invoke(sender, e);
         }
 
-        private void value_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void value_KeyPress(object sender, KeyPressEventArgs e) {
             ((Control)sender).HandleInput(e, typeof(double));
         }
 
-        private void colorPicker1_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void colorPicker1_KeyPress(object sender, KeyPressEventArgs e) {
             ((ComboBox)sender).HandleInput(e);
         }
     }

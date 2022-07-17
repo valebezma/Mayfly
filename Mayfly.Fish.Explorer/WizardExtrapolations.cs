@@ -103,7 +103,7 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (Category species in compositionWizard.CatchesComposition)
             {
-                double s = (gearWizard.SelectedUnit.Variant == ExpressionVariant.Square ? Area : Volume) 
+                double s = (gearWizard.SelectedUnit.Variant == EffortExpression.Square ? Area : Volume) 
                     / gearWizard.SelectedUnit.UnitCost;
 
                 species.Quantity = (int)(species.Abundance * s);
@@ -195,16 +195,16 @@ namespace Mayfly.Fish.Explorer
 
             switch (gearWizard.SelectedUnit.Variant)
             {
-                case ExpressionVariant.Efforts:
+                case EffortExpression.Standards:
                     waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_E, Volume,
                         gearWizard.SelectedUnit.Unit, gearWizard.SelectedUnit.UnitCost);
                     break;
 
-                case ExpressionVariant.Volume:
+                case EffortExpression.Volume:
                     waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_V, Volume / 1000.0);
                     break;
 
-                case ExpressionVariant.Square:
+                case EffortExpression.Square:
                     waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_S, Area / 10000.0);
                     break;
             }
@@ -390,7 +390,7 @@ namespace Mayfly.Fish.Explorer
         {
             ColumnAbundance.ResetFormatted(gearWizard.SelectedUnit.Unit);
             ColumnBiomass.ResetFormatted(gearWizard.SelectedUnit.Unit);
-            numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != ExpressionVariant.Square;
+            numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != EffortExpression.Square;
             this.Replace(gearWizard);
 
             if (compositionWizard == null)

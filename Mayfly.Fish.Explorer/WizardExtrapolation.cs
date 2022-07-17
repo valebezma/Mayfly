@@ -169,12 +169,12 @@ namespace Mayfly.Fish.Explorer
 
             switch (gearWizard.SelectedUnit.Variant)
             {
-                case ExpressionVariant.Square:
+                case EffortExpression.Square:
                     StockNumber = Abundance * Area / gearWizard.SelectedUnit.UnitCost;
                     StockMass = Biomass * Area / gearWizard.SelectedUnit.UnitCost;
                     break;
-                case ExpressionVariant.Volume:
-                case ExpressionVariant.Efforts:
+                case EffortExpression.Volume:
+                case EffortExpression.Standards:
                     StockNumber = Abundance * Volume / gearWizard.SelectedUnit.UnitCost;
                     StockMass = Biomass * Volume / gearWizard.SelectedUnit.UnitCost;
                     break;
@@ -396,16 +396,16 @@ namespace Mayfly.Fish.Explorer
 
             switch (gearWizard.SelectedUnit.Variant)
             {
-                case ExpressionVariant.Efforts:
+                case EffortExpression.Standards:
                     waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_E, Volume,
                         gearWizard.SelectedUnit.Unit, gearWizard.SelectedUnit.UnitCost);
                     break;
 
-                case ExpressionVariant.Volume:
+                case EffortExpression.Volume:
                     waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_V, Volume / 1000.0);
                     break;
 
-                case ExpressionVariant.Square:
+                case EffortExpression.Square:
                     waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_S, Area / 10000.0);
                     break;
             }
@@ -415,7 +415,7 @@ namespace Mayfly.Fish.Explorer
 
             switch (gearWizard.SelectedUnit.Variant)
             {
-                case ExpressionVariant.Efforts:
+                case EffortExpression.Standards:
                     report.AddEquation("{N} = {" + Abundance.ToString("N3") +
                         "}\\times\\frac{" + Volume + "}{" + gearWizard.SelectedUnit.UnitCost.ToString("N1") +
                         "} = {" + StockNumber.ToString("N0") + "}{\\text{ " + Resources.Reports.Common.Ind + "}}");
@@ -426,7 +426,7 @@ namespace Mayfly.Fish.Explorer
 
                     break;
 
-                case ExpressionVariant.Volume:
+                case EffortExpression.Volume:
                     report.AddEquation("{N} = {" + Abundance.ToString("N3") +
                         "}\\times{" + Volume / 1000.0 + "} = {" +
                         StockNumber.ToString("N0") + "}{\\text{ " + Resources.Reports.Common.Ind + "}}");
@@ -436,7 +436,7 @@ namespace Mayfly.Fish.Explorer
                         StockMass.ToString("N1") + "}{\\text{ " + Resources.Reports.Common.Kg + "}}");
                     break;
 
-                case ExpressionVariant.Square:
+                case EffortExpression.Square:
                     report.AddEquation("{N} = {" + Abundance.ToString("N3") +
                         "}\\times{" + Area / 10000.0 + "} = {" +
                         StockNumber.ToString("N0") + "}{\\text{ " + Resources.Reports.Common.Ind + "}}");
@@ -545,14 +545,14 @@ namespace Mayfly.Fish.Explorer
             labelAbundance.ResetFormatted(gearWizard.SelectedUnit.Unit);
             labelBiomass.ResetFormatted(gearWizard.SelectedUnit.Unit);
 
-            labelAbundanceNotice.Visible = gearWizard.SelectedUnit.Variant == ExpressionVariant.Efforts;
-            if (gearWizard.SelectedUnit.Variant == ExpressionVariant.Efforts)
+            labelAbundanceNotice.Visible = gearWizard.SelectedUnit.Variant == EffortExpression.Standards;
+            if (gearWizard.SelectedUnit.Variant == EffortExpression.Standards)
             {
                 labelAbundanceNotice.ResetFormatted(gearWizard.SelectedUnit.Unit,
                     gearWizard.SelectedUnit.UnitCost);
             }
 
-            numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != ExpressionVariant.Square;
+            numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != EffortExpression.Square;
 
             labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.CommonName);
 

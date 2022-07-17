@@ -19,9 +19,13 @@ namespace Mayfly.Wild
             }
         }
 
-        public static FileSystemInterface Interface = new FileSystemInterface(new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" });
+        public static FileSystemInterface Interface = new FileSystemInterface(new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" }) {
+            FolderPath = FieldDataFolder
+        };
 
-        public static FileSystemInterface InterfaceBio = new FileSystemInterface(".bio");
+        public static FileSystemInterface InterfaceBio = new FileSystemInterface(".bio") {
+            FolderPath = FieldDataFolder
+        };
 
         public static string FieldDataFolder {
             get {
@@ -168,9 +172,28 @@ namespace Mayfly.Wild
 
         public static FileSystemInterface Interface;
 
+        //public static string CardsPath {
+
+        //    get {
+        //        string filepath = IO.GetPath(GetValue(FeatureKey, nameof(CardsPath), string.Empty));
+
+        //        if (string.IsNullOrWhiteSpace(filepath)) {
+        //            return UserSettings.FieldDataFolder;
+        //        } else {
+        //            return filepath;
+        //        }
+        //    }
+
+        //    set {
+        //        SetValue(FeatureKey, nameof(CardsPath), value);
+        //    }
+        //}
+
         public static void SetFeature(string feature, string ext) {
             Feature = feature;
-            Interface = new FileSystemInterface(ext, ".html");
+            Interface = new FileSystemInterface(ext, ".html") {
+                FolderPath = UserSettings.FieldDataFolder
+            };
         }
 
 
@@ -226,6 +249,7 @@ namespace Mayfly.Wild
 
 
         public static string TaxonomicIndexPath {
+
             get {
                 string filepath = IO.GetPath(GetValue(FeatureKey, nameof(TaxonomicIndexPath), string.Empty));
 
@@ -236,6 +260,7 @@ namespace Mayfly.Wild
                     return filepath;
                 }
             }
+
             set {
                 SetValue(FeatureKey, nameof(TaxonomicIndexPath), value);
             }
@@ -244,6 +269,7 @@ namespace Mayfly.Wild
         private static TaxonomicIndex taxonomicIndex;
 
         public static TaxonomicIndex TaxonomicIndex {
+
             get {
                 if (taxonomicIndex == null) {
                     taxonomicIndex = new TaxonomicIndex();
@@ -392,7 +418,9 @@ namespace Mayfly.Wild
         public static void SetFeature(string feature, string ext) {
             ReaderSettings.SetFeature(feature, ext);
             Feature = feature + ".Explorer";
-            Interface = new FileSystemInterface(ext + "s", ".html");
+            Interface = new FileSystemInterface(ext + "s", ".html") {
+                FolderPath = UserSettings.FieldDataFolder
+            };
         }
 
         public static bool SuggestMass

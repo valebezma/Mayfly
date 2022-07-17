@@ -1,180 +1,187 @@
 ﻿using Mayfly.Extensions;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
-using System.ComponentModel;
 
 namespace Mayfly.Controls
 {
     public class NumberBox : System.Windows.Forms.TextBox
     {
         string format;
+        //double numberValue;
+        double impossibleValue = -1;
+        double minimum = 0;
+        private EventHandler valueChanged;
+
+        [Browsable(false), Obsolete, DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public new string Text { get; set; }
 
         [Localizable(true)]
-        public string Format 
-        {
-            get
-            {
+        public string Format {
+            get {
                 return format;
             }
 
-            set
-            {
+            set {
                 format = value;
-
-                Text = Value.ToString(format);
+                base.Text = Value == impossibleValue ? string.Empty : Value.ToString(format);
             }
         }
 
-        double numberValue;
+        [Browsable(true), DefaultValue(-1)]
+        public double Value {
 
-        public double Value 
-        {
-            get 
-            {
-                return numberValue;
+            get {
+                return string.IsNullOrWhiteSpace(base.Text) ? impossibleValue : double.Parse(base.Text);
             }
 
-            set 
-            {
-                numberValue = value;
-
-                if (double.IsNaN(numberValue)) {
-                    this.Text = Constants.Null;
-                }
-                else
-                {
-                    this.Text = numberValue.ToString(format);
-                }
+            set {
+                base.Text = value == impossibleValue ? string.Empty : value.ToString();
             }
         }
 
-        public int Precision 
-        {
-            get
-            {
-                int point = Text.IndexOf(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-                return (point == -1) ? (0) : (Text.Length - point - 1);
+        [Browsable(true), DefaultValue(0)]
+        public double Minimum {
+
+            get { return minimum; }
+            set {
+                minimum = value;
+                impossibleValue = value - 1;
             }
         }
 
-        public double Increment 
-        {
-            get
-            {
+        [Browsable(true), DefaultValue(100)]
+        public double Maximum {
+
+            get;
+            set;
+        }
+
+        public int Precision {
+            get {
+                int point = base.Text.IndexOf(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+                return (point == -1) ? (0) : (base.Text.Length - point - 1);
+            }
+        }
+
+        public double Increment {
+            get {
                 return Math.Pow(10, -Precision);
+            }
+        }
+
+        public bool IsSet {
+            get {
+                return !string.IsNullOrWhiteSpace(base.Text);
+            }
+        }
+
+        public event EventHandler ValueChanged {
+            add {
+                valueChanged += value;
+            }
+            remove {
+                valueChanged -= value;
             }
         }
 
 
 
         public NumberBox()
-            : base()
-        {
+            : base() {
             TextAlign = HorizontalAlignment.Right;
+            Value = impossibleValue;
         }
 
 
 
-        //protected override void OnTextChanged(EventArgs e)
-        //{
-        //    base.OnTextChanged(e);
+        protected override void OnTextChanged(EventArgs e) {
 
-        //    if (!double.IsNaN(Value))
-        //    {
-        //        format = "N" + Precision;
-        //    }
-        //}
+            base.OnTextChanged(e);
 
-        protected override void OnKeyPress(System.Windows.Forms.KeyPressEventArgs e) 
-        {
-            base.OnKeyPress(e);
+            if (string.IsNullOrEmpty(base.Text)) {
+                Value = impossibleValue;
+            } else if (Value > Maximum) {
+                Value = Maximum;
+            } else if (Value < Minimum) {
+                Value = Minimum;
+            }
+
+            if (valueChanged != null) valueChanged.Invoke(this, EventArgs.Empty);
+
+            format = "N" + Precision;
+        }
 
 
-            if (e.KeyChar.ToString() == CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator)
-            {
+
+        protected override void OnKeyPress(KeyPressEventArgs e) {
+
+
+            if (e.KeyChar.ToString() == CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator) {
                 e.KeyChar = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
             }
 
-            InputVariant inputVariant = this.AllowInput(e.KeyChar);
+            InputVariant inputVariant = AllowInput(e.KeyChar);
 
-            if (inputVariant != InputVariant.Allow)
-            {
-                ToolTip toolTip = new ToolTip();
-                string instruction = string.Empty;
-                switch (inputVariant)
-                {
+            if (inputVariant == InputVariant.Allow) {
+
+            } else {
+
+                switch (inputVariant) {
                     case InputVariant.DecimalRepeat:
-                        toolTip.ToolTipTitle = Mayfly.Resources.Interface.InputDecimalRepeat;
-                        instruction = String.Format(Mayfly.Resources.Interface.InputDecimalRepeatInstruction, e.KeyChar);
+                        this.NotifyInstantly(Resources.Interface.InputDecimalRepeatInstruction, e.KeyChar);
                         break;
                     case InputVariant.NotNumber:
-                        toolTip.ToolTipTitle = Mayfly.Resources.Interface.InputNotNumber;
-                        instruction = String.Format(Mayfly.Resources.Interface.InputNotNumberInstruction, e.KeyChar);
+                        this.NotifyInstantly(Resources.Interface.InputNotNumberInstruction, e.KeyChar);
                         break;
                     case InputVariant.Other:
-                        toolTip.ToolTipTitle = Mayfly.Resources.Interface.InputOther;
-                        instruction = String.Format(Mayfly.Resources.Interface.InputOtherInstruction, e.KeyChar);
+                        this.NotifyInstantly(Resources.Interface.InputOtherInstruction, e.KeyChar);
                         break;
                 }
-                toolTip.Show(instruction, this, this.Width / 2, this.Height, 1500);
-                Mayfly.Service.PlaySound(Resources.Sounds.StandardSound);
+
+                Service.PlaySound(Resources.Sounds.StandardSound);
             }
 
             e.Handled = inputVariant != InputVariant.Allow;
-
-
         }
 
-        public InputVariant AllowInput(char symbol) 
-        {
-            if (symbol == (char)Keys.Back)
-            {
+        public InputVariant AllowInput(char symbol) {
+
+            if (symbol == (char)Keys.Back) {
                 return InputVariant.Allow;
             }
 
-
             // If symbol is decimal separator
             if (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol) ||
-                CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol))
-            {
+                CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol)) {
                 // If separator is already in value
-                if (this.Text.Contains(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator) ||
-                    this.Text.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator))
-                {
+                if (base.Text.Contains(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator) ||
+                    base.Text.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator)) {
                     // If separator is in selected part
                     if (this.SelectedText.Contains(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator) ||
-                            this.SelectedText.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator))
-                    {
+                            this.SelectedText.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator)) {
                         return InputVariant.Allow;
-                    }
-                    else
-                    {
+                    } else {
                         return InputVariant.DecimalRepeat;
                     }
-                }
-                else // If it is first instance of separator
-                {
+                } else // If it is first instance of separator
+                  {
                     return InputVariant.Allow;
                 }
-            }
-            else // If symbol is digit
-            {
-                if (Constants.Numbers.Contains(symbol))
-                {
+            } else // If symbol is digit
+              {
+                if (Constants.Numbers.Contains(symbol)) {
                     return InputVariant.Allow;
-                }
-                else
-                {
+                } else {
                     return InputVariant.NotNumber;
                 }
             }
         }
 
-        protected override void OnPreviewKeyDown(PreviewKeyDownEventArgs e)
-        {
-            switch (e.KeyData)
-            {
+        protected override void OnPreviewKeyDown(PreviewKeyDownEventArgs e) {
+
+            switch (e.KeyData) {
                 case Keys.Up:
                     Value += Increment;
                     break;

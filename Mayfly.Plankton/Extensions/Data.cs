@@ -1,54 +1,49 @@
-﻿using Mayfly.Plankton;
-using Mayfly.Species;
-using Mayfly.Wild;
-using Meta.Numerics.Statistics;
-using System.Collections.Generic;
-using Mayfly.Extensions;
+﻿using Mayfly.Wild;
 
 namespace Mayfly.Plankton
 {
     public static class DataExtensions
     {
-        public static Survey.DefinitionRow[] GetSpeciesForWeightRecovery(this Survey data) {
-            List<Survey.DefinitionRow> result = new List<Wild.Survey.DefinitionRow>();
-
-            foreach (Wild.Survey.LogRow logRow in data.Log) {
-                if (!logRow.IsMassNull()) continue;
-                if (!result.Contains(logRow.DefinitionRow)) {
-                    result.Add(logRow.DefinitionRow);
-                }
-            }
-
-            return result.ToArray();
+        public static double GetCapacity(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetVirtue("Capacity");
         }
 
-        public static Survey.DefinitionRow[] GetSpeciesWithUnweightedIndividuals(this Survey data) {
-            List<Survey.DefinitionRow> result = new List<Wild.Survey.DefinitionRow>();
-
-            foreach (Wild.Survey.IndividualRow individualRow in data.Individual) {
-                if (!individualRow.IsMassNull()) continue;
-                if (!result.Contains(individualRow.LogRow.DefinitionRow)) {
-                    result.Add(individualRow.LogRow.DefinitionRow);
-                }
-            }
-
-            return result.ToArray();
+        public static double GetDiameter(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetVirtue("Diameter");
         }
 
-        /// <summary>
-        /// Find species log record and returns its abundance
-        /// </summary>
-        /// <param name="cardRow"></param>
-        /// <param name="speciesRow"></param>
-        /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Survey.CardRow cardRow, Survey.DefinitionRow speciesRow) {
-            foreach (Survey.LogRow logRow in cardRow.GetLogRows()) {
-                if (logRow.DefinitionRow == speciesRow) {
-                    return logRow.GetAbundance();
-                }
+        public static double GetTakenVolume(this Survey.EquipmentRow eqpRow, int replications) {
+
+            if (replications == -1) return double.NaN;
+
+            return replications * eqpRow.GetCapacity();
+        }
+
+        public static double GetExposureVolume(this Survey.EquipmentRow eqpRow, double e) {
+
+            if (double.IsNaN(e)) return double.NaN;
+
+            double w = eqpRow.GetDiameter();
+
+            return w * e;
+        }
+
+        public static double GetVolume(this Survey.CardRow cardRow) {
+
+            if (cardRow.IsEqpIDNull()) return double.NaN;
+
+            if (cardRow.Effort < 0) return -cardRow.Effort;
+
+            switch (cardRow.SamplerRow.GetSamplerType()) {
+
+                case PlanktonSamplerType.Bathometer:
+                    return cardRow.EquipmentRow.GetTakenVolume(cardRow.Portions);
+
+                case PlanktonSamplerType.Filter:
+                    return cardRow.EquipmentRow.GetExposureVolume(cardRow.Exposure);
             }
 
-            return 0;
+            return double.NaN;
         }
 
         /// <summary>
@@ -57,12 +52,13 @@ namespace Mayfly.Plankton
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
         public static double GetAbundance(this Survey.LogRow logRow) {
-            if (logRow.IsQuantityNull()) return double.NaN;
-            if (logRow.CardRow.IsVolumeNull()) return double.NaN;
 
-            return logRow.IsQuantityNull() ? (double)logRow.DetailedQuantity : (double)logRow.Quantity /
-                (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) /
-                logRow.CardRow.Volume;
+            if (logRow.IsQuantityNull()) return double.NaN;
+
+            double n = logRow.IsQuantityNull() ? logRow.DetailedQuantity : logRow.Quantity;
+            double v = logRow.CardRow.GetVolume();
+
+            return System.Math.Round(n / (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) / v, 6);
         }
 
         /// <summary>
@@ -70,12 +66,12 @@ namespace Mayfly.Plankton
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
-        public static double GetBiomass(this Wild.Survey.LogRow logRow) {
-            if (logRow.CardRow.IsVolumeNull()) return double.NaN;
+        public static double GetBiomass(this Survey.LogRow logRow) {
 
-            return logRow.IsMassNull() ? logRow.DetailedMass : logRow.Mass /
-                (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) /
-                logRow.CardRow.Volume;
+            double m = 0.001 * (logRow.IsMassNull() ? logRow.DetailedMass : logRow.Mass);
+            double v = logRow.CardRow.GetVolume();
+
+            return m / (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) / v;
         }
     }
 }

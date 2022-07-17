@@ -31,7 +31,7 @@ namespace Mayfly.Geographics
 
         string dateTimeFormat;
 
-        [DefaultValue("dd.MM.yyyy (ddd) HH:mm")]
+        [DefaultValue("yyyy-MM-dd (ddd) HH:mm")]
         public string DateTimeFormat
         {
             get { return dateTimeFormat; }
@@ -82,7 +82,7 @@ namespace Mayfly.Geographics
         {
             InitializeComponent();
 
-            dateTimePickerDate.Value = DateTime.Now.AddSeconds(-DateTime.Now.Second);
+            dateTimePickerDate.Value = DateTime.Today;//.AddSeconds(-DateTime.Now.Second);
 
             Waypoint = new Waypoint(0, 0);
             DateTimeFormat = "dd.MM.yyyy (ddd) HH:mm";
@@ -101,7 +101,7 @@ namespace Mayfly.Geographics
             {
                 if (Waypoint.IsTimeMarkNull)
                 {
-                    dateTimePickerDate.Value = DateTime.Now;
+                    dateTimePickerDate.Value = DateTime.Today;
                 }
                 else
                 {
@@ -112,7 +112,7 @@ namespace Mayfly.Geographics
                 {
                     maskedTextBoxLatitude.Text = string.Empty;
                     maskedTextBoxLongitude.Text = string.Empty;
-                    textBoxAltitude.Text = string.Empty;
+                    numericAltitude.Clear();
                 }
                 else
                 {
@@ -138,11 +138,11 @@ namespace Mayfly.Geographics
 
                     if (Waypoint.IsAltitudeNull)
                     {
-                        textBoxAltitude.Text = string.Empty;
+                        numericAltitude.Clear();
                     }
                     else
                     {
-                        textBoxAltitude.Text = Waypoint.Altitude.ToString();
+                        numericAltitude.Value = Waypoint.Altitude;
                     }
                 }
             }
@@ -163,9 +163,7 @@ namespace Mayfly.Geographics
             if (maskedTextBoxLongitude.Text.IsAcceptable()) { Waypoint.Longitude = new Coordinate(maskedTextBoxLongitude.Text, true, CoordinateFormat, labelLng.Text == "W"); }
             else { Waypoint.Longitude.Degrees = 0; }
 
-            if (textBoxAltitude.Text.IsDoubleConvertible()) { Waypoint.Altitude = double.Parse(textBoxAltitude.Text); }
-            else { Waypoint.Altitude = double.NaN; }
-
+            Waypoint.Altitude = numericAltitude.Value;
             Waypoint.TimeMark = dateTimePickerDate.Value;
         }
 
@@ -174,7 +172,7 @@ namespace Mayfly.Geographics
             dateTimePickerDate.Value = DateTime.Today;
             maskedTextBoxLatitude.Text = string.Empty;
             maskedTextBoxLongitude.Text = string.Empty;
-            textBoxAltitude.Text = string.Empty;
+            numericAltitude.Clear();
         }
 
         public void SelectGPS(string[] filenames)
@@ -317,7 +315,7 @@ namespace Mayfly.Geographics
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             // Need to loose focus
-            if (maskedTextBoxLatitude.Focused || maskedTextBoxLongitude.Focused) textBoxAltitude.Focus();
+            if (maskedTextBoxLatitude.Focused || maskedTextBoxLongitude.Focused) numericAltitude.Focus();
         }
     }
 

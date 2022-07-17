@@ -38,7 +38,6 @@
             this.labelLatitude = new System.Windows.Forms.Label();
             this.labelLat = new System.Windows.Forms.Label();
             this.labelLng = new System.Windows.Forms.Label();
-            this.textBoxAltitude = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextItemGet = new System.Windows.Forms.ToolStripMenuItem();
             this.contextItemOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +46,7 @@
             this.degreesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.degreesAndMinutesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.degreesMinutesAndSecondsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.numericAltitude = new Mayfly.Controls.NumberBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,14 +103,6 @@
             this.labelLng.Name = "labelLng";
             this.labelLng.Click += new System.EventHandler(this.labelDirection_Click);
             // 
-            // textBoxAltitude
-            // 
-            this.textBoxAltitude.AllowDrop = true;
-            resources.ApplyResources(this.textBoxAltitude, "textBoxAltitude");
-            this.textBoxAltitude.Name = "textBoxAltitude";
-            this.textBoxAltitude.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxAltitude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -166,6 +158,17 @@
             resources.ApplyResources(this.degreesMinutesAndSecondsToolStripMenuItem, "degreesMinutesAndSecondsToolStripMenuItem");
             this.degreesMinutesAndSecondsToolStripMenuItem.Click += new System.EventHandler(this.degreesMinutesAndSecondsToolStripMenuItem_Click);
             // 
+            // numericAltitude
+            // 
+            this.numericAltitude.AllowDrop = true;
+            resources.ApplyResources(this.numericAltitude, "numericAltitude");
+            this.numericAltitude.Maximum = 10000D;
+            this.numericAltitude.Minimum = -1000D;
+            this.numericAltitude.Name = "numericAltitude";
+            this.numericAltitude.Value = -1001D;
+            this.numericAltitude.TextChanged += new System.EventHandler(this.value_Changed);
+            this.numericAltitude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
             // WaypointControl
             // 
             this.AllowDrop = true;
@@ -181,7 +184,7 @@
             this.Controls.Add(this.labelLatitude);
             this.Controls.Add(this.labelLat);
             this.Controls.Add(this.labelLng);
-            this.Controls.Add(this.textBoxAltitude);
+            this.Controls.Add(this.numericAltitude);
             this.Name = "WaypointControl";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.locationData_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.locationData_DragEnter);
@@ -196,7 +199,7 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label labelAltitude;
         private System.Windows.Forms.Label labelLatitude;
-        private System.Windows.Forms.TextBox textBoxAltitude;
+        private Mayfly.Controls.NumberBox numericAltitude;
         private System.Windows.Forms.DateTimePicker dateTimePickerDate;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxLongitude;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxLatitude;

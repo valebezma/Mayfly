@@ -1007,7 +1007,7 @@ namespace Mayfly.ManualLicenser
 
                 if (sheet.Cells[8, 2].Value != null)
                 {
-                    data.Solitary.Volume = Convert.ToDouble(sheet.Cells[8, 2].Value);
+                    //data.Solitary.Volume = Convert.ToDouble(sheet.Cells[8, 2].Value);
 
                     //if (sheet.Cells[8, 2].Formula.Contains("0.125^2"))
                     //{
@@ -1049,12 +1049,11 @@ namespace Mayfly.ManualLicenser
                             break;
                     }
                 }
-                Console.WriteLine("\r\nData recognized: \r\nWater: {0}\r\nLabel: {1}\r\nDate: {2}\r\nSampler: {3}\r\nVolume: {4} l\r\n",
+                Console.WriteLine("\r\nData recognized: \r\nWater: {0}\r\nLabel: {1}\r\nDate: {2}\r\nSampler: {3}\r\n",
                     data.Solitary.WaterRow.Presentation,
                     data.Solitary.Label,
                     data.Solitary.When,
-                    data.Solitary.SamplerRow,
-                    data.Solitary.Volume * 1000);
+                    data.Solitary.SamplerRow);
 
 
                 Console.WriteLine("{0,-30}{1,5}{2,10}\r\n", "Species", "Qty", "Subsample");

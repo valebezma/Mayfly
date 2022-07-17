@@ -9,9 +9,8 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 using System.Resources;
-using static Mayfly.Wild.ReaderSettings;
+using System.Windows.Forms;
 
 namespace Mayfly.Wild
 {
@@ -236,7 +235,7 @@ namespace Mayfly.Wild
 
             if (dataSpcRows.Length == 0) return speciesKey;
 
-            Survey data = (Survey)dataSpcRows[0].Table.DataSet;
+            //Survey data = (Survey)dataSpcRows[0].Table.DataSet;
 
             foreach (Survey.DefinitionRow dataSpcRow in dataSpcRows) {
                 TaxonomicIndex.TaxonRow speciesRow = speciesKey.Taxon.NewTaxonRow(dataSpcRow.Rank, dataSpcRow.Taxon);
@@ -329,6 +328,49 @@ namespace Mayfly.Wild
 
         public TaxonomicIndex GetSpeciesKey() {
             return GetSpeciesKey((DefinitionRow[])Definition.Select());
+        }
+
+        public DefinitionRow[] GetUnweightedSpecies() {
+
+            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
+
+            foreach (Survey.LogRow logRow in Log) {
+                if (!logRow.IsMassNull()) continue;
+                if (!result.Contains(logRow.DefinitionRow)) {
+                    result.Add(logRow.DefinitionRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public DefinitionRow[] GetSpeciesWithUnweightedIndividuals() {
+
+            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
+
+            foreach (Survey.IndividualRow individualRow in Individual) {
+                if (!individualRow.IsMassNull()) continue;
+                if (!result.Contains(individualRow.LogRow.DefinitionRow)) {
+                    result.Add(individualRow.LogRow.DefinitionRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public DefinitionRow[] GetSpeciesForWeightRecovery() {
+
+            List<DefinitionRow> result = new List<DefinitionRow>();
+
+            foreach (LogRow logRow in Log) {
+
+                if (!logRow.IsMassNull()) continue;
+                if (!result.Contains(logRow.DefinitionRow)) {
+                    result.Add(logRow.DefinitionRow);
+                }
+            }
+
+            return result.ToArray();
         }
 
 
@@ -610,7 +652,7 @@ namespace Mayfly.Wild
             public int Portions {
                 get {
                     if (EquipmentRow.EffortType != EffortType.Portion)
-                        return  -1;
+                        return -1;
 
                     if (IsEffortNull())
                         return -1;
@@ -633,8 +675,11 @@ namespace Mayfly.Wild
 
             public TimeSpan Duration {
                 get {
-                    if (EquipmentRow.EffortType != EffortType.Exposition)
-                        return TimeSpan.Zero;
+                    //if (IsEqpIDNull())
+                    //    return TimeSpan.Zero;
+
+                    //if (EquipmentRow.EffortType != EffortType.Exposition)
+                    //    return TimeSpan.Zero;
 
                     if (IsEffortNull())
                         return TimeSpan.Zero;
@@ -727,6 +772,7 @@ namespace Mayfly.Wild
             /// Get suggested name for file with specified extension
             /// </summary>
             public string GetSuggestedName() {
+
                 string result = string.Empty;
 
                 if (!IsWhenNull()) {
@@ -1423,6 +1469,25 @@ namespace Mayfly.Wild
                 }
             }
 
+            public double GetAverageMass() {
+
+                double result = 0;
+                int divider = 0;
+
+                foreach (Survey.IndividualRow individualRow in GetIndividualRows()) {
+                    if (individualRow.IsMassNull()) continue;
+                    result += individualRow.Mass;
+                    divider++;
+                }
+
+                if (divider > 0) // There are some weighted individuals of given length class
+                {
+                    return result / divider;
+                } else {
+                    return double.NaN;
+                }
+            }
+
 
 
             public IndividualRow[] GetIndividualRows() {
@@ -1638,11 +1703,18 @@ namespace Mayfly.Wild
         {
             public string VirtueDescription {
                 get {
-                    string result = string.Empty;
+                    VirtueRow virtueRow = SamplerRow.ClassVirtue;
+                    string result = virtueRow == null ? String.Empty : string.Format("{0} {1}", virtueRow.Notation,
+                        ((Survey)tableEquipment.DataSet).EquipmentVirtue.FindByEqpIDVrtID(ID, virtueRow.ID).Value);
+
+                    result += " (";
                     foreach (EquipmentVirtueRow row in GetEquipmentVirtueRows()) {
-                        result += string.Format(" {0} {1}", row.VirtueRow.Notation, row.Value);
+                        if (row.VirtueRow == virtueRow) continue;
+                        result += string.Format("{0} {1} ", row.VirtueRow.Notation, row.Value);
                     }
-                    return result.Trim();
+                    result = result.Trim() + ")";
+
+                    return result;
                 }
             }
 
@@ -1664,7 +1736,13 @@ namespace Mayfly.Wild
                 }
             }
 
-            public double GetValue(string virtue) {
+            public void SetVirtue(string virtue, double value) {
+                foreach (EquipmentVirtueRow row in GetEquipmentVirtueRows()) {
+                    if (row.VirtueRow.Name == virtue) row.Value = value;
+                }
+            }
+
+            public double GetVirtue(string virtue) {
                 foreach (EquipmentVirtueRow row in GetEquipmentVirtueRows()) {
                     if (row.VirtueRow.Name == virtue) return row.Value;
                 }
@@ -1683,7 +1761,7 @@ namespace Mayfly.Wild
                 }
 
                 // If one is null, but not both, return false.
-                if (((object)a == null) || ((object)b == null)) {
+                if ((a is null) || (b is null)) {
                     return false;
                 }
 
@@ -1710,8 +1788,7 @@ namespace Mayfly.Wild
                 }
 
                 // If parameter cannot be cast return false.
-                EquipmentRow p = obj as EquipmentRow;
-                if ((Object)p == null) {
+                if (!(obj is EquipmentRow p)) {
                     return false;
                 }
 
@@ -1721,7 +1798,7 @@ namespace Mayfly.Wild
 
             public bool Equals(EquipmentRow p) {
                 // If parameter is null return false:
-                if ((object)p == null) {
+                if (p is null) {
                     return false;
                 }
 
@@ -1733,10 +1810,6 @@ namespace Mayfly.Wild
                 return this.ToString().GetHashCode();
             }
 
-
-            public override string ToString() {
-                return SamplerRow.ShortName;
-            }
 
             public string ToString(string format, IFormatProvider formatProvider) {
                 if (string.IsNullOrEmpty(format)) format = string.Empty;
@@ -1758,10 +1831,37 @@ namespace Mayfly.Wild
                 return ToString(format, CultureInfo.CurrentCulture);
             }
 
+            public override string ToString() {
+                return ToString("f");
+            }
+
         }
 
-        partial class SamplerRow
+        partial class SamplerRow : IFormattable
         {
+            public string TypeName {
+                get { return this.SamplerTypeRow.Name.GetLocalizedValue(); }
+            }
+
+            public VirtueRow ClassVirtue {
+                get {
+                    foreach (SamplerVirtueRow samplerVirtueRow in GetSamplerVirtueRows()) {
+                        if (!samplerVirtueRow.IsClassNull() && samplerVirtueRow.Class)
+                            return samplerVirtueRow.VirtueRow;
+                    }
+                    return null;
+                }
+            }
+
+            public VirtueRow GetVirtueRow(string virtue) {
+
+                foreach (SamplerVirtueRow samplerVirtueRow in GetSamplerVirtueRows()) {
+                    if (samplerVirtueRow.VirtueRow.Name == virtue)
+                        return samplerVirtueRow.VirtueRow;
+                }
+                return null;
+            }
+
             public VirtueRow[] GetVirtueRows() {
 
                 List<VirtueRow> result = new List<VirtueRow>();
@@ -1798,11 +1898,62 @@ namespace Mayfly.Wild
                 return false;
             }
 
-            public SamplerRow CopyTo(SamplerDataTable dt) {
-                SamplerRow result = dt.NewSamplerRow();
-                result.Name = this.Name;
-                result.ShortName = this.ShortName;
+            public SamplerRow CopyTo(Survey data) {
+
+                SamplerRow result = data.Sampler.NewSamplerRow();
+                result.ID = this.ID;
+                result.Type = this.Type;
+                result.Name = this.Name.GetLocalizedValue();
+                if (!this.IsShortNameNull()) result.ShortName = this.ShortName;
+                if (!this.IsEffortTypeNull()) result.EffortType = this.EffortType;
+                data.Sampler.AddSamplerRow(result);
+
+                foreach (VirtueRow virtueRow in GetVirtueRows()) {
+                    VirtueRow nvr = data.Virtue.FindByName(virtueRow.Name);
+
+                    if (nvr == null) {
+
+                        nvr = data.Virtue.AddVirtueRow(virtueRow.Name, virtueRow.Notation);
+                    }
+
+                    foreach (SamplerVirtueRow samplerVirtueRow in virtueRow.GetSamplerVirtueRows()) {
+
+                        SamplerVirtueRow nsvr = data.SamplerVirtue.FindBySmpIDVrtID(result.ID, nvr.ID);
+
+                        if (nsvr == null) {
+                            nsvr = data.SamplerVirtue.NewSamplerVirtueRow();
+                            nsvr.SamplerRow = result;
+                            nsvr.VirtueRow = nvr;
+                            data.SamplerVirtue.AddSamplerVirtueRow(nsvr);
+                        }
+
+                        if (!samplerVirtueRow.IsClassNull()) nsvr.Class = samplerVirtueRow.Class;
+                    }
+                }
+
                 return result;
+            }
+
+
+            public override string ToString() {
+                return ToString(string.Empty);
+            }
+
+            public string ToString(string format, IFormatProvider formatProvider) {
+                if (string.IsNullOrEmpty(format)) format = string.Empty;
+
+                switch (format.ToLowerInvariant()) {
+
+                    case "s":
+                        return IsShortNameNull() ? ToString(String.Empty) : ShortName;
+
+                    default:
+                        return Name.GetLocalizedValue((CultureInfo)formatProvider);
+                }
+            }
+
+            public string ToString(string format) {
+                return ToString(format, CultureInfo.CurrentCulture);
             }
         }
 
@@ -1907,7 +2058,14 @@ namespace Mayfly.Wild
 
 public enum EffortType
 {
-    Portion = 0,    // Size of environment captured by single portion is known from its virtues
-    Exposure = 1,   // Size of environment harvested by sampler is defined by its virtues and harvesting exposure
-    Exposition = 2  // Size of environment harvested by sampler is estimated by its virtues and soaktime
+    Portion,    // Size of environment captured by single portion is known from its virtues
+    Exposure,   // Size of environment harvested by sampler is defined by its virtues and harvesting exposure
+    Exposition  // Size of environment harvested by sampler is estimated by its virtues and soaktime
+}
+
+public enum EffortExpression
+{
+    Area,
+    Volume,
+    Standards
 }

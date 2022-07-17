@@ -32,25 +32,27 @@ namespace Mayfly.Wild {
         
         private CardDataTable tableCard;
         
-        private LogDataTable tableLog;
-        
-        private IndividualDataTable tableIndividual;
-        
-        private OrganDataTable tableOrgan;
-        
-        private IntestineDataTable tableIntestine;
-        
-        private StratifiedDataTable tableStratified;
-        
         private VariableDataTable tableVariable;
-        
-        private ValueDataTable tableValue;
         
         private DefinitionDataTable tableDefinition;
         
+        private LogDataTable tableLog;
+        
+        private StratifiedDataTable tableStratified;
+        
+        private IndividualDataTable tableIndividual;
+        
+        private IntestineDataTable tableIntestine;
+        
+        private OrganDataTable tableOrgan;
+        
+        private ValueDataTable tableValue;
+        
         private VirtueDataTable tableVirtue;
         
-        private TypeDataTable tableType;
+        private SamplerVirtueDataTable tableSamplerVirtue;
+        
+        private SamplerTypeDataTable tableSamplerType;
         
         private SamplerDataTable tableSampler;
         
@@ -58,31 +60,27 @@ namespace Mayfly.Wild {
         
         private EquipmentVirtueDataTable tableEquipmentVirtue;
         
-        private SamplerVirtueDataTable tableSamplerVirtue;
-        
         private global::System.Data.DataRelation relationFK_Factor_FactorValue;
         
         private global::System.Data.DataRelation relationFK_Card_FactorValue;
         
-        private global::System.Data.DataRelation relationFK_Water_Card;
-        
-        private global::System.Data.DataRelation relationFK_Equipment_Card;
+        private global::System.Data.DataRelation relationFK_Definition_Log;
         
         private global::System.Data.DataRelation relationFK_Card_Log;
         
-        private global::System.Data.DataRelation relationFK_Definition_Log;
+        private global::System.Data.DataRelation relationFK_Log_Stratified;
         
         private global::System.Data.DataRelation relationFK_Log_Individual;
         
         private global::System.Data.DataRelation relationFK_Individual_Intestine;
         
-        private global::System.Data.DataRelation relationFK_Log_Stratified;
+        private global::System.Data.DataRelation relationIndividual_Value;
         
         private global::System.Data.DataRelation relationFK_Variable_Value;
         
-        private global::System.Data.DataRelation relationIndividual_Value;
+        private global::System.Data.DataRelation relationFK_Virtue_SampleVirtue;
         
-        private global::System.Data.DataRelation relationFK_Type_Sampler;
+        private global::System.Data.DataRelation relationFK_Sampler_SampleVirtue;
         
         private global::System.Data.DataRelation relationFK_Sampler_Equipment;
         
@@ -90,11 +88,13 @@ namespace Mayfly.Wild {
         
         private global::System.Data.DataRelation relationFK_Virtue_SamplerVirtue;
         
-        private global::System.Data.DataRelation relationFK_Virtue_SampleVirtue;
-        
-        private global::System.Data.DataRelation relationFK_Sampler_SampleVirtue;
+        private global::System.Data.DataRelation relationFK_Water_Card;
         
         private global::System.Data.DataRelation relationFK_Individual_Organ;
+        
+        private global::System.Data.DataRelation relationFK_Type_Sampler;
+        
+        private global::System.Data.DataRelation relationFK_Equipment_Card;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -136,35 +136,38 @@ namespace Mayfly.Wild {
                 if ((ds.Tables["Card"] != null)) {
                     base.Tables.Add(new CardDataTable(ds.Tables["Card"]));
                 }
-                if ((ds.Tables["Log"] != null)) {
-                    base.Tables.Add(new LogDataTable(ds.Tables["Log"]));
-                }
-                if ((ds.Tables["Individual"] != null)) {
-                    base.Tables.Add(new IndividualDataTable(ds.Tables["Individual"]));
-                }
-                if ((ds.Tables["Organ"] != null)) {
-                    base.Tables.Add(new OrganDataTable(ds.Tables["Organ"]));
-                }
-                if ((ds.Tables["Intestine"] != null)) {
-                    base.Tables.Add(new IntestineDataTable(ds.Tables["Intestine"]));
-                }
-                if ((ds.Tables["Stratified"] != null)) {
-                    base.Tables.Add(new StratifiedDataTable(ds.Tables["Stratified"]));
-                }
                 if ((ds.Tables["Variable"] != null)) {
                     base.Tables.Add(new VariableDataTable(ds.Tables["Variable"]));
-                }
-                if ((ds.Tables["Value"] != null)) {
-                    base.Tables.Add(new ValueDataTable(ds.Tables["Value"]));
                 }
                 if ((ds.Tables["Definition"] != null)) {
                     base.Tables.Add(new DefinitionDataTable(ds.Tables["Definition"]));
                 }
+                if ((ds.Tables["Log"] != null)) {
+                    base.Tables.Add(new LogDataTable(ds.Tables["Log"]));
+                }
+                if ((ds.Tables["Stratified"] != null)) {
+                    base.Tables.Add(new StratifiedDataTable(ds.Tables["Stratified"]));
+                }
+                if ((ds.Tables["Individual"] != null)) {
+                    base.Tables.Add(new IndividualDataTable(ds.Tables["Individual"]));
+                }
+                if ((ds.Tables["Intestine"] != null)) {
+                    base.Tables.Add(new IntestineDataTable(ds.Tables["Intestine"]));
+                }
+                if ((ds.Tables["Organ"] != null)) {
+                    base.Tables.Add(new OrganDataTable(ds.Tables["Organ"]));
+                }
+                if ((ds.Tables["Value"] != null)) {
+                    base.Tables.Add(new ValueDataTable(ds.Tables["Value"]));
+                }
                 if ((ds.Tables["Virtue"] != null)) {
                     base.Tables.Add(new VirtueDataTable(ds.Tables["Virtue"]));
                 }
-                if ((ds.Tables["Type"] != null)) {
-                    base.Tables.Add(new TypeDataTable(ds.Tables["Type"]));
+                if ((ds.Tables["SamplerVirtue"] != null)) {
+                    base.Tables.Add(new SamplerVirtueDataTable(ds.Tables["SamplerVirtue"]));
+                }
+                if ((ds.Tables["SamplerType"] != null)) {
+                    base.Tables.Add(new SamplerTypeDataTable(ds.Tables["SamplerType"]));
                 }
                 if ((ds.Tables["Sampler"] != null)) {
                     base.Tables.Add(new SamplerDataTable(ds.Tables["Sampler"]));
@@ -174,9 +177,6 @@ namespace Mayfly.Wild {
                 }
                 if ((ds.Tables["EquipmentVirtue"] != null)) {
                     base.Tables.Add(new EquipmentVirtueDataTable(ds.Tables["EquipmentVirtue"]));
-                }
-                if ((ds.Tables["SamplerVirtue"] != null)) {
-                    base.Tables.Add(new SamplerVirtueDataTable(ds.Tables["SamplerVirtue"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -240,69 +240,9 @@ namespace Mayfly.Wild {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public LogDataTable Log {
-            get {
-                return this.tableLog;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public IndividualDataTable Individual {
-            get {
-                return this.tableIndividual;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public OrganDataTable Organ {
-            get {
-                return this.tableOrgan;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public IntestineDataTable Intestine {
-            get {
-                return this.tableIntestine;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public StratifiedDataTable Stratified {
-            get {
-                return this.tableStratified;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public VariableDataTable Variable {
             get {
                 return this.tableVariable;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ValueDataTable Value {
-            get {
-                return this.tableValue;
             }
         }
         
@@ -320,6 +260,66 @@ namespace Mayfly.Wild {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public LogDataTable Log {
+            get {
+                return this.tableLog;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public StratifiedDataTable Stratified {
+            get {
+                return this.tableStratified;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public IndividualDataTable Individual {
+            get {
+                return this.tableIndividual;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public IntestineDataTable Intestine {
+            get {
+                return this.tableIntestine;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public OrganDataTable Organ {
+            get {
+                return this.tableOrgan;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ValueDataTable Value {
+            get {
+                return this.tableValue;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public VirtueDataTable Virtue {
             get {
                 return this.tableVirtue;
@@ -330,9 +330,19 @@ namespace Mayfly.Wild {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TypeDataTable Type {
+        public SamplerVirtueDataTable SamplerVirtue {
             get {
-                return this.tableType;
+                return this.tableSamplerVirtue;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public SamplerTypeDataTable SamplerType {
+            get {
+                return this.tableSamplerType;
             }
         }
         
@@ -363,16 +373,6 @@ namespace Mayfly.Wild {
         public EquipmentVirtueDataTable EquipmentVirtue {
             get {
                 return this.tableEquipmentVirtue;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SamplerVirtueDataTable SamplerVirtue {
-            get {
-                return this.tableSamplerVirtue;
             }
         }
         
@@ -455,35 +455,38 @@ namespace Mayfly.Wild {
                 if ((ds.Tables["Card"] != null)) {
                     base.Tables.Add(new CardDataTable(ds.Tables["Card"]));
                 }
-                if ((ds.Tables["Log"] != null)) {
-                    base.Tables.Add(new LogDataTable(ds.Tables["Log"]));
-                }
-                if ((ds.Tables["Individual"] != null)) {
-                    base.Tables.Add(new IndividualDataTable(ds.Tables["Individual"]));
-                }
-                if ((ds.Tables["Organ"] != null)) {
-                    base.Tables.Add(new OrganDataTable(ds.Tables["Organ"]));
-                }
-                if ((ds.Tables["Intestine"] != null)) {
-                    base.Tables.Add(new IntestineDataTable(ds.Tables["Intestine"]));
-                }
-                if ((ds.Tables["Stratified"] != null)) {
-                    base.Tables.Add(new StratifiedDataTable(ds.Tables["Stratified"]));
-                }
                 if ((ds.Tables["Variable"] != null)) {
                     base.Tables.Add(new VariableDataTable(ds.Tables["Variable"]));
-                }
-                if ((ds.Tables["Value"] != null)) {
-                    base.Tables.Add(new ValueDataTable(ds.Tables["Value"]));
                 }
                 if ((ds.Tables["Definition"] != null)) {
                     base.Tables.Add(new DefinitionDataTable(ds.Tables["Definition"]));
                 }
+                if ((ds.Tables["Log"] != null)) {
+                    base.Tables.Add(new LogDataTable(ds.Tables["Log"]));
+                }
+                if ((ds.Tables["Stratified"] != null)) {
+                    base.Tables.Add(new StratifiedDataTable(ds.Tables["Stratified"]));
+                }
+                if ((ds.Tables["Individual"] != null)) {
+                    base.Tables.Add(new IndividualDataTable(ds.Tables["Individual"]));
+                }
+                if ((ds.Tables["Intestine"] != null)) {
+                    base.Tables.Add(new IntestineDataTable(ds.Tables["Intestine"]));
+                }
+                if ((ds.Tables["Organ"] != null)) {
+                    base.Tables.Add(new OrganDataTable(ds.Tables["Organ"]));
+                }
+                if ((ds.Tables["Value"] != null)) {
+                    base.Tables.Add(new ValueDataTable(ds.Tables["Value"]));
+                }
                 if ((ds.Tables["Virtue"] != null)) {
                     base.Tables.Add(new VirtueDataTable(ds.Tables["Virtue"]));
                 }
-                if ((ds.Tables["Type"] != null)) {
-                    base.Tables.Add(new TypeDataTable(ds.Tables["Type"]));
+                if ((ds.Tables["SamplerVirtue"] != null)) {
+                    base.Tables.Add(new SamplerVirtueDataTable(ds.Tables["SamplerVirtue"]));
+                }
+                if ((ds.Tables["SamplerType"] != null)) {
+                    base.Tables.Add(new SamplerTypeDataTable(ds.Tables["SamplerType"]));
                 }
                 if ((ds.Tables["Sampler"] != null)) {
                     base.Tables.Add(new SamplerDataTable(ds.Tables["Sampler"]));
@@ -493,9 +496,6 @@ namespace Mayfly.Wild {
                 }
                 if ((ds.Tables["EquipmentVirtue"] != null)) {
                     base.Tables.Add(new EquipmentVirtueDataTable(ds.Tables["EquipmentVirtue"]));
-                }
-                if ((ds.Tables["SamplerVirtue"] != null)) {
-                    base.Tables.Add(new SamplerVirtueDataTable(ds.Tables["SamplerVirtue"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -554,46 +554,10 @@ namespace Mayfly.Wild {
                     this.tableCard.InitVars();
                 }
             }
-            this.tableLog = ((LogDataTable)(base.Tables["Log"]));
-            if ((initTable == true)) {
-                if ((this.tableLog != null)) {
-                    this.tableLog.InitVars();
-                }
-            }
-            this.tableIndividual = ((IndividualDataTable)(base.Tables["Individual"]));
-            if ((initTable == true)) {
-                if ((this.tableIndividual != null)) {
-                    this.tableIndividual.InitVars();
-                }
-            }
-            this.tableOrgan = ((OrganDataTable)(base.Tables["Organ"]));
-            if ((initTable == true)) {
-                if ((this.tableOrgan != null)) {
-                    this.tableOrgan.InitVars();
-                }
-            }
-            this.tableIntestine = ((IntestineDataTable)(base.Tables["Intestine"]));
-            if ((initTable == true)) {
-                if ((this.tableIntestine != null)) {
-                    this.tableIntestine.InitVars();
-                }
-            }
-            this.tableStratified = ((StratifiedDataTable)(base.Tables["Stratified"]));
-            if ((initTable == true)) {
-                if ((this.tableStratified != null)) {
-                    this.tableStratified.InitVars();
-                }
-            }
             this.tableVariable = ((VariableDataTable)(base.Tables["Variable"]));
             if ((initTable == true)) {
                 if ((this.tableVariable != null)) {
                     this.tableVariable.InitVars();
-                }
-            }
-            this.tableValue = ((ValueDataTable)(base.Tables["Value"]));
-            if ((initTable == true)) {
-                if ((this.tableValue != null)) {
-                    this.tableValue.InitVars();
                 }
             }
             this.tableDefinition = ((DefinitionDataTable)(base.Tables["Definition"]));
@@ -602,16 +566,58 @@ namespace Mayfly.Wild {
                     this.tableDefinition.InitVars();
                 }
             }
+            this.tableLog = ((LogDataTable)(base.Tables["Log"]));
+            if ((initTable == true)) {
+                if ((this.tableLog != null)) {
+                    this.tableLog.InitVars();
+                }
+            }
+            this.tableStratified = ((StratifiedDataTable)(base.Tables["Stratified"]));
+            if ((initTable == true)) {
+                if ((this.tableStratified != null)) {
+                    this.tableStratified.InitVars();
+                }
+            }
+            this.tableIndividual = ((IndividualDataTable)(base.Tables["Individual"]));
+            if ((initTable == true)) {
+                if ((this.tableIndividual != null)) {
+                    this.tableIndividual.InitVars();
+                }
+            }
+            this.tableIntestine = ((IntestineDataTable)(base.Tables["Intestine"]));
+            if ((initTable == true)) {
+                if ((this.tableIntestine != null)) {
+                    this.tableIntestine.InitVars();
+                }
+            }
+            this.tableOrgan = ((OrganDataTable)(base.Tables["Organ"]));
+            if ((initTable == true)) {
+                if ((this.tableOrgan != null)) {
+                    this.tableOrgan.InitVars();
+                }
+            }
+            this.tableValue = ((ValueDataTable)(base.Tables["Value"]));
+            if ((initTable == true)) {
+                if ((this.tableValue != null)) {
+                    this.tableValue.InitVars();
+                }
+            }
             this.tableVirtue = ((VirtueDataTable)(base.Tables["Virtue"]));
             if ((initTable == true)) {
                 if ((this.tableVirtue != null)) {
                     this.tableVirtue.InitVars();
                 }
             }
-            this.tableType = ((TypeDataTable)(base.Tables["Type"]));
+            this.tableSamplerVirtue = ((SamplerVirtueDataTable)(base.Tables["SamplerVirtue"]));
             if ((initTable == true)) {
-                if ((this.tableType != null)) {
-                    this.tableType.InitVars();
+                if ((this.tableSamplerVirtue != null)) {
+                    this.tableSamplerVirtue.InitVars();
+                }
+            }
+            this.tableSamplerType = ((SamplerTypeDataTable)(base.Tables["SamplerType"]));
+            if ((initTable == true)) {
+                if ((this.tableSamplerType != null)) {
+                    this.tableSamplerType.InitVars();
                 }
             }
             this.tableSampler = ((SamplerDataTable)(base.Tables["Sampler"]));
@@ -632,30 +638,24 @@ namespace Mayfly.Wild {
                     this.tableEquipmentVirtue.InitVars();
                 }
             }
-            this.tableSamplerVirtue = ((SamplerVirtueDataTable)(base.Tables["SamplerVirtue"]));
-            if ((initTable == true)) {
-                if ((this.tableSamplerVirtue != null)) {
-                    this.tableSamplerVirtue.InitVars();
-                }
-            }
             this.relationFK_Factor_FactorValue = this.Relations["FK_Factor_FactorValue"];
             this.relationFK_Card_FactorValue = this.Relations["FK_Card_FactorValue"];
-            this.relationFK_Water_Card = this.Relations["FK_Water_Card"];
-            this.relationFK_Equipment_Card = this.Relations["FK_Equipment_Card"];
-            this.relationFK_Card_Log = this.Relations["FK_Card_Log"];
             this.relationFK_Definition_Log = this.Relations["FK_Definition_Log"];
+            this.relationFK_Card_Log = this.Relations["FK_Card_Log"];
+            this.relationFK_Log_Stratified = this.Relations["FK_Log_Stratified"];
             this.relationFK_Log_Individual = this.Relations["FK_Log_Individual"];
             this.relationFK_Individual_Intestine = this.Relations["FK_Individual_Intestine"];
-            this.relationFK_Log_Stratified = this.Relations["FK_Log_Stratified"];
-            this.relationFK_Variable_Value = this.Relations["FK_Variable_Value"];
             this.relationIndividual_Value = this.Relations["Individual_Value"];
-            this.relationFK_Type_Sampler = this.Relations["FK_Type_Sampler"];
+            this.relationFK_Variable_Value = this.Relations["FK_Variable_Value"];
+            this.relationFK_Virtue_SampleVirtue = this.Relations["FK_Virtue_SampleVirtue"];
+            this.relationFK_Sampler_SampleVirtue = this.Relations["FK_Sampler_SampleVirtue"];
             this.relationFK_Sampler_Equipment = this.Relations["FK_Sampler_Equipment"];
             this.relationFK_Equipment_SamplerVirtue = this.Relations["FK_Equipment_SamplerVirtue"];
             this.relationFK_Virtue_SamplerVirtue = this.Relations["FK_Virtue_SamplerVirtue"];
-            this.relationFK_Virtue_SampleVirtue = this.Relations["FK_Virtue_SampleVirtue"];
-            this.relationFK_Sampler_SampleVirtue = this.Relations["FK_Sampler_SampleVirtue"];
+            this.relationFK_Water_Card = this.Relations["FK_Water_Card"];
             this.relationFK_Individual_Organ = this.Relations["FK_Individual_Organ"];
+            this.relationFK_Type_Sampler = this.Relations["FK_Type_Sampler"];
+            this.relationFK_Equipment_Card = this.Relations["FK_Equipment_Card"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -674,34 +674,34 @@ namespace Mayfly.Wild {
             base.Tables.Add(this.tableWater);
             this.tableCard = new CardDataTable();
             base.Tables.Add(this.tableCard);
-            this.tableLog = new LogDataTable();
-            base.Tables.Add(this.tableLog);
-            this.tableIndividual = new IndividualDataTable();
-            base.Tables.Add(this.tableIndividual);
-            this.tableOrgan = new OrganDataTable();
-            base.Tables.Add(this.tableOrgan);
-            this.tableIntestine = new IntestineDataTable();
-            base.Tables.Add(this.tableIntestine);
-            this.tableStratified = new StratifiedDataTable();
-            base.Tables.Add(this.tableStratified);
             this.tableVariable = new VariableDataTable();
             base.Tables.Add(this.tableVariable);
-            this.tableValue = new ValueDataTable();
-            base.Tables.Add(this.tableValue);
             this.tableDefinition = new DefinitionDataTable();
             base.Tables.Add(this.tableDefinition);
+            this.tableLog = new LogDataTable();
+            base.Tables.Add(this.tableLog);
+            this.tableStratified = new StratifiedDataTable();
+            base.Tables.Add(this.tableStratified);
+            this.tableIndividual = new IndividualDataTable();
+            base.Tables.Add(this.tableIndividual);
+            this.tableIntestine = new IntestineDataTable();
+            base.Tables.Add(this.tableIntestine);
+            this.tableOrgan = new OrganDataTable();
+            base.Tables.Add(this.tableOrgan);
+            this.tableValue = new ValueDataTable();
+            base.Tables.Add(this.tableValue);
             this.tableVirtue = new VirtueDataTable();
             base.Tables.Add(this.tableVirtue);
-            this.tableType = new TypeDataTable();
-            base.Tables.Add(this.tableType);
+            this.tableSamplerVirtue = new SamplerVirtueDataTable();
+            base.Tables.Add(this.tableSamplerVirtue);
+            this.tableSamplerType = new SamplerTypeDataTable();
+            base.Tables.Add(this.tableSamplerType);
             this.tableSampler = new SamplerDataTable();
             base.Tables.Add(this.tableSampler);
             this.tableEquipment = new EquipmentDataTable();
             base.Tables.Add(this.tableEquipment);
             this.tableEquipmentVirtue = new EquipmentVirtueDataTable();
             base.Tables.Add(this.tableEquipmentVirtue);
-            this.tableSamplerVirtue = new SamplerVirtueDataTable();
-            base.Tables.Add(this.tableSamplerVirtue);
             global::System.Data.ForeignKeyConstraint fkc;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Factor_FactorValue", new global::System.Data.DataColumn[] {
                         this.tableFactor.IDColumn}, new global::System.Data.DataColumn[] {
@@ -717,19 +717,12 @@ namespace Mayfly.Wild {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Water_Card", new global::System.Data.DataColumn[] {
-                        this.tableWater.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCard.WaterIDColumn});
-            this.tableCard.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
-            fkc.DeleteRule = global::System.Data.Rule.SetNull;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Equipment_Card", new global::System.Data.DataColumn[] {
-                        this.tableEquipment.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCard.EqpIDColumn});
-            this.tableCard.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Definition_Log", new global::System.Data.DataColumn[] {
+                        this.tableDefinition.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLog.DefIDColumn});
+            this.tableLog.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.SetNull;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Card_Log", new global::System.Data.DataColumn[] {
                         this.tableCard.IDColumn}, new global::System.Data.DataColumn[] {
@@ -738,11 +731,11 @@ namespace Mayfly.Wild {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Definition_Log", new global::System.Data.DataColumn[] {
-                        this.tableDefinition.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLog.DefIDColumn});
-            this.tableLog.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Log_Stratified", new global::System.Data.DataColumn[] {
+                        this.tableLog.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableStratified.LogIDColumn});
+            this.tableStratified.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Log_Individual", new global::System.Data.DataColumn[] {
@@ -759,10 +752,10 @@ namespace Mayfly.Wild {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Log_Stratified", new global::System.Data.DataColumn[] {
-                        this.tableLog.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableStratified.LogIDColumn});
-            this.tableStratified.Constraints.Add(fkc);
+            fkc = new global::System.Data.ForeignKeyConstraint("Individual_Value", new global::System.Data.DataColumn[] {
+                        this.tableIndividual.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableValue.IndIDColumn});
+            this.tableValue.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
@@ -773,18 +766,18 @@ namespace Mayfly.Wild {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("Individual_Value", new global::System.Data.DataColumn[] {
-                        this.tableIndividual.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableValue.IndIDColumn});
-            this.tableValue.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Virtue_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSamplerVirtue.VrtIDColumn});
+            this.tableSamplerVirtue.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Type_Sampler", new global::System.Data.DataColumn[] {
-                        this.tableType.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSampler.TypeColumn});
-            this.tableSampler.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Sampler_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSamplerVirtue.SmpIDColumn});
+            this.tableSamplerVirtue.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Sampler_Equipment", new global::System.Data.DataColumn[] {
@@ -808,20 +801,6 @@ namespace Mayfly.Wild {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Virtue_SampleVirtue", new global::System.Data.DataColumn[] {
-                        this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSamplerVirtue.VrtIDColumn});
-            this.tableSamplerVirtue.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Sampler_SampleVirtue", new global::System.Data.DataColumn[] {
-                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSamplerVirtue.SmpIDColumn});
-            this.tableSamplerVirtue.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_Factor_FactorValue = new global::System.Data.DataRelation("FK_Factor_FactorValue", new global::System.Data.DataColumn[] {
                         this.tableFactor.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableFactorValue.FactorIDColumn}, false);
@@ -831,24 +810,20 @@ namespace Mayfly.Wild {
                         this.tableCard.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableFactorValue.CardIDColumn}, false);
             this.Relations.Add(this.relationFK_Card_FactorValue);
-            this.relationFK_Water_Card = new global::System.Data.DataRelation("FK_Water_Card", new global::System.Data.DataColumn[] {
-                        this.tableWater.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCard.WaterIDColumn}, false);
-            this.relationFK_Water_Card.Nested = true;
-            this.Relations.Add(this.relationFK_Water_Card);
-            this.relationFK_Equipment_Card = new global::System.Data.DataRelation("FK_Equipment_Card", new global::System.Data.DataColumn[] {
-                        this.tableEquipment.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCard.EqpIDColumn}, false);
-            this.Relations.Add(this.relationFK_Equipment_Card);
-            this.relationFK_Card_Log = new global::System.Data.DataRelation("FK_Card_Log", new global::System.Data.DataColumn[] {
-                        this.tableCard.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableLog.CardIDColumn}, false);
-            this.relationFK_Card_Log.Nested = true;
-            this.Relations.Add(this.relationFK_Card_Log);
             this.relationFK_Definition_Log = new global::System.Data.DataRelation("FK_Definition_Log", new global::System.Data.DataColumn[] {
                         this.tableDefinition.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableLog.DefIDColumn}, false);
+            this.relationFK_Definition_Log.Nested = true;
             this.Relations.Add(this.relationFK_Definition_Log);
+            this.relationFK_Card_Log = new global::System.Data.DataRelation("FK_Card_Log", new global::System.Data.DataColumn[] {
+                        this.tableCard.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableLog.CardIDColumn}, false);
+            this.Relations.Add(this.relationFK_Card_Log);
+            this.relationFK_Log_Stratified = new global::System.Data.DataRelation("FK_Log_Stratified", new global::System.Data.DataColumn[] {
+                        this.tableLog.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableStratified.LogIDColumn}, false);
+            this.relationFK_Log_Stratified.Nested = true;
+            this.Relations.Add(this.relationFK_Log_Stratified);
             this.relationFK_Log_Individual = new global::System.Data.DataRelation("FK_Log_Individual", new global::System.Data.DataColumn[] {
                         this.tableLog.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableIndividual.LogIDColumn}, false);
@@ -859,25 +834,24 @@ namespace Mayfly.Wild {
                         this.tableIntestine.IndIDColumn}, false);
             this.relationFK_Individual_Intestine.Nested = true;
             this.Relations.Add(this.relationFK_Individual_Intestine);
-            this.relationFK_Log_Stratified = new global::System.Data.DataRelation("FK_Log_Stratified", new global::System.Data.DataColumn[] {
-                        this.tableLog.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableStratified.LogIDColumn}, false);
-            this.relationFK_Log_Stratified.Nested = true;
-            this.Relations.Add(this.relationFK_Log_Stratified);
-            this.relationFK_Variable_Value = new global::System.Data.DataRelation("FK_Variable_Value", new global::System.Data.DataColumn[] {
-                        this.tableVariable.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableValue.VarIDColumn}, false);
-            this.relationFK_Variable_Value.Nested = true;
-            this.Relations.Add(this.relationFK_Variable_Value);
             this.relationIndividual_Value = new global::System.Data.DataRelation("Individual_Value", new global::System.Data.DataColumn[] {
                         this.tableIndividual.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableValue.IndIDColumn}, false);
+            this.relationIndividual_Value.Nested = true;
             this.Relations.Add(this.relationIndividual_Value);
-            this.relationFK_Type_Sampler = new global::System.Data.DataRelation("FK_Type_Sampler", new global::System.Data.DataColumn[] {
-                        this.tableType.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSampler.TypeColumn}, false);
-            this.relationFK_Type_Sampler.Nested = true;
-            this.Relations.Add(this.relationFK_Type_Sampler);
+            this.relationFK_Variable_Value = new global::System.Data.DataRelation("FK_Variable_Value", new global::System.Data.DataColumn[] {
+                        this.tableVariable.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableValue.VarIDColumn}, false);
+            this.Relations.Add(this.relationFK_Variable_Value);
+            this.relationFK_Virtue_SampleVirtue = new global::System.Data.DataRelation("FK_Virtue_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSamplerVirtue.VrtIDColumn}, false);
+            this.relationFK_Virtue_SampleVirtue.Nested = true;
+            this.Relations.Add(this.relationFK_Virtue_SampleVirtue);
+            this.relationFK_Sampler_SampleVirtue = new global::System.Data.DataRelation("FK_Sampler_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSamplerVirtue.SmpIDColumn}, false);
+            this.Relations.Add(this.relationFK_Sampler_SampleVirtue);
             this.relationFK_Sampler_Equipment = new global::System.Data.DataRelation("FK_Sampler_Equipment", new global::System.Data.DataColumn[] {
                         this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableEquipment.SmpIDColumn}, false);
@@ -892,19 +866,25 @@ namespace Mayfly.Wild {
                         this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableEquipmentVirtue.VrtIDColumn}, false);
             this.Relations.Add(this.relationFK_Virtue_SamplerVirtue);
-            this.relationFK_Virtue_SampleVirtue = new global::System.Data.DataRelation("FK_Virtue_SampleVirtue", new global::System.Data.DataColumn[] {
-                        this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSamplerVirtue.VrtIDColumn}, false);
-            this.Relations.Add(this.relationFK_Virtue_SampleVirtue);
-            this.relationFK_Sampler_SampleVirtue = new global::System.Data.DataRelation("FK_Sampler_SampleVirtue", new global::System.Data.DataColumn[] {
-                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSamplerVirtue.SmpIDColumn}, false);
-            this.Relations.Add(this.relationFK_Sampler_SampleVirtue);
+            this.relationFK_Water_Card = new global::System.Data.DataRelation("FK_Water_Card", new global::System.Data.DataColumn[] {
+                        this.tableWater.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCard.WaterIDColumn}, false);
+            this.relationFK_Water_Card.Nested = true;
+            this.Relations.Add(this.relationFK_Water_Card);
             this.relationFK_Individual_Organ = new global::System.Data.DataRelation("FK_Individual_Organ", new global::System.Data.DataColumn[] {
                         this.tableIndividual.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableOrgan.IndIDColumn}, false);
             this.relationFK_Individual_Organ.Nested = true;
             this.Relations.Add(this.relationFK_Individual_Organ);
+            this.relationFK_Type_Sampler = new global::System.Data.DataRelation("FK_Type_Sampler", new global::System.Data.DataColumn[] {
+                        this.tableSamplerType.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSampler.TypeColumn}, false);
+            this.relationFK_Type_Sampler.Nested = true;
+            this.Relations.Add(this.relationFK_Type_Sampler);
+            this.relationFK_Equipment_Card = new global::System.Data.DataRelation("FK_Equipment_Card", new global::System.Data.DataColumn[] {
+                        this.tableEquipment.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCard.EqpIDColumn}, false);
+            this.Relations.Add(this.relationFK_Equipment_Card);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -933,43 +913,7 @@ namespace Mayfly.Wild {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeLog() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeIndividual() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeOrgan() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeIntestine() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeStratified() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeVariable() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeValue() {
             return false;
         }
         
@@ -981,13 +925,55 @@ namespace Mayfly.Wild {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeLog() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeStratified() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeIndividual() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeIntestine() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeOrgan() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeValue() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeVirtue() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeType() {
+        private bool ShouldSerializeSamplerVirtue() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeSamplerType() {
             return false;
         }
         
@@ -1006,12 +992,6 @@ namespace Mayfly.Wild {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeEquipmentVirtue() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeSamplerVirtue() {
             return false;
         }
         
@@ -1083,34 +1063,37 @@ namespace Mayfly.Wild {
         public delegate void CardRowChangeEventHandler(object sender, CardRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void LogRowChangeEventHandler(object sender, LogRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void IndividualRowChangeEventHandler(object sender, IndividualRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void OrganRowChangeEventHandler(object sender, OrganRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void IntestineRowChangeEventHandler(object sender, IntestineRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void StratifiedRowChangeEventHandler(object sender, StratifiedRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void VariableRowChangeEventHandler(object sender, VariableRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void ValueRowChangeEventHandler(object sender, ValueRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void DefinitionRowChangeEventHandler(object sender, DefinitionRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void LogRowChangeEventHandler(object sender, LogRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void StratifiedRowChangeEventHandler(object sender, StratifiedRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void IndividualRowChangeEventHandler(object sender, IndividualRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void IntestineRowChangeEventHandler(object sender, IntestineRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void OrganRowChangeEventHandler(object sender, OrganRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void ValueRowChangeEventHandler(object sender, ValueRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void VirtueRowChangeEventHandler(object sender, VirtueRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void TypeRowChangeEventHandler(object sender, TypeRowChangeEvent e);
+        public delegate void SamplerVirtueRowChangeEventHandler(object sender, SamplerVirtueRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void SamplerTypeRowChangeEventHandler(object sender, SamplerTypeRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void SamplerRowChangeEventHandler(object sender, SamplerRowChangeEvent e);
@@ -1120,9 +1103,6 @@ namespace Mayfly.Wild {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void EquipmentVirtueRowChangeEventHandler(object sender, EquipmentVirtueRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void SamplerVirtueRowChangeEventHandler(object sender, SamplerVirtueRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2499,6 +2479,581 @@ namespace Mayfly.Wild {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class VariableDataTable : global::System.Data.TypedTableBase<VariableRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnVariable;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VariableDataTable() {
+                this.TableName = "Variable";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal VariableDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected VariableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VariableColumn {
+                get {
+                    return this.columnVariable;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VariableRow this[int index] {
+                get {
+                    return ((VariableRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event VariableRowChangeEventHandler VariableRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event VariableRowChangeEventHandler VariableRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event VariableRowChangeEventHandler VariableRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event VariableRowChangeEventHandler VariableRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddVariableRow(VariableRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VariableRow AddVariableRow(string Variable) {
+                VariableRow rowVariableRow = ((VariableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Variable};
+                rowVariableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowVariableRow);
+                return rowVariableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                VariableDataTable cln = ((VariableDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new VariableDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnVariable = base.Columns["Variable"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnVariable = new global::System.Data.DataColumn("Variable", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVariable);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, false));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VariableRow NewVariableRow() {
+                return ((VariableRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new VariableRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(VariableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.VariableRowChanged != null)) {
+                    this.VariableRowChanged(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.VariableRowChanging != null)) {
+                    this.VariableRowChanging(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.VariableRowDeleted != null)) {
+                    this.VariableRowDeleted(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.VariableRowDeleting != null)) {
+                    this.VariableRowDeleting(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveVariableRow(VariableRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Survey ds = new Survey();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "VariableDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DefinitionDataTable : global::System.Data.TypedTableBase<DefinitionRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnRank;
+            
+            private global::System.Data.DataColumn columnTaxon;
+            
+            private global::System.Data.DataColumn columnSign;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DefinitionDataTable() {
+                this.TableName = "Definition";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DefinitionDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected DefinitionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn RankColumn {
+                get {
+                    return this.columnRank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TaxonColumn {
+                get {
+                    return this.columnTaxon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SignColumn {
+                get {
+                    return this.columnSign;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DefinitionRow this[int index] {
+                get {
+                    return ((DefinitionRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DefinitionRowChangeEventHandler DefinitionRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DefinitionRowChangeEventHandler DefinitionRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DefinitionRowChangeEventHandler DefinitionRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event DefinitionRowChangeEventHandler DefinitionRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddDefinitionRow(DefinitionRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DefinitionRow AddDefinitionRow(int Rank, string Taxon, string Sign) {
+                DefinitionRow rowDefinitionRow = ((DefinitionRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Rank,
+                        Taxon,
+                        Sign};
+                rowDefinitionRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDefinitionRow);
+                return rowDefinitionRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DefinitionRow FindByID(int ID) {
+                return ((DefinitionRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DefinitionDataTable cln = ((DefinitionDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DefinitionDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnRank = base.Columns["Rank"];
+                this.columnTaxon = base.Columns["Taxon"];
+                this.columnSign = base.Columns["Sign"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnRank = new global::System.Data.DataColumn("Rank", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRank);
+                this.columnTaxon = new global::System.Data.DataColumn("Taxon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaxon);
+                this.columnSign = new global::System.Data.DataColumn("Sign", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSign);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnTaxon}, false));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
+                this.columnTaxon.AllowDBNull = false;
+                this.columnTaxon.Unique = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DefinitionRow NewDefinitionRow() {
+                return ((DefinitionRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DefinitionRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DefinitionRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DefinitionRowChanged != null)) {
+                    this.DefinitionRowChanged(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DefinitionRowChanging != null)) {
+                    this.DefinitionRowChanging(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DefinitionRowDeleted != null)) {
+                    this.DefinitionRowDeleted(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DefinitionRowDeleting != null)) {
+                    this.DefinitionRowDeleting(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveDefinitionRow(DefinitionRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Survey ds = new Survey();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DefinitionDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class LogDataTable : global::System.Data.TypedTableBase<LogRow> {
             
             private global::System.Data.DataColumn columnID;
@@ -2821,6 +3376,297 @@ namespace Mayfly.Wild {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "LogDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class StratifiedDataTable : global::System.Data.TypedTableBase<StratifiedRow> {
+            
+            private global::System.Data.DataColumn columnLogID;
+            
+            private global::System.Data.DataColumn columnClass;
+            
+            private global::System.Data.DataColumn columnCount;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedDataTable() {
+                this.TableName = "Stratified";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal StratifiedDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected StratifiedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn LogIDColumn {
+                get {
+                    return this.columnLogID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ClassColumn {
+                get {
+                    return this.columnClass;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CountColumn {
+                get {
+                    return this.columnCount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedRow this[int index] {
+                get {
+                    return ((StratifiedRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event StratifiedRowChangeEventHandler StratifiedRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event StratifiedRowChangeEventHandler StratifiedRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event StratifiedRowChangeEventHandler StratifiedRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event StratifiedRowChangeEventHandler StratifiedRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddStratifiedRow(StratifiedRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedRow AddStratifiedRow(LogRow parentLogRowByFK_Log_Stratified, double Class, int Count) {
+                StratifiedRow rowStratifiedRow = ((StratifiedRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Class,
+                        Count};
+                if ((parentLogRowByFK_Log_Stratified != null)) {
+                    columnValuesArray[0] = parentLogRowByFK_Log_Stratified[0];
+                }
+                rowStratifiedRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowStratifiedRow);
+                return rowStratifiedRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedRow FindByLogIDClass(int LogID, double Class) {
+                return ((StratifiedRow)(this.Rows.Find(new object[] {
+                            LogID,
+                            Class})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                StratifiedDataTable cln = ((StratifiedDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new StratifiedDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnLogID = base.Columns["LogID"];
+                this.columnClass = base.Columns["Class"];
+                this.columnCount = base.Columns["Count"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnLogID = new global::System.Data.DataColumn("LogID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLogID);
+                this.columnClass = new global::System.Data.DataColumn("Class", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClass);
+                this.columnCount = new global::System.Data.DataColumn("Count", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCount);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnLogID,
+                                this.columnClass}, true));
+                this.columnLogID.AllowDBNull = false;
+                this.columnClass.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedRow NewStratifiedRow() {
+                return ((StratifiedRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new StratifiedRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(StratifiedRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.StratifiedRowChanged != null)) {
+                    this.StratifiedRowChanged(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.StratifiedRowChanging != null)) {
+                    this.StratifiedRowChanging(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.StratifiedRowDeleted != null)) {
+                    this.StratifiedRowDeleted(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.StratifiedRowDeleting != null)) {
+                    this.StratifiedRowDeleting(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveStratifiedRow(StratifiedRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Survey ds = new Survey();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "StratifiedDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3452,318 +4298,6 @@ namespace Mayfly.Wild {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class OrganDataTable : global::System.Data.TypedTableBase<OrganRow> {
-            
-            private global::System.Data.DataColumn columnID;
-            
-            private global::System.Data.DataColumn columnIndID;
-            
-            private global::System.Data.DataColumn columnOrgan;
-            
-            private global::System.Data.DataColumn columnInfection;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OrganDataTable() {
-                this.TableName = "Organ";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal OrganDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected OrganDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IndIDColumn {
-                get {
-                    return this.columnIndID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn OrganColumn {
-                get {
-                    return this.columnOrgan;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn InfectionColumn {
-                get {
-                    return this.columnInfection;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OrganRow this[int index] {
-                get {
-                    return ((OrganRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OrganRowChangeEventHandler OrganRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OrganRowChangeEventHandler OrganRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OrganRowChangeEventHandler OrganRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event OrganRowChangeEventHandler OrganRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddOrganRow(OrganRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OrganRow AddOrganRow(IndividualRow parentIndividualRowByFK_Individual_Organ, int Organ, string Infection) {
-                OrganRow rowOrganRow = ((OrganRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null,
-                        Organ,
-                        Infection};
-                if ((parentIndividualRowByFK_Individual_Organ != null)) {
-                    columnValuesArray[1] = parentIndividualRowByFK_Individual_Organ[0];
-                }
-                rowOrganRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowOrganRow);
-                return rowOrganRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OrganRow FindByIndIDOrgan(int IndID, int Organ) {
-                return ((OrganRow)(this.Rows.Find(new object[] {
-                            IndID,
-                            Organ})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                OrganDataTable cln = ((OrganDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new OrganDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnIndID = base.Columns["IndID"];
-                this.columnOrgan = base.Columns["Organ"];
-                this.columnInfection = base.Columns["Infection"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnIndID = new global::System.Data.DataColumn("IndID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIndID);
-                this.columnOrgan = new global::System.Data.DataColumn("Organ", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOrgan);
-                this.columnInfection = new global::System.Data.DataColumn("Infection", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInfection);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnIndID,
-                                this.columnOrgan}, true));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint21", new global::System.Data.DataColumn[] {
-                                this.columnID}, false));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.Unique = true;
-                this.columnIndID.AllowDBNull = false;
-                this.columnOrgan.AllowDBNull = false;
-                this.Namespace = "";
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OrganRow NewOrganRow() {
-                return ((OrganRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new OrganRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(OrganRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.OrganRowChanged != null)) {
-                    this.OrganRowChanged(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.OrganRowChanging != null)) {
-                    this.OrganRowChanging(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.OrganRowDeleted != null)) {
-                    this.OrganRowDeleted(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.OrganRowDeleting != null)) {
-                    this.OrganRowDeleting(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveOrganRow(OrganRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Survey ds = new Survey();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "OrganDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class IntestineDataTable : global::System.Data.TypedTableBase<IntestineRow> {
             
             private global::System.Data.DataColumn columnID;
@@ -4102,307 +4636,20 @@ namespace Mayfly.Wild {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class StratifiedDataTable : global::System.Data.TypedTableBase<StratifiedRow> {
-            
-            private global::System.Data.DataColumn columnLogID;
-            
-            private global::System.Data.DataColumn columnClass;
-            
-            private global::System.Data.DataColumn columnCount;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedDataTable() {
-                this.TableName = "Stratified";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal StratifiedDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected StratifiedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn LogIDColumn {
-                get {
-                    return this.columnLogID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ClassColumn {
-                get {
-                    return this.columnClass;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CountColumn {
-                get {
-                    return this.columnCount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedRow this[int index] {
-                get {
-                    return ((StratifiedRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StratifiedRowChangeEventHandler StratifiedRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StratifiedRowChangeEventHandler StratifiedRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StratifiedRowChangeEventHandler StratifiedRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event StratifiedRowChangeEventHandler StratifiedRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddStratifiedRow(StratifiedRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedRow AddStratifiedRow(LogRow parentLogRowByFK_Log_Stratified, double Class, int Count) {
-                StratifiedRow rowStratifiedRow = ((StratifiedRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Class,
-                        Count};
-                if ((parentLogRowByFK_Log_Stratified != null)) {
-                    columnValuesArray[0] = parentLogRowByFK_Log_Stratified[0];
-                }
-                rowStratifiedRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowStratifiedRow);
-                return rowStratifiedRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedRow FindByLogIDClass(int LogID, double Class) {
-                return ((StratifiedRow)(this.Rows.Find(new object[] {
-                            LogID,
-                            Class})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                StratifiedDataTable cln = ((StratifiedDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new StratifiedDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnLogID = base.Columns["LogID"];
-                this.columnClass = base.Columns["Class"];
-                this.columnCount = base.Columns["Count"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnLogID = new global::System.Data.DataColumn("LogID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLogID);
-                this.columnClass = new global::System.Data.DataColumn("Class", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnClass);
-                this.columnCount = new global::System.Data.DataColumn("Count", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCount);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnLogID,
-                                this.columnClass}, true));
-                this.columnLogID.AllowDBNull = false;
-                this.columnClass.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedRow NewStratifiedRow() {
-                return ((StratifiedRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new StratifiedRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(StratifiedRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.StratifiedRowChanged != null)) {
-                    this.StratifiedRowChanged(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.StratifiedRowChanging != null)) {
-                    this.StratifiedRowChanging(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.StratifiedRowDeleted != null)) {
-                    this.StratifiedRowDeleted(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.StratifiedRowDeleting != null)) {
-                    this.StratifiedRowDeleting(this, new StratifiedRowChangeEvent(((StratifiedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveStratifiedRow(StratifiedRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Survey ds = new Survey();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "StratifiedDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class VariableDataTable : global::System.Data.TypedTableBase<VariableRow> {
+        public partial class OrganDataTable : global::System.Data.TypedTableBase<OrganRow> {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnVariable;
+            private global::System.Data.DataColumn columnIndID;
+            
+            private global::System.Data.DataColumn columnOrgan;
+            
+            private global::System.Data.DataColumn columnInfection;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VariableDataTable() {
-                this.TableName = "Variable";
+            public OrganDataTable() {
+                this.TableName = "Organ";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -4410,7 +4657,7 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal VariableDataTable(global::System.Data.DataTable table) {
+            internal OrganDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -4427,7 +4674,7 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected VariableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected OrganDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -4442,9 +4689,25 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn VariableColumn {
+            public global::System.Data.DataColumn IndIDColumn {
                 get {
-                    return this.columnVariable;
+                    return this.columnIndID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OrganColumn {
+                get {
+                    return this.columnOrgan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn InfectionColumn {
+                get {
+                    return this.columnInfection;
                 }
             }
             
@@ -4459,46 +4722,59 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VariableRow this[int index] {
+            public OrganRow this[int index] {
                 get {
-                    return ((VariableRow)(this.Rows[index]));
+                    return ((OrganRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event VariableRowChangeEventHandler VariableRowChanging;
+            public event OrganRowChangeEventHandler OrganRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event VariableRowChangeEventHandler VariableRowChanged;
+            public event OrganRowChangeEventHandler OrganRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event VariableRowChangeEventHandler VariableRowDeleting;
+            public event OrganRowChangeEventHandler OrganRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event VariableRowChangeEventHandler VariableRowDeleted;
+            public event OrganRowChangeEventHandler OrganRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddVariableRow(VariableRow row) {
+            public void AddOrganRow(OrganRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VariableRow AddVariableRow(string Variable) {
-                VariableRow rowVariableRow = ((VariableRow)(this.NewRow()));
+            public OrganRow AddOrganRow(IndividualRow parentIndividualRowByFK_Individual_Organ, int Organ, string Infection) {
+                OrganRow rowOrganRow = ((OrganRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Variable};
-                rowVariableRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowVariableRow);
-                return rowVariableRow;
+                        null,
+                        Organ,
+                        Infection};
+                if ((parentIndividualRowByFK_Individual_Organ != null)) {
+                    columnValuesArray[1] = parentIndividualRowByFK_Individual_Organ[0];
+                }
+                rowOrganRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOrganRow);
+                return rowOrganRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public OrganRow FindByIndIDOrgan(int IndID, int Organ) {
+                return ((OrganRow)(this.Rows.Find(new object[] {
+                            IndID,
+                            Organ})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                VariableDataTable cln = ((VariableDataTable)(base.Clone()));
+                OrganDataTable cln = ((OrganDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -4506,14 +4782,16 @@ namespace Mayfly.Wild {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new VariableDataTable();
+                return new OrganDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnVariable = base.Columns["Variable"];
+                this.columnIndID = base.Columns["IndID"];
+                this.columnOrgan = base.Columns["Organ"];
+                this.columnInfection = base.Columns["Infection"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4521,41 +4799,50 @@ namespace Mayfly.Wild {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnVariable = new global::System.Data.DataColumn("Variable", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVariable);
+                this.columnIndID = new global::System.Data.DataColumn("IndID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIndID);
+                this.columnOrgan = new global::System.Data.DataColumn("Organ", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrgan);
+                this.columnInfection = new global::System.Data.DataColumn("Infection", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInfection);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnIndID,
+                                this.columnOrgan}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint21", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = -1;
                 this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnIndID.AllowDBNull = false;
+                this.columnOrgan.AllowDBNull = false;
+                this.Namespace = "";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VariableRow NewVariableRow() {
-                return ((VariableRow)(this.NewRow()));
+            public OrganRow NewOrganRow() {
+                return ((OrganRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new VariableRow(builder);
+                return new OrganRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(VariableRow);
+                return typeof(OrganRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.VariableRowChanged != null)) {
-                    this.VariableRowChanged(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                if ((this.OrganRowChanged != null)) {
+                    this.OrganRowChanged(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4563,8 +4850,8 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.VariableRowChanging != null)) {
-                    this.VariableRowChanging(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                if ((this.OrganRowChanging != null)) {
+                    this.OrganRowChanging(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4572,8 +4859,8 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.VariableRowDeleted != null)) {
-                    this.VariableRowDeleted(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                if ((this.OrganRowDeleted != null)) {
+                    this.OrganRowDeleted(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
                 }
             }
             
@@ -4581,14 +4868,14 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.VariableRowDeleting != null)) {
-                    this.VariableRowDeleting(this, new VariableRowChangeEvent(((VariableRow)(e.Row)), e.Action));
+                if ((this.OrganRowDeleting != null)) {
+                    this.OrganRowDeleting(this, new OrganRowChangeEvent(((OrganRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveVariableRow(VariableRow row) {
+            public void RemoveOrganRow(OrganRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -4615,7 +4902,7 @@ namespace Mayfly.Wild {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "VariableDataTable";
+                attribute2.FixedValue = "OrganDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4955,313 +5242,6 @@ namespace Mayfly.Wild {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DefinitionDataTable : global::System.Data.TypedTableBase<DefinitionRow> {
-            
-            private global::System.Data.DataColumn columnID;
-            
-            private global::System.Data.DataColumn columnRank;
-            
-            private global::System.Data.DataColumn columnTaxon;
-            
-            private global::System.Data.DataColumn columnSign;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DefinitionDataTable() {
-                this.TableName = "Definition";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DefinitionDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected DefinitionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn RankColumn {
-                get {
-                    return this.columnRank;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TaxonColumn {
-                get {
-                    return this.columnTaxon;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SignColumn {
-                get {
-                    return this.columnSign;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DefinitionRow this[int index] {
-                get {
-                    return ((DefinitionRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DefinitionRowChangeEventHandler DefinitionRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DefinitionRowChangeEventHandler DefinitionRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DefinitionRowChangeEventHandler DefinitionRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DefinitionRowChangeEventHandler DefinitionRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddDefinitionRow(DefinitionRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DefinitionRow AddDefinitionRow(int Rank, string Taxon, string Sign) {
-                DefinitionRow rowDefinitionRow = ((DefinitionRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Rank,
-                        Taxon,
-                        Sign};
-                rowDefinitionRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDefinitionRow);
-                return rowDefinitionRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DefinitionRow FindByID(int ID) {
-                return ((DefinitionRow)(this.Rows.Find(new object[] {
-                            ID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DefinitionDataTable cln = ((DefinitionDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DefinitionDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnRank = base.Columns["Rank"];
-                this.columnTaxon = base.Columns["Taxon"];
-                this.columnSign = base.Columns["Sign"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnRank = new global::System.Data.DataColumn("Rank", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRank);
-                this.columnTaxon = new global::System.Data.DataColumn("Taxon", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxon);
-                this.columnSign = new global::System.Data.DataColumn("Sign", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSign);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
-                                this.columnTaxon}, false));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.Unique = true;
-                this.columnTaxon.AllowDBNull = false;
-                this.columnTaxon.Unique = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DefinitionRow NewDefinitionRow() {
-                return ((DefinitionRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DefinitionRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DefinitionRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DefinitionRowChanged != null)) {
-                    this.DefinitionRowChanged(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DefinitionRowChanging != null)) {
-                    this.DefinitionRowChanging(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DefinitionRowDeleted != null)) {
-                    this.DefinitionRowDeleted(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DefinitionRowDeleting != null)) {
-                    this.DefinitionRowDeleting(this, new DefinitionRowChangeEvent(((DefinitionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveDefinitionRow(DefinitionRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Survey ds = new Survey();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DefinitionDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class VirtueDataTable : global::System.Data.TypedTableBase<VirtueRow> {
             
             private global::System.Data.DataColumn columnID;
@@ -5548,16 +5528,22 @@ namespace Mayfly.Wild {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TypeDataTable : global::System.Data.TypedTableBase<TypeRow> {
+        public partial class SamplerVirtueDataTable : global::System.Data.TypedTableBase<SamplerVirtueRow> {
             
-            private global::System.Data.DataColumn columnID;
+            private global::System.Data.DataColumn columnSmpID;
             
-            private global::System.Data.DataColumn columnDisplay;
+            private global::System.Data.DataColumn columnVrtID;
+            
+            private global::System.Data.DataColumn columnClass;
+            
+            private global::System.Data.DataColumn columnEffort;
+            
+            private global::System.Data.DataColumn columnLabel;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeDataTable() {
-                this.TableName = "Type";
+            public SamplerVirtueDataTable() {
+                this.TableName = "SamplerVirtue";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -5565,7 +5551,7 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal TypeDataTable(global::System.Data.DataTable table) {
+            internal SamplerVirtueDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -5582,24 +5568,48 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected TypeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SamplerVirtueDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
+            public global::System.Data.DataColumn SmpIDColumn {
                 get {
-                    return this.columnID;
+                    return this.columnSmpID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DisplayColumn {
+            public global::System.Data.DataColumn VrtIDColumn {
                 get {
-                    return this.columnDisplay;
+                    return this.columnVrtID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ClassColumn {
+                get {
+                    return this.columnClass;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EffortColumn {
+                get {
+                    return this.columnEffort;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn LabelColumn {
+                get {
+                    return this.columnLabel;
                 }
             }
             
@@ -5614,53 +5624,63 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeRow this[int index] {
+            public SamplerVirtueRow this[int index] {
                 get {
-                    return ((TypeRow)(this.Rows[index]));
+                    return ((SamplerVirtueRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event TypeRowChangeEventHandler TypeRowChanging;
+            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event TypeRowChangeEventHandler TypeRowChanged;
+            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event TypeRowChangeEventHandler TypeRowDeleting;
+            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event TypeRowChangeEventHandler TypeRowDeleted;
+            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddTypeRow(TypeRow row) {
+            public void AddSamplerVirtueRow(SamplerVirtueRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeRow AddTypeRow(int ID, string Display) {
-                TypeRow rowTypeRow = ((TypeRow)(this.NewRow()));
+            public SamplerVirtueRow AddSamplerVirtueRow(SamplerRow parentSamplerRowByFK_Sampler_SampleVirtue, VirtueRow parentVirtueRowByFK_Virtue_SampleVirtue, bool Class, bool Effort, string Label) {
+                SamplerVirtueRow rowSamplerVirtueRow = ((SamplerVirtueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
-                        Display};
-                rowTypeRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTypeRow);
-                return rowTypeRow;
+                        null,
+                        null,
+                        Class,
+                        Effort,
+                        Label};
+                if ((parentSamplerRowByFK_Sampler_SampleVirtue != null)) {
+                    columnValuesArray[0] = parentSamplerRowByFK_Sampler_SampleVirtue[0];
+                }
+                if ((parentVirtueRowByFK_Virtue_SampleVirtue != null)) {
+                    columnValuesArray[1] = parentVirtueRowByFK_Virtue_SampleVirtue[0];
+                }
+                rowSamplerVirtueRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSamplerVirtueRow);
+                return rowSamplerVirtueRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeRow FindByID(int ID) {
-                return ((TypeRow)(this.Rows.Find(new object[] {
-                            ID})));
+            public SamplerVirtueRow FindBySmpIDVrtID(int SmpID, int VrtID) {
+                return ((SamplerVirtueRow)(this.Rows.Find(new object[] {
+                            SmpID,
+                            VrtID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                TypeDataTable cln = ((TypeDataTable)(base.Clone()));
+                SamplerVirtueDataTable cln = ((SamplerVirtueDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -5668,54 +5688,64 @@ namespace Mayfly.Wild {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new TypeDataTable();
+                return new SamplerVirtueDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnDisplay = base.Columns["Display"];
+                this.columnSmpID = base.Columns["SmpID"];
+                this.columnVrtID = base.Columns["VrtID"];
+                this.columnClass = base.Columns["Class"];
+                this.columnEffort = base.Columns["Effort"];
+                this.columnLabel = base.Columns["Label"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnDisplay = new global::System.Data.DataColumn("Display", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDisplay);
+                this.columnSmpID = new global::System.Data.DataColumn("SmpID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSmpID);
+                this.columnVrtID = new global::System.Data.DataColumn("VrtID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVrtID);
+                this.columnClass = new global::System.Data.DataColumn("Class", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClass);
+                this.columnEffort = new global::System.Data.DataColumn("Effort", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEffort);
+                this.columnLabel = new global::System.Data.DataColumn("Label", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLabel);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AllowDBNull = false;
-                this.columnID.Unique = true;
-                this.columnDisplay.AllowDBNull = false;
+                                this.columnSmpID,
+                                this.columnVrtID}, true));
+                this.columnSmpID.AllowDBNull = false;
+                this.columnVrtID.AllowDBNull = false;
+                this.columnLabel.Caption = "Name";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeRow NewTypeRow() {
-                return ((TypeRow)(this.NewRow()));
+            public SamplerVirtueRow NewSamplerVirtueRow() {
+                return ((SamplerVirtueRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TypeRow(builder);
+                return new SamplerVirtueRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(TypeRow);
+                return typeof(SamplerVirtueRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TypeRowChanged != null)) {
-                    this.TypeRowChanged(this, new TypeRowChangeEvent(((TypeRow)(e.Row)), e.Action));
+                if ((this.SamplerVirtueRowChanged != null)) {
+                    this.SamplerVirtueRowChanged(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5723,8 +5753,8 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TypeRowChanging != null)) {
-                    this.TypeRowChanging(this, new TypeRowChangeEvent(((TypeRow)(e.Row)), e.Action));
+                if ((this.SamplerVirtueRowChanging != null)) {
+                    this.SamplerVirtueRowChanging(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5732,8 +5762,8 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TypeRowDeleted != null)) {
-                    this.TypeRowDeleted(this, new TypeRowChangeEvent(((TypeRow)(e.Row)), e.Action));
+                if ((this.SamplerVirtueRowDeleted != null)) {
+                    this.SamplerVirtueRowDeleted(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
                 }
             }
             
@@ -5741,14 +5771,14 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TypeRowDeleting != null)) {
-                    this.TypeRowDeleting(this, new TypeRowChangeEvent(((TypeRow)(e.Row)), e.Action));
+                if ((this.SamplerVirtueRowDeleting != null)) {
+                    this.SamplerVirtueRowDeleting(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveTypeRow(TypeRow row) {
+            public void RemoveSamplerVirtueRow(SamplerVirtueRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -5775,7 +5805,280 @@ namespace Mayfly.Wild {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TypeDataTable";
+                attribute2.FixedValue = "SamplerVirtueDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SamplerTypeDataTable : global::System.Data.TypedTableBase<SamplerTypeRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerTypeDataTable() {
+                this.TableName = "SamplerType";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal SamplerTypeDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected SamplerTypeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerTypeRow this[int index] {
+                get {
+                    return ((SamplerTypeRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SamplerTypeRowChangeEventHandler SamplerTypeRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SamplerTypeRowChangeEventHandler SamplerTypeRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SamplerTypeRowChangeEventHandler SamplerTypeRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SamplerTypeRowChangeEventHandler SamplerTypeRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddSamplerTypeRow(SamplerTypeRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerTypeRow AddSamplerTypeRow(int ID, string Name) {
+                SamplerTypeRow rowSamplerTypeRow = ((SamplerTypeRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        Name};
+                rowSamplerTypeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSamplerTypeRow);
+                return rowSamplerTypeRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerTypeRow FindByID(int ID) {
+                return ((SamplerTypeRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SamplerTypeDataTable cln = ((SamplerTypeDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SamplerTypeDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnName = base.Columns["Name"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
+                this.columnName.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerTypeRow NewSamplerTypeRow() {
+                return ((SamplerTypeRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SamplerTypeRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SamplerTypeRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SamplerTypeRowChanged != null)) {
+                    this.SamplerTypeRowChanged(this, new SamplerTypeRowChangeEvent(((SamplerTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SamplerTypeRowChanging != null)) {
+                    this.SamplerTypeRowChanging(this, new SamplerTypeRowChangeEvent(((SamplerTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SamplerTypeRowDeleted != null)) {
+                    this.SamplerTypeRowDeleted(this, new SamplerTypeRowChangeEvent(((SamplerTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SamplerTypeRowDeleting != null)) {
+                    this.SamplerTypeRowDeleting(this, new SamplerTypeRowChangeEvent(((SamplerTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveSamplerTypeRow(SamplerTypeRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Survey ds = new Survey();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SamplerTypeDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5963,7 +6266,7 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerRow AddSamplerRow(int ID, TypeRow parentTypeRowByFK_Type_Sampler, string Name, string ShortName, string Reference, int EffortType, string Description) {
+            public SamplerRow AddSamplerRow(int ID, SamplerTypeRow parentSamplerTypeRowByFK_Type_Sampler, string Name, string ShortName, string Reference, int EffortType, string Description) {
                 SamplerRow rowSamplerRow = ((SamplerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -5973,8 +6276,8 @@ namespace Mayfly.Wild {
                         Reference,
                         EffortType,
                         Description};
-                if ((parentTypeRowByFK_Type_Sampler != null)) {
-                    columnValuesArray[1] = parentTypeRowByFK_Type_Sampler[0];
+                if ((parentSamplerTypeRowByFK_Type_Sampler != null)) {
+                    columnValuesArray[1] = parentSamplerTypeRowByFK_Type_Sampler[0];
                 }
                 rowSamplerRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSamplerRow);
@@ -6695,314 +6998,6 @@ namespace Mayfly.Wild {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "EquipmentVirtueDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SamplerVirtueDataTable : global::System.Data.TypedTableBase<SamplerVirtueRow> {
-            
-            private global::System.Data.DataColumn columnSmpID;
-            
-            private global::System.Data.DataColumn columnVrtID;
-            
-            private global::System.Data.DataColumn columnClass;
-            
-            private global::System.Data.DataColumn columnEffort;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueDataTable() {
-                this.TableName = "SamplerVirtue";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SamplerVirtueDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected SamplerVirtueDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SmpIDColumn {
-                get {
-                    return this.columnSmpID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn VrtIDColumn {
-                get {
-                    return this.columnVrtID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ClassColumn {
-                get {
-                    return this.columnClass;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EffortColumn {
-                get {
-                    return this.columnEffort;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow this[int index] {
-                get {
-                    return ((SamplerVirtueRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SamplerVirtueRowChangeEventHandler SamplerVirtueRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddSamplerVirtueRow(SamplerVirtueRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow AddSamplerVirtueRow(SamplerRow parentSamplerRowByFK_Sampler_SampleVirtue, VirtueRow parentVirtueRowByFK_Virtue_SampleVirtue, bool Class, bool Effort) {
-                SamplerVirtueRow rowSamplerVirtueRow = ((SamplerVirtueRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null,
-                        Class,
-                        Effort};
-                if ((parentSamplerRowByFK_Sampler_SampleVirtue != null)) {
-                    columnValuesArray[0] = parentSamplerRowByFK_Sampler_SampleVirtue[0];
-                }
-                if ((parentVirtueRowByFK_Virtue_SampleVirtue != null)) {
-                    columnValuesArray[1] = parentVirtueRowByFK_Virtue_SampleVirtue[0];
-                }
-                rowSamplerVirtueRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSamplerVirtueRow);
-                return rowSamplerVirtueRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow FindBySmpIDVrtID(int SmpID, int VrtID) {
-                return ((SamplerVirtueRow)(this.Rows.Find(new object[] {
-                            SmpID,
-                            VrtID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                SamplerVirtueDataTable cln = ((SamplerVirtueDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new SamplerVirtueDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnSmpID = base.Columns["SmpID"];
-                this.columnVrtID = base.Columns["VrtID"];
-                this.columnClass = base.Columns["Class"];
-                this.columnEffort = base.Columns["Effort"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnSmpID = new global::System.Data.DataColumn("SmpID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSmpID);
-                this.columnVrtID = new global::System.Data.DataColumn("VrtID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVrtID);
-                this.columnClass = new global::System.Data.DataColumn("Class", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnClass);
-                this.columnEffort = new global::System.Data.DataColumn("Effort", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEffort);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnSmpID,
-                                this.columnVrtID}, true));
-                this.columnSmpID.AllowDBNull = false;
-                this.columnVrtID.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow NewSamplerVirtueRow() {
-                return ((SamplerVirtueRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SamplerVirtueRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(SamplerVirtueRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.SamplerVirtueRowChanged != null)) {
-                    this.SamplerVirtueRowChanged(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.SamplerVirtueRowChanging != null)) {
-                    this.SamplerVirtueRowChanging(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.SamplerVirtueRowDeleted != null)) {
-                    this.SamplerVirtueRowDeleted(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.SamplerVirtueRowDeleting != null)) {
-                    this.SamplerVirtueRowDeleting(this, new SamplerVirtueRowChangeEvent(((SamplerVirtueRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveSamplerVirtueRow(SamplerVirtueRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Survey ds = new Survey();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SamplerVirtueDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7792,6 +7787,175 @@ namespace Mayfly.Wild {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class VariableRow : global::System.Data.DataRow {
+            
+            private VariableDataTable tableVariable;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal VariableRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableVariable = ((VariableDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableVariable.IDColumn]));
+                }
+                set {
+                    this[this.tableVariable.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Variable {
+                get {
+                    try {
+                        return ((string)(this[this.tableVariable.VariableColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Variable\' in table \'Variable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVariable.VariableColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVariableNull() {
+                return this.IsNull(this.tableVariable.VariableColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVariableNull() {
+                this[this.tableVariable.VariableColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ValueRow[] GetValueRows() {
+                if ((this.Table.ChildRelations["FK_Variable_Value"] == null)) {
+                    return new ValueRow[0];
+                }
+                else {
+                    return ((ValueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Variable_Value"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DefinitionRow : global::System.Data.DataRow {
+            
+            private DefinitionDataTable tableDefinition;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal DefinitionRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDefinition = ((DefinitionDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableDefinition.IDColumn]));
+                }
+                set {
+                    this[this.tableDefinition.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Rank {
+                get {
+                    try {
+                        return ((int)(this[this.tableDefinition.RankColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Rank\' in table \'Definition\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDefinition.RankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Taxon {
+                get {
+                    return ((string)(this[this.tableDefinition.TaxonColumn]));
+                }
+                set {
+                    this[this.tableDefinition.TaxonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Sign {
+                get {
+                    try {
+                        return ((string)(this[this.tableDefinition.SignColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Sign\' in table \'Definition\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDefinition.SignColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsRankNull() {
+                return this.IsNull(this.tableDefinition.RankColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetRankNull() {
+                this[this.tableDefinition.RankColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSignNull() {
+                return this.IsNull(this.tableDefinition.SignColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSignNull() {
+                this[this.tableDefinition.SignColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public LogRow[] GetLogRows() {
+                if ((this.Table.ChildRelations["FK_Definition_Log"] == null)) {
+                    return new LogRow[0];
+                }
+                else {
+                    return ((LogRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Definition_Log"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class LogRow : global::System.Data.DataRow {
             
             private LogDataTable tableLog;
@@ -7923,23 +8087,23 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public CardRow CardRow {
-                get {
-                    return ((CardRow)(this.GetParentRow(this.Table.ParentRelations["FK_Card_Log"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Card_Log"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DefinitionRow DefinitionRow {
                 get {
                     return ((DefinitionRow)(this.GetParentRow(this.Table.ParentRelations["FK_Definition_Log"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Definition_Log"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public CardRow CardRow {
+                get {
+                    return ((CardRow)(this.GetParentRow(this.Table.ParentRelations["FK_Card_Log"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Card_Log"]);
                 }
             }
             
@@ -8017,6 +8181,17 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedRow[] GetStratifiedRows() {
+                if ((this.Table.ChildRelations["FK_Log_Stratified"] == null)) {
+                    return new StratifiedRow[0];
+                }
+                else {
+                    return ((StratifiedRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Log_Stratified"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public IndividualRow[] GetIndividualRows() {
                 if ((this.Table.ChildRelations["FK_Log_Individual"] == null)) {
                     return new IndividualRow[0];
@@ -8025,16 +8200,81 @@ namespace Mayfly.Wild {
                     return ((IndividualRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Log_Individual"])));
                 }
             }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class StratifiedRow : global::System.Data.DataRow {
+            
+            private StratifiedDataTable tableStratified;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedRow[] GetStratifiedRows() {
-                if ((this.Table.ChildRelations["FK_Log_Stratified"] == null)) {
-                    return new StratifiedRow[0];
+            internal StratifiedRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableStratified = ((StratifiedDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int LogID {
+                get {
+                    return ((int)(this[this.tableStratified.LogIDColumn]));
                 }
-                else {
-                    return ((StratifiedRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Log_Stratified"])));
+                set {
+                    this[this.tableStratified.LogIDColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Class {
+                get {
+                    return ((double)(this[this.tableStratified.ClassColumn]));
+                }
+                set {
+                    this[this.tableStratified.ClassColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Count {
+                get {
+                    try {
+                        return ((int)(this[this.tableStratified.CountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Count\' in table \'Stratified\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStratified.CountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public LogRow LogRow {
+                get {
+                    return ((LogRow)(this.GetParentRow(this.Table.ParentRelations["FK_Log_Stratified"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Log_Stratified"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCountNull() {
+                return this.IsNull(this.tableStratified.CountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCountNull() {
+                this[this.tableStratified.CountColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -8699,110 +8939,6 @@ namespace Mayfly.Wild {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class OrganRow : global::System.Data.DataRow {
-            
-            private OrganDataTable tableOrgan;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal OrganRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableOrgan = ((OrganDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    try {
-                        return ((int)(this[this.tableOrgan.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'Organ\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOrgan.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int IndID {
-                get {
-                    return ((int)(this[this.tableOrgan.IndIDColumn]));
-                }
-                set {
-                    this[this.tableOrgan.IndIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Organ {
-                get {
-                    return ((int)(this[this.tableOrgan.OrganColumn]));
-                }
-                set {
-                    this[this.tableOrgan.OrganColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Infection {
-                get {
-                    try {
-                        return ((string)(this[this.tableOrgan.InfectionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Infection\' in table \'Organ\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOrgan.InfectionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public IndividualRow IndividualRow {
-                get {
-                    return ((IndividualRow)(this.GetParentRow(this.Table.ParentRelations["FK_Individual_Organ"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Individual_Organ"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableOrgan.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableOrgan.IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInfectionNull() {
-                return this.IsNull(this.tableOrgan.InfectionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInfectionNull() {
-                this[this.tableOrgan.InfectionColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class IntestineRow : global::System.Data.DataRow {
             
             private IntestineDataTable tableIntestine;
@@ -8946,141 +9082,104 @@ namespace Mayfly.Wild {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class StratifiedRow : global::System.Data.DataRow {
+        public partial class OrganRow : global::System.Data.DataRow {
             
-            private StratifiedDataTable tableStratified;
+            private OrganDataTable tableOrgan;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal StratifiedRow(global::System.Data.DataRowBuilder rb) : 
+            internal OrganRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableStratified = ((StratifiedDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int LogID {
-                get {
-                    return ((int)(this[this.tableStratified.LogIDColumn]));
-                }
-                set {
-                    this[this.tableStratified.LogIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Class {
-                get {
-                    return ((double)(this[this.tableStratified.ClassColumn]));
-                }
-                set {
-                    this[this.tableStratified.ClassColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Count {
-                get {
-                    try {
-                        return ((int)(this[this.tableStratified.CountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Count\' in table \'Stratified\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStratified.CountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LogRow LogRow {
-                get {
-                    return ((LogRow)(this.GetParentRow(this.Table.ParentRelations["FK_Log_Stratified"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Log_Stratified"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCountNull() {
-                return this.IsNull(this.tableStratified.CountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCountNull() {
-                this[this.tableStratified.CountColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class VariableRow : global::System.Data.DataRow {
-            
-            private VariableDataTable tableVariable;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal VariableRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableVariable = ((VariableDataTable)(this.Table));
+                this.tableOrgan = ((OrganDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int ID {
                 get {
-                    return ((int)(this[this.tableVariable.IDColumn]));
-                }
-                set {
-                    this[this.tableVariable.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Variable {
-                get {
                     try {
-                        return ((string)(this[this.tableVariable.VariableColumn]));
+                        return ((int)(this[this.tableOrgan.IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Variable\' in table \'Variable\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'Organ\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVariable.VariableColumn] = value;
+                    this[this.tableOrgan.IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsVariableNull() {
-                return this.IsNull(this.tableVariable.VariableColumn);
+            public int IndID {
+                get {
+                    return ((int)(this[this.tableOrgan.IndIDColumn]));
+                }
+                set {
+                    this[this.tableOrgan.IndIDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetVariableNull() {
-                this[this.tableVariable.VariableColumn] = global::System.Convert.DBNull;
+            public int Organ {
+                get {
+                    return ((int)(this[this.tableOrgan.OrganColumn]));
+                }
+                set {
+                    this[this.tableOrgan.OrganColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ValueRow[] GetValueRows() {
-                if ((this.Table.ChildRelations["FK_Variable_Value"] == null)) {
-                    return new ValueRow[0];
+            public string Infection {
+                get {
+                    try {
+                        return ((string)(this[this.tableOrgan.InfectionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Infection\' in table \'Organ\' is DBNull.", e);
+                    }
                 }
-                else {
-                    return ((ValueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Variable_Value"])));
+                set {
+                    this[this.tableOrgan.InfectionColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndividualRow IndividualRow {
+                get {
+                    return ((IndividualRow)(this.GetParentRow(this.Table.ParentRelations["FK_Individual_Organ"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Individual_Organ"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableOrgan.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIDNull() {
+                this[this.tableOrgan.IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsInfectionNull() {
+                return this.IsNull(this.tableOrgan.InfectionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetInfectionNull() {
+                this[this.tableOrgan.InfectionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9138,23 +9237,23 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VariableRow VariableRow {
-                get {
-                    return ((VariableRow)(this.GetParentRow(this.Table.ParentRelations["FK_Variable_Value"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Variable_Value"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public IndividualRow IndividualRow {
                 get {
                     return ((IndividualRow)(this.GetParentRow(this.Table.ParentRelations["Individual_Value"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Individual_Value"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VariableRow VariableRow {
+                get {
+                    return ((VariableRow)(this.GetParentRow(this.Table.ParentRelations["FK_Variable_Value"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Variable_Value"]);
                 }
             }
             
@@ -9168,110 +9267,6 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetValueNull() {
                 this[this.tableValue.ValueColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DefinitionRow : global::System.Data.DataRow {
-            
-            private DefinitionDataTable tableDefinition;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DefinitionRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDefinition = ((DefinitionDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableDefinition.IDColumn]));
-                }
-                set {
-                    this[this.tableDefinition.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Rank {
-                get {
-                    try {
-                        return ((int)(this[this.tableDefinition.RankColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Rank\' in table \'Definition\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDefinition.RankColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Taxon {
-                get {
-                    return ((string)(this[this.tableDefinition.TaxonColumn]));
-                }
-                set {
-                    this[this.tableDefinition.TaxonColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Sign {
-                get {
-                    try {
-                        return ((string)(this[this.tableDefinition.SignColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Sign\' in table \'Definition\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDefinition.SignColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsRankNull() {
-                return this.IsNull(this.tableDefinition.RankColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetRankNull() {
-                this[this.tableDefinition.RankColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSignNull() {
-                return this.IsNull(this.tableDefinition.SignColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSignNull() {
-                this[this.tableDefinition.SignColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LogRow[] GetLogRows() {
-                if ((this.Table.ChildRelations["FK_Definition_Log"] == null)) {
-                    return new LogRow[0];
-                }
-                else {
-                    return ((LogRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Definition_Log"])));
-                }
             }
         }
         
@@ -9365,36 +9360,179 @@ namespace Mayfly.Wild {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class TypeRow : global::System.Data.DataRow {
+        public partial class SamplerVirtueRow : global::System.Data.DataRow {
             
-            private TypeDataTable tableType;
+            private SamplerVirtueDataTable tableSamplerVirtue;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal TypeRow(global::System.Data.DataRowBuilder rb) : 
+            internal SamplerVirtueRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableType = ((TypeDataTable)(this.Table));
+                this.tableSamplerVirtue = ((SamplerVirtueDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int SmpID {
+                get {
+                    return ((int)(this[this.tableSamplerVirtue.SmpIDColumn]));
+                }
+                set {
+                    this[this.tableSamplerVirtue.SmpIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int VrtID {
+                get {
+                    return ((int)(this[this.tableSamplerVirtue.VrtIDColumn]));
+                }
+                set {
+                    this[this.tableSamplerVirtue.VrtIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Class {
+                get {
+                    try {
+                        return ((bool)(this[this.tableSamplerVirtue.ClassColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Class\' in table \'SamplerVirtue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSamplerVirtue.ClassColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Effort {
+                get {
+                    try {
+                        return ((bool)(this[this.tableSamplerVirtue.EffortColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Effort\' in table \'SamplerVirtue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSamplerVirtue.EffortColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Label {
+                get {
+                    try {
+                        return ((string)(this[this.tableSamplerVirtue.LabelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Label\' in table \'SamplerVirtue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSamplerVirtue.LabelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VirtueRow VirtueRow {
+                get {
+                    return ((VirtueRow)(this.GetParentRow(this.Table.ParentRelations["FK_Virtue_SampleVirtue"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Virtue_SampleVirtue"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerRow SamplerRow {
+                get {
+                    return ((SamplerRow)(this.GetParentRow(this.Table.ParentRelations["FK_Sampler_SampleVirtue"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Sampler_SampleVirtue"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsClassNull() {
+                return this.IsNull(this.tableSamplerVirtue.ClassColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetClassNull() {
+                this[this.tableSamplerVirtue.ClassColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEffortNull() {
+                return this.IsNull(this.tableSamplerVirtue.EffortColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEffortNull() {
+                this[this.tableSamplerVirtue.EffortColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLabelNull() {
+                return this.IsNull(this.tableSamplerVirtue.LabelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLabelNull() {
+                this[this.tableSamplerVirtue.LabelColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SamplerTypeRow : global::System.Data.DataRow {
+            
+            private SamplerTypeDataTable tableSamplerType;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal SamplerTypeRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSamplerType = ((SamplerTypeDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int ID {
                 get {
-                    return ((int)(this[this.tableType.IDColumn]));
+                    return ((int)(this[this.tableSamplerType.IDColumn]));
                 }
                 set {
-                    this[this.tableType.IDColumn] = value;
+                    this[this.tableSamplerType.IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Display {
+            public string Name {
                 get {
-                    return ((string)(this[this.tableType.DisplayColumn]));
+                    return ((string)(this[this.tableSamplerType.NameColumn]));
                 }
                 set {
-                    this[this.tableType.DisplayColumn] = value;
+                    this[this.tableSamplerType.NameColumn] = value;
                 }
             }
             
@@ -9533,9 +9671,9 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeRow TypeRow {
+            public SamplerTypeRow SamplerTypeRow {
                 get {
-                    return ((TypeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Type_Sampler"])));
+                    return ((SamplerTypeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Type_Sampler"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Type_Sampler"]);
@@ -9812,121 +9950,6 @@ namespace Mayfly.Wild {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class SamplerVirtueRow : global::System.Data.DataRow {
-            
-            private SamplerVirtueDataTable tableSamplerVirtue;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SamplerVirtueRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableSamplerVirtue = ((SamplerVirtueDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int SmpID {
-                get {
-                    return ((int)(this[this.tableSamplerVirtue.SmpIDColumn]));
-                }
-                set {
-                    this[this.tableSamplerVirtue.SmpIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int VrtID {
-                get {
-                    return ((int)(this[this.tableSamplerVirtue.VrtIDColumn]));
-                }
-                set {
-                    this[this.tableSamplerVirtue.VrtIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Class {
-                get {
-                    try {
-                        return ((bool)(this[this.tableSamplerVirtue.ClassColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Class\' in table \'SamplerVirtue\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSamplerVirtue.ClassColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Effort {
-                get {
-                    try {
-                        return ((bool)(this[this.tableSamplerVirtue.EffortColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Effort\' in table \'SamplerVirtue\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSamplerVirtue.EffortColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VirtueRow VirtueRow {
-                get {
-                    return ((VirtueRow)(this.GetParentRow(this.Table.ParentRelations["FK_Virtue_SampleVirtue"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Virtue_SampleVirtue"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerRow SamplerRow {
-                get {
-                    return ((SamplerRow)(this.GetParentRow(this.Table.ParentRelations["FK_Sampler_SampleVirtue"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Sampler_SampleVirtue"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsClassNull() {
-                return this.IsNull(this.tableSamplerVirtue.ClassColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetClassNull() {
-                this[this.tableSamplerVirtue.ClassColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEffortNull() {
-                return this.IsNull(this.tableSamplerVirtue.EffortColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEffortNull() {
-                this[this.tableSamplerVirtue.EffortColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -10066,176 +10089,6 @@ namespace Mayfly.Wild {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class LogRowChangeEvent : global::System.EventArgs {
-            
-            private LogRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LogRowChangeEvent(LogRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LogRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class IndividualRowChangeEvent : global::System.EventArgs {
-            
-            private IndividualRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public IndividualRowChangeEvent(IndividualRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public IndividualRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class OrganRowChangeEvent : global::System.EventArgs {
-            
-            private OrganRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OrganRowChangeEvent(OrganRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public OrganRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class IntestineRowChangeEvent : global::System.EventArgs {
-            
-            private IntestineRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public IntestineRowChangeEvent(IntestineRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public IntestineRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class StratifiedRowChangeEvent : global::System.EventArgs {
-            
-            private StratifiedRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedRowChangeEvent(StratifiedRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StratifiedRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public class VariableRowChangeEvent : global::System.EventArgs {
             
             private VariableRow eventRow;
@@ -10252,40 +10105,6 @@ namespace Mayfly.Wild {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public VariableRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class ValueRowChangeEvent : global::System.EventArgs {
-            
-            private ValueRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ValueRowChangeEvent(ValueRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ValueRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10338,6 +10157,210 @@ namespace Mayfly.Wild {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class LogRowChangeEvent : global::System.EventArgs {
+            
+            private LogRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public LogRowChangeEvent(LogRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public LogRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class StratifiedRowChangeEvent : global::System.EventArgs {
+            
+            private StratifiedRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedRowChangeEvent(StratifiedRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StratifiedRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class IndividualRowChangeEvent : global::System.EventArgs {
+            
+            private IndividualRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndividualRowChangeEvent(IndividualRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IndividualRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class IntestineRowChangeEvent : global::System.EventArgs {
+            
+            private IntestineRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IntestineRowChangeEvent(IntestineRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public IntestineRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class OrganRowChangeEvent : global::System.EventArgs {
+            
+            private OrganRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public OrganRowChangeEvent(OrganRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public OrganRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class ValueRowChangeEvent : global::System.EventArgs {
+            
+            private ValueRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ValueRowChangeEvent(ValueRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ValueRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public class VirtueRowChangeEvent : global::System.EventArgs {
             
             private VirtueRow eventRow;
@@ -10372,22 +10395,56 @@ namespace Mayfly.Wild {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class TypeRowChangeEvent : global::System.EventArgs {
+        public class SamplerVirtueRowChangeEvent : global::System.EventArgs {
             
-            private TypeRow eventRow;
+            private SamplerVirtueRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeRowChangeEvent(TypeRow row, global::System.Data.DataRowAction action) {
+            public SamplerVirtueRowChangeEvent(SamplerVirtueRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TypeRow Row {
+            public SamplerVirtueRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class SamplerTypeRowChangeEvent : global::System.EventArgs {
+            
+            private SamplerTypeRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerTypeRowChangeEvent(SamplerTypeRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerTypeRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10490,40 +10547,6 @@ namespace Mayfly.Wild {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EquipmentVirtueRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class SamplerVirtueRowChangeEvent : global::System.EventArgs {
-            
-            private SamplerVirtueRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRowChangeEvent(SamplerVirtueRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow Row {
                 get {
                     return this.eventRow;
                 }

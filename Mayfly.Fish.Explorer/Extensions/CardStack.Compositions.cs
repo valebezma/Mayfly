@@ -27,7 +27,7 @@ namespace Mayfly.Fish.Explorer
         //    return result;
         //}
 
-        public static SpeciesComposition GetCenosisComposition(this CardStack stack, ExpressionVariant variant)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, EffortExpression variant)
         {
             SpeciesComposition result = stack.GetBasicCenosisComposition();
 
@@ -237,7 +237,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         public static List<Composition> GetAnnualAgeCompositions(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow,
-            FishSamplerType samplerType, GearWeightType weightType, ExpressionVariant variant)
+            FishSamplerType samplerType, GearWeightType weightType, EffortExpression variant)
         {
             List<CardStack> annualStacks = new List<CardStack>();
 
@@ -251,7 +251,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         public static List<Composition> GetAnnualAgeCompositions(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow,
-            FishSamplerType samplerType, CardStack[] annualStacks, GearWeightType weightType, ExpressionVariant variant)
+            FishSamplerType samplerType, CardStack[] annualStacks, GearWeightType weightType, EffortExpression variant)
         {
             List<Composition> result = new List<Composition>();
 
@@ -281,7 +281,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static List<Cohort> GetCohorts(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, FishSamplerType samplerType, GearWeightType weightType, ExpressionVariant variant)
+        public static List<Cohort> GetCohorts(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, FishSamplerType samplerType, GearWeightType weightType, EffortExpression variant)
         {
             Composition[] annualCompositions = stack.GetAnnualAgeCompositions(speciesRow, samplerType, weightType, variant).ToArray();
             return annualCompositions.GetCohorts();
@@ -398,7 +398,7 @@ namespace Mayfly.Fish.Explorer
 
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
-            GearWeightType weight, ExpressionVariant variant, Composition example, TaxonomicIndex.TaxonRow speciesRow)
+            GearWeightType weight, EffortExpression variant, Composition example, TaxonomicIndex.TaxonRow speciesRow)
         {
             CompositionEqualizer result = new CompositionEqualizer(example);
 
@@ -425,7 +425,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
-            GearWeightType weight, ExpressionVariant variant, Composition example, TaxonomicIndex.TaxonRow speciesRow, double totalMass)
+            GearWeightType weight, EffortExpression variant, Composition example, TaxonomicIndex.TaxonRow speciesRow, double totalMass)
         {
             CompositionEqualizer result = classedStacks.GetWeightedComposition(weight, variant, example,
                 speciesRow);
@@ -436,7 +436,7 @@ namespace Mayfly.Fish.Explorer
 
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
-            GearWeightType weight, ExpressionVariant variant, SpeciesComposition example)
+            GearWeightType weight, EffortExpression variant, SpeciesComposition example)
         {
             CompositionEqualizer result = new CompositionEqualizer(example);
 
@@ -457,7 +457,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         public static Category[] GetWeightedCatches(this CardStack[] classedStacks,
-            GearWeightType weight, FishSamplerType st, ExpressionVariant ev, TaxonomicIndex.TaxonRow speciesRow)
+            GearWeightType weight, FishSamplerType st, EffortExpression ev, TaxonomicIndex.TaxonRow speciesRow)
         {
             List<Category> result = new List<Category>();
 

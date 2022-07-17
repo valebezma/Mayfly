@@ -1770,13 +1770,13 @@ namespace Mayfly.Fish.Explorer
             if (selectedStatSpc == null)
             {
                 FullStack.AddCommon(report);
-                FullStack.AddSpeciesStatsReport(report, lvl, ExpressionVariant.Efforts);
+                FullStack.AddSpeciesStatsReport(report, lvl, EffortExpression.Standards);
                 report.EndBranded();
             }
             else
             {
                 FullStack.AddCommon(report, selectedStatSpc);
-                FullStack.AddSpeciesStatsReport(report, selectedStatSpc, lvl, ExpressionVariant.Efforts);
+                FullStack.AddSpeciesStatsReport(report, selectedStatSpc, lvl, EffortExpression.Standards);
             }
 
             report.EndBranded();

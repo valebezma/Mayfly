@@ -104,8 +104,8 @@
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
-            this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
             this.contextEquipment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
             this.MenuStrip.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
@@ -403,9 +403,9 @@
             // waypointControl1
             // 
             this.waypointControl1.AllowDrop = true;
-            this.waypointControl1.BackColor = System.Drawing.SystemColors.Window;
-            this.waypointControl1.CoordinateFormat = "d";
             resources.ApplyResources(this.waypointControl1, "waypointControl1");
+            this.waypointControl1.BackColor = System.Drawing.Color.Transparent;
+            this.waypointControl1.CoordinateFormat = "d";
             this.waypointControl1.Name = "waypointControl1";
             this.waypointControl1.ReadOnly = false;
             this.waypointControl1.Changed += new System.EventHandler(this.value_Changed);
@@ -459,16 +459,16 @@
             // 
             resources.ApplyResources(this.buttonEquipment, "buttonEquipment");
             this.buttonEquipment.Name = "buttonEquipment";
+            this.buttonEquipment.Click += new System.EventHandler(this.buttonEquipment_Click);
             // 
             // comboBoxSampler
             // 
             resources.ApplyResources(this.comboBoxSampler, "comboBoxSampler");
             this.comboBoxSampler.DataSource = null;
-            this.comboBoxSampler.DisplayMember = "Sampler";
             this.comboBoxSampler.DropDownHeight = 350;
             this.comboBoxSampler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSampler.FormattingEnabled = true;
-            this.comboBoxSampler.GroupMember = "OperationDisplay";
+            this.comboBoxSampler.GroupMember = "TypeName";
             this.comboBoxSampler.Name = "comboBoxSampler";
             this.comboBoxSampler.SelectedIndexChanged += new System.EventHandler(this.comboBoxSampler_SelectedIndexChanged);
             // 
@@ -510,14 +510,14 @@
             aquaState1.TemperatureSurface = double.NaN;
             aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
             this.aquaControl1.AquaState = aquaState1;
-            this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
+            this.aquaControl1.BackColor = System.Drawing.Color.Transparent;
             this.aquaControl1.Name = "aquaControl1";
             this.aquaControl1.Changed += new System.EventHandler(this.value_Changed);
             // 
             // weatherControl1
             // 
             resources.ApplyResources(this.weatherControl1, "weatherControl1");
-            this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
+            this.weatherControl1.BackColor = System.Drawing.Color.Transparent;
             this.weatherControl1.Name = "weatherControl1";
             weatherState1.AdditionalEvent = 0;
             weatherState1.Cloudage = double.NaN;
@@ -636,6 +636,11 @@
             this.statusCard.MaximalInterval = 2000;
             this.statusCard.StatusLog = this.StatusLog;
             // 
+            // contextEquipment
+            // 
+            this.contextEquipment.Name = "contextGear";
+            resources.ApplyResources(this.contextEquipment, "contextEquipment");
+            // 
             // Logger
             // 
             this.Logger.AllowKey = false;
@@ -646,11 +651,6 @@
             this.Logger.LabelQty = this.StatusCount;
             this.Logger.Status = this.statusCard;
             this.Logger.Changed += new System.EventHandler(this.value_Changed);
-            // 
-            // contextEquipment
-            // 
-            this.contextEquipment.Name = "contextGear";
-            resources.ApplyResources(this.contextEquipment, "contextEquipment");
             // 
             // Card
             // 

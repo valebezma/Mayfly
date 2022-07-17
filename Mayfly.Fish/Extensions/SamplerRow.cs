@@ -8,10 +8,31 @@ namespace Mayfly.Fish
 {
     public static class SamplerRowExtensions
     {
+        public static Survey.SamplerRow[] GetPassives(this Survey samplers) {
+            List<Survey.SamplerRow> result = new List<Survey.SamplerRow>();
+
+            foreach (Survey.SamplerRow samplerRow in samplers.Sampler.Rows) {
+                if (samplerRow.IsPassive()) {
+                    result.Add(samplerRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+
         public static FishSamplerType GetSamplerType(this Survey.SamplerRow samplerRow) {
             if (samplerRow == null) return FishSamplerType.None;
             if (samplerRow.IsTypeNull()) return FishSamplerType.None;
             return (FishSamplerType)samplerRow.Type;
+        }
+
+        public static bool IsPassive(this Survey.SamplerRow samplerRow) {
+            return samplerRow.GetSamplerType().IsPassive();
+        }
+
+        public static bool IsMesh(this Survey.SamplerRow samplerRow) {
+            return samplerRow.GetSamplerType().IsMesh();
         }
 
 
@@ -32,14 +53,6 @@ namespace Mayfly.Fish
             }
         }
 
-        public static bool IsPassive(this Survey.SamplerRow samplerRow) {
-            return samplerRow.GetSamplerType().IsPassive();
-        }
-
-        public static bool IsMesh(this Survey.SamplerRow samplerRow) {
-            return samplerRow.GetSamplerType().IsMesh();
-        }
-
         public static bool IsMesh(this FishSamplerType type) {
             switch (type) {
                 case FishSamplerType.Dredge:
@@ -55,18 +68,6 @@ namespace Mayfly.Fish
                 default:
                     return false;
             }
-        }
-
-        public static Survey.SamplerRow[] GetPassives(this Survey samplers) {
-            List<Survey.SamplerRow> result = new List<Survey.SamplerRow>();
-
-            foreach (Survey.SamplerRow samplerRow in samplers.Sampler.Rows) {
-                if (samplerRow.IsPassive()) {
-                    result.Add(samplerRow);
-                }
-            }
-
-            return result.ToArray();
         }
 
         public static double GetEffortsUnitCost(this FishSamplerType type) {
@@ -96,7 +97,7 @@ namespace Mayfly.Fish
         public static UnitEffort[] GetUnitEfforts(this FishSamplerType type) {
             List<UnitEffort> result = new List<UnitEffort>();
 
-            foreach (ExpressionVariant variant in Enum.GetValues(typeof(ExpressionVariant))) {
+            foreach (EffortExpression variant in Enum.GetValues(typeof(EffortExpression))) {
                 UnitEffort ue = new UnitEffort(type, variant);
                 if (ue.UnitDescription != null) result.Add(ue);
             }
@@ -108,25 +109,25 @@ namespace Mayfly.Fish
             return new UnitEffort(type, type.GetDefaultExpression());
         }
 
-        public static ExpressionVariant GetDefaultExpression(this FishSamplerType type) {
+        public static EffortExpression GetDefaultExpression(this FishSamplerType type) {
             switch (type) {
                 case FishSamplerType.SurroundingNet:
                 case FishSamplerType.Trawl:
-                    return ExpressionVariant.Volume;
+                    return EffortExpression.Volume;
 
                 case FishSamplerType.Gillnet:
                 case FishSamplerType.Hook:
                 case FishSamplerType.Trap:
-                    return ExpressionVariant.Efforts;
+                    return EffortExpression.Standards;
 
                 default:
-                    return ExpressionVariant.Area;
+                    return EffortExpression.Area;
             }
         }
 
         public static string ToDisplay(this FishSamplerType type) {
             if (type == FishSamplerType.None) return string.Empty;
-            return ReaderSettings.SamplersIndex.Type.FindByID((int)type).Display.GetLocalizedValue();
+            return ReaderSettings.SamplersIndex.SamplerType.FindByID((int)type).Name.GetLocalizedValue();
         }
     }
 

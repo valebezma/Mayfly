@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Meta.Numerics;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Meta.Numerics;
 
 namespace Mayfly.Wild.Controls
 {
@@ -10,8 +10,7 @@ namespace Mayfly.Wild.Controls
         /// <summary>
         /// Length interval in millimetres
         /// </summary>
-        public Interval LengthInterval
-        {
+        public Interval LengthInterval {
             get;
             set;
         }
@@ -19,32 +18,26 @@ namespace Mayfly.Wild.Controls
         public double LeftEndpoint { get { return LengthInterval.LeftEndpoint; } }
 
         public double RightEndpoint { get { return LengthInterval.RightEndpoint; } }
-        
+
         /// <summary>
         /// Count of fishes
         /// </summary>
-        public int Count 
-        {
-            get
-            {
+        public int Count {
+            get {
                 return (int)Numeric.Value;
             }
 
-            set
-            {
+            set {
                 Numeric.Value = value;
             }
         }
 
-        public new bool Enabled 
-        {
-            get 
-            {
+        public new bool Enabled {
+            get {
                 return Numeric.Enabled;
             }
 
-            set
-            {
+            set {
                 Numeric.Enabled = value;
             }
         }
@@ -52,10 +45,8 @@ namespace Mayfly.Wild.Controls
         /// <summary>
         /// Size of small ticks on scale
         /// </summary>
-        public static int SmallTickSize 
-        {
-            get 
-            {
+        public static int SmallTickSize {
+            get {
                 return 6;
             }
         }
@@ -63,29 +54,23 @@ namespace Mayfly.Wild.Controls
         /// <summary>
         /// Size og big ticks on scale
         /// </summary>
-        public static int ClassTickSize 
-        {
-            get 
-            {
-                return 15; 
+        public static int ClassTickSize {
+            get {
+                return 15;
             }
         }
 
         /// <summary>
         /// Count of ticks on scale
         /// </summary>
-        public static int Ticks 
-        {
-            get 
-            {
-                return 10; 
+        public static int Ticks {
+            get {
+                return 10;
             }
         }
 
-        public override Font Font 
-        {
-            set
-            {
+        public override Font Font {
+            set {
                 label1.Font = value;
             }
         }
@@ -93,18 +78,14 @@ namespace Mayfly.Wild.Controls
         /// <summary>
         /// Default size of new SizeGroup item
         /// </summary>
-        internal static Size ClassSize 
-        {
-            get
-            {
+        internal static Size ClassSize {
+            get {
                 return new Size(80, 35);
-            } 
+            }
         }
 
-        internal static Rectangle NumericField
-        {
-            get
-            {
+        internal static Rectangle NumericField {
+            get {
                 return new Rectangle(32, 0, 47, 20);
             }
         }
@@ -113,27 +94,23 @@ namespace Mayfly.Wild.Controls
 
 
 
-        private SizeGroup()
-        {
+        private SizeGroup() {
             InitializeComponent();
             Size = ClassSize;
         }
 
-        public SizeGroup(double length, double interval) 
-            : this()
-        {
+        public SizeGroup(double length, double interval)
+            : this() {
             LengthInterval = Interval.FromEndpointAndWidth(length, interval);
         }
 
 
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return "Length: " + LengthInterval.ToString() + "; Bounds: " + Bounds.ToString();
         }
 
-        public SizeGroup Copy(int length)
-        {
+        public SizeGroup Copy(int length) {
             SizeGroup result = new SizeGroup(length, LengthInterval.Width);
             result.ValueChanged += ValueChanged;
             result.Count = 0;
@@ -142,38 +119,33 @@ namespace Mayfly.Wild.Controls
 
 
 
-        private void SizeGroup_Load(object sender, EventArgs e)
-        {
+        private void sizeGroup_Load(object sender, EventArgs e) {
             label1.Text = LeftEndpoint.ToString();
         }
 
-        private void SizeGroup_Paint(object sender, PaintEventArgs e)
-        {
+        private void sizeGroup_Paint(object sender, PaintEventArgs e) {
             Graphics graphics = e.Graphics;
 
             int tickWidth = Width / Ticks;
 
-            graphics.DrawLine(Pens.Black, 
+            graphics.DrawLine(Pens.Black,
                 0 + 2 * tickWidth, Height - ClassTickSize,
                 0 + 2 * tickWidth, Height);
 
-            graphics.DrawLine(Pens.Black, 
+            graphics.DrawLine(Pens.Black,
                 tickWidth * (Ticks / 2 + 2), Height - ClassTickSize + 4,
                 tickWidth * (Ticks / 2 + 2), Height);
 
-            for (int i = 0; i < Ticks; i++)
-            {
-                graphics.DrawLine(Pens.Black, 
-                    i * tickWidth, Height - SmallTickSize, 
+            for (int i = 0; i < Ticks; i++) {
+                graphics.DrawLine(Pens.Black,
+                    i * tickWidth, Height - SmallTickSize,
                     i * tickWidth, Height);
             }
         }
 
-        private void Numeric_ValueChanged(object sender, EventArgs e)
-        {
-            if (ValueChanged != null)
-            {
-                ValueChanged.Invoke(sender, e); 
+        private void numeric_ValueChanged(object sender, EventArgs e) {
+            if (ValueChanged != null) {
+                ValueChanged.Invoke(sender, e);
             }
         }
     }

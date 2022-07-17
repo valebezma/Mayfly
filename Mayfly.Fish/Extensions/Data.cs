@@ -1,5 +1,4 @@
 ﻿using Mayfly.Extensions;
-using Mayfly.Species;
 using Mayfly.Waters;
 using Mayfly.Wild;
 using System;
@@ -10,115 +9,31 @@ namespace Mayfly.Fish
 {
     public static partial class DataExtensions
     {
-        public static TaxonomicIndex GetSpeciesKey(this Survey data) {
-            return Survey.GetSpeciesKey((Survey.DefinitionRow[])data.Definition.Select());
-        }
-
-        //public static SpeciesKey GetSpeciesKey(this Data data)
-        //{
-        //    SpeciesKey speciesKey = new SpeciesKey();
-
-        //    foreach (Data.DefinitionRow dataSpcRow in data.Species)
-        //    {
-        //        SpeciesKey.TaxonRow speciesRow = speciesKey.Taxon.NewSpeciesRow(dataSpcRow.Species);
-        //        SpeciesKey.TaxonRow equivalentRow = dataSpcRow.KeyRecord;
-
-        //        if (equivalentRow != null)
-        //        {
-        //            if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
-        //            if (!equivalentRow.IsLocalNull()) speciesRow.Local = equivalentRow.Local;
-        //        }
-
-        //        var logRows = dataSpcRow.GetLogRows();
-
-        //        if (logRows.Length > 0)
-        //        {
-        //            speciesRow.Description = "Species collected: ";
-
-        //            foreach (Data.LogRow logRow in logRows)
-        //            {
-        //                if (!logRow.CardRow.IsWaterIDNull())
-        //                {
-        //                    speciesRow.Description += string.Format("at {0} ", logRow.CardRow.WaterRow.Presentation);
-        //                }
-
-        //                if (!logRow.CardRow.IsWhenNull())
-        //                {
-        //                    speciesRow.Description += logRow.CardRow.When.ToString("d");
-        //                }
-
-        //                //Sample lengths = data.Individual.LengthColumn.GetSample(logRow.GetIndividualRows());
-        //                //Sample masses = data.Individual.MassColumn.GetSample(logRow.GetIndividualRows());
-        //                //List<object> sexes = data.Individual.SexColumn.GetValues(logRow.GetIndividualRows(), true);
-
-        //                //if (lengths.Count + masses.Count + sexes.Count > 0)
-        //                //{
-        //                //    speciesRow.Description += ": ";
-
-        //                //    if (lengths.Count > 0)
-        //                //    {
-        //                //        speciesRow.Description += string.Format("L = {0} mm", lengths.ToString("E"));
-        //                //    }
-
-        //                //    if (masses.Count > 0)
-        //                //    {
-        //                //        speciesRow.Description += ", ";
-        //                //        speciesRow.Description += string.Format("W = {0} mg", masses.ToString("E"));
-        //                //    }
-
-        //                //    if (sexes.Count > 0)
-        //                //    {
-        //                //        speciesRow.Description += ", ";
-        //                //        speciesRow.Description += "sexes are ";
-        //                //        foreach (object sex in sexes)
-        //                //        {
-        //                //            speciesRow.Description += new Sex((int)sex).ToString("C") + ", ";
-        //                //        }
-        //                //    }
-        //                //}
-
-        //                speciesRow.Description += "; ";
-        //            }
-
-        //            speciesRow.Description = speciesRow.Description.TrimEnd("; ".ToCharArray()) + ".";
-        //        }
-
-        //        speciesKey.Taxon.AddTaxonRow(speciesRow);
-        //    }
-
-        //    return speciesKey;
-        //}
-
-
-
-        public static FishSamplerType GetGearType(this Survey.CardRow cardRow) {
-            return cardRow.SamplerRow.GetSamplerType();
-        }
-
         public static double GetSquare(this Survey.EquipmentRow eqpRow) {
-            return eqpRow.GetValue("Square");
+            return eqpRow.GetVirtue("Square");
         }
 
         public static double GetHeight(this Survey.EquipmentRow eqpRow) {
-            return eqpRow.GetValue("Height");
+            return eqpRow.GetVirtue("Height");
         }
 
         public static double GetLength(this Survey.EquipmentRow eqpRow) {
-            return eqpRow.GetValue("Length");
+            return eqpRow.GetVirtue("Length");
         }
 
         public static double GetOpening(this Survey.EquipmentRow eqpRow) {
-            return eqpRow.GetValue("Opening");
+            return eqpRow.GetVirtue("Opening");
         }
 
         public static double GetVelocity(this Survey.EquipmentRow eqpRow) {
-            return eqpRow.GetValue("Velocity");
+            return eqpRow.GetVirtue("Velocity");
         }
 
-        public static double GetOutscribedCircleArea(this Survey.EquipmentRow eqpRow) {
+        public static double GetCoveredArea(this Survey.EquipmentRow eqpRow, int replications) {
 
-            double d = eqpRow.GetLength();
-            return double.IsNaN(d) ? double.NaN : d * d * .25 * Math.PI;
+            if (replications == -1) return double.NaN;
+
+            return replications * eqpRow.GetSquare();
         }
 
         public static double GetExposureArea(this Survey.EquipmentRow eqpRow, double e) {
@@ -131,6 +46,12 @@ namespace Mayfly.Fish
             return double.IsNaN(o) ? (double.IsNaN(l) ? double.NaN : l * e) : o * e;
         }
 
+        public static double GetOutscribedCircleArea(this Survey.EquipmentRow eqpRow) {
+
+            double d = eqpRow.GetLength();
+            return double.IsNaN(d) ? double.NaN : d * d * .25 * Math.PI;
+        }
+
         public static double GetTowedArea(this Survey.EquipmentRow eqpRow, TimeSpan duration) {
 
             if (duration == TimeSpan.Zero) return double.NaN;
@@ -138,13 +59,6 @@ namespace Mayfly.Fish
             double e = eqpRow.GetVelocity() * 1000 * duration.TotalHours;
 
             return eqpRow.GetExposureArea(e);
-        }
-
-        public static double GetCoveredArea(this Survey.EquipmentRow eqpRow, int replications) {
-
-            if (replications == -1) return double.NaN;
-
-            return replications * eqpRow.GetSquare();
         }
 
         public static double GetSeinArea(this Survey.EquipmentRow eqpRow, WaterType waterType, double e) {
@@ -228,7 +142,7 @@ namespace Mayfly.Fish
                             s += o * (e - o);
 
                             // Third segment. Sein closing
-                            s += o * o  * .5;
+                            s += o * o * .5;
                         }
 
                         return s;
@@ -269,9 +183,9 @@ namespace Mayfly.Fish
 
         public static double GetArea(this Survey.CardRow cardRow) {
 
-            if (cardRow.IsEqpIDNull()) return double.NaN;
+            if (!cardRow.IsEffortNull() && cardRow.Effort < 0) return -cardRow.Effort;
 
-            if (cardRow.Effort < 0) return -cardRow.Effort;
+            if (cardRow.IsEqpIDNull()) return double.NaN;
 
             switch (cardRow.SamplerRow.GetSamplerType()) {
 
@@ -304,34 +218,17 @@ namespace Mayfly.Fish
             return double.NaN;
         }
 
+
         public static double GetVolume(this Survey.CardRow cardRow) {
 
+            double s = cardRow.GetArea();
+            if (double.IsNaN(s)) return double.NaN;
             double h = cardRow.IsDepthNull() ? cardRow.EquipmentRow.GetHeight() : Math.Min(cardRow.Depth, cardRow.EquipmentRow.GetHeight());
-            return h * cardRow.GetArea();
+            return h * s;
         }
 
-        public static double GetEffort(this Survey.CardRow cardRow, ExpressionVariant expression) {
-            if (cardRow.IsEqpIDNull()) return double.NaN;
-            else {
-                switch (expression) {
-                    case ExpressionVariant.Area:
-                        return cardRow.GetArea() / UnitEffort.SquareUnitCost;
-                    case ExpressionVariant.Volume:
-                        return cardRow.GetVolume() / UnitEffort.VolumeUnitCost;
-                    case ExpressionVariant.Efforts:
-                        return cardRow.GetEffortScore() / cardRow.GetGearType().GetEffortStdScore();
-                }
-            }
 
-            return double.NaN;
-        }
-
-        public static double GetEffort(this Survey.CardRow cardRow) {
-            if (cardRow.IsEqpIDNull()) return double.NaN;
-            return GetEffort(cardRow, cardRow.GetGearType().GetDefaultExpression());
-        }
-
-        public static double GetEffortScore(this Survey.CardRow cardRow) {
+        public static double GetStandards(this Survey.CardRow cardRow) {
 
             if (cardRow.IsEqpIDNull()) return double.NaN;
 
@@ -348,6 +245,33 @@ namespace Mayfly.Fish
         }
 
 
+        public static double GetEffort(this Survey.CardRow cardRow, EffortExpression ev) {
+
+            if (cardRow.IsEqpIDNull()) {
+                return double.NaN;
+            } else {
+                switch (ev) {
+                    case EffortExpression.Area:
+                        return cardRow.GetArea() / UnitEffort.SquareUnitCost;
+
+                    case EffortExpression.Volume:
+                        return cardRow.GetVolume() / UnitEffort.VolumeUnitCost;
+
+                    case EffortExpression.Standards:
+                        return cardRow.GetStandards() / cardRow.SamplerRow.GetSamplerType().GetEffortStdScore();
+                }
+            }
+
+            return double.NaN;
+        }
+
+        public static double GetEffort(this Survey.CardRow cardRow) {
+
+            if (cardRow.IsEqpIDNull()) return double.NaN;
+            return GetEffort(cardRow, cardRow.SamplerRow.GetSamplerType().GetDefaultExpression());
+        }
+
+
 
 
         /// <summary>
@@ -356,8 +280,9 @@ namespace Mayfly.Fish
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
         public static double GetAbundance(this Survey.LogRow logRow) {
+
             if (logRow.IsQuantityNull()) return double.NaN;
-            return (double)logRow.Quantity / logRow.CardRow.GetEffort();
+            return logRow.Quantity / logRow.CardRow.GetEffort();
         }
 
         /// <summary>
@@ -365,9 +290,10 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Survey.LogRow logRow, ExpressionVariant variant) {
+        public static double GetAbundance(this Survey.LogRow logRow, EffortExpression variant) {
+
             if (logRow.IsQuantityNull()) return double.NaN;
-            return (double)logRow.Quantity / logRow.CardRow.GetEffort(variant);
+            return logRow.Quantity / logRow.CardRow.GetEffort(variant);
         }
 
         /// <summary>
@@ -376,8 +302,8 @@ namespace Mayfly.Fish
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
         public static double GetBiomass(this Survey.LogRow logRow) {
-            if (logRow.IsMassNull()) return double.NaN;
 
+            if (logRow.IsMassNull()) return double.NaN;
             return logRow.Mass / logRow.CardRow.GetEffort();
         }
 
@@ -386,9 +312,9 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
-        public static double GetBiomass(this Survey.LogRow logRow, ExpressionVariant variant) {
-            if (logRow.IsMassNull()) return double.NaN;
+        public static double GetBiomass(this Survey.LogRow logRow, EffortExpression variant) {
 
+            if (logRow.IsMassNull()) return double.NaN;
             return logRow.Mass / logRow.CardRow.GetEffort(variant);
         }
 
@@ -498,6 +424,7 @@ namespace Mayfly.Fish
 
 
         public static string GetDescription(this Survey.IndividualRow indRow) {
+
             List<string> result = new List<string>();
             result.Add(indRow.LogRow.DefinitionRow.KeyRecord.CommonName);
             if (!indRow.IsTallyNull()) result.Add(string.Format("#{0}", indRow.Tally));
@@ -508,6 +435,7 @@ namespace Mayfly.Fish
         }
 
         public static string GetDescription(this Survey.LogRow logRow) {
+
             return string.Format(Wild.Resources.Interface.Interface.LogMask, logRow.DefinitionRow.KeyRecord, logRow.CardRow);
         }
 

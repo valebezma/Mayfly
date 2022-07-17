@@ -612,9 +612,9 @@ namespace Mayfly.Fish
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetGears);
                 gridRow.Cells[columnSampler.Index].Value = unitRow.SamplerRow;
-                gridRow.Cells[columnMesh.Index].Value = unitRow.GetValue("Mesh");
-                gridRow.Cells[columnLength.Index].Value = unitRow.GetValue("Length");
-                gridRow.Cells[columnHeight.Index].Value = unitRow.GetValue("Height");
+                gridRow.Cells[columnMesh.Index].Value = unitRow.GetVirtue("Mesh");
+                gridRow.Cells[columnLength.Index].Value = unitRow.GetVirtue("Length");
+                gridRow.Cells[columnHeight.Index].Value = unitRow.GetVirtue("Height");
                 spreadSheetGears.Rows.Add(gridRow);
             }
         }
@@ -689,18 +689,17 @@ namespace Mayfly.Fish
                     if (gridRow.Cells[columnSampler.Index].Value == null) continue;
 
                     Survey.SamplerRow selectedSamplerRow = (Survey.SamplerRow)gridRow.Cells[columnSampler.Index].Value;
-                    Survey.SamplerRow samplerRow = selectedSamplerRow.CopyTo(Equipment.Sampler);
+                    Survey.SamplerRow samplerRow = selectedSamplerRow.CopyTo(Equipment);
 
                     Survey.EquipmentRow equipmentRow = Equipment.Equipment.AddEquipmentRow(samplerRow);
 
-                    foreach (Survey.VirtueRow selectedSamplerVirtueRow in selectedSamplerRow.GetVirtueRows()) {
-                        Survey.VirtueRow virtueRow = Equipment.Virtue.AddVirtueRow(selectedSamplerVirtueRow.Name, selectedSamplerVirtueRow.Notation);
+                    foreach (Survey.VirtueRow virtueRow in Equipment.Virtue) {
                         if (spreadSheetGears.Columns["column" + virtueRow.Name] != null && gridRow.Cells["column" + virtueRow.Name].Value is double value) {
                             Equipment.EquipmentVirtue.AddEquipmentVirtueRow(equipmentRow, virtueRow, value);
                         }
                     }
                 }
-                Service.SaveEquipment();
+                Wild.Service.SaveEquipment();
             }
 
         }

@@ -1,9 +1,7 @@
 ﻿using Mayfly.Extensions;
-using Mayfly.Geographics;
 using System;
-using System.Windows.Forms;
 using System.ComponentModel;
-using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Mayfly.Wild.Controls
 {
@@ -13,10 +11,8 @@ namespace Mayfly.Wild.Controls
 
         public WeatherState Weather { get; set; }
 
-        public bool IsWeatherAvailable
-        {
-            get
-            {
+        public bool IsWeatherAvailable {
+            get {
                 if (Weather == null) return false;
                 return Weather.IsAvailable;
             }
@@ -24,15 +20,13 @@ namespace Mayfly.Wild.Controls
 
 
 
-        public WeatherControl()
-        {
+        public WeatherControl() {
             InitializeComponent();
             Weather = new WeatherState();
 
             trackBarCloudage.Value = 0;
 
-            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
-            {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime) {
                 comboBoxEvent.DataSource = UserSettings.WeatherIndex.Event.Select(null, "ID desc");
                 comboBoxDiscretion.DataSource = UserSettings.WeatherIndex.Discretion.Select(null, "ID desc");
                 comboBoxEvent.SelectedIndex = -1;
@@ -40,155 +34,77 @@ namespace Mayfly.Wild.Controls
             }
         }
 
-        public void UpdateValues()
-        {
-            if (double.IsNaN(Weather.Humidity))
-            {
-                textBoxHumidity.Text = string.Empty;
-            }
-            else
-            {
-                textBoxHumidity.Text = Weather.Humidity.ToString();
+        public void UpdateValues() {
+            if (double.IsNaN(Weather.Humidity)) {
+                numericHumidity.Clear();
+            } else {
+                numericHumidity.Value = Weather.Humidity;
             }
 
-            if (double.IsNaN(Weather.Temperature))
-            {
-                textBoxTemperature.Text = string.Empty;
-            }
-            else
-            {
-                textBoxTemperature.Text = Weather.Temperature.ToString();
+            if (double.IsNaN(Weather.Temperature)) {
+                numericTemperature.Clear();
+            } else {
+                numericTemperature.Value = Weather.Temperature;
             }
 
-            if (double.IsNaN(Weather.Pressure))
-            {
-                textBoxBaro.Text = string.Empty;
-            }
-            else
-            {
-                textBoxBaro.Text = Weather.Pressure.ToString();
+            if (double.IsNaN(Weather.Pressure)) {
+                numericBaro.Clear();
+            } else {
+                numericBaro.Value = Weather.Pressure;
             }
 
-            if (double.IsNaN(Weather.WindRate))
-            {
-                textBoxWindRate.Text = string.Empty;
-            }
-            else
-            {
-                textBoxWindRate.Text = Weather.WindRate.ToString();
+            if (double.IsNaN(Weather.WindRate)) {
+                numericWindRate.Clear();
+            } else {
+                numericWindRate.Value = Weather.WindRate;
             }
 
-            if (double.IsNaN(Weather.WindDirection))
-            {
-                textBoxWindDirection.Text = string.Empty;
-            }
-            else
-            {
-                textBoxWindDirection.Text = Weather.WindDirection.ToString();
+            if (double.IsNaN(Weather.WindDirection)) {
+                numericWindDirection.Clear();
+            } else {
+                numericWindDirection.Value = Weather.WindDirection;
             }
 
-            if (double.IsNaN(Weather.Cloudage))
-            {
+            if (double.IsNaN(Weather.Cloudage)) {
                 checkBoxCloudage.Checked = false;
-            }
-            else
-            {
+            } else {
                 checkBoxCloudage.Checked = true;
                 trackBarCloudage.Value = (int)Weather.Cloudage;
             }
 
-            if (Weather.IsEventNull())
-            {
+            if (Weather.IsEventNull()) {
                 comboBoxEvent.SelectedIndex = -1;
-            }
-            else
-            {
+            } else {
                 comboBoxEvent.SelectedItem = UserSettings.WeatherIndex.Event.FindByID(Weather.Event);
             }
 
-            if (Weather.IsDegreeNull())
-            {
+            if (Weather.IsDegreeNull()) {
                 comboBoxDegree.SelectedIndex = -1;
-            }
-            else
-            {
+            } else {
                 comboBoxDegree.SelectedItem = UserSettings.WeatherIndex.Degree.FindByID(Weather.Degree);
             }
 
-            if (Weather.IsDiscretionNull())
-            {
+            if (Weather.IsDiscretionNull()) {
                 comboBoxDiscretion.SelectedIndex = -1;
-            }
-            else
-            {
+            } else {
                 comboBoxDiscretion.SelectedItem = UserSettings.WeatherIndex.Discretion.FindByID(Weather.Discretion);
             }
 
-            if (Weather.IsAdditionalEventNull())
-            {
+            if (Weather.IsAdditionalEventNull()) {
                 comboBoxAdditionalEvent.SelectedIndex = -1;
-            }
-            else
-            {
+            } else {
                 comboBoxAdditionalEvent.SelectedItem = UserSettings.WeatherIndex.Event.FindByID(Weather.AdditionalEvent);
             }
         }
 
-        public void Save()
-        {
-            if (textBoxHumidity.Text.IsDoubleConvertible())
-            {
-                Weather.Humidity = double.Parse(textBoxHumidity.Text);
-            }
-            else
-            {
-                Weather.Humidity = double.NaN;
-            }
+        public void Save() {
 
-            if (textBoxTemperature.Text.IsDoubleConvertible())
-            {
-                Weather.Temperature = double.Parse(textBoxTemperature.Text);
-            }
-            else
-            {
-                Weather.Temperature = double.NaN;
-            }
-
-            if (textBoxBaro.Text.IsDoubleConvertible())
-            {
-                Weather.Pressure = double.Parse(textBoxBaro.Text);
-            }
-            else
-            {
-                Weather.Pressure = double.NaN;
-            }
-
-            if (textBoxWindRate.Text.IsDoubleConvertible())
-            {
-                Weather.WindRate = double.Parse(textBoxWindRate.Text);
-            }
-            else
-            {
-                Weather.WindRate = double.NaN;
-            }
-
-            if (textBoxWindDirection.Text.IsDoubleConvertible())
-            {
-                Weather.WindDirection = (int)double.Parse(textBoxWindDirection.Text);
-            }
-            else
-            {
-                Weather.WindDirection = double.NaN;
-            }
-
-            if (checkBoxCloudage.Checked)
-            {
-                Weather.Cloudage = (double)trackBarCloudage.Value;
-            }
-            else
-            {
-                Weather.Cloudage = double.NaN;
-            }
+            Weather.Humidity = numericHumidity.IsSet ? numericHumidity.Value : double.NaN;
+            Weather.Temperature = numericTemperature.IsSet ? numericTemperature.Value : double.NaN;
+            Weather.Pressure = numericBaro.IsSet ? numericBaro.Value : double.NaN;
+            Weather.WindRate = numericWindRate.IsSet ? numericWindRate.Value : double.NaN;
+            Weather.WindDirection = numericWindDirection.IsSet ? numericWindDirection.Value : double.NaN;
+            Weather.Cloudage = checkBoxCloudage.Checked ? trackBarCloudage.Value : double.NaN;
 
             Weather.Event = comboBoxEvent.SelectedIndex == -1 ? 0 : ((WeatherEvents.EventRow)comboBoxEvent.SelectedItem).ID;
             Weather.Degree = comboBoxDegree.SelectedIndex == -1 ? 0 : ((WeatherEvents.DegreeRow)comboBoxDegree.SelectedItem).ID;
@@ -196,58 +112,49 @@ namespace Mayfly.Wild.Controls
             Weather.AdditionalEvent = comboBoxAdditionalEvent.SelectedIndex == -1 ? 0 : ((WeatherEvents.EventRow)comboBoxAdditionalEvent.SelectedItem).ID;
         }
 
-        public void Clear()
-        {
-            textBoxHumidity.Text = string.Empty;
-            textBoxTemperature.Text = string.Empty;
-            textBoxBaro.Text = string.Empty;
-            textBoxWindRate.Text = string.Empty;
-            textBoxWindDirection.Text = string.Empty;
+        public void Clear() {
+            numericHumidity.Clear();
+            numericTemperature.Clear();
+            numericBaro.Clear();
+            numericWindRate.Clear();
+            numericWindDirection.Clear();
             checkBoxCloudage.Checked = false;
             trackBarCloudage.Value = 0;
             comboBoxEvent.SelectedIndex = -1;
         }
 
-        
-        
-        private void value_Changed(object sender, EventArgs e)
-        {
+
+
+        private void value_Changed(object sender, EventArgs e) {
             if (Changed != null) Changed.Invoke(sender, e);
         }
 
-        private void value_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void value_KeyPress(object sender, KeyPressEventArgs e) {
             ((Control)sender).HandleInput(e, typeof(double));
         }
 
 
 
-        private void trackBarClouds_Scroll(object sender, EventArgs e)
-        {
+        private void trackBarClouds_Scroll(object sender, EventArgs e) {
             toolTipAttention.ToolTipTitle = checkBoxCloudage.Text;
             toolTipAttention.Show(Service.CloudageName(trackBarCloudage.Value),
                 trackBarCloudage, 0, trackBarCloudage.Height, 1500);
             value_Changed(sender, e);
         }
 
-        private void checkBoxCloudage_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxCloudage_CheckedChanged(object sender, EventArgs e) {
             trackBarCloudage.Enabled = checkBoxCloudage.Checked;
             value_Changed(sender, e);
         }
 
-        private void comboBoxEvent_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxEvent_SelectedIndexChanged(object sender, EventArgs e) {
             WeatherEvents.EventRow selectedEventRow = (WeatherEvents.EventRow)comboBoxEvent.SelectedValue;
 
-            if (selectedEventRow == null)
-            {
-                comboBoxDegree.Enabled = 
-                    comboBoxDiscretion.Enabled = 
+            if (selectedEventRow == null) {
+                comboBoxDegree.Enabled =
+                    comboBoxDiscretion.Enabled =
                     comboBoxAdditionalEvent.Enabled = false;
-            }
-            else
-            {
+            } else {
                 comboBoxDegree.Enabled = selectedEventRow.IsDegreeAvailable;
                 comboBoxDegree.DataSource = selectedEventRow.AvailableDegrees;
                 comboBoxDegree.SelectedIndex = -1;
@@ -263,34 +170,28 @@ namespace Mayfly.Wild.Controls
             value_Changed(sender, e);
         }
 
-        private void comboBoxEventDegree_EnabledChanged(object sender, EventArgs e)
-        {
+        private void comboBoxEventDegree_EnabledChanged(object sender, EventArgs e) {
             labelEventDegree.Enabled = comboBoxDegree.Enabled;
         }
 
-        private void comboBoxEventDiscretion_EnabledChanged(object sender, EventArgs e)
-        {
+        private void comboBoxEventDiscretion_EnabledChanged(object sender, EventArgs e) {
             labelEventDiscretion.Enabled = comboBoxDiscretion.Enabled;
         }
 
-        private void comboBoxAdditionalEvent_EnabledChanged(object sender, EventArgs e)
-        {
+        private void comboBoxAdditionalEvent_EnabledChanged(object sender, EventArgs e) {
             labelAdditionalEvent.Enabled = comboBoxAdditionalEvent.Enabled;
         }
 
-        private void textBoxWindRate_TextChanged(object sender, EventArgs e)
-        {
+        private void numericWindRate_TextChanged(object sender, EventArgs e) {
             value_Changed(sender, e);
-            textBoxWindDirection.Enabled = textBoxWindRate.Text.IsDoubleConvertible();
+            numericWindDirection.Enabled = numericWindRate.IsSet;
         }
 
-        private void textBoxWindDirection_EnabledChanged(object sender, EventArgs e)
-        {
-            labelWindDirection.Enabled = textBoxWindRate.Enabled;
+        private void numericWindDirection_EnabledChanged(object sender, EventArgs e) {
+            labelWindDirection.Enabled = numericWindRate.Enabled;
         }
 
-        private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void comboBox_KeyPress(object sender, KeyPressEventArgs e) {
             ((ComboBox)sender).HandleInput(e);
         }
     }

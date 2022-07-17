@@ -46,7 +46,7 @@
             this.Numeric.Size = new System.Drawing.Size(48, 20);
             this.Numeric.TabIndex = 0;
             this.Numeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Numeric.ValueChanged += new System.EventHandler(this.Numeric_ValueChanged);
+            this.Numeric.ValueChanged += new System.EventHandler(this.numeric_ValueChanged);
             // 
             // label1
             // 
@@ -70,8 +70,8 @@
             this.MinimumSize = new System.Drawing.Size(80, 35);
             this.Name = "SizeGroup";
             this.Size = new System.Drawing.Size(80, 35);
-            this.Load += new System.EventHandler(this.SizeGroup_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SizeGroup_Paint);
+            this.Load += new System.EventHandler(this.sizeGroup_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.sizeGroup_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.Numeric)).EndInit();
             this.ResumeLayout(false);
 

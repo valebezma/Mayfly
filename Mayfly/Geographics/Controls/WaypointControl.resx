@@ -122,7 +122,7 @@
     <value>Top</value>
   </data>
   <data name="dateTimePickerDate.CustomFormat" xml:space="preserve">
-    <value>dd.MM.yyyy (ddd) HH:mm</value>
+    <value>yyyy-MM-dd (ddd) HH:mm</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dateTimePickerDate.Location" type="System.Drawing.Point, System.Drawing">
@@ -351,33 +351,6 @@
   <data name="&gt;&gt;labelLng.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="textBoxAltitude.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="textBoxAltitude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 51</value>
-  </data>
-  <data name="textBoxAltitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxAltitude.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="textBoxAltitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxAltitude.Name" xml:space="preserve">
-    <value>textBoxAltitude</value>
-  </data>
-  <data name="&gt;&gt;textBoxAltitude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxAltitude.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxAltitude.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -428,6 +401,36 @@
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericAltitude.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericAltitude.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericAltitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 51</value>
+  </data>
+  <data name="numericAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericAltitude.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="numericAltitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericAltitude.Name" xml:space="preserve">
+    <value>numericAltitude</value>
+  </data>
+  <data name="&gt;&gt;numericAltitude.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericAltitude.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericAltitude.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

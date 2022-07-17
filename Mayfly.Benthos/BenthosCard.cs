@@ -1,29 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Mayfly.Controls;
 using Mayfly.Extensions;
-using Mayfly.Wild;
-using Mayfly.Geographics;
-using Mayfly.Species;
-using Mayfly.TaskDialogs;
-using Mayfly.Software;
 using Mayfly.Waters;
+using Mayfly.Waters.Controls;
+using Mayfly.Wild;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
-using Mayfly.Waters.Controls;
-using static Mayfly.Wild.UserSettings;
-using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Benthos
 {
@@ -32,14 +15,12 @@ namespace Mayfly.Benthos
         private ComboBox comboBoxBank;
         private ComboBox comboBoxCrossSection;
         private Label labelCrossSection;
-        private TextBox textBoxDepth;
-        private NumericUpDown numericUpDownReps;
-        private Label labelDepth;
-        private Label labelMesh;
-        private Label labelRepeats;
-        private Label labelSquare;
-        private TextBox textBoxMesh;
-        private TextBox textBoxSquare;
+        private Mayfly.Controls.NumberBox numericPortions;
+        private Label labelSieve;
+        private Label labelPortions;
+        private Label labelArea;
+        private Mayfly.Controls.NumberBox numericSieve;
+        private Mayfly.Controls.NumberBox numericArea;
         private ContextMenuStrip contextMenuStripSubstrate;
         private IContainer components;
         private ToolStripMenuItem ToolStripMenuItemSands;
@@ -61,76 +42,45 @@ namespace Mayfly.Benthos
         private TabPage tabPageSubstrate;
         private Label labelTexture;
         private Button buttonSubTexture;
-        private NumericUpDown numericUpDownDebris;
+        private Mayfly.Controls.NumberBox numericDebris;
         private CheckBox checkBoxClay;
-        private NumericUpDown numericUpDownSapropel;
-        private NumericUpDown numericUpDownCobble;
+        private Mayfly.Controls.NumberBox numericSapropel;
+        private Mayfly.Controls.NumberBox numericCobble;
         private CheckBox checkBoxSilt;
-        private NumericUpDown numericUpDownCPOM;
+        private Mayfly.Controls.NumberBox numericCPOM;
         private CheckBox checkBoxPhytal;
-        private NumericUpDown numericUpDownFPOM;
+        private Mayfly.Controls.NumberBox numericFPOM;
         private CheckBox checkBoxSand;
-        private NumericUpDown numericUpDownGravel;
-        private NumericUpDown numericUpDownLiving;
-        private NumericUpDown numericUpDownBoulder;
+        private Mayfly.Controls.NumberBox numericGravel;
+        private Mayfly.Controls.NumberBox numericLiving;
+        private Mayfly.Controls.NumberBox numericBoulder;
         private CheckBox checkBoxWood;
-        private NumericUpDown numericUpDownWood;
+        private Mayfly.Controls.NumberBox numericWood;
         private CheckBox checkBoxGravel;
-        private NumericUpDown numericUpDownSand;
+        private Mayfly.Controls.NumberBox numericSand;
         private CheckBox checkBoxDebris;
         private CheckBox checkBoxCobble;
         private CheckBox checkBoxLiving;
-        private NumericUpDown numericUpDownPhytal;
+        private Mayfly.Controls.NumberBox numericPhytal;
         private CheckBox checkBoxBoulder;
-        private NumericUpDown numericUpDownSilt;
+        private Mayfly.Controls.NumberBox numericSilt;
         private CheckBox checkBoxSapropel;
         private Label labelOrganics;
         private CheckBox checkBoxFPOM;
         private CheckBox checkBoxCPOM;
         private Label labelMinerals;
-        private NumericUpDown numericUpDownClay;
+        private Mayfly.Controls.NumberBox numericClay;
+        private Label label17;
+        private Mayfly.Controls.NumberBox numericDepth;
+        private Label labelDepth;
+        private Label labelWidth;
+        private Mayfly.Controls.NumberBox numericWidth;
+        private Label labelExposure;
+        private Label labelSquare;
+        private Mayfly.Controls.NumberBox numericExposure;
+        private Mayfly.Controls.NumberBox numericSquare;
         private Label labelBank;
-
-        private double Square // In square meters
-        {
-            get {
-                if (textBoxSquare.Text.IsDoubleConvertible()) {
-                    return Convert.ToDouble(textBoxSquare.Text);
-                } else {
-                    return double.NaN;
-                }
-            }
-
-            set {
-                if (double.IsNaN(value)) {
-                    textBoxSquare.Text = string.Empty;
-                } else {
-                    textBoxSquare.Text = value.ToString();//Textual.Mask(4));
-
-                    if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull()) {
-
-                        switch (SelectedSampler.GetSamplerType()) {
-                            case BenthosSamplerType.Grabber:
-                                // Replies count equals to 
-                                // square divided by [standard effort] of grabber
-                                numericUpDownReps.Value = (decimal)Math.Round(value / SelectedSampler.EffortValue, 0);
-                                break;
-                            case BenthosSamplerType.Scraper:
-                                // Exposure length in centimeters equals to 
-                                // square divided by knife length (standard effort) of creeper multiplied by 100
-                                numericUpDownReps.Value = 100 * (decimal)Math.Round(value / SelectedSampler.EffortValue, 3);
-                                break;
-                            default:
-                                numericUpDownReps.Value = (decimal)Math.Round(value / SelectedSampler.EffortValue, 0);
-                                break;
-                        }
-                    } else {
-                        statusCard.Message(Resources.Interface.Messages.SamplerUnable);
-                    }
-                }
-            }
-        }
-        private NumericUpDown[] MineralControls => new NumericUpDown[] { numericUpDownBoulder, numericUpDownCobble, numericUpDownGravel, numericUpDownSand, numericUpDownSilt, numericUpDownClay };
+        private Mayfly.Controls.NumberBox[] MineralControls => new Mayfly.Controls.NumberBox[] { numericBoulder, numericCobble, numericGravel, numericSand, numericSilt, numericClay };
 
 
         public BenthosCard() : base() {
@@ -142,20 +92,20 @@ namespace Mayfly.Benthos
             load(filename);
         }
 
+
+
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.labelBank = new System.Windows.Forms.Label();
             this.labelCrossSection = new System.Windows.Forms.Label();
             this.comboBoxCrossSection = new System.Windows.Forms.ComboBox();
             this.comboBoxBank = new System.Windows.Forms.ComboBox();
-            this.numericUpDownReps = new System.Windows.Forms.NumericUpDown();
-            this.textBoxSquare = new System.Windows.Forms.TextBox();
-            this.textBoxMesh = new System.Windows.Forms.TextBox();
-            this.labelSquare = new System.Windows.Forms.Label();
-            this.labelRepeats = new System.Windows.Forms.Label();
-            this.labelMesh = new System.Windows.Forms.Label();
-            this.labelDepth = new System.Windows.Forms.Label();
-            this.textBoxDepth = new System.Windows.Forms.TextBox();
+            this.numericPortions = new Mayfly.Controls.NumberBox();
+            this.numericArea = new Mayfly.Controls.NumberBox();
+            this.numericSieve = new Mayfly.Controls.NumberBox();
+            this.labelArea = new System.Windows.Forms.Label();
+            this.labelPortions = new System.Windows.Forms.Label();
+            this.labelSieve = new System.Windows.Forms.Label();
             this.contextMenuStripSubstrate = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemSands = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemSubSand = new System.Windows.Forms.ToolStripMenuItem();
@@ -176,74 +126,73 @@ namespace Mayfly.Benthos
             this.tabPageSubstrate = new System.Windows.Forms.TabPage();
             this.labelTexture = new System.Windows.Forms.Label();
             this.buttonSubTexture = new System.Windows.Forms.Button();
-            this.numericUpDownDebris = new System.Windows.Forms.NumericUpDown();
+            this.numericDebris = new Mayfly.Controls.NumberBox();
             this.checkBoxClay = new System.Windows.Forms.CheckBox();
-            this.numericUpDownSapropel = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownCobble = new System.Windows.Forms.NumericUpDown();
+            this.numericSapropel = new Mayfly.Controls.NumberBox();
+            this.numericCobble = new Mayfly.Controls.NumberBox();
             this.checkBoxSilt = new System.Windows.Forms.CheckBox();
-            this.numericUpDownCPOM = new System.Windows.Forms.NumericUpDown();
+            this.numericCPOM = new Mayfly.Controls.NumberBox();
             this.checkBoxPhytal = new System.Windows.Forms.CheckBox();
-            this.numericUpDownFPOM = new System.Windows.Forms.NumericUpDown();
+            this.numericFPOM = new Mayfly.Controls.NumberBox();
             this.checkBoxSand = new System.Windows.Forms.CheckBox();
-            this.numericUpDownGravel = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownLiving = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownBoulder = new System.Windows.Forms.NumericUpDown();
+            this.numericGravel = new Mayfly.Controls.NumberBox();
+            this.numericLiving = new Mayfly.Controls.NumberBox();
+            this.numericBoulder = new Mayfly.Controls.NumberBox();
             this.checkBoxWood = new System.Windows.Forms.CheckBox();
-            this.numericUpDownWood = new System.Windows.Forms.NumericUpDown();
+            this.numericWood = new Mayfly.Controls.NumberBox();
             this.checkBoxGravel = new System.Windows.Forms.CheckBox();
-            this.numericUpDownSand = new System.Windows.Forms.NumericUpDown();
+            this.numericSand = new Mayfly.Controls.NumberBox();
             this.checkBoxDebris = new System.Windows.Forms.CheckBox();
             this.checkBoxCobble = new System.Windows.Forms.CheckBox();
             this.checkBoxLiving = new System.Windows.Forms.CheckBox();
-            this.numericUpDownPhytal = new System.Windows.Forms.NumericUpDown();
+            this.numericPhytal = new Mayfly.Controls.NumberBox();
             this.checkBoxBoulder = new System.Windows.Forms.CheckBox();
-            this.numericUpDownSilt = new System.Windows.Forms.NumericUpDown();
+            this.numericSilt = new Mayfly.Controls.NumberBox();
             this.checkBoxSapropel = new System.Windows.Forms.CheckBox();
             this.labelOrganics = new System.Windows.Forms.Label();
             this.checkBoxFPOM = new System.Windows.Forms.CheckBox();
             this.checkBoxCPOM = new System.Windows.Forms.CheckBox();
             this.labelMinerals = new System.Windows.Forms.Label();
-            this.numericUpDownClay = new System.Windows.Forms.NumericUpDown();
+            this.numericClay = new Mayfly.Controls.NumberBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.numericDepth = new Mayfly.Controls.NumberBox();
+            this.labelDepth = new System.Windows.Forms.Label();
+            this.numericWidth = new Mayfly.Controls.NumberBox();
+            this.labelWidth = new System.Windows.Forms.Label();
+            this.numericExposure = new Mayfly.Controls.NumberBox();
+            this.labelExposure = new System.Windows.Forms.Label();
+            this.numericSquare = new Mayfly.Controls.NumberBox();
+            this.labelSquare = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             this.tabPageCollect.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageEnvironment.SuspendLayout();
             this.tabPageSampler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownReps)).BeginInit();
             this.contextMenuStripSubstrate.SuspendLayout();
             this.tabPageSubstrate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDebris)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSapropel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCobble)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCPOM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFPOM)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGravel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLiving)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBoulder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWood)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSand)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhytal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSilt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownClay)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPageCollect
             // 
+            this.tabPageCollect.Controls.Add(this.numericDepth);
+            this.tabPageCollect.Controls.Add(this.labelDepth);
             this.tabPageCollect.Controls.Add(this.comboBoxBank);
             this.tabPageCollect.Controls.Add(this.comboBoxCrossSection);
             this.tabPageCollect.Controls.Add(this.labelCrossSection);
             this.tabPageCollect.Controls.Add(this.labelBank);
+            this.tabPageCollect.Controls.SetChildIndex(this.labelBank, 0);
+            this.tabPageCollect.Controls.SetChildIndex(this.labelCrossSection, 0);
+            this.tabPageCollect.Controls.SetChildIndex(this.comboBoxCrossSection, 0);
+            this.tabPageCollect.Controls.SetChildIndex(this.comboBoxBank, 0);
+            this.tabPageCollect.Controls.SetChildIndex(this.labelDepth, 0);
+            this.tabPageCollect.Controls.SetChildIndex(this.numericDepth, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelComments, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.textBoxComments, 0);
-            this.tabPageCollect.Controls.SetChildIndex(this.labelBank, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelWater, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.textBoxLabel, 0);
-            this.tabPageCollect.Controls.SetChildIndex(this.labelCrossSection, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelLabel, 0);
-            this.tabPageCollect.Controls.SetChildIndex(this.comboBoxCrossSection, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.waterSelector, 0);
-            this.tabPageCollect.Controls.SetChildIndex(this.comboBoxBank, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.waypointControl1, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelTag, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelPosition, 0);
@@ -251,12 +200,22 @@ namespace Mayfly.Benthos
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tabPageSubstrate);
+            this.tabControl.Controls.SetChildIndex(this.tabPageSubstrate, 0);
             this.tabControl.Controls.SetChildIndex(this.tabPageFactors, 0);
             this.tabControl.Controls.SetChildIndex(this.tabPageLog, 0);
             this.tabControl.Controls.SetChildIndex(this.tabPageEnvironment, 0);
             this.tabControl.Controls.SetChildIndex(this.tabPageSampler, 0);
-            this.tabControl.Controls.SetChildIndex(this.tabPageSubstrate, 0);
             this.tabControl.Controls.SetChildIndex(this.tabPageCollect, 0);
+            // 
+            // labelComments
+            // 
+            this.labelComments.Location = new System.Drawing.Point(45, 340);
+            this.labelComments.TabIndex = 13;
+            // 
+            // waypointControl1
+            // 
+            this.waypointControl1.Location = new System.Drawing.Point(45, 225);
+            this.waypointControl1.TabIndex = 12;
             // 
             // waterSelector
             // 
@@ -264,35 +223,59 @@ namespace Mayfly.Benthos
             // 
             // tabPageSampler
             // 
-            this.tabPageSampler.Controls.Add(this.textBoxDepth);
-            this.tabPageSampler.Controls.Add(this.numericUpDownReps);
-            this.tabPageSampler.Controls.Add(this.labelDepth);
-            this.tabPageSampler.Controls.Add(this.labelMesh);
-            this.tabPageSampler.Controls.Add(this.labelRepeats);
+            this.tabPageSampler.Controls.Add(this.label17);
+            this.tabPageSampler.Controls.Add(this.numericPortions);
+            this.tabPageSampler.Controls.Add(this.labelExposure);
             this.tabPageSampler.Controls.Add(this.labelSquare);
-            this.tabPageSampler.Controls.Add(this.textBoxMesh);
-            this.tabPageSampler.Controls.Add(this.textBoxSquare);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxSquare, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxMesh, 0);
+            this.tabPageSampler.Controls.Add(this.labelWidth);
+            this.tabPageSampler.Controls.Add(this.labelSieve);
+            this.tabPageSampler.Controls.Add(this.labelPortions);
+            this.tabPageSampler.Controls.Add(this.labelArea);
+            this.tabPageSampler.Controls.Add(this.numericExposure);
+            this.tabPageSampler.Controls.Add(this.numericSquare);
+            this.tabPageSampler.Controls.Add(this.numericWidth);
+            this.tabPageSampler.Controls.Add(this.numericSieve);
+            this.tabPageSampler.Controls.Add(this.numericArea);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericArea, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericSieve, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericWidth, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericSquare, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericExposure, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelArea, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelPortions, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelSieve, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelWidth, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelSquare, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.labelRepeats, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.labelMesh, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.labelDepth, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.numericUpDownReps, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelExposure, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.numericPortions, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelSampler, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.textBoxDepth, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelMethod, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.comboBoxSampler, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.buttonEquipment, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.label17, 0);
+            // 
+            // labelPosition
+            // 
+            this.labelPosition.Location = new System.Drawing.Point(28, 182);
+            this.labelPosition.TabIndex = 11;
+            // 
+            // textBoxComments
+            // 
+            this.textBoxComments.Location = new System.Drawing.Point(122, 337);
+            this.textBoxComments.Size = new System.Drawing.Size(362, 147);
+            this.textBoxComments.TabIndex = 14;
             // 
             // comboBoxSampler
             // 
             this.comboBoxSampler.TabIndex = 3;
-            this.comboBoxSampler.SelectedIndexChanged += new System.EventHandler(this.sampler_Changed);
             // 
-            // buttonGear
+            // buttonEquipment
             // 
             this.buttonEquipment.TabIndex = 2;
+            // 
+            // Logger
+            // 
+            this.Logger.IndividualsRequired += new System.EventHandler(this.logger_IndividualsRequired);
             // 
             // labelBank
             // 
@@ -337,97 +320,78 @@ namespace Mayfly.Benthos
             this.comboBoxBank.Size = new System.Drawing.Size(136, 21);
             this.comboBoxBank.TabIndex = 8;
             // 
-            // numericUpDownReps
+            // numericPortions
             // 
-            this.numericUpDownReps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownReps.Location = new System.Drawing.Point(434, 89);
-            this.numericUpDownReps.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownReps.Name = "numericUpDownReps";
-            this.numericUpDownReps.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownReps.TabIndex = 6;
-            this.numericUpDownReps.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownReps.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownReps.Visible = false;
-            this.numericUpDownReps.ValueChanged += new System.EventHandler(this.numericUpDownReps_ValueChanged);
+            this.numericPortions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericPortions.Format = "N0";
+            this.numericPortions.Location = new System.Drawing.Point(434, 206);
+            this.numericPortions.Maximum = 100D;
+            this.numericPortions.Minimum = 0D;
+            this.numericPortions.Name = "numericPortions";
+            this.numericPortions.Size = new System.Drawing.Size(50, 20);
+            this.numericPortions.TabIndex = 14;
+            this.numericPortions.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericPortions.Value = -1D;
+            this.numericPortions.ValueChanged += new System.EventHandler(this.effort_Changed);
             // 
-            // textBoxSquare
+            // numericArea
             // 
-            this.textBoxSquare.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBoxSquare.Location = new System.Drawing.Point(214, 88);
-            this.textBoxSquare.Name = "textBoxSquare";
-            this.textBoxSquare.ReadOnly = true;
-            this.textBoxSquare.Size = new System.Drawing.Size(50, 20);
-            this.textBoxSquare.TabIndex = 5;
-            this.textBoxSquare.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericArea.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericArea.Format = "N0";
+            this.numericArea.Location = new System.Drawing.Point(214, 260);
+            this.numericArea.Maximum = 100D;
+            this.numericArea.Minimum = 0D;
+            this.numericArea.Name = "numericArea";
+            this.numericArea.ReadOnly = true;
+            this.numericArea.Size = new System.Drawing.Size(50, 20);
+            this.numericArea.TabIndex = 16;
+            this.numericArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericArea.Value = -1D;
             // 
-            // textBoxMesh
+            // numericSieve
             // 
-            this.textBoxMesh.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBoxMesh.Location = new System.Drawing.Point(214, 114);
-            this.textBoxMesh.Name = "textBoxMesh";
-            this.textBoxMesh.Size = new System.Drawing.Size(50, 20);
-            this.textBoxMesh.TabIndex = 8;
-            this.textBoxMesh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericSieve.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericSieve.Format = "N0";
+            this.numericSieve.Location = new System.Drawing.Point(214, 115);
+            this.numericSieve.Maximum = 5000D;
+            this.numericSieve.Minimum = 0D;
+            this.numericSieve.Name = "numericSieve";
+            this.numericSieve.Size = new System.Drawing.Size(50, 20);
+            this.numericSieve.TabIndex = 9;
+            this.numericSieve.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericSieve.Value = -1D;
+            this.numericSieve.ValueChanged += new System.EventHandler(this.virtue_Changed);
             // 
-            // labelSquare
+            // labelArea
             // 
-            this.labelSquare.AutoSize = true;
-            this.labelSquare.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelSquare.Location = new System.Drawing.Point(45, 91);
-            this.labelSquare.Name = "labelSquare";
-            this.labelSquare.Size = new System.Drawing.Size(102, 13);
-            this.labelSquare.TabIndex = 4;
-            this.labelSquare.Text = "Sampling square, m²";
+            this.labelArea.AutoSize = true;
+            this.labelArea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelArea.Location = new System.Drawing.Point(45, 263);
+            this.labelArea.Name = "labelArea";
+            this.labelArea.Size = new System.Drawing.Size(46, 13);
+            this.labelArea.TabIndex = 15;
+            this.labelArea.Text = "Area, m²";
             // 
-            // labelRepeats
+            // labelPortions
             // 
-            this.labelRepeats.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelRepeats.AutoSize = true;
-            this.labelRepeats.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelRepeats.Location = new System.Drawing.Point(270, 91);
-            this.labelRepeats.Name = "labelRepeats";
-            this.labelRepeats.Size = new System.Drawing.Size(47, 13);
-            this.labelRepeats.TabIndex = 5;
-            this.labelRepeats.Text = "Repeats";
-            this.labelRepeats.Visible = false;
+            this.labelPortions.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelPortions.AutoSize = true;
+            this.labelPortions.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelPortions.Location = new System.Drawing.Point(270, 208);
+            this.labelPortions.Name = "labelPortions";
+            this.labelPortions.Size = new System.Drawing.Size(45, 13);
+            this.labelPortions.TabIndex = 13;
+            this.labelPortions.Text = "Portions";
             // 
-            // labelMesh
+            // labelSieve
             // 
-            this.labelMesh.AutoSize = true;
-            this.labelMesh.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelMesh.Location = new System.Drawing.Point(45, 117);
-            this.labelMesh.Name = "labelMesh";
-            this.labelMesh.Size = new System.Drawing.Size(95, 13);
-            this.labelMesh.TabIndex = 7;
-            this.labelMesh.Text = "Sieve opening, µm";
-            // 
-            // labelDepth
-            // 
-            this.labelDepth.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelDepth.AutoSize = true;
-            this.labelDepth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDepth.Location = new System.Drawing.Point(270, 117);
-            this.labelDepth.Name = "labelDepth";
-            this.labelDepth.Size = new System.Drawing.Size(50, 13);
-            this.labelDepth.TabIndex = 9;
-            this.labelDepth.Text = "Depth, m";
-            // 
-            // textBoxDepth
-            // 
-            this.textBoxDepth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxDepth.Location = new System.Drawing.Point(434, 114);
-            this.textBoxDepth.Name = "textBoxDepth";
-            this.textBoxDepth.Size = new System.Drawing.Size(50, 20);
-            this.textBoxDepth.TabIndex = 10;
-            this.textBoxDepth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.labelSieve.AutoSize = true;
+            this.labelSieve.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelSieve.Location = new System.Drawing.Point(45, 118);
+            this.labelSieve.Name = "labelSieve";
+            this.labelSieve.Size = new System.Drawing.Size(95, 13);
+            this.labelSieve.TabIndex = 8;
+            this.labelSieve.Text = "Sieve opening, µm";
             // 
             // contextMenuStripSubstrate
             // 
@@ -454,7 +418,7 @@ namespace Mayfly.Benthos
             this.ItemSubSand.Size = new System.Drawing.Size(138, 22);
             this.ItemSubSand.Tag = "";
             this.ItemSubSand.Text = "Sand";
-            this.ItemSubSand.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSand.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubLoamySand
             // 
@@ -462,7 +426,7 @@ namespace Mayfly.Benthos
             this.ItemSubLoamySand.Size = new System.Drawing.Size(138, 22);
             this.ItemSubLoamySand.Tag = "";
             this.ItemSubLoamySand.Text = "Loamy sand";
-            this.ItemSubLoamySand.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubLoamySand.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ToolStripMenuItemSilts
             // 
@@ -478,7 +442,7 @@ namespace Mayfly.Benthos
             this.ItemSubSilt.Size = new System.Drawing.Size(90, 22);
             this.ItemSubSilt.Tag = "";
             this.ItemSubSilt.Text = "Silt";
-            this.ItemSubSilt.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSilt.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ToolStripMenuItemClays
             // 
@@ -496,21 +460,21 @@ namespace Mayfly.Benthos
             this.ItemSubClay.Size = new System.Drawing.Size(130, 22);
             this.ItemSubClay.Tag = "";
             this.ItemSubClay.Text = "Clay";
-            this.ItemSubClay.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubClay.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubSandyClay
             // 
             this.ItemSubSandyClay.Name = "ItemSubSandyClay";
             this.ItemSubSandyClay.Size = new System.Drawing.Size(130, 22);
             this.ItemSubSandyClay.Text = "Sandy clay";
-            this.ItemSubSandyClay.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSandyClay.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubSiltyClay
             // 
             this.ItemSubSiltyClay.Name = "ItemSubSiltyClay";
             this.ItemSubSiltyClay.Size = new System.Drawing.Size(130, 22);
             this.ItemSubSiltyClay.Text = "Silty clay";
-            this.ItemSubSiltyClay.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSiltyClay.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ToolStripMenuItemLoams
             // 
@@ -530,75 +494,75 @@ namespace Mayfly.Benthos
             this.ItemSubLoam.Name = "ItemSubLoam";
             this.ItemSubLoam.Size = new System.Drawing.Size(160, 22);
             this.ItemSubLoam.Text = "Loam";
-            this.ItemSubLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubLoam.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubSandyLoam
             // 
             this.ItemSubSandyLoam.Name = "ItemSubSandyLoam";
             this.ItemSubSandyLoam.Size = new System.Drawing.Size(160, 22);
             this.ItemSubSandyLoam.Text = "Sandy loam";
-            this.ItemSubSandyLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSandyLoam.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubSandyClayLoam
             // 
             this.ItemSubSandyClayLoam.Name = "ItemSubSandyClayLoam";
             this.ItemSubSandyClayLoam.Size = new System.Drawing.Size(160, 22);
             this.ItemSubSandyClayLoam.Text = "Sandy clay loam";
-            this.ItemSubSandyClayLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSandyClayLoam.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubClayLoam
             // 
             this.ItemSubClayLoam.Name = "ItemSubClayLoam";
             this.ItemSubClayLoam.Size = new System.Drawing.Size(160, 22);
             this.ItemSubClayLoam.Text = "Clay loam";
-            this.ItemSubClayLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubClayLoam.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubSiltyClayLoam
             // 
             this.ItemSubSiltyClayLoam.Name = "ItemSubSiltyClayLoam";
             this.ItemSubSiltyClayLoam.Size = new System.Drawing.Size(160, 22);
             this.ItemSubSiltyClayLoam.Text = "Silty clay loam";
-            this.ItemSubSiltyClayLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSiltyClayLoam.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // ItemSubSiltLoam
             // 
             this.ItemSubSiltLoam.Name = "ItemSubSiltLoam";
             this.ItemSubSiltLoam.Size = new System.Drawing.Size(160, 22);
             this.ItemSubSiltLoam.Text = "Silt loam";
-            this.ItemSubSiltLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            this.ItemSubSiltLoam.Click += new System.EventHandler(this.itemTexture_Click);
             // 
             // tabPageSubstrate
             // 
             this.tabPageSubstrate.Controls.Add(this.labelTexture);
             this.tabPageSubstrate.Controls.Add(this.buttonSubTexture);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownDebris);
+            this.tabPageSubstrate.Controls.Add(this.numericDebris);
             this.tabPageSubstrate.Controls.Add(this.checkBoxClay);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownSapropel);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownCobble);
+            this.tabPageSubstrate.Controls.Add(this.numericSapropel);
+            this.tabPageSubstrate.Controls.Add(this.numericCobble);
             this.tabPageSubstrate.Controls.Add(this.checkBoxSilt);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownCPOM);
+            this.tabPageSubstrate.Controls.Add(this.numericCPOM);
             this.tabPageSubstrate.Controls.Add(this.checkBoxPhytal);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownFPOM);
+            this.tabPageSubstrate.Controls.Add(this.numericFPOM);
             this.tabPageSubstrate.Controls.Add(this.checkBoxSand);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownGravel);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownLiving);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownBoulder);
+            this.tabPageSubstrate.Controls.Add(this.numericGravel);
+            this.tabPageSubstrate.Controls.Add(this.numericLiving);
+            this.tabPageSubstrate.Controls.Add(this.numericBoulder);
             this.tabPageSubstrate.Controls.Add(this.checkBoxWood);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownWood);
+            this.tabPageSubstrate.Controls.Add(this.numericWood);
             this.tabPageSubstrate.Controls.Add(this.checkBoxGravel);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownSand);
+            this.tabPageSubstrate.Controls.Add(this.numericSand);
             this.tabPageSubstrate.Controls.Add(this.checkBoxDebris);
             this.tabPageSubstrate.Controls.Add(this.checkBoxCobble);
             this.tabPageSubstrate.Controls.Add(this.checkBoxLiving);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownPhytal);
+            this.tabPageSubstrate.Controls.Add(this.numericPhytal);
             this.tabPageSubstrate.Controls.Add(this.checkBoxBoulder);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownSilt);
+            this.tabPageSubstrate.Controls.Add(this.numericSilt);
             this.tabPageSubstrate.Controls.Add(this.checkBoxSapropel);
             this.tabPageSubstrate.Controls.Add(this.labelOrganics);
             this.tabPageSubstrate.Controls.Add(this.checkBoxFPOM);
             this.tabPageSubstrate.Controls.Add(this.checkBoxCPOM);
             this.tabPageSubstrate.Controls.Add(this.labelMinerals);
-            this.tabPageSubstrate.Controls.Add(this.numericUpDownClay);
+            this.tabPageSubstrate.Controls.Add(this.numericClay);
             this.tabPageSubstrate.Location = new System.Drawing.Point(4, 22);
             this.tabPageSubstrate.Name = "tabPageSubstrate";
             this.tabPageSubstrate.Padding = new System.Windows.Forms.Padding(25, 25, 45, 45);
@@ -629,21 +593,21 @@ namespace Mayfly.Benthos
             this.buttonSubTexture.TabIndex = 54;
             this.buttonSubTexture.Text = "Select texture";
             this.buttonSubTexture.UseVisualStyleBackColor = true;
+            this.buttonSubTexture.Click += new System.EventHandler(this.buttonSubTexture_Click);
             // 
-            // numericUpDownDebris
+            // numericDebris
             // 
-            this.numericUpDownDebris.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownDebris.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownDebris.Location = new System.Drawing.Point(433, 284);
-            this.numericUpDownDebris.Name = "numericUpDownDebris";
-            this.numericUpDownDebris.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownDebris.TabIndex = 70;
-            this.numericUpDownDebris.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownDebris.Visible = false;
+            this.numericDebris.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericDebris.Format = "N0";
+            this.numericDebris.Location = new System.Drawing.Point(433, 284);
+            this.numericDebris.Maximum = 100D;
+            this.numericDebris.Minimum = 0D;
+            this.numericDebris.Name = "numericDebris";
+            this.numericDebris.Size = new System.Drawing.Size(50, 20);
+            this.numericDebris.TabIndex = 70;
+            this.numericDebris.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericDebris.Value = -1D;
+            this.numericDebris.Visible = false;
             // 
             // checkBoxClay
             // 
@@ -658,30 +622,33 @@ namespace Mayfly.Benthos
             this.checkBoxClay.UseVisualStyleBackColor = true;
             this.checkBoxClay.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownSapropel
+            // numericSapropel
             // 
-            this.numericUpDownSapropel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownSapropel.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownSapropel.Location = new System.Drawing.Point(433, 258);
-            this.numericUpDownSapropel.Name = "numericUpDownSapropel";
-            this.numericUpDownSapropel.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownSapropel.TabIndex = 68;
-            this.numericUpDownSapropel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownSapropel.Visible = false;
+            this.numericSapropel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericSapropel.Format = "N0";
+            this.numericSapropel.Location = new System.Drawing.Point(433, 258);
+            this.numericSapropel.Maximum = 100D;
+            this.numericSapropel.Minimum = 0D;
+            this.numericSapropel.Name = "numericSapropel";
+            this.numericSapropel.Size = new System.Drawing.Size(50, 20);
+            this.numericSapropel.TabIndex = 68;
+            this.numericSapropel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericSapropel.Value = -1D;
+            this.numericSapropel.Visible = false;
             // 
-            // numericUpDownCobble
+            // numericCobble
             // 
-            this.numericUpDownCobble.Location = new System.Drawing.Point(135, 93);
-            this.numericUpDownCobble.Name = "numericUpDownCobble";
-            this.numericUpDownCobble.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownCobble.TabIndex = 45;
-            this.numericUpDownCobble.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownCobble.Visible = false;
-            this.numericUpDownCobble.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
+            this.numericCobble.Format = "N0";
+            this.numericCobble.Location = new System.Drawing.Point(135, 93);
+            this.numericCobble.Maximum = 100D;
+            this.numericCobble.Minimum = 0D;
+            this.numericCobble.Name = "numericCobble";
+            this.numericCobble.Size = new System.Drawing.Size(50, 20);
+            this.numericCobble.TabIndex = 45;
+            this.numericCobble.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericCobble.Value = -1D;
+            this.numericCobble.Visible = false;
+            this.numericCobble.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
             // 
             // checkBoxSilt
             // 
@@ -696,20 +663,19 @@ namespace Mayfly.Benthos
             this.checkBoxSilt.UseVisualStyleBackColor = true;
             this.checkBoxSilt.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownCPOM
+            // numericCPOM
             // 
-            this.numericUpDownCPOM.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownCPOM.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownCPOM.Location = new System.Drawing.Point(214, 310);
-            this.numericUpDownCPOM.Name = "numericUpDownCPOM";
-            this.numericUpDownCPOM.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownCPOM.TabIndex = 64;
-            this.numericUpDownCPOM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownCPOM.Visible = false;
+            this.numericCPOM.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericCPOM.Format = "N0";
+            this.numericCPOM.Location = new System.Drawing.Point(214, 310);
+            this.numericCPOM.Maximum = 100D;
+            this.numericCPOM.Minimum = 0D;
+            this.numericCPOM.Name = "numericCPOM";
+            this.numericCPOM.Size = new System.Drawing.Size(50, 20);
+            this.numericCPOM.TabIndex = 64;
+            this.numericCPOM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericCPOM.Value = -1D;
+            this.numericCPOM.Visible = false;
             // 
             // checkBoxPhytal
             // 
@@ -721,21 +687,21 @@ namespace Mayfly.Benthos
             this.checkBoxPhytal.TabIndex = 57;
             this.checkBoxPhytal.Text = "Phytal (macrophytes etc.)";
             this.checkBoxPhytal.UseVisualStyleBackColor = true;
+            this.checkBoxPhytal.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownFPOM
+            // numericFPOM
             // 
-            this.numericUpDownFPOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownFPOM.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownFPOM.Location = new System.Drawing.Point(433, 232);
-            this.numericUpDownFPOM.Name = "numericUpDownFPOM";
-            this.numericUpDownFPOM.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownFPOM.TabIndex = 66;
-            this.numericUpDownFPOM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownFPOM.Visible = false;
+            this.numericFPOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericFPOM.Format = "N0";
+            this.numericFPOM.Location = new System.Drawing.Point(433, 232);
+            this.numericFPOM.Maximum = 100D;
+            this.numericFPOM.Minimum = 0D;
+            this.numericFPOM.Name = "numericFPOM";
+            this.numericFPOM.Size = new System.Drawing.Size(50, 20);
+            this.numericFPOM.TabIndex = 66;
+            this.numericFPOM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericFPOM.Value = -1D;
+            this.numericFPOM.Visible = false;
             // 
             // checkBoxSand
             // 
@@ -750,41 +716,48 @@ namespace Mayfly.Benthos
             this.checkBoxSand.UseVisualStyleBackColor = true;
             this.checkBoxSand.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownGravel
+            // numericGravel
             // 
-            this.numericUpDownGravel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownGravel.Location = new System.Drawing.Point(285, 67);
-            this.numericUpDownGravel.Name = "numericUpDownGravel";
-            this.numericUpDownGravel.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownGravel.TabIndex = 47;
-            this.numericUpDownGravel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownGravel.Visible = false;
-            this.numericUpDownGravel.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
+            this.numericGravel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericGravel.Format = "N0";
+            this.numericGravel.Location = new System.Drawing.Point(285, 67);
+            this.numericGravel.Maximum = 100D;
+            this.numericGravel.Minimum = 0D;
+            this.numericGravel.Name = "numericGravel";
+            this.numericGravel.Size = new System.Drawing.Size(50, 20);
+            this.numericGravel.TabIndex = 47;
+            this.numericGravel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericGravel.Value = -1D;
+            this.numericGravel.Visible = false;
+            this.numericGravel.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
             // 
-            // numericUpDownLiving
+            // numericLiving
             // 
-            this.numericUpDownLiving.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownLiving.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownLiving.Location = new System.Drawing.Point(214, 258);
-            this.numericUpDownLiving.Name = "numericUpDownLiving";
-            this.numericUpDownLiving.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownLiving.TabIndex = 60;
-            this.numericUpDownLiving.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownLiving.Visible = false;
+            this.numericLiving.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericLiving.Format = "N0";
+            this.numericLiving.Location = new System.Drawing.Point(214, 258);
+            this.numericLiving.Maximum = 100D;
+            this.numericLiving.Minimum = 0D;
+            this.numericLiving.Name = "numericLiving";
+            this.numericLiving.Size = new System.Drawing.Size(50, 20);
+            this.numericLiving.TabIndex = 60;
+            this.numericLiving.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericLiving.Value = -1D;
+            this.numericLiving.Visible = false;
             // 
-            // numericUpDownBoulder
+            // numericBoulder
             // 
-            this.numericUpDownBoulder.Location = new System.Drawing.Point(135, 67);
-            this.numericUpDownBoulder.Name = "numericUpDownBoulder";
-            this.numericUpDownBoulder.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownBoulder.TabIndex = 43;
-            this.numericUpDownBoulder.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownBoulder.Visible = false;
-            this.numericUpDownBoulder.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
+            this.numericBoulder.Format = "N0";
+            this.numericBoulder.Location = new System.Drawing.Point(135, 67);
+            this.numericBoulder.Maximum = 100D;
+            this.numericBoulder.Minimum = 0D;
+            this.numericBoulder.Name = "numericBoulder";
+            this.numericBoulder.Size = new System.Drawing.Size(50, 20);
+            this.numericBoulder.TabIndex = 43;
+            this.numericBoulder.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericBoulder.Value = -1D;
+            this.numericBoulder.Visible = false;
+            this.numericBoulder.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
             // 
             // checkBoxWood
             // 
@@ -796,21 +769,21 @@ namespace Mayfly.Benthos
             this.checkBoxWood.TabIndex = 61;
             this.checkBoxWood.Text = "Xylal (dead wood)";
             this.checkBoxWood.UseVisualStyleBackColor = true;
+            this.checkBoxWood.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownWood
+            // numericWood
             // 
-            this.numericUpDownWood.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownWood.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownWood.Location = new System.Drawing.Point(214, 284);
-            this.numericUpDownWood.Name = "numericUpDownWood";
-            this.numericUpDownWood.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownWood.TabIndex = 62;
-            this.numericUpDownWood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownWood.Visible = false;
+            this.numericWood.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericWood.Format = "N0";
+            this.numericWood.Location = new System.Drawing.Point(214, 284);
+            this.numericWood.Maximum = 100D;
+            this.numericWood.Minimum = 0D;
+            this.numericWood.Name = "numericWood";
+            this.numericWood.Size = new System.Drawing.Size(50, 20);
+            this.numericWood.TabIndex = 62;
+            this.numericWood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericWood.Value = -1D;
+            this.numericWood.Visible = false;
             // 
             // checkBoxGravel
             // 
@@ -825,16 +798,20 @@ namespace Mayfly.Benthos
             this.checkBoxGravel.UseVisualStyleBackColor = true;
             this.checkBoxGravel.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownSand
+            // numericSand
             // 
-            this.numericUpDownSand.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownSand.Location = new System.Drawing.Point(285, 93);
-            this.numericUpDownSand.Name = "numericUpDownSand";
-            this.numericUpDownSand.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownSand.TabIndex = 49;
-            this.numericUpDownSand.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownSand.Visible = false;
-            this.numericUpDownSand.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
+            this.numericSand.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericSand.Format = "N0";
+            this.numericSand.Location = new System.Drawing.Point(285, 93);
+            this.numericSand.Maximum = 100D;
+            this.numericSand.Minimum = 0D;
+            this.numericSand.Name = "numericSand";
+            this.numericSand.Size = new System.Drawing.Size(50, 20);
+            this.numericSand.TabIndex = 49;
+            this.numericSand.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericSand.Value = -1D;
+            this.numericSand.Visible = false;
+            this.numericSand.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
             // 
             // checkBoxDebris
             // 
@@ -848,6 +825,7 @@ namespace Mayfly.Benthos
             this.checkBoxDebris.TabIndex = 69;
             this.checkBoxDebris.Text = "Debris";
             this.checkBoxDebris.UseVisualStyleBackColor = true;
+            this.checkBoxDebris.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
             // checkBoxCobble
             // 
@@ -871,21 +849,21 @@ namespace Mayfly.Benthos
             this.checkBoxLiving.TabIndex = 59;
             this.checkBoxLiving.Text = "Terrestrial plants";
             this.checkBoxLiving.UseVisualStyleBackColor = true;
+            this.checkBoxLiving.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownPhytal
+            // numericPhytal
             // 
-            this.numericUpDownPhytal.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numericUpDownPhytal.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDownPhytal.Location = new System.Drawing.Point(214, 232);
-            this.numericUpDownPhytal.Name = "numericUpDownPhytal";
-            this.numericUpDownPhytal.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownPhytal.TabIndex = 58;
-            this.numericUpDownPhytal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownPhytal.Visible = false;
+            this.numericPhytal.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericPhytal.Format = "N0";
+            this.numericPhytal.Location = new System.Drawing.Point(214, 232);
+            this.numericPhytal.Maximum = 100D;
+            this.numericPhytal.Minimum = 0D;
+            this.numericPhytal.Name = "numericPhytal";
+            this.numericPhytal.Size = new System.Drawing.Size(50, 20);
+            this.numericPhytal.TabIndex = 58;
+            this.numericPhytal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericPhytal.Value = -1D;
+            this.numericPhytal.Visible = false;
             // 
             // checkBoxBoulder
             // 
@@ -899,16 +877,20 @@ namespace Mayfly.Benthos
             this.checkBoxBoulder.UseVisualStyleBackColor = true;
             this.checkBoxBoulder.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
-            // numericUpDownSilt
+            // numericSilt
             // 
-            this.numericUpDownSilt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownSilt.Location = new System.Drawing.Point(433, 67);
-            this.numericUpDownSilt.Name = "numericUpDownSilt";
-            this.numericUpDownSilt.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownSilt.TabIndex = 51;
-            this.numericUpDownSilt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownSilt.Visible = false;
-            this.numericUpDownSilt.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
+            this.numericSilt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericSilt.Format = "N0";
+            this.numericSilt.Location = new System.Drawing.Point(433, 67);
+            this.numericSilt.Maximum = 100D;
+            this.numericSilt.Minimum = 0D;
+            this.numericSilt.Name = "numericSilt";
+            this.numericSilt.Size = new System.Drawing.Size(50, 20);
+            this.numericSilt.TabIndex = 51;
+            this.numericSilt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericSilt.Value = -1D;
+            this.numericSilt.Visible = false;
+            this.numericSilt.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
             // 
             // checkBoxSapropel
             // 
@@ -921,6 +903,7 @@ namespace Mayfly.Benthos
             this.checkBoxSapropel.TabIndex = 67;
             this.checkBoxSapropel.Text = "Organic mud, sapropel";
             this.checkBoxSapropel.UseVisualStyleBackColor = true;
+            this.checkBoxSapropel.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
             // labelOrganics
             // 
@@ -946,6 +929,7 @@ namespace Mayfly.Benthos
             this.checkBoxFPOM.TabIndex = 65;
             this.checkBoxFPOM.Text = "FPOM";
             this.checkBoxFPOM.UseVisualStyleBackColor = true;
+            this.checkBoxFPOM.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
             // checkBoxCPOM
             // 
@@ -957,6 +941,7 @@ namespace Mayfly.Benthos
             this.checkBoxCPOM.TabIndex = 63;
             this.checkBoxCPOM.Text = "CPOM (e. g. fallen leaves)";
             this.checkBoxCPOM.UseVisualStyleBackColor = true;
+            this.checkBoxCPOM.CheckedChanged += new System.EventHandler(this.checkBoxGranulae_CheckedChanged);
             // 
             // labelMinerals
             // 
@@ -971,23 +956,139 @@ namespace Mayfly.Benthos
             this.labelMinerals.TabIndex = 41;
             this.labelMinerals.Text = "Mineral Composition";
             // 
-            // numericUpDownClay
+            // numericClay
             // 
-            this.numericUpDownClay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownClay.Location = new System.Drawing.Point(433, 93);
-            this.numericUpDownClay.Name = "numericUpDownClay";
-            this.numericUpDownClay.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownClay.TabIndex = 53;
-            this.numericUpDownClay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownClay.Visible = false;
-            this.numericUpDownClay.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
+            this.numericClay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericClay.Format = "N0";
+            this.numericClay.Location = new System.Drawing.Point(433, 93);
+            this.numericClay.Maximum = 100D;
+            this.numericClay.Minimum = 0D;
+            this.numericClay.Name = "numericClay";
+            this.numericClay.Size = new System.Drawing.Size(50, 20);
+            this.numericClay.TabIndex = 53;
+            this.numericClay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericClay.Value = -1D;
+            this.numericClay.Visible = false;
+            this.numericClay.ValueChanged += new System.EventHandler(this.substrate_ValueChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label17.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label17.Location = new System.Drawing.Point(28, 168);
+            this.label17.Margin = new System.Windows.Forms.Padding(3, 25, 3, 25);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(78, 15);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Sampled area";
+            // 
+            // numericDepth
+            // 
+            this.numericDepth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericDepth.Format = "N0";
+            this.numericDepth.Location = new System.Drawing.Point(214, 141);
+            this.numericDepth.Maximum = 100D;
+            this.numericDepth.Minimum = 0D;
+            this.numericDepth.Name = "numericDepth";
+            this.numericDepth.Size = new System.Drawing.Size(50, 20);
+            this.numericDepth.TabIndex = 10;
+            this.numericDepth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericDepth.Value = -1D;
+            // 
+            // labelDepth
+            // 
+            this.labelDepth.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelDepth.AutoSize = true;
+            this.labelDepth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelDepth.Location = new System.Drawing.Point(45, 144);
+            this.labelDepth.Name = "labelDepth";
+            this.labelDepth.Size = new System.Drawing.Size(50, 13);
+            this.labelDepth.TabIndex = 9;
+            this.labelDepth.Text = "Depth, m";
+            // 
+            // numericWidth
+            // 
+            this.numericWidth.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericWidth.Format = "N0";
+            this.numericWidth.Location = new System.Drawing.Point(214, 89);
+            this.numericWidth.Maximum = 100D;
+            this.numericWidth.Minimum = 0D;
+            this.numericWidth.Name = "numericWidth";
+            this.numericWidth.Size = new System.Drawing.Size(50, 20);
+            this.numericWidth.TabIndex = 5;
+            this.numericWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericWidth.Value = -1D;
+            this.numericWidth.ValueChanged += new System.EventHandler(this.virtue_Changed);
+            // 
+            // labelWidth
+            // 
+            this.labelWidth.AutoSize = true;
+            this.labelWidth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelWidth.Location = new System.Drawing.Point(45, 92);
+            this.labelWidth.Name = "labelWidth";
+            this.labelWidth.Size = new System.Drawing.Size(86, 13);
+            this.labelWidth.TabIndex = 4;
+            this.labelWidth.Text = "Blade length, cm";
+            // 
+            // numericExposure
+            // 
+            this.numericExposure.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numericExposure.Format = "N0";
+            this.numericExposure.Location = new System.Drawing.Point(214, 206);
+            this.numericExposure.Maximum = 100D;
+            this.numericExposure.Minimum = 0D;
+            this.numericExposure.Name = "numericExposure";
+            this.numericExposure.Size = new System.Drawing.Size(50, 20);
+            this.numericExposure.TabIndex = 12;
+            this.numericExposure.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericExposure.Value = -1D;
+            this.numericExposure.ValueChanged += new System.EventHandler(this.effort_Changed);
+            // 
+            // labelExposure
+            // 
+            this.labelExposure.AutoSize = true;
+            this.labelExposure.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelExposure.Location = new System.Drawing.Point(45, 209);
+            this.labelExposure.Name = "labelExposure";
+            this.labelExposure.Size = new System.Drawing.Size(71, 13);
+            this.labelExposure.TabIndex = 11;
+            this.labelExposure.Text = "Exposure, cm";
+            // 
+            // numericSquare
+            // 
+            this.numericSquare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericSquare.Format = "N0";
+            this.numericSquare.Location = new System.Drawing.Point(434, 89);
+            this.numericSquare.Maximum = 10000D;
+            this.numericSquare.Minimum = 0D;
+            this.numericSquare.Name = "numericSquare";
+            this.numericSquare.Size = new System.Drawing.Size(50, 20);
+            this.numericSquare.TabIndex = 7;
+            this.numericSquare.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericSquare.Value = -1D;
+            this.numericSquare.ValueChanged += new System.EventHandler(this.virtue_Changed);
+            // 
+            // labelSquare
+            // 
+            this.labelSquare.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelSquare.AutoSize = true;
+            this.labelSquare.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelSquare.Location = new System.Drawing.Point(270, 92);
+            this.labelSquare.Name = "labelSquare";
+            this.labelSquare.Size = new System.Drawing.Size(103, 13);
+            this.labelSquare.TabIndex = 6;
+            this.labelSquare.Text = "Grabber square, cm²";
             // 
             // BenthosCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(564, 631);
             this.Name = "BenthosCard";
-            this.OnSaved += new System.EventHandler(this.BenthosCard_OnSaved);
+            this.OnSaved += new System.EventHandler(this.benthosCard_OnSaved);
+            this.OnCleared += new System.EventHandler(this.benthosCard_OnCleared);
+            this.OnEquipmentSaved += new Mayfly.Wild.EquipmentEventHandler(this.benthosCard_OnEquipmentSaved);
             this.Controls.SetChildIndex(this.tabControl, 0);
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
             this.tabPageCollect.ResumeLayout(false);
@@ -998,291 +1099,198 @@ namespace Mayfly.Benthos
             this.tabPageEnvironment.PerformLayout();
             this.tabPageSampler.ResumeLayout(false);
             this.tabPageSampler.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownReps)).EndInit();
             this.contextMenuStripSubstrate.ResumeLayout(false);
             this.tabPageSubstrate.ResumeLayout(false);
             this.tabPageSubstrate.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDebris)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSapropel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCobble)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCPOM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFPOM)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGravel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLiving)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBoulder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWood)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSand)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPhytal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSilt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownClay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        private void SetSquare() {
-            if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull()) {
-                switch (SelectedSampler.GetSamplerType()) {
-                    case BenthosSamplerType.Grabber:
-                        Square = (double)numericUpDownReps.Value * SelectedSampler.EffortValue;
-                        break;
-                    case BenthosSamplerType.Scraper:
-                        Square = (double)numericUpDownReps.Value * SelectedSampler.EffortValue / 100;
-                        break;
-                }
-            } else {
-                //Square = double.NaN;
+        private void resetMinerals() {
+
+            checkBoxBoulder.Checked = (numericBoulder.Value > 0);
+            checkBoxCobble.Checked = (numericCobble.Value > 0);
+            checkBoxGravel.Checked = (numericGravel.Value > 0);
+            checkBoxSand.Checked = (numericSand.Value > 0);
+            checkBoxSilt.Checked = (numericSilt.Value > 0);
+            checkBoxClay.Checked = (numericClay.Value > 0);
+        }
+
+        private void clearMinerals() {
+
+            foreach (NumberBox numeric in MineralControls) {
+                numeric.Clear();
             }
+
+            resetMinerals();
         }
 
-        private void SetCombos(WaterType type) {
-            comboBoxCrossSection.Items.Clear();
-            comboBoxCrossSection.Items.AddRange(Wild.Service.CrossSection(type));
-            comboBoxBank.Enabled = type != WaterType.Lake;
+        private void resetOrganics() {
+
+            checkBoxPhytal.Checked = (numericPhytal.Value > 0);
+            checkBoxLiving.Checked = (numericLiving.Value > 0);
+            checkBoxWood.Checked = (numericWood.Value > 0);
+            checkBoxCPOM.Checked = (numericCPOM.Value > 0);
+            checkBoxFPOM.Checked = (numericFPOM.Value > 0);
+            checkBoxSapropel.Checked = (numericSapropel.Value > 0);
+            checkBoxDebris.Checked = (numericDebris.Value > 0);
         }
 
-        private void DropSubs() {
-            numericUpDownBoulder.Value = 0;
-            numericUpDownCobble.Value = 0;
-            numericUpDownGravel.Value = 0;
-            numericUpDownSand.Value = 0;
-            numericUpDownSilt.Value = 0;
-            numericUpDownClay.Value = 0;
+        private void clearOrganics() {
 
-            numericUpDownPhytal.Value = 0;
-            numericUpDownLiving.Value = 0;
-            numericUpDownWood.Value = 0;
-            numericUpDownCPOM.Value = 0;
-            numericUpDownFPOM.Value = 0;
-            numericUpDownSapropel.Value = 0;
-            numericUpDownDebris.Value = 0;
+            foreach (NumberBox numeric in new NumberBox[] { numericPhytal, numericLiving, numericWood, numericCPOM, numericFPOM, numericSapropel, numericDebris }) {
+                numeric.Clear();
+            }
+
+            resetOrganics();
         }
 
-        private void ResetSubs() {
-            checkBoxBoulder.Checked = (numericUpDownBoulder.Value > 0);
-            checkBoxCobble.Checked = (numericUpDownCobble.Value > 0);
-            checkBoxGravel.Checked = (numericUpDownGravel.Value > 0);
-            checkBoxSand.Checked = (numericUpDownSand.Value > 0);
-            checkBoxSilt.Checked = (numericUpDownSilt.Value > 0);
-            checkBoxClay.Checked = (numericUpDownClay.Value > 0);
-
-            checkBoxPhytal.Checked = (numericUpDownPhytal.Value > 0);
-            checkBoxLiving.Checked = (numericUpDownLiving.Value > 0);
-            checkBoxWood.Checked = (numericUpDownWood.Value > 0);
-            checkBoxCPOM.Checked = (numericUpDownCPOM.Value > 0);
-            checkBoxFPOM.Checked = (numericUpDownFPOM.Value > 0);
-            checkBoxSapropel.Checked = (numericUpDownSapropel.Value > 0);
-            checkBoxDebris.Checked = (numericUpDownDebris.Value > 0);
+        private void clearSubstrate() {
+            clearMinerals();
+            clearOrganics();
         }
 
+        private void clearSampler() {
 
+            numericWidth.Clear();
+            numericSquare.Clear();
+            numericSieve.Clear();
+        }
 
-        private void BenthosCard_OnSaved(object sender, EventArgs e) {
+        private void clearEffort() {
 
+            numericExposure.Clear();
+            numericPortions.Clear();
 
-            #region Save substrate values
+        }
+
+        private void saveSubstrate() {
 
             SubstrateSample substrate = new SubstrateSample(0, 0, 0);
 
-            #region Mineral Substrates
-
             if (checkBoxBoulder.Checked) {
-                substrate.Boulder = (int)numericUpDownBoulder.Value;
+                substrate.Boulder = numericBoulder.Value;
             }
 
             if (checkBoxCobble.Checked) {
-                substrate.Cobble = (int)numericUpDownCobble.Value;
+                substrate.Cobble = numericCobble.Value;
             }
 
             if (checkBoxGravel.Checked) {
-                substrate.Gravel = (int)numericUpDownGravel.Value;
+                substrate.Gravel = numericGravel.Value;
             }
 
             if (checkBoxSand.Checked) {
-                substrate.Sand = (int)numericUpDownSand.Value;
+                substrate.Sand = numericSand.Value;
             }
 
             if (checkBoxSilt.Checked) {
-                substrate.Silt = (int)numericUpDownSilt.Value;
+                substrate.Silt = numericSilt.Value;
             }
 
             if (checkBoxClay.Checked) {
-                substrate.Clay = (int)numericUpDownClay.Value;
+                substrate.Clay = numericClay.Value;
             }
 
-            #endregion
 
-            #region Organic Substrates
 
             if (checkBoxPhytal.Checked) {
-                substrate.Phytal = (int)numericUpDownPhytal.Value;
+                substrate.Phytal = numericPhytal.Value;
             }
 
             if (checkBoxLiving.Checked) {
-                substrate.Living = (int)numericUpDownLiving.Value;
+                substrate.Living = numericLiving.Value;
             }
 
             if (checkBoxWood.Checked) {
-                substrate.Wood = (int)numericUpDownWood.Value;
+                substrate.Wood = numericWood.Value;
             }
 
             if (checkBoxCPOM.Checked) {
-                substrate.CPOM = (int)numericUpDownCPOM.Value;
+                substrate.CPOM = numericCPOM.Value;
             }
 
             if (checkBoxFPOM.Checked) {
-                substrate.FPOM = (int)numericUpDownFPOM.Value;
+                substrate.FPOM = numericFPOM.Value;
             }
 
             if (checkBoxSapropel.Checked) {
-                substrate.Sapropel = (int)numericUpDownSapropel.Value;
+                substrate.Sapropel = numericSapropel.Value;
             }
 
             if (checkBoxDebris.Checked) {
-                substrate.Debris = (int)numericUpDownDebris.Value;
+                substrate.Debris = numericDebris.Value;
             }
 
-            #endregion
 
             if (substrate.IsAvailable) {
                 data.Solitary.Substrate = substrate.Protocol;
             } else {
                 data.Solitary.SetSubstrateNull();
             }
+        }
 
-            #endregion
+        //private void saveSampler() {
+
+        //    base.saveSampler();
+        //    data.Solitary.EquipmentRow.SetVirtue("Width", numericWidth.Value);
+        //    data.Solitary.EquipmentRow.SetVirtue("Square", numericSquare.Value);
+        //}
+
+        private void saveEffort() {
+
+            if (numericDepth.IsSet) {
+                data.Solitary.Depth = numericDepth.Value;
+            } else {
+                data.Solitary.SetDepthNull();
+            }
+
+            if (SelectedSampler.EffortType == (int)EffortType.Portion) {
+                if (numericPortions.IsSet) {
+                    data.Solitary.Effort = numericPortions.Value;
+                } else {
+                    data.Solitary.SetEffortNull();
+                }
+            } else if (SelectedSampler.EffortType == (int)EffortType.Exposure) {
+                if (numericExposure.IsSet) {
+                    data.Solitary.Effort = numericExposure.Value * .01;
+                } else {
+                    data.Solitary.SetEffortNull();
+                }
+            }
+        }
+
+
+
+        private void benthosCard_OnCleared(object sender, EventArgs e) {
+
+            clearSubstrate();
+            clearSampler();
+            clearEffort();
+        }
+
+        private void benthosCard_OnEquipmentSaved(object sender, EquipmentEventArgs e) {
+
+            effort_Changed(sender, e);
+        }
+
+        private void benthosCard_OnSaved(object sender, EventArgs e) {
+
+            saveSubstrate();
         }
 
         private void waterSelector_WaterSelected(object sender, WaterEventArgs e) {
-            SetCombos(waterSelector.IsWaterSelected ? waterSelector.WaterObject.WaterType : WaterType.None);
-            statusCard.Message(Wild.Resources.Interface.Messages.WaterSet);
+
+            WaterType type = waterSelector.IsWaterSelected ? waterSelector.WaterObject.WaterType : WaterType.None;
+            comboBoxCrossSection.Items.Clear();
+            comboBoxCrossSection.Items.AddRange(Wild.Service.CrossSection(type));
+            comboBoxBank.Enabled = type != WaterType.Lake;
         }
-
-        private void sampler_Changed(object sender, EventArgs e) {
-            BenthosSamplerType kind = SelectedSampler.GetSamplerType();
-
-            textBoxSquare.ReadOnly = labelRepeats.Visible =
-                numericUpDownReps.Visible = kind != BenthosSamplerType.Manual;
-
-            switch (kind) {
-                case BenthosSamplerType.Grabber:
-                    labelRepeats.Text = Resources.Interface.Interface.Repeats;
-                    break;
-                case BenthosSamplerType.Scraper:
-                    labelRepeats.Text = Resources.Interface.Interface.Expanse;
-                    break;
-            }
-
-            SetSquare();
-            isChanged = true;
-        }
-
-
-        private void numericUpDownReps_ValueChanged(object sender, EventArgs e) {
-            if (numericUpDownReps.ContainsFocus) {
-                SetSquare();
-            }
-        }
-
-        private void numericUpDownReps_VisibleChanged(object sender, EventArgs e) {
-            if (!numericUpDownReps.Visible) {
-                //numericUpDownReps.Value = 0;
-                textBoxSquare.Text = string.Empty;
-            }
-        }
-
-        private void textBoxSquare_TextChanged(object sender, EventArgs e) {
-            value_Changed(sender, e);
-            Logger.UpdateStatus();
-        }
-
-        private void comboBoxCrossSection_SelectedIndexChanged(object sender, EventArgs e) {
-            if (comboBoxCrossSection.SelectedIndex == -1 ||
-                comboBoxCrossSection.SelectedIndex == comboBoxCrossSection.Items.Count - 1) {
-                labelBank.Enabled = comboBoxBank.Enabled = false;
-            } else {
-                labelBank.Enabled = comboBoxBank.Enabled = true;
-            }
-
-            value_Changed(sender, e);
-        }
-
-        private void pictureBoxWarnOpening_MouseHover(object sender, EventArgs e) {
-            if (comboBoxCrossSection.SelectedIndex == -1 ||
-                comboBoxCrossSection.SelectedIndex == comboBoxCrossSection.Items.Count - 1) {
-                labelBank.Enabled = comboBoxBank.Enabled = false;
-            } else {
-                labelBank.Enabled = comboBoxBank.Enabled = true;
-            }
-
-            value_Changed(sender, e);
-        }
-
-
-
-        private void substrate_ValueChanged(object sender, EventArgs e) {
-            value_Changed(sender, e);
-
-            if (sender is NumericUpDown down && down.ContainsFocus) {
-                int selectedValue = (int)down.Value;
-
-                int rest = 100 - selectedValue;
-
-                int currentRest = 0;
-
-                foreach (NumericUpDown numericUpDown in MineralControls) {
-                    if (numericUpDown == down) continue;
-                    currentRest += (int)numericUpDown.Value;
-                }
-
-                if (currentRest > rest) {
-                    foreach (NumericUpDown numericUpDown in MineralControls) {
-                        if (numericUpDown == down) continue;
-                        if (numericUpDown.Value == 0) continue;
-                        numericUpDown.Value = (int)(numericUpDown.Value * (decimal)rest / (decimal)currentRest);
-                    }
-                }
-            }
-
-            // TODO: get substrate from sand+silt+clay IF checks are checked
-
-            SubstrateSample substrate = new SubstrateSample(
-                (double)numericUpDownSand.Value,
-                (double)numericUpDownSilt.Value,
-                (double)numericUpDownClay.Value);
-
-            labelTexture.Text = substrate.TypeName;
-        }
-
-        private void checkBoxGranulae_CheckedChanged(object sender, EventArgs e) {
-            Control control = Controls.Find("numericUpDown" +
-                ((CheckBox)sender).Name.Substring(8), true)[0];
-
-            if (control is NumericUpDown) {
-                control.Visible = ((CheckBox)sender).Checked;
-            }
-
-            substrate_ValueChanged(sender, e);
-        }
-
-        private void buttonSubTexture_Click(object sender, EventArgs e) {
-            contextMenuStripSubstrate.Show(buttonSubTexture, new Point(buttonSubTexture.Width, 0), ToolStripDropDownDirection.Right);
-        }
-
-        private void ToolStripMenuItemTexture_Click(object sender, EventArgs e) {
-
-            DropSubs();
-            string texture = ((ToolStripMenuItem)sender).Name.Substring(7);
-            SubstrateSample substrate = new SubstrateSample(SubstrateSample.FromName(texture));
-            numericUpDownSand.Value = 100 * (decimal)substrate.Sand;
-            numericUpDownSilt.Value = 100 * (decimal)substrate.Silt;
-            numericUpDownClay.Value = 100 * (decimal)substrate.Clay;
-            ResetSubs();
-        }
-
 
 
         private void logger_IndividualsRequired(object sender, EventArgs e) {
+
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
                 if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
 
@@ -1315,6 +1323,98 @@ namespace Mayfly.Benthos
             if (individuals.DialogResult == DialogResult.OK) {
                 isChanged |= individuals.ChangesWereMade;
             }
+        }
+
+
+        private void comboBoxCrossSection_SelectedIndexChanged(object sender, EventArgs e) {
+
+            if (comboBoxCrossSection.SelectedIndex == -1 ||
+                comboBoxCrossSection.SelectedIndex == comboBoxCrossSection.Items.Count - 1) {
+                labelBank.Enabled = comboBoxBank.Enabled = false;
+            } else {
+                labelBank.Enabled = comboBoxBank.Enabled = true;
+            }
+
+            value_Changed(sender, e);
+        }
+
+
+        private void virtue_Changed(object sender, EventArgs e) {
+
+            if (SelectedSampler == null) return;
+
+            saveSampler();
+        }
+
+        private void effort_Changed(object sender, EventArgs e) {
+
+            saveEffort();
+            numericArea.Value = data.Solitary.GetArea();
+            isChanged = true;
+        }
+
+
+
+        private void substrate_ValueChanged(object sender, EventArgs e) {
+
+            value_Changed(sender, e);
+
+            if (sender is NumberBox down && down.ContainsFocus) {
+                int selectedValue = (int)down.Value;
+
+                int rest = 100 - selectedValue;
+
+                int currentRest = 0;
+
+                foreach (NumberBox numeric in MineralControls) {
+                    if (numeric == down) continue;
+                    currentRest += (int)numeric.Value;
+                }
+
+                if (currentRest > rest) {
+                    foreach (NumberBox numeric in MineralControls) {
+                        if (numeric == down) continue;
+                        if (numeric.Value == 0) continue;
+                        numeric.Value = (int)(numeric.Value * rest / currentRest);
+                    }
+                }
+            }
+
+            // TODO: get substrate from sand+silt+clay IF checks are checked
+
+            SubstrateSample substrate = new SubstrateSample(numericSand.Value, numericSilt.Value, numericClay.Value);
+
+            labelTexture.Text = substrate.TypeName;
+        }
+
+        private void checkBoxGranulae_CheckedChanged(object sender, EventArgs e) {
+
+            Control control = Controls.Find("numeric" +
+                ((CheckBox)sender).Name.Substring(8), true)[0];
+
+            if (control is NumberBox) {
+                control.Visible = ((CheckBox)sender).Checked;
+            }
+
+            substrate_ValueChanged(sender, e);
+        }
+
+        private void buttonSubTexture_Click(object sender, EventArgs e) {
+
+            contextMenuStripSubstrate.Show(buttonSubTexture, new Point(buttonSubTexture.Width, 0), ToolStripDropDownDirection.Right);
+        }
+
+        private void itemTexture_Click(object sender, EventArgs e) {
+
+            clearMinerals();
+
+            string texture = ((ToolStripMenuItem)sender).Name.Substring(7);
+            SubstrateSample substrate = new SubstrateSample(SubstrateSample.FromName(texture));
+            numericSand.Value = 100 * substrate.Sand;
+            numericSilt.Value = 100 * substrate.Silt;
+            numericClay.Value = 100 * substrate.Clay;
+
+            resetMinerals();
         }
     }
 }

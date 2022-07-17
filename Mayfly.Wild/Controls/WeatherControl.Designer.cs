@@ -32,11 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeatherControl));
             this.checkBoxCloudage = new System.Windows.Forms.CheckBox();
             this.trackBarCloudage = new System.Windows.Forms.TrackBar();
-            this.textBoxHumidity = new System.Windows.Forms.TextBox();
-            this.textBoxWindDirection = new System.Windows.Forms.TextBox();
-            this.textBoxWindRate = new System.Windows.Forms.TextBox();
-            this.textBoxBaro = new System.Windows.Forms.TextBox();
-            this.textBoxTemperature = new System.Windows.Forms.TextBox();
+            this.numericHumidity = new Mayfly.Controls.NumberBox();
+            this.numericWindDirection = new Mayfly.Controls.NumberBox();
+            this.numericWindRate = new Mayfly.Controls.NumberBox();
+            this.numericBaro = new Mayfly.Controls.NumberBox();
+            this.numericTemperature = new Mayfly.Controls.NumberBox();
             this.comboBoxDiscretion = new System.Windows.Forms.ComboBox();
             this.comboBoxDegree = new System.Windows.Forms.ComboBox();
             this.comboBoxAdditionalEvent = new System.Windows.Forms.ComboBox();
@@ -64,7 +64,6 @@
             // trackBarCloudage
             // 
             resources.ApplyResources(this.trackBarCloudage, "trackBarCloudage");
-            this.trackBarCloudage.BackColor = System.Drawing.SystemColors.Window;
             this.trackBarCloudage.LargeChange = 2;
             this.trackBarCloudage.Maximum = 8;
             this.trackBarCloudage.Name = "trackBarCloudage";
@@ -73,41 +72,56 @@
             this.trackBarCloudage.Value = 1;
             this.trackBarCloudage.Scroll += new System.EventHandler(this.trackBarClouds_Scroll);
             // 
-            // textBoxHumidity
+            // numericHumidity
             // 
-            resources.ApplyResources(this.textBoxHumidity, "textBoxHumidity");
-            this.textBoxHumidity.Name = "textBoxHumidity";
-            this.textBoxHumidity.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxHumidity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericHumidity, "numericHumidity");
+            this.numericHumidity.Maximum = 100D;
+            this.numericHumidity.Minimum = 0D;
+            this.numericHumidity.Name = "numericHumidity";
+            this.numericHumidity.Value = -1D;
+            this.numericHumidity.TextChanged += new System.EventHandler(this.value_Changed);
+            this.numericHumidity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxWindDirection
+            // numericWindDirection
             // 
-            resources.ApplyResources(this.textBoxWindDirection, "textBoxWindDirection");
-            this.textBoxWindDirection.Name = "textBoxWindDirection";
-            this.textBoxWindDirection.EnabledChanged += new System.EventHandler(this.textBoxWindDirection_EnabledChanged);
-            this.textBoxWindDirection.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxWindDirection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericWindDirection, "numericWindDirection");
+            this.numericWindDirection.Maximum = 360D;
+            this.numericWindDirection.Minimum = 0D;
+            this.numericWindDirection.Name = "numericWindDirection";
+            this.numericWindDirection.Value = -1D;
+            this.numericWindDirection.EnabledChanged += new System.EventHandler(this.numericWindDirection_EnabledChanged);
+            this.numericWindDirection.TextChanged += new System.EventHandler(this.value_Changed);
+            this.numericWindDirection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxWindRate
+            // numericWindRate
             // 
-            resources.ApplyResources(this.textBoxWindRate, "textBoxWindRate");
-            this.textBoxWindRate.Name = "textBoxWindRate";
-            this.textBoxWindRate.TextChanged += new System.EventHandler(this.textBoxWindRate_TextChanged);
-            this.textBoxWindRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericWindRate, "numericWindRate");
+            this.numericWindRate.Maximum = 100D;
+            this.numericWindRate.Minimum = 0D;
+            this.numericWindRate.Name = "numericWindRate";
+            this.numericWindRate.Value = -1D;
+            this.numericWindRate.TextChanged += new System.EventHandler(this.numericWindRate_TextChanged);
+            this.numericWindRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxBaro
+            // numericBaro
             // 
-            resources.ApplyResources(this.textBoxBaro, "textBoxBaro");
-            this.textBoxBaro.Name = "textBoxBaro";
-            this.textBoxBaro.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxBaro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericBaro, "numericBaro");
+            this.numericBaro.Maximum = 800D;
+            this.numericBaro.Minimum = 700D;
+            this.numericBaro.Name = "numericBaro";
+            this.numericBaro.Value = 699D;
+            this.numericBaro.TextChanged += new System.EventHandler(this.value_Changed);
+            this.numericBaro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
-            // textBoxTemperature
+            // numericTemperature
             // 
-            resources.ApplyResources(this.textBoxTemperature, "textBoxTemperature");
-            this.textBoxTemperature.Name = "textBoxTemperature";
-            this.textBoxTemperature.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxTemperature.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            resources.ApplyResources(this.numericTemperature, "numericTemperature");
+            this.numericTemperature.Maximum = 100D;
+            this.numericTemperature.Minimum = -100D;
+            this.numericTemperature.Name = "numericTemperature";
+            this.numericTemperature.Value = -101D;
+            this.numericTemperature.TextChanged += new System.EventHandler(this.value_Changed);
+            this.numericTemperature.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
             // comboBoxDiscretion
             // 
@@ -204,11 +218,11 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.trackBarCloudage);
             this.Controls.Add(this.checkBoxCloudage);
-            this.Controls.Add(this.textBoxHumidity);
-            this.Controls.Add(this.textBoxWindDirection);
-            this.Controls.Add(this.textBoxWindRate);
-            this.Controls.Add(this.textBoxBaro);
-            this.Controls.Add(this.textBoxTemperature);
+            this.Controls.Add(this.numericHumidity);
+            this.Controls.Add(this.numericWindDirection);
+            this.Controls.Add(this.numericWindRate);
+            this.Controls.Add(this.numericBaro);
+            this.Controls.Add(this.numericTemperature);
             this.Controls.Add(this.comboBoxDiscretion);
             this.Controls.Add(this.comboBoxDegree);
             this.Controls.Add(this.comboBoxAdditionalEvent);
@@ -233,11 +247,11 @@
 
         private System.Windows.Forms.CheckBox checkBoxCloudage;
         private System.Windows.Forms.TrackBar trackBarCloudage;
-        public System.Windows.Forms.TextBox textBoxHumidity;
-        public System.Windows.Forms.TextBox textBoxWindDirection;
-        public System.Windows.Forms.TextBox textBoxWindRate;
-        public System.Windows.Forms.TextBox textBoxBaro;
-        public System.Windows.Forms.TextBox textBoxTemperature;
+        public Mayfly.Controls.NumberBox numericHumidity;
+        public Mayfly.Controls.NumberBox numericWindDirection;
+        public Mayfly.Controls.NumberBox numericWindRate;
+        public Mayfly.Controls.NumberBox numericBaro;
+        public Mayfly.Controls.NumberBox numericTemperature;
         private System.Windows.Forms.ComboBox comboBoxDiscretion;
         private System.Windows.Forms.ComboBox comboBoxDegree;
         private System.Windows.Forms.ComboBox comboBoxAdditionalEvent;

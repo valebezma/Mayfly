@@ -205,7 +205,7 @@ namespace Mayfly.Fish.Explorer
             return stack.GetEffort(samplerType, samplerType.GetDefaultExpression());
         }
 
-        public static double GetEffort(this CardStack stack, FishSamplerType samplerType, ExpressionVariant expression)
+        public static double GetEffort(this CardStack stack, FishSamplerType samplerType, EffortExpression expression)
         {
             double result = 0;
 
@@ -243,7 +243,7 @@ namespace Mayfly.Fish.Explorer
             return result / (double)stack.Count;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, ExpressionVariant variant)
+        public static double GetAverageAbundance(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, EffortExpression variant)
         {
             double result = 0.0;
 
@@ -279,7 +279,7 @@ namespace Mayfly.Fish.Explorer
             return result / (double)stack.Count;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, ExpressionVariant variant)
+        public static double GetAverageBiomass(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, EffortExpression variant)
         {
             double result = 0.0;
 
@@ -320,7 +320,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static CardStack GetStack(this CardStack stack, FishSamplerType samplerType, ExpressionVariant effortVariant)
+        public static CardStack GetStack(this CardStack stack, FishSamplerType samplerType, EffortExpression effortVariant)
         {
             CardStack result = new CardStack();
 
@@ -330,16 +330,16 @@ namespace Mayfly.Fish.Explorer
 
                 switch (effortVariant)
                 {
-                    case ExpressionVariant.Square:
+                    case EffortExpression.Square:
                         if (double.IsNaN(cardRow.GetSquare())) { continue; }
                         break;
 
-                    case ExpressionVariant.Volume:
+                    case EffortExpression.Volume:
                         if (double.IsNaN(cardRow.GetVolume())) { continue; }
                         break;
 
-                    case ExpressionVariant.Efforts:
-                        if (double.IsNaN(cardRow.GetEffortScore())) { continue; }
+                    case EffortExpression.Standards:
+                        if (double.IsNaN(cardRow.GetStandards())) { continue; }
                         break;
                 }
 

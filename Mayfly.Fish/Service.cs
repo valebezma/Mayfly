@@ -69,14 +69,5 @@ namespace Mayfly.Fish
                     return resources.GetString("comboBoxSection.Items" + p);
             }
         }
-
-        public static void SaveEquipment()
-        {
-            ReaderSettings.Equipment.SetAttributable();
-            string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", ReaderSettings.Feature.ToLowerInvariant()));
-            if (File.Exists(path)) {
-                ReaderSettings.Equipment.ReadXml(path);
-            }
-        }
     }
 }

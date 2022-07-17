@@ -120,32 +120,38 @@
   <metadata name="data.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericDepth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericDepth.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="textBoxDepth.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericDepth.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 114</value>
   </data>
-  <data name="textBoxDepth.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericDepth.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBoxDepth.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericDepth.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBoxDepth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericDepth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxDepth.Name" xml:space="preserve">
-    <value>textBoxDepth</value>
+  <data name="&gt;&gt;numericDepth.Name" xml:space="preserve">
+    <value>numericDepth</value>
   </data>
-  <data name="&gt;&gt;textBoxDepth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericDepth.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxDepth.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericDepth.Parent" xml:space="preserve">
     <value>tabPageCollect</value>
   </data>
-  <data name="&gt;&gt;textBoxDepth.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;numericDepth.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelDepth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -157,13 +163,13 @@
     <value>45, 117</value>
   </data>
   <data name="labelDepth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 13</value>
+    <value>50, 13</value>
   </data>
   <data name="labelDepth.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="labelDepth.Text" xml:space="preserve">
-    <value>Fishing spot depth, m</value>
+    <value>Depth, m</value>
   </data>
   <data name="&gt;&gt;labelDepth.Name" xml:space="preserve">
     <value>labelDepth</value>
@@ -189,6 +195,9 @@
   <data name="&gt;&gt;tabPageCollect.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="labelComments.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
   <data name="&gt;&gt;labelComments.Name" xml:space="preserve">
     <value>labelComments</value>
   </data>
@@ -199,6 +208,9 @@
     <value>tabPageCollect</value>
   </data>
   <data name="&gt;&gt;labelComments.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="textBoxComments.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="&gt;&gt;textBoxComments.Name" xml:space="preserve">
@@ -261,6 +273,9 @@
   <data name="&gt;&gt;waterSelector.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="waypointControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
   <data name="&gt;&gt;waypointControl1.Name" xml:space="preserve">
     <value>waypointControl1</value>
   </data>
@@ -285,6 +300,9 @@
   <data name="&gt;&gt;labelTag.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="labelPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
   <data name="&gt;&gt;labelPosition.Name" xml:space="preserve">
     <value>labelPosition</value>
   </data>
@@ -295,7 +313,7 @@
     <value>tabPageCollect</value>
   </data>
   <data name="&gt;&gt;labelPosition.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
     <value>tabPageLog</value>
@@ -308,6 +326,9 @@
   </data>
   <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>
@@ -411,20 +432,83 @@
   <data name="&gt;&gt;aquaControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="dateTimePickerEnd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericPortions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericPortions.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericPortions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 245</value>
+  </data>
+  <data name="numericPortions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericPortions.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="numericPortions.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericPortions.Name" xml:space="preserve">
+    <value>numericPortions</value>
+  </data>
+  <data name="&gt;&gt;numericPortions.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericPortions.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericPortions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelPortions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="labelPortions.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPortions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPortions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>270, 248</value>
+  </data>
+  <data name="labelPortions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="labelPortions.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="labelPortions.Text" xml:space="preserve">
+    <value>Repeats</value>
+  </data>
+  <data name="&gt;&gt;labelPortions.Name" xml:space="preserve">
+    <value>labelPortions</value>
+  </data>
+  <data name="&gt;&gt;labelPortions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPortions.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelPortions.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dateTimePickerEnd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="dateTimePickerEnd.CustomFormat" xml:space="preserve">
-    <value>MM/dd/yyyy (ddd) HH:mm</value>
+    <value>dd.MM.yyyy (ddd) HH:mm</value>
   </data>
   <data name="dateTimePickerEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 271</value>
+    <value>214, 297</value>
   </data>
   <data name="dateTimePickerEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 20</value>
+    <value>270, 20</value>
   </data>
   <data name="dateTimePickerEnd.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>26</value>
   </data>
   <data name="&gt;&gt;dateTimePickerEnd.Name" xml:space="preserve">
     <value>dateTimePickerEnd</value>
@@ -436,49 +520,52 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;dateTimePickerEnd.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
-  <data name="textBoxVolume.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericVolume.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="textBoxVolume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 415</value>
+  <data name="numericVolume.Format" xml:space="preserve">
+    <value>N0</value>
   </data>
-  <data name="textBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+  <data name="numericVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 404</value>
   </data>
-  <data name="textBoxVolume.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+  <data name="numericVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
   </data>
-  <data name="textBoxVolume.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="numericVolume.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxVolume.Name" xml:space="preserve">
-    <value>textBoxVolume</value>
+  <data name="&gt;&gt;numericVolume.Name" xml:space="preserve">
+    <value>numericVolume</value>
   </data>
-  <data name="&gt;&gt;textBoxVolume.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericVolume.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxVolume.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericVolume.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxVolume.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;numericVolume.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="dateTimePickerStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+    <value>Top, Left, Right</value>
   </data>
   <data name="dateTimePickerStart.CustomFormat" xml:space="preserve">
-    <value>MM/dd/yyyy (ddd) HH:mm</value>
+    <value>dd.MM.yyyy (ddd) HH:mm</value>
   </data>
   <data name="dateTimePickerStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 245</value>
+    <value>214, 271</value>
   </data>
   <data name="dateTimePickerStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 20</value>
+    <value>270, 20</value>
   </data>
   <data name="dateTimePickerStart.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>24</value>
   </data>
   <data name="&gt;&gt;dateTimePickerStart.Name" xml:space="preserve">
     <value>dateTimePickerStart</value>
@@ -490,10 +577,10 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;dateTimePickerStart.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="pictureBoxWarnExposure.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+    <value>Top</value>
   </data>
   <data name="pictureBoxWarnExposure.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -513,7 +600,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBoxWarnExposure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 338</value>
+    <value>192, 248</value>
   </data>
   <data name="pictureBoxWarnExposure.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -523,6 +610,9 @@
   </data>
   <data name="pictureBoxWarnExposure.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
+  </data>
+  <data name="pictureBoxWarnExposure.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;pictureBoxWarnExposure.Name" xml:space="preserve">
     <value>pictureBoxWarnExposure</value>
@@ -534,46 +624,79 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;pictureBoxWarnExposure.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelEffort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelEffort.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelEffort.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 208</value>
+  <data name="labelEffort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 341</value>
   </data>
-  <data name="label17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="labelEffort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 25, 3, 25</value>
   </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 15</value>
+  <data name="labelEffort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 15</value>
   </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+  <data name="labelEffort.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Effort parameters</value>
+  <data name="labelEffort.Text" xml:space="preserve">
+    <value>Effort</value>
   </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
+  <data name="&gt;&gt;labelEffort.Name" xml:space="preserve">
+    <value>labelEffort</value>
   </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelEffort.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelEffort.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;labelEffort.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="labelExposure.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+  <data name="labelOperation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelOperation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelOperation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelOperation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 208</value>
+  </data>
+  <data name="labelOperation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="labelOperation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
+  </data>
+  <data name="labelOperation.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="labelOperation.Text" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="&gt;&gt;labelOperation.Name" xml:space="preserve">
+    <value>labelOperation</value>
+  </data>
+  <data name="&gt;&gt;labelOperation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelOperation.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelOperation.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="labelExposure.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -582,13 +705,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelExposure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 338</value>
+    <value>45, 248</value>
   </data>
   <data name="labelExposure.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 13</value>
   </data>
   <data name="labelExposure.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>19</value>
   </data>
   <data name="labelExposure.Text" xml:space="preserve">
     <value>Operation exposure, m</value>
@@ -603,34 +726,37 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelExposure.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
-  <data name="textBoxExposure.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="numericExposure.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="textBoxExposure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 335</value>
+  <data name="numericExposure.Format" xml:space="preserve">
+    <value>N0</value>
   </data>
-  <data name="textBoxExposure.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericExposure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 245</value>
+  </data>
+  <data name="numericExposure.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxExposure.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="numericExposure.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
   </data>
-  <data name="textBoxExposure.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericExposure.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxExposure.Name" xml:space="preserve">
-    <value>textBoxExposure</value>
+  <data name="&gt;&gt;numericExposure.Name" xml:space="preserve">
+    <value>numericExposure</value>
   </data>
-  <data name="&gt;&gt;textBoxExposure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericExposure.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxExposure.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericExposure.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxExposure.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;numericExposure.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="labelVolume.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -639,13 +765,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelVolume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 418</value>
+    <value>45, 407</value>
   </data>
   <data name="labelVolume.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 13</value>
   </data>
   <data name="labelVolume.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>31</value>
   </data>
   <data name="labelVolume.Text" xml:space="preserve">
     <value>Fished volume, × 1000 m³</value>
@@ -660,97 +786,97 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelVolume.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="labelOperationEnd.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelOperationEnd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelOperationEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 277</value>
-  </data>
-  <data name="labelOperationEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
-  </data>
-  <data name="labelOperationEnd.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="labelOperationEnd.Text" xml:space="preserve">
-    <value>Operation ended</value>
-  </data>
-  <data name="&gt;&gt;labelOperationEnd.Name" xml:space="preserve">
-    <value>labelOperationEnd</value>
-  </data>
-  <data name="&gt;&gt;labelOperationEnd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelOperationEnd.Parent" xml:space="preserve">
-    <value>tabPageSampler</value>
-  </data>
-  <data name="&gt;&gt;labelOperationEnd.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="textBoxVelocity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="textBoxVelocity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 167</value>
-  </data>
-  <data name="textBoxVelocity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxVelocity.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="textBoxVelocity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxVelocity.Name" xml:space="preserve">
-    <value>textBoxVelocity</value>
-  </data>
-  <data name="&gt;&gt;textBoxVelocity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxVelocity.Parent" xml:space="preserve">
-    <value>tabPageSampler</value>
-  </data>
-  <data name="&gt;&gt;textBoxVelocity.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="labelOperation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelOperation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelOperation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 248</value>
-  </data>
-  <data name="labelOperation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 13</value>
-  </data>
-  <data name="labelOperation.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelOperation.Text" xml:space="preserve">
-    <value>Operation started</value>
-  </data>
-  <data name="&gt;&gt;labelOperation.Name" xml:space="preserve">
-    <value>labelOperation</value>
-  </data>
-  <data name="&gt;&gt;labelOperation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelOperation.Parent" xml:space="preserve">
-    <value>tabPageSampler</value>
-  </data>
-  <data name="&gt;&gt;labelOperation.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="labelDuration.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericVelocity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
+  </data>
+  <data name="numericVelocity.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericVelocity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 167</value>
+  </data>
+  <data name="numericVelocity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericVelocity.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="numericVelocity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericVelocity.Name" xml:space="preserve">
+    <value>numericVelocity</value>
+  </data>
+  <data name="&gt;&gt;numericVelocity.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericVelocity.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericVelocity.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="labelEnded.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEnded.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelEnded.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 303</value>
+  </data>
+  <data name="labelEnded.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="labelEnded.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="labelEnded.Text" xml:space="preserve">
+    <value>Operation ended</value>
+  </data>
+  <data name="&gt;&gt;labelEnded.Name" xml:space="preserve">
+    <value>labelEnded</value>
+  </data>
+  <data name="&gt;&gt;labelEnded.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEnded.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelEnded.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="labelStarted.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelStarted.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelStarted.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 277</value>
+  </data>
+  <data name="labelStarted.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="labelStarted.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="labelStarted.Text" xml:space="preserve">
+    <value>Operation started</value>
+  </data>
+  <data name="&gt;&gt;labelStarted.Name" xml:space="preserve">
+    <value>labelStarted</value>
+  </data>
+  <data name="&gt;&gt;labelStarted.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelStarted.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelStarted.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="labelDuration.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -759,17 +885,16 @@
     <value>NoControl</value>
   </data>
   <data name="labelDuration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 294</value>
+    <value>211, 320</value>
   </data>
   <data name="labelDuration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 26</value>
+    <value>176, 13</value>
   </data>
   <data name="labelDuration.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>27</value>
   </data>
   <data name="labelDuration.Text" xml:space="preserve">
-    <value>Operation duration: 
-{0} h {1:00} min ({2:N2} h)</value>
+    <value>Duration: {0} h {1:00} min ({2:N2} h)</value>
   </data>
   <data name="&gt;&gt;labelDuration.Name" xml:space="preserve">
     <value>labelDuration</value>
@@ -781,7 +906,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelDuration.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="labelVelocity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -790,7 +915,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelVelocity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 170</value>
+    <value>45, 170</value>
   </data>
   <data name="labelVelocity.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 13</value>
@@ -811,61 +936,67 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelVelocity.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="textBoxEfforts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="textBoxEfforts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 389</value>
-  </data>
-  <data name="textBoxEfforts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxEfforts.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="textBoxEfforts.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxEfforts.Name" xml:space="preserve">
-    <value>textBoxEfforts</value>
-  </data>
-  <data name="&gt;&gt;textBoxEfforts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxEfforts.Parent" xml:space="preserve">
-    <value>tabPageSampler</value>
-  </data>
-  <data name="&gt;&gt;textBoxEfforts.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="textBoxHook.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="numericStandards.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="textBoxHook.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 89</value>
+  <data name="numericStandards.Format" xml:space="preserve">
+    <value>N0</value>
   </data>
-  <data name="textBoxHook.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+  <data name="numericStandards.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 430</value>
   </data>
-  <data name="textBoxHook.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="numericStandards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
   </data>
-  <data name="textBoxHook.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericStandards.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="numericStandards.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxHook.Name" xml:space="preserve">
-    <value>textBoxHook</value>
+  <data name="&gt;&gt;numericStandards.Name" xml:space="preserve">
+    <value>numericStandards</value>
   </data>
-  <data name="&gt;&gt;textBoxHook.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericStandards.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxHook.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericStandards.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxHook.ZOrder" xml:space="preserve">
-    <value>18</value>
+  <data name="&gt;&gt;numericStandards.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="numericHook.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericHook.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericHook.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 89</value>
+  </data>
+  <data name="numericHook.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericHook.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="numericHook.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericHook.Name" xml:space="preserve">
+    <value>numericHook</value>
+  </data>
+  <data name="&gt;&gt;numericHook.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericHook.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericHook.ZOrder" xml:space="preserve">
+    <value>21</value>
   </data>
   <data name="labelEfforts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -874,13 +1005,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelEfforts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 392</value>
+    <value>45, 433</value>
   </data>
   <data name="labelEfforts.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
   </data>
   <data name="labelEfforts.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>33</value>
   </data>
   <data name="labelEfforts.Text" xml:space="preserve">
     <value>Effort, std units</value>
@@ -895,37 +1026,37 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelEfforts.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
-  <data name="textBoxArea.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="numericArea.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="textBoxArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 389</value>
+  <data name="numericArea.Format" xml:space="preserve">
+    <value>N0</value>
   </data>
-  <data name="textBoxArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+  <data name="numericArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 378</value>
   </data>
-  <data name="textBoxArea.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="numericArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
   </data>
-  <data name="textBoxArea.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericArea.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="numericArea.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxArea.Name" xml:space="preserve">
-    <value>textBoxArea</value>
+  <data name="&gt;&gt;numericArea.Name" xml:space="preserve">
+    <value>numericArea</value>
   </data>
-  <data name="&gt;&gt;textBoxArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericArea.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxArea.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericArea.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxArea.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="labelArea.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;numericArea.ZOrder" xml:space="preserve">
+    <value>23</value>
   </data>
   <data name="labelArea.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -934,13 +1065,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>270, 392</value>
+    <value>45, 381</value>
   </data>
   <data name="labelArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 13</value>
   </data>
   <data name="labelArea.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>29</value>
   </data>
   <data name="labelArea.Text" xml:space="preserve">
     <value>Fished area, ha</value>
@@ -955,7 +1086,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelArea.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>24</value>
   </data>
   <data name="labelLength.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -964,7 +1095,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 118</value>
+    <value>45, 118</value>
   </data>
   <data name="labelLength.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
@@ -985,7 +1116,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelLength.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="pictureBoxWarnOpening.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1032,7 +1163,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;pictureBoxWarnOpening.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="labelOpening.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -1065,34 +1196,37 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelOpening.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>27</value>
   </data>
-  <data name="textBoxLength.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericLength.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="textBoxLength.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericLength.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 115</value>
   </data>
-  <data name="textBoxLength.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericLength.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxLength.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericLength.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="textBoxLength.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericLength.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxLength.Name" xml:space="preserve">
-    <value>textBoxLength</value>
+  <data name="&gt;&gt;numericLength.Name" xml:space="preserve">
+    <value>numericLength</value>
   </data>
-  <data name="&gt;&gt;textBoxLength.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericLength.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxLength.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericLength.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxLength.ZOrder" xml:space="preserve">
-    <value>25</value>
+  <data name="&gt;&gt;numericLength.ZOrder" xml:space="preserve">
+    <value>28</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1122,61 +1256,67 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>29</value>
   </data>
-  <data name="textBoxOpening.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericOpening.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="textBoxOpening.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericOpening.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericOpening.Location" type="System.Drawing.Point, System.Drawing">
     <value>434, 115</value>
   </data>
-  <data name="textBoxOpening.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericOpening.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxOpening.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericOpening.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="textBoxOpening.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericOpening.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxOpening.Name" xml:space="preserve">
-    <value>textBoxOpening</value>
+  <data name="&gt;&gt;numericOpening.Name" xml:space="preserve">
+    <value>numericOpening</value>
   </data>
-  <data name="&gt;&gt;textBoxOpening.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericOpening.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxOpening.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericOpening.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxOpening.ZOrder" xml:space="preserve">
-    <value>27</value>
+  <data name="&gt;&gt;numericOpening.ZOrder" xml:space="preserve">
+    <value>30</value>
   </data>
-  <data name="textBoxHeight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericHeight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="textBoxHeight.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericHeight.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericHeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 141</value>
   </data>
-  <data name="textBoxHeight.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericHeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxHeight.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericHeight.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="textBoxHeight.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericHeight.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxHeight.Name" xml:space="preserve">
-    <value>textBoxHeight</value>
+  <data name="&gt;&gt;numericHeight.Name" xml:space="preserve">
+    <value>numericHeight</value>
   </data>
-  <data name="&gt;&gt;textBoxHeight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericHeight.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxHeight.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericHeight.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxHeight.ZOrder" xml:space="preserve">
-    <value>28</value>
+  <data name="&gt;&gt;numericHeight.ZOrder" xml:space="preserve">
+    <value>31</value>
   </data>
   <data name="labelHeight.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1185,7 +1325,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 144</value>
+    <value>45, 144</value>
   </data>
   <data name="labelHeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
@@ -1206,7 +1346,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelHeight.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>32</value>
   </data>
   <data name="labelMesh.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1215,7 +1355,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelMesh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 92</value>
+    <value>45, 92</value>
   </data>
   <data name="labelMesh.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
@@ -1236,7 +1376,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelMesh.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>33</value>
   </data>
   <data name="labelHook.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -1269,34 +1409,37 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelHook.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>34</value>
   </data>
-  <data name="textBoxSquare.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericSquare.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="textBoxSquare.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericSquare.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericSquare.Location" type="System.Drawing.Point, System.Drawing">
     <value>434, 141</value>
   </data>
-  <data name="textBoxSquare.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericSquare.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxSquare.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericSquare.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="textBoxSquare.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericSquare.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxSquare.Name" xml:space="preserve">
-    <value>textBoxSquare</value>
+  <data name="&gt;&gt;numericSquare.Name" xml:space="preserve">
+    <value>numericSquare</value>
   </data>
-  <data name="&gt;&gt;textBoxSquare.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericSquare.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxSquare.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericSquare.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxSquare.ZOrder" xml:space="preserve">
-    <value>32</value>
+  <data name="&gt;&gt;numericSquare.ZOrder" xml:space="preserve">
+    <value>35</value>
   </data>
   <data name="labelSquare.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -1329,34 +1472,37 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelSquare.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>36</value>
   </data>
-  <data name="textBoxMesh.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="numericMesh.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="textBoxMesh.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericMesh.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericMesh.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 89</value>
   </data>
-  <data name="textBoxMesh.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericMesh.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
-  <data name="textBoxMesh.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericMesh.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="textBoxMesh.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="numericMesh.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="&gt;&gt;textBoxMesh.Name" xml:space="preserve">
-    <value>textBoxMesh</value>
+  <data name="&gt;&gt;numericMesh.Name" xml:space="preserve">
+    <value>numericMesh</value>
   </data>
-  <data name="&gt;&gt;textBoxMesh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericMesh.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;textBoxMesh.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericMesh.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;textBoxMesh.ZOrder" xml:space="preserve">
-    <value>34</value>
+  <data name="&gt;&gt;numericMesh.ZOrder" xml:space="preserve">
+    <value>37</value>
   </data>
   <data name="&gt;&gt;tabPageSampler.Name" xml:space="preserve">
     <value>tabPageSampler</value>
@@ -1386,7 +1532,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelSampler.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="&gt;&gt;labelMethod.Name" xml:space="preserve">
     <value>labelMethod</value>
@@ -1398,7 +1544,10 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;labelMethod.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
+  </data>
+  <data name="comboBoxSampler.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;comboBoxSampler.Name" xml:space="preserve">
     <value>comboBoxSampler</value>
@@ -1410,7 +1559,10 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;comboBoxSampler.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
+  </data>
+  <data name="buttonEquipment.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;buttonEquipment.Name" xml:space="preserve">
     <value>buttonEquipment</value>
@@ -1422,7 +1574,7 @@
     <value>tabPageSampler</value>
   </data>
   <data name="&gt;&gt;buttonEquipment.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <metadata name="Logger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>600, 17</value>

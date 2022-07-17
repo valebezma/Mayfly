@@ -136,7 +136,7 @@
     <value>65, 17</value>
   </data>
   <data name="checkBoxSewage.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+    <value>12</value>
   </data>
   <data name="checkBoxSewage.Text" xml:space="preserve">
     <value>Sewage</value>
@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxSewage.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>9</value>
   </data>
   <data name="checkBoxFoam.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -169,7 +169,7 @@
     <value>52, 17</value>
   </data>
   <data name="checkBoxFoam.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+    <value>11</value>
   </data>
   <data name="checkBoxFoam.Text" xml:space="preserve">
     <value>Foam</value>
@@ -184,7 +184,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxFoam.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>10</value>
   </data>
   <data name="checkBoxTurbidity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -202,7 +202,7 @@
     <value>66, 17</value>
   </data>
   <data name="checkBoxTurbidity.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+    <value>13</value>
   </data>
   <data name="checkBoxTurbidity.Text" xml:space="preserve">
     <value>Turbidity</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxTurbidity.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>11</value>
   </data>
   <data name="checkBoxOdor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -235,7 +235,7 @@
     <value>54, 17</value>
   </data>
   <data name="checkBoxOdor.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
+    <value>10</value>
   </data>
   <data name="checkBoxOdor.Text" xml:space="preserve">
     <value>Odors</value>
@@ -250,7 +250,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxOdor.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>12</value>
   </data>
   <data name="labelColour.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -265,7 +265,7 @@
     <value>31, 13</value>
   </data>
   <data name="labelColour.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+    <value>8</value>
   </data>
   <data name="labelColour.Text" xml:space="preserve">
     <value>Color</value>
@@ -280,7 +280,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelColour.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>13</value>
   </data>
   <data name="labelTemperatureBottom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -295,7 +295,7 @@
     <value>158, 13</value>
   </data>
   <data name="labelTemperatureBottom.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>0</value>
   </data>
   <data name="labelTemperatureBottom.Text" xml:space="preserve">
     <value>Temperature (above bottom), °C</value>
@@ -310,7 +310,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelTemperatureBottom.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>14</value>
   </data>
   <data name="labelTemperatureSurface.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -325,7 +325,7 @@
     <value>158, 13</value>
   </data>
   <data name="labelTemperatureSurface.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>2</value>
   </data>
   <data name="labelTemperatureSurface.Text" xml:space="preserve">
     <value>Temperature (under surface), °C</value>
@@ -340,61 +340,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelTemperatureSurface.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="textBoxTempBottom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="textBoxTempBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 1</value>
-  </data>
-  <data name="textBoxTempBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxTempBottom.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="textBoxTempBottom.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempBottom.Name" xml:space="preserve">
-    <value>textBoxTempBottom</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempBottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempBottom.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempBottom.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="textBoxTempSurface.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="textBoxTempSurface.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 27</value>
-  </data>
-  <data name="textBoxTempSurface.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxTempSurface.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="textBoxTempSurface.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempSurface.Name" xml:space="preserve">
-    <value>textBoxTempSurface</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempSurface.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempSurface.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxTempSurface.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>15</value>
   </data>
   <data name="labelFlowRate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -412,7 +358,7 @@
     <value>86, 13</value>
   </data>
   <data name="labelFlowRate.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
+    <value>4</value>
   </data>
   <data name="labelFlowRate.Text" xml:space="preserve">
     <value>Flow rate, m/sec</value>
@@ -427,7 +373,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelFlowRate.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>16</value>
   </data>
   <data name="labelpH.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -445,7 +391,7 @@
     <value>50, 13</value>
   </data>
   <data name="labelpH.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+    <value>20</value>
   </data>
   <data name="labelpH.Text" xml:space="preserve">
     <value>pH value</value>
@@ -460,7 +406,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelpH.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>17</value>
   </data>
   <data name="labelConductivity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -475,7 +421,7 @@
     <value>103, 13</value>
   </data>
   <data name="labelConductivity.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+    <value>14</value>
   </data>
   <data name="labelConductivity.Text" xml:space="preserve">
     <value>Conductivity, µS/cm</value>
@@ -490,7 +436,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelConductivity.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>18</value>
   </data>
   <data name="labelOxygenSaturation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -505,7 +451,7 @@
     <value>106, 13</value>
   </data>
   <data name="labelOxygenSaturation.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+    <value>16</value>
   </data>
   <data name="labelOxygenSaturation.Text" xml:space="preserve">
     <value>Oxygen saturation, %</value>
@@ -520,7 +466,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelOxygenSaturation.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>19</value>
   </data>
   <data name="labelDissolvedOxygen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -538,7 +484,7 @@
     <value>132, 13</value>
   </data>
   <data name="labelDissolvedOxygen.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+    <value>18</value>
   </data>
   <data name="labelDissolvedOxygen.Text" xml:space="preserve">
     <value>Dissolved oxygen, mg/dm³</value>
@@ -553,7 +499,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelDissolvedOxygen.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>20</value>
   </data>
   <data name="labelLimpidity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -571,7 +517,7 @@
     <value>61, 13</value>
   </data>
   <data name="labelLimpidity.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
+    <value>6</value>
   </data>
   <data name="labelLimpidity.Text" xml:space="preserve">
     <value>Limpidity, m</value>
@@ -586,169 +532,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelLimpidity.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="textBoxFlowRate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="textBoxFlowRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 1</value>
-  </data>
-  <data name="textBoxFlowRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxFlowRate.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="textBoxFlowRate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxFlowRate.Name" xml:space="preserve">
-    <value>textBoxFlowRate</value>
-  </data>
-  <data name="&gt;&gt;textBoxFlowRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxFlowRate.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxFlowRate.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="textBoxpH.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="textBoxpH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 130</value>
-  </data>
-  <data name="textBoxpH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxpH.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
-  <data name="textBoxpH.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxpH.Name" xml:space="preserve">
-    <value>textBoxpH</value>
-  </data>
-  <data name="&gt;&gt;textBoxpH.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxpH.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxpH.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="textBoxConductivity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="textBoxConductivity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 104</value>
-  </data>
-  <data name="textBoxConductivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxConductivity.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="textBoxConductivity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxConductivity.Name" xml:space="preserve">
-    <value>textBoxConductivity</value>
-  </data>
-  <data name="&gt;&gt;textBoxConductivity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxConductivity.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxConductivity.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="textBoxOxygenSaturation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="textBoxOxygenSaturation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 130</value>
-  </data>
-  <data name="textBoxOxygenSaturation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxOxygenSaturation.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="textBoxOxygenSaturation.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxOxygenSaturation.Name" xml:space="preserve">
-    <value>textBoxOxygenSaturation</value>
-  </data>
-  <data name="&gt;&gt;textBoxOxygenSaturation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxOxygenSaturation.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxOxygenSaturation.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="textBoxDissolvedOxygen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="textBoxDissolvedOxygen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 104</value>
-  </data>
-  <data name="textBoxDissolvedOxygen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxDissolvedOxygen.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="textBoxDissolvedOxygen.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxDissolvedOxygen.Name" xml:space="preserve">
-    <value>textBoxDissolvedOxygen</value>
-  </data>
-  <data name="&gt;&gt;textBoxDissolvedOxygen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxDissolvedOxygen.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxDissolvedOxygen.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="textBoxLimpidity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="textBoxLimpidity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 27</value>
-  </data>
-  <data name="textBoxLimpidity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="textBoxLimpidity.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="textBoxLimpidity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;textBoxLimpidity.Name" xml:space="preserve">
-    <value>textBoxLimpidity</value>
-  </data>
-  <data name="&gt;&gt;textBoxLimpidity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxLimpidity.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBoxLimpidity.ZOrder" xml:space="preserve">
     <value>21</value>
+  </data>
+  <data name="colorPicker1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="colorPicker1.Location" type="System.Drawing.Point, System.Drawing">
     <value>75, 53</value>
@@ -757,19 +544,259 @@
     <value>150, 21</value>
   </data>
   <data name="colorPicker1.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;colorPicker1.Name" xml:space="preserve">
     <value>colorPicker1</value>
   </data>
   <data name="&gt;&gt;colorPicker1.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.ColorPicker, Mayfly.Wild, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Wild.Controls.ColorPicker, Mayfly.Wild, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorPicker1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorPicker1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="numericTempBottom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericTempBottom.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericTempBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 0</value>
+  </data>
+  <data name="numericTempBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericTempBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericTempBottom.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericTempBottom.Name" xml:space="preserve">
+    <value>numericTempBottom</value>
+  </data>
+  <data name="&gt;&gt;numericTempBottom.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericTempBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericTempBottom.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="numericTempSurface.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericTempSurface.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericTempSurface.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 27</value>
+  </data>
+  <data name="numericTempSurface.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericTempSurface.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericTempSurface.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericTempSurface.Name" xml:space="preserve">
+    <value>numericTempSurface</value>
+  </data>
+  <data name="&gt;&gt;numericTempSurface.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericTempSurface.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericTempSurface.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericFlowRate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericFlowRate.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericFlowRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 1</value>
+  </data>
+  <data name="numericFlowRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericFlowRate.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="numericFlowRate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericFlowRate.Name" xml:space="preserve">
+    <value>numericFlowRate</value>
+  </data>
+  <data name="&gt;&gt;numericFlowRate.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericFlowRate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericFlowRate.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericpH.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericpH.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericpH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 130</value>
+  </data>
+  <data name="numericpH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericpH.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="numericpH.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericpH.Name" xml:space="preserve">
+    <value>numericpH</value>
+  </data>
+  <data name="&gt;&gt;numericpH.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericpH.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericpH.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericConductivity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericConductivity.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericConductivity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 104</value>
+  </data>
+  <data name="numericConductivity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericConductivity.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="numericConductivity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericConductivity.Name" xml:space="preserve">
+    <value>numericConductivity</value>
+  </data>
+  <data name="&gt;&gt;numericConductivity.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericConductivity.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericConductivity.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericOxygenSaturation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="numericOxygenSaturation.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericOxygenSaturation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>175, 130</value>
+  </data>
+  <data name="numericOxygenSaturation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericOxygenSaturation.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="numericOxygenSaturation.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericOxygenSaturation.Name" xml:space="preserve">
+    <value>numericOxygenSaturation</value>
+  </data>
+  <data name="&gt;&gt;numericOxygenSaturation.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericOxygenSaturation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericOxygenSaturation.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="numericDissolvedOxygen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericDissolvedOxygen.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericDissolvedOxygen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 104</value>
+  </data>
+  <data name="numericDissolvedOxygen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericDissolvedOxygen.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="numericDissolvedOxygen.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericDissolvedOxygen.Name" xml:space="preserve">
+    <value>numericDissolvedOxygen</value>
+  </data>
+  <data name="&gt;&gt;numericDissolvedOxygen.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericDissolvedOxygen.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericDissolvedOxygen.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericLimpidity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericLimpidity.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numericLimpidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 27</value>
+  </data>
+  <data name="numericLimpidity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="numericLimpidity.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="numericLimpidity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numericLimpidity.Name" xml:space="preserve">
+    <value>numericLimpidity</value>
+  </data>
+  <data name="&gt;&gt;numericLimpidity.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericLimpidity.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericLimpidity.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
