@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Mayfly.Extensions;
 using Mayfly.Controls;
 using static Mayfly.Wild.UserSettings;
-using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Wild.SettingsReader;
 using static Mayfly.UserSettings;
 using static Mayfly.Waters.UserSettings;
 
@@ -1162,7 +1162,7 @@ namespace Mayfly.Benthos
         private void ToolStripMenuItemSaveVars_Click(object sender, EventArgs e)
         {
             AddtVariables = AdditionalVariables;
-            ReaderSettings.CurrentVariables = CurrentVariables;
+            SettingsReader.CurrentVariables = CurrentVariables;
             AddVariableMenuItems();
         }
 

@@ -247,6 +247,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpeciesStats.resx</DependentUpon>
     </Compile>
+    <Compile Include="SettingsControlCatchability.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsControlCatchability.Designer.cs">
+      <DependentUpon>SettingsControlCatchability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsControlMeasure.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsControlMeasure.Designer.cs">
+      <DependentUpon>SettingsControlMeasure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsControlOther.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsControlOther.Designer.cs">
+      <DependentUpon>SettingsControlOther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsControlReproduction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsControlReproduction.Designer.cs">
+      <DependentUpon>SettingsControlReproduction.cs</DependentUpon>
+    </Compile>
     <Compile Include="WizardExtrapolations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -656,6 +680,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Sections\SpeciesStats.ru.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsControlCatchability.resx">
+      <DependentUpon>SettingsControlCatchability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsControlMeasure.resx">
+      <DependentUpon>SettingsControlMeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsControlOther.resx">
+      <DependentUpon>SettingsControlOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsControlReproduction.resx">
+      <DependentUpon>SettingsControlReproduction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WizardExtrapolations.resx">
       <DependentUpon>WizardExtrapolations.cs</DependentUpon>

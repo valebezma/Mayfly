@@ -12,10 +12,10 @@ namespace Mayfly.Benthos.Explorer
     {
         public static bool MassRecoveryUseRaw {
             get {
-                return Convert.ToBoolean(GetValue(ExplorerSettings.FeatureKey, nameof(MassRecoveryUseRaw), true));
+                return Convert.ToBoolean(GetValue(SettingsExplorer.FeatureKey, nameof(MassRecoveryUseRaw), true));
             }
             set {
-                SetValue(ExplorerSettings.FeatureKey, nameof(MassRecoveryUseRaw), value);
+                SetValue(SettingsExplorer.FeatureKey, nameof(MassRecoveryUseRaw), value);
             }
         }
     }

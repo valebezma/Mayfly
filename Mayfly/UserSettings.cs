@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -10,6 +11,30 @@ namespace Mayfly
 {
     public static class UserSettings
     {
+        public static string Feature;
+
+        public static string FeatureKey {
+            get {
+                return GetFeatureKey(Feature);
+            }
+        }
+
+
+
+        public static Image AppBanner;
+
+        public static Image SupportLogo;
+
+        public static string SupportText;
+
+        public static void SetApp(Image banner, Image supportLogo, string supportText) {
+
+            AppBanner = banner;
+            SupportLogo = supportLogo;
+            SupportText = supportText;
+        }
+
+
         private static NetworkCredential credential;
         private static readonly string keyGeneral = @"Software\Mayfly";
 

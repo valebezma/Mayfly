@@ -58,7 +58,7 @@ namespace Mayfly.Benthos.Explorer
         }
 
         public static TaxonomicComposition GetCenosisComposition(this CardStack stack, TaxonomicRank rank) {
-            TaxonomicComposition result = new TaxonomicComposition(stack.GetCenosisComposition(), ReaderSettings.TaxonomicIndex, rank, true);
+            TaxonomicComposition result = new TaxonomicComposition(stack.GetCenosisComposition(), SettingsReader.TaxonomicIndex, rank, true);
 
             foreach (SpeciesSwarmPool pool in result) {
                 pool.SamplesCount = stack.GetOccurrenceCases(pool.SpeciesRows);

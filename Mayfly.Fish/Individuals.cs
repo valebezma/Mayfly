@@ -13,7 +13,7 @@ using Mayfly.Extensions;
 using Mayfly.Controls;
 using Mayfly.Species;
 using System.Collections;
-using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Wild.SettingsReader;
 using static Mayfly.Fish.UserSettings;
 
 namespace Mayfly.Fish
@@ -432,7 +432,7 @@ namespace Mayfly.Fish
             PrevDetailedMass = DetailedMass;
             PrevDetailedQuantity = DetailedQuantity;
 
-            if (ReaderSettings.FixTotals)
+            if (SettingsReader.FixTotals)
             {
                 Mass = DetailedMass / 1000;
                 Quantity = DetailedQuantity;

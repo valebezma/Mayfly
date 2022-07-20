@@ -249,7 +249,7 @@ namespace Mayfly
                 }
             } else {
                 string appID = Registry.CurrentUser.OpenSubKey(
-                    @"Software\Classes\" + fi.Extension).GetValue(string.Empty).ToString();
+                    @"Software\Classes\" + fi?.Extension)?.GetValue(string.Empty).ToString();
                 string appPath = Registry.CurrentUser.OpenSubKey(
                     @"Software\Classes\" + appID + @"\Shell\Open\Command").GetValue(string.Empty).ToString();
                 process.StartInfo.FileName = appPath.Substring(0, appPath.Length - 5);

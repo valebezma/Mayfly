@@ -87,7 +87,7 @@ namespace Mayfly.Fish.Explorer
 
             tabPageCard.Parent = null;
 
-            columnSpcSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
+            //columnSpcSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
             columnSpcQuantity.ValueType = typeof(double);
             columnSpcMass.ValueType = typeof(double);
             columnSpcOccurrence.ValueType = typeof(double);
@@ -96,7 +96,7 @@ namespace Mayfly.Fish.Explorer
 
             tabPageSpcStats.Parent = null;
 
-            columnLogSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
+            //columnLogSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
             columnLogQuantity.ValueType = typeof(int);
             columnLogMass.ValueType = typeof(double);
             columnLogAbundance.ValueType = typeof(double);

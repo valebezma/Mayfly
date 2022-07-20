@@ -33,10 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
+            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
@@ -69,8 +72,10 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.spreadSheetLog = new Mayfly.Controls.SpreadSheet();
             this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefinition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQtyExam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMassExam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageCollect = new System.Windows.Forms.TabPage();
             this.labelPosition = new System.Windows.Forms.Label();
@@ -105,6 +110,7 @@
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
             this.contextEquipment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
             this.MenuStrip.SuspendLayout();
             this.tabPageLog.SuspendLayout();
@@ -331,8 +337,10 @@
             this.spreadSheetLog.CellPadding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.spreadSheetLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnID,
-            this.ColumnSpecies,
-            this.ColumnQuantity,
+            this.ColumnDefinition,
+            this.ColumnQtyExam,
+            this.ColumnQty,
+            this.ColumnMassExam,
             this.ColumnMass});
             this.spreadSheetLog.DefaultDecimalPlaces = 0;
             this.spreadSheetLog.Name = "spreadSheetLog";
@@ -344,31 +352,50 @@
             resources.ApplyResources(this.ColumnID, "ColumnID");
             this.ColumnID.Name = "ColumnID";
             // 
-            // ColumnSpecies
+            // ColumnDefinition
             // 
-            this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDefinition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.Format = "s";
-            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnSpecies.FillWeight = 200F;
-            resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
-            this.ColumnSpecies.Name = "ColumnSpecies";
+            this.ColumnDefinition.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnDefinition.FillWeight = 200F;
+            resources.ApplyResources(this.ColumnDefinition, "ColumnDefinition");
+            this.ColumnDefinition.Name = "ColumnDefinition";
             // 
-            // ColumnQuantity
+            // ColumnQtyExam
             // 
-            this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColumnQtyExam.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnQuantity.FillWeight = 30F;
-            resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
-            this.ColumnQuantity.Name = "ColumnQuantity";
+            this.ColumnQtyExam.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnQtyExam.FillWeight = 30F;
+            resources.ApplyResources(this.ColumnQtyExam, "ColumnQtyExam");
+            this.ColumnQtyExam.Name = "ColumnQtyExam";
+            // 
+            // ColumnQty
+            // 
+            this.ColumnQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnQty.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnQty.FillWeight = 30F;
+            resources.ApplyResources(this.ColumnQty, "ColumnQty");
+            this.ColumnQty.Name = "ColumnQty";
+            // 
+            // ColumnMassExam
+            // 
+            this.ColumnMassExam.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Format = "N1";
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnMassExam.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnMassExam.FillWeight = 30F;
+            resources.ApplyResources(this.ColumnMassExam, "ColumnMassExam");
+            this.ColumnMassExam.Name = "ColumnMassExam";
             // 
             // ColumnMass
             // 
             this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Format = "N1";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Format = "N1";
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnMass.FillWeight = 30F;
             resources.ApplyResources(this.ColumnMass, "ColumnMass");
             this.ColumnMass.Name = "ColumnMass";
@@ -406,6 +433,7 @@
             resources.ApplyResources(this.waypointControl1, "waypointControl1");
             this.waypointControl1.BackColor = System.Drawing.Color.Transparent;
             this.waypointControl1.CoordinateFormat = "d";
+            this.waypointControl1.DateTimeFormat = "dd.MM.yyyy (ddd) HH:mm";
             this.waypointControl1.Name = "waypointControl1";
             this.waypointControl1.ReadOnly = false;
             this.waypointControl1.Changed += new System.EventHandler(this.value_Changed);
@@ -568,18 +596,18 @@
             // ColumnAddtFactor
             // 
             this.ColumnAddtFactor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.NullValue = null;
-            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.NullValue = null;
+            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.ColumnAddtFactor, "ColumnAddtFactor");
             this.ColumnAddtFactor.Name = "ColumnAddtFactor";
             // 
             // ColumnAddtValue
             // 
             this.ColumnAddtValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N1";
-            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N1";
+            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.ColumnAddtValue, "ColumnAddtValue");
             this.ColumnAddtValue.Name = "ColumnAddtValue";
             // 
@@ -632,7 +660,7 @@
             // 
             // statusCard
             // 
-            this.statusCard.Default = "Species count:";
+            this.statusCard.Default = "© 2022 Валентин Безматерных";
             this.statusCard.MaximalInterval = 2000;
             this.statusCard.StatusLog = this.StatusLog;
             // 
@@ -640,6 +668,16 @@
             // 
             this.contextEquipment.Name = "contextGear";
             resources.ApplyResources(this.contextEquipment, "contextEquipment");
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle8.Format = "N1";
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewTextBoxColumn1.FillWeight = 30F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Logger
             // 
@@ -700,8 +738,6 @@
         protected System.Windows.Forms.ToolStripMenuItem menuItemClose;
         protected System.Windows.Forms.ToolStripMenuItem menuItemSettings;
         protected System.Windows.Forms.ToolStripMenuItem menuItemAbout;
-        protected System.Windows.Forms.ToolStripStatusLabel StatusMass;
-        protected System.Windows.Forms.ToolStripStatusLabel StatusCount;
         protected System.Windows.Forms.Label labelWater;
         protected System.Windows.Forms.Label labelComments;
         protected System.Windows.Forms.TabPage tabPageEnvironment;
@@ -710,7 +746,6 @@
         protected System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         protected System.Windows.Forms.ToolStripMenuItem menuItemPrint;
         protected System.Windows.Forms.ToolStripMenuItem menuItemPreview;
-        protected System.Windows.Forms.ToolStripStatusLabel StatusLog;
         protected System.Windows.Forms.TabPage tabPageFactors;
         protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemData;
         protected System.Windows.Forms.ToolStripMenuItem menuItemLocation;
@@ -745,12 +780,18 @@
         protected System.Windows.Forms.ToolStripMenuItem menuItemNew;
         protected System.Windows.Forms.ToolStripMenuItem menuItemOpen;
         protected GroupedComboBox comboBoxSampler;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
-        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
         protected System.Windows.Forms.Button buttonEquipment;
         private System.Windows.Forms.ContextMenuStrip contextEquipment;
         public Controls.LogProcessor Logger;
+        private System.Windows.Forms.ToolStripStatusLabel StatusMass;
+        private System.Windows.Forms.ToolStripStatusLabel StatusCount;
+        private System.Windows.Forms.ToolStripStatusLabel StatusLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnQtyExam;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnMassExam;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefinition;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnQty;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

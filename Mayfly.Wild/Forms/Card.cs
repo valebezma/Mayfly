@@ -1,16 +1,18 @@
-﻿using Mayfly.Extensions;
+﻿using Mayfly.Controls;
+using Mayfly.Extensions;
+using Mayfly.Software;
 using Mayfly.TaskDialogs;
 using Mayfly.Waters;
 using Mayfly.Waters.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static Mayfly.Wild.ReaderSettings;
-using System.Drawing;
-using Mayfly.Controls;
+using static Mayfly.UserSettings;
+using static Mayfly.Wild.SettingsReader;
 
 namespace Mayfly.Wild
 {
@@ -24,6 +26,7 @@ namespace Mayfly.Wild
         protected EventHandler cleared;
         protected EquipmentEventHandler equipmentSaved;
         protected EquipmentEventHandler equipmentSelected;
+        private EventHandler settingsApplied;
 
         [Category("Mayfly Events"), Browsable(true)]
         public event EventHandler OnSaved {
@@ -53,6 +56,17 @@ namespace Mayfly.Wild
         public event EquipmentEventHandler OnEquipmentSaved {
             add { equipmentSaved += value; }
             remove { equipmentSaved -= value; }
+        }
+
+        [Category("Mayfly Events")]
+        public event EventHandler SettingsApplied {
+            add {
+                settingsApplied += value;
+            }
+
+            remove {
+                settingsApplied -= value;
+            }
         }
 
         public Survey.SamplerRow SelectedSampler {
@@ -106,7 +120,7 @@ namespace Mayfly.Wild
             Logger.Provider.RecentListCount = RecentSpeciesCount;
             Logger.Provider.IndexPath = TaxonomicIndexPath;
 
-            ColumnQuantity.ReadOnly = FixTotals;
+            ColumnQty.ReadOnly = FixTotals;
             ColumnMass.ReadOnly = FixTotals;
 
             ToolStripMenuItemWatersRef.Enabled = UserSettings.WatersIndexPath != null;
@@ -135,6 +149,12 @@ namespace Mayfly.Wild
             textBoxComments.Text = string.Empty;
             aquaControl1.Clear();
             weatherControl1.Clear();
+
+            foreach (Survey.VirtueRow virtueRow in SamplersIndex.Virtue) {
+                NumberBox nb = tabPageSampler.Controls.Find("numeric" + virtueRow.Name, true)?[0] as NumberBox;
+                nb.Clear();
+            }
+
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
@@ -142,6 +162,7 @@ namespace Mayfly.Wild
         }
 
         private void loadEquipmentVirtues(Survey.EquipmentRow eqpRow) {
+
             foreach (Survey.EquipmentVirtueRow row in eqpRow.GetEquipmentVirtueRows()) {
                 NumberBox nb = tabPageSampler.Controls.Find("numeric" + row.VirtueRow.Name, true)?[0] as NumberBox;
                 nb.Value = row.Value;
@@ -241,9 +262,9 @@ namespace Mayfly.Wild
                 comboBoxSampler.SelectedIndex = -1;
             } else {
                 SelectedSampler = SamplersIndex.Sampler.FindByID(data.Solitary.SamplerRow.ID);
+                loadEquipmentVirtues(data.Solitary.EquipmentRow);
             }
 
-            loadEquipmentVirtues(data.Solitary.EquipmentRow);
 
             #endregion
 
@@ -380,8 +401,8 @@ namespace Mayfly.Wild
             data.Sampler.Clear();
 
             if (SelectedSampler == null) {
-            data.Solitary.SetEqpIDNull();
-                ReaderSettings.SelectedSampler = null;
+                data.Solitary.SetEqpIDNull();
+                SettingsReader.SelectedSampler = null;
                 return;
             }
 
@@ -475,42 +496,45 @@ namespace Mayfly.Wild
 
             if (Equipment.Equipment.FindDuplicate(data.Solitary.EquipmentRow) == null) {
 
-                Survey.SamplerTypeRow samplerTypeRow = Equipment.SamplerType.FindByID(SelectedSampler.Type);
+                if (SelectedSampler != null) {
 
-                if (samplerTypeRow == null) {
-                    samplerTypeRow = Equipment.SamplerType.AddSamplerTypeRow(SelectedSampler.Type, SelectedSampler.TypeName);
-                }
+                    Survey.SamplerTypeRow samplerTypeRow = Equipment.SamplerType.FindByID(SelectedSampler.Type);
 
-                Survey.SamplerRow samplerRow = Equipment.Sampler.FindByID(SelectedSampler.ID);
-                if (samplerRow == null) {
-                    samplerRow = SelectedSampler.CopyTo(Equipment);
+                    if (samplerTypeRow == null) {
+                        samplerTypeRow = Equipment.SamplerType.AddSamplerTypeRow(SelectedSampler.Type, SelectedSampler.TypeName);
+                    }
 
-                    //foreach (Survey.VirtueRow virtueRow in SelectedSampler.GetVirtueRows()) {
-                        
-                    //    Survey.VirtueRow nvr = Equipment.Virtue.FindByName(virtueRow.Name);
-                    //    if (nvr == null) {
-                    //        nvr = Equipment.Virtue.AddVirtueRow(virtueRow.Name, virtueRow.Notation);
-                    //    }
+                    Survey.SamplerRow samplerRow = Equipment.Sampler.FindByID(SelectedSampler.ID);
+                    if (samplerRow == null) {
+                        samplerRow = SelectedSampler.CopyTo(Equipment);
 
-                    //    foreach (Survey.SamplerVirtueRow samplerVirtueRow in virtueRow.GetSamplerVirtueRows()) {
+                        //foreach (Survey.VirtueRow virtueRow in SelectedSampler.GetVirtueRows()) {
 
-                    //        Survey.SamplerVirtueRow nsvr = Equipment.SamplerVirtue.FindBySmpIDVrtID(samplerRow.ID, nvr.ID);
-                    //        if (nsvr == null) {
-                    //            nsvr = Equipment.SamplerVirtue.NewSamplerVirtueRow();
-                    //            nsvr.SamplerRow = samplerRow;
-                    //            nsvr.VirtueRow = nvr;
-                    //            if (!samplerVirtueRow.IsClassNull()) nsvr.Class = samplerVirtueRow.Class;
-                    //            Equipment.SamplerVirtue.AddSamplerVirtueRow(nsvr);
-                    //        }
-                    //    }
-                    //}
-                }
-                Survey.EquipmentRow eqpRow = Equipment.Equipment.AddEquipmentRow(samplerRow);
-                saveEquipmentVirtues(eqpRow);
+                        //    Survey.VirtueRow nvr = Equipment.Virtue.FindByName(virtueRow.Name);
+                        //    if (nvr == null) {
+                        //        nvr = Equipment.Virtue.AddVirtueRow(virtueRow.Name, virtueRow.Notation);
+                        //    }
 
-                if (!string.IsNullOrEmpty(eqpRow.VirtueDescription)) {
-                    Service.SaveEquipment();
-                    loadEquipment();
+                        //    foreach (Survey.SamplerVirtueRow samplerVirtueRow in virtueRow.GetSamplerVirtueRows()) {
+
+                        //        Survey.SamplerVirtueRow nsvr = Equipment.SamplerVirtue.FindBySmpIDVrtID(samplerRow.ID, nvr.ID);
+                        //        if (nsvr == null) {
+                        //            nsvr = Equipment.SamplerVirtue.NewSamplerVirtueRow();
+                        //            nsvr.SamplerRow = samplerRow;
+                        //            nsvr.VirtueRow = nvr;
+                        //            if (!samplerVirtueRow.IsClassNull()) nsvr.Class = samplerVirtueRow.Class;
+                        //            Equipment.SamplerVirtue.AddSamplerVirtueRow(nsvr);
+                        //        }
+                        //    }
+                        //}
+                    }
+                    Survey.EquipmentRow eqpRow = Equipment.Equipment.AddEquipmentRow(samplerRow);
+                    saveEquipmentVirtues(eqpRow);
+
+                    if (!string.IsNullOrEmpty(eqpRow.VirtueDescription)) {
+                        Service.SaveEquipment();
+                        loadEquipment();
+                    }
                 }
             }
 
@@ -518,6 +542,7 @@ namespace Mayfly.Wild
         }
 
         private DialogResult checkAndSave() {
+
             DialogResult result = DialogResult.None;
 
             if (isChanged) {
@@ -703,22 +728,57 @@ namespace Mayfly.Wild
         #region Service menu
 
         private void menuItemWaters_Click(object sender, EventArgs e) {
+
             IO.RunFile(UserSettings.WatersIndexPath);
         }
 
         private void menuItemSpecies_Click(object sender, EventArgs e) {
+
             IO.RunFile(TaxonomicIndexPath, "-edit");
         }
 
         private void menuItemSettings_Click(object sender, EventArgs e) {
-            throw new NotImplementedException();
+
+            string currentWaters = UserSettings.WatersIndexPath;
+            string currentSpc = TaxonomicIndexPath;
+            int currentRecentCount = RecentSpeciesCount;
+
+            if (SettingsForm.ShowDialog(this) == DialogResult.OK) {
+
+                if (currentWaters != UserSettings.WatersIndexPath) {
+
+                    UserSettings.WatersIndex = null;
+                    waterSelector.Index = UserSettings.WatersIndex;
+                }
+
+                if (currentSpc != TaxonomicIndexPath) {
+
+                    TaxonomicIndex = null;
+                    Logger.Provider.IndexPath = TaxonomicIndexPath;
+                }
+
+                if (currentSpc != TaxonomicIndexPath || currentRecentCount != RecentSpeciesCount) {
+
+                    Logger.Provider.RecentListCount = RecentSpeciesCount;
+                    Logger.UpdateRecent();
+                }
+
+                ColumnQty.ReadOnly = FixTotals;
+                ColumnMass.ReadOnly = FixTotals;
+
+                if (settingsApplied != null) settingsApplied.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e) {
-            throw new NotImplementedException();
+
+            About about = new About(AppBanner);
+            about.SetPowered(SupportLogo, SupportText);
+            about.ShowDialog();
         }
 
         private void itemAboutCard_Click(object sender, EventArgs e) {
+
             AboutData about = new AboutData(data.Solitary.Investigator);
             about.ShowDialog();
         }

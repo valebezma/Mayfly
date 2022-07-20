@@ -14,7 +14,7 @@ namespace Mayfly.Plankton
     public enum PlanktonSamplerType
     {
         None,
-        Bathometer,
-        Filter
+        Filter,
+        Bathometer
     }
 }

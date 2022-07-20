@@ -10,7 +10,6 @@ namespace Mayfly.Fish.Explorer
 {
     public partial class Settings : Form
     {
-        Samplers.SamplerRow selectedSampler;
 
         public event EventHandler SettingsSaved;
 
@@ -20,184 +19,20 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            tabPageTreat.Parent =
-                tabPageGamingAge.Parent =
-                tabPageGamingMeasure.Parent =
-                tabPageCatchability.Parent =
-                License.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
-
-            UI.SetControlClickability(
-                License.AllowedFeaturesLevel >= FeatureLevel.Advanced,
-                checkBoxBioAutoLoad,
-                label7);
-
-            comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
-            comboBoxGear.DataSource = Fish.UserSettings.ReaderSettings.SamplersIndex.Sampler.Select();
-
-            ColumnAgeSpecies.ValueType = typeof(string);
-            ColumnAgeValue.ValueType = typeof(Age);
-            ColumnMeasureSpecies.ValueType = typeof(string);
-            ColumnMeasureValue.ValueType = typeof(double);
-            columnCatchabilitySpecies.ValueType = typeof(string);
-            columnCatchabilityValue.ValueType = typeof(double);
-
-            numericUpDownInterval.Minimum = numericUpDownInterval.Increment =
-                (decimal)Fish.UserSettings.DefaultStratifiedInterval;
-
             checkBoxSuggestAge.Checked = UserSettings.SuggestAge;
             checkBoxSuggestMass.Checked = UserSettings.SuggestMass;
-            checkBoxKeepWizards.Checked = UserSettings.KeepWizard;
-            comboBoxReportCriticality.SelectedIndex = (int)UserSettings.ReportCriticality;
-            checkBoxConsistency.Checked = UserSettings.CheckConsistency;
 
-            spreadSheetAge.Rows.Clear();
-            spreadSheetMeasure.Rows.Clear();
-            spreadSheetCatchability.Rows.Clear();
 
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
-                speciesSelectorAge.IndexPath = Fish.UserSettings.ReaderSettings.TaxonomicIndexPath;
-                speciesSelectorMeasure.IndexPath = Fish.UserSettings.ReaderSettings.TaxonomicIndexPath;
-                speciesSelectorCatchability.IndexPath = Fish.UserSettings.ReaderSettings.TaxonomicIndexPath;
-
-                foreach (TaxonomicIndex.TaxonRow speciesRow in Fish.UserSettings.ReaderSettings.TaxonomicIndex.GetSpeciesRows())
-                {
-                    LoadAge(speciesRow);
-                    LoadMeasure(speciesRow);
-                    LoadCatchability(speciesRow);
-                }
-
-                comboBoxGear_SelectedIndexChanged(comboBoxGear, new EventArgs());
-                numericUpDownCatchabilityDefault.Value = (decimal)UserSettings.DefaultCatchability;
-
-                numericUpDownInterval.Value = (decimal)UserSettings.SizeInterval;
-
-                comboBoxDominance.SelectedIndex = Wild.UserSettings.Dominance;
-                comboBoxDiversity.SelectedIndex = (int)Wild.UserSettings.Diversity;
-
-                comboBoxAlk.SelectedIndex = (int)UserSettings.SelectedAgeLengthKeyType;
             }
-
-            if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
-            {
-                checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
-
-                foreach (string bio in UserSettings.Bios)
-                {
-                    ListViewItem li = listViewBio.CreateItem(bio,
-                        Path.GetFileNameWithoutExtension(bio));
-                    listViewBio.Items.Add(li);
-                }
-            }
-        }
-
-        private void LoadAge(TaxonomicIndex.TaxonRow speciesRow)
-        {
-            Age age = Service.GetGamingAge(speciesRow.Name);
-
-            if (age == null) return;
-
-            DataGridViewRow gridRow = new DataGridViewRow();
-            gridRow.CreateCells(spreadSheetAge);
-            gridRow.Cells[ColumnAgeSpecies.Index].Value = speciesRow.Name;
-            gridRow.Cells[ColumnAgeValue.Index].Value = age;
-
-            spreadSheetAge.Rows.Add(gridRow);
-        }
-
-        private void LoadMeasure(TaxonomicIndex.TaxonRow speciesRow)
-        {
-            double measure = Service.GetMeasure(speciesRow.Name);
-            if (double.IsNaN(measure)) return;
-
-            DataGridViewRow gridRow = new DataGridViewRow();
-            gridRow.CreateCells(spreadSheetMeasure);
-            gridRow.Cells[ColumnMeasureSpecies.Index].Value = speciesRow.Name;
-            gridRow.Cells[ColumnMeasureValue.Index].Value = measure;
-
-            spreadSheetMeasure.Rows.Add(gridRow);
-        }
-
-        private void LoadCatchability(TaxonomicIndex.TaxonRow speciesRow)
-        {
-            foreach (Samplers.SamplerRow samplerRow in Fish.UserSettings.ReaderSettings.SamplersIndex.Sampler)
-            {
-                LoadCatchability(speciesRow, samplerRow);
-            }
-        }
-
-        private void LoadCatchability(TaxonomicIndex.TaxonRow speciesRow, Samplers.SamplerRow samplerRow)
-        {
-            double catchability = Service.GetCatchability(samplerRow.GetSamplerType(), speciesRow.Name);
-            if (catchability == UserSettings.DefaultCatchability) return;
-
-            DataGridViewRow gridRow = new DataGridViewRow();
-            gridRow.CreateCells(spreadSheetCatchability);
-            gridRow.Cells[columnCatchabilitySpecies.Index].Value = speciesRow.Name;
-            gridRow.Cells[columnCatchabilityValue.Index].Value = catchability;
-            gridRow.Tag = samplerRow;
-            spreadSheetCatchability.Rows.Add(gridRow);
         }
 
         private void SaveSettings()
         {
-            Wild.UserSettings.Diversity = (DiversityIndex)comboBoxDiversity.SelectedIndex;
-            Wild.UserSettings.Dominance = comboBoxDominance.SelectedIndex;
-
-            UserSettings.DefaultCatchability = (double)numericUpDownCatchabilityDefault.Value;
-
-            UserSettings.ClearFolder(UserSettings.FeatureKey, nameof(Service.GamingAge));
-            foreach (DataGridViewRow gridRow in spreadSheetAge.Rows)
-            {
-                if (gridRow.IsNewRow) continue;
-                if (gridRow.Cells[ColumnAgeSpecies.Index].Value == null) continue;
-                if (gridRow.Cells[ColumnAgeValue.Index].Value == null) continue;
-                Service.SaveGamingAge((string)gridRow.Cells[ColumnAgeSpecies.Index].Value,
-                    (Age)gridRow.Cells[ColumnAgeValue.Index].Value);
-            }
-
-            UserSettings.ClearFolder(UserSettings.FeatureKey, nameof(Service.GamingLength));
-            foreach (DataGridViewRow gridRow in spreadSheetMeasure.Rows)
-            {
-                if (gridRow.IsNewRow) continue;
-                if (gridRow.Cells[ColumnMeasureSpecies.Index].Value == null) continue;
-                if (gridRow.Cells[ColumnMeasureValue.Index].Value == null) continue;
-                Service.SaveMeasure((string)gridRow.Cells[ColumnMeasureSpecies.Index].Value,
-                    (double)gridRow.Cells[ColumnMeasureValue.Index].Value);
-            }
-
-            UserSettings.ClearFolder(UserSettings.FeatureKey, nameof(Service.Catchability));
-            foreach (DataGridViewRow gridRow in spreadSheetCatchability.Rows)
-            {
-                if (gridRow.IsNewRow) continue;
-                if (gridRow.Cells[columnCatchabilitySpecies.Index].Value == null) continue;
-                if (gridRow.Cells[columnCatchabilityValue.Index].Value == null) continue;
-                if ((double)gridRow.Cells[columnCatchabilityValue.Index].Value == UserSettings.DefaultCatchability) continue;
-                Service.SaveCatchability(((Samplers.SamplerRow)gridRow.Tag).GetSamplerType(),
-                    (string)gridRow.Cells[columnCatchabilitySpecies.Index].Value,
-                    (double)gridRow.Cells[columnCatchabilityValue.Index].Value);
-            }
-
-            UserSettings.SizeInterval = (double)numericUpDownInterval.Value;
-
             UserSettings.SuggestAge = checkBoxSuggestAge.Checked;
             UserSettings.SuggestMass = checkBoxSuggestMass.Checked;
             //UserSettings.VisualConfirmation = checkBoxVisualConfirmation.Checked;
-
-            UserSettings.AutoLoadBio = checkBoxBioAutoLoad.Checked;
-
-            List<string> bios = new List<string>();
-            foreach (ListViewItem li in listViewBio.Items)
-            {
-                bios.Add(li.Name);
-            }
-            UserSettings.Bios = bios.ToArray();
-
-            UserSettings.SelectedAgeLengthKeyType = (AgeLengthKeyType)comboBoxAlk.SelectedIndex;
-
-            UserSettings.KeepWizard = checkBoxKeepWizards.Checked;
-            UserSettings.CheckConsistency = checkBoxConsistency.Checked;
-            UserSettings.ReportCriticality = (ArtifactCriticality)comboBoxReportCriticality.SelectedIndex;
 
             if (SettingsSaved != null)
             {
@@ -206,19 +41,6 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-
-        private void comboBoxGear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            selectedSampler = (Samplers.SamplerRow)comboBoxGear.SelectedItem;
-
-            foreach (DataGridViewRow gridRow in spreadSheetCatchability.Rows)
-            {
-                if (gridRow.IsNewRow) continue;
-                gridRow.Visible = gridRow.Tag == selectedSampler;
-            }
-
-            spreadSheetCatchability.ClearSelection();
-        }
 
         private void spreadSheetCatchability_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {

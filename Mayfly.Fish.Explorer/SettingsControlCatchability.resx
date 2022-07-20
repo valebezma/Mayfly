@@ -117,125 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="buttonBrowseDiet.Text" xml:space="preserve">
-    <value>Обзор...</value>
-  </data>
-  <data name="buttonBrowseParasites.Text" xml:space="preserve">
-    <value>Обзор...</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Справочник пищевых компонентов</value>
-  </data>
-  <data name="buttonOpenDiet.Text" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 13</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Справочник паразитов</value>
-  </data>
-  <data name="buttonOpenParasites.Text" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="labelAgeFromDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 13</value>
-  </data>
-  <data name="checkBoxAgeFromDay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 17</value>
-  </data>
-  <data name="buttonGearsClear.Text" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="columnSampler.HeaderText" xml:space="preserve">
-    <value>Тип орудия</value>
-  </data>
-  <data name="columnMesh.HeaderText" xml:space="preserve">
-    <value>Ячея</value>
-  </data>
-  <data name="columnLength.HeaderText" xml:space="preserve">
-    <value>Длина, м</value>
-  </data>
-  <data name="columnHeight.HeaderText" xml:space="preserve">
-    <value>Высота, м</value>
-  </data>
-  <data name="tabPageEquipment.Text" xml:space="preserve">
-    <value>Снасти</value>
-  </data>
-  <data name="columnOpeningGear.HeaderText" xml:space="preserve">
-    <value>Орудие</value>
-  </data>
-  <data name="columnOpeningValue.HeaderText" xml:space="preserve">
-    <value>Раскрытие</value>
-  </data>
-  <data name="labelOpeningDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 13</value>
-  </data>
-  <data name="labelOpeningDefault.Text" xml:space="preserve">
-    <value>Раскрытие по-умолчанию, %</value>
-  </data>
-  <data name="labelActive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 15</value>
-  </data>
-  <data name="labelActive.Text" xml:space="preserve">
-    <value>Параметры активных орудий</value>
-  </data>
-  <data name="labelActiveInstruction.Text" xml:space="preserve">
-    <value>Раскрытие по-умолчанию это доля от длины орудия, равна фактическому расстоянию между концами.</value>
-  </data>
-  <data name="tabPageActive.Text" xml:space="preserve">
-    <value>Активные орудия</value>
-  </data>
-  <data name="labelStationary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 15</value>
-  </data>
-  <data name="labelStationary.Text" xml:space="preserve">
-    <value>Параметры пассивных орудий</value>
-  </data>
-  <data name="labelExposure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 13</value>
-  </data>
-  <data name="labelExposure.Text" xml:space="preserve">
-    <value>Стандартная экспозиция, ч</value>
-  </data>
-  <data name="labelStationaryInstruction.Text" xml:space="preserve">
-    <value>Параметры стандартной ставной сети применяются для расчета усилия.</value>
-  </data>
-  <data name="labelHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 13</value>
-  </data>
-  <data name="labelHeight.Text" xml:space="preserve">
-    <value>Высота стандартной сети, м</value>
-  </data>
-  <data name="labelLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 13</value>
-  </data>
-  <data name="labelLength.Text" xml:space="preserve">
-    <value>Длина стандартной сети, м</value>
-  </data>
-  <data name="tabPageStationary.Text" xml:space="preserve">
-    <value>Пассивные орудия</value>
-  </data>
-  <data name="tabPageGears.Text" xml:space="preserve">
-    <value>Орудия лова</value>
-  </data>
-  <data name="labelInterval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 13</value>
-  </data>
-  <data name="labelInterval.Text" xml:space="preserve">
-    <value>Интервал по-умолчанию, мм</value>
-  </data>
-  <data name="labelStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 15</value>
-  </data>
-  <data name="labelStratified.Text" xml:space="preserve">
-    <value>Начальные значения</value>
-  </data>
-  <data name="tabPageStratified.Text" xml:space="preserve">
-    <value>Размерный ряд</value>
-  </data>
+  <metadata name="columnCatchabilitySpecies.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="columnCatchabilityValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="speciesSelectorCatchability.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

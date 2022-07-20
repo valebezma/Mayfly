@@ -77,9 +77,9 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.tdClearRecent = new global::Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbRecentClear = new global::Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbRecentCancel = new global::Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdClearRecent = new Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbRecentClear = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbRecentCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.buttonBasicSettings = new System.Windows.Forms.Button();
             this.tabControlSettings.SuspendLayout();
             this.tabPageReferences.SuspendLayout();
@@ -103,7 +103,6 @@
             // 
             // tabPageReferences
             // 
-            resources.ApplyResources(this.tabPageReferences, "tabPageReferences");
             this.tabPageReferences.Controls.Add(this.labelWaters);
             this.tabPageReferences.Controls.Add(this.buttonBrowseWaters);
             this.tabPageReferences.Controls.Add(this.textBoxWaters);
@@ -113,6 +112,7 @@
             this.tabPageReferences.Controls.Add(this.textBoxSpecies);
             this.tabPageReferences.Controls.Add(this.labelSpecies);
             this.tabPageReferences.Controls.Add(this.buttonOpenSpecies);
+            resources.ApplyResources(this.tabPageReferences, "tabPageReferences");
             this.tabPageReferences.Name = "tabPageReferences";
             this.tabPageReferences.UseVisualStyleBackColor = true;
             // 
@@ -126,7 +126,6 @@
             resources.ApplyResources(this.buttonBrowseWaters, "buttonBrowseWaters");
             this.buttonBrowseWaters.Name = "buttonBrowseWaters";
             this.buttonBrowseWaters.UseVisualStyleBackColor = true;
-            this.buttonBrowseWaters.Click += new System.EventHandler(this.buttonBrowseWaters_Click);
             // 
             // textBoxWaters
             // 
@@ -139,7 +138,6 @@
             resources.ApplyResources(this.buttonOpenWaters, "buttonOpenWaters");
             this.buttonOpenWaters.Name = "buttonOpenWaters";
             this.buttonOpenWaters.UseVisualStyleBackColor = true;
-            this.buttonOpenWaters.Click += new System.EventHandler(this.buttonOpenWaters_Click);
             // 
             // labelRef
             // 
@@ -152,7 +150,6 @@
             resources.ApplyResources(this.buttonBrowseSpecies, "buttonBrowseSpecies");
             this.buttonBrowseSpecies.Name = "buttonBrowseSpecies";
             this.buttonBrowseSpecies.UseVisualStyleBackColor = true;
-            this.buttonBrowseSpecies.Click += new System.EventHandler(this.buttonBrowseSpecies_Click);
             // 
             // textBoxSpecies
             // 
@@ -170,12 +167,11 @@
             resources.ApplyResources(this.buttonOpenSpecies, "buttonOpenSpecies");
             this.buttonOpenSpecies.Name = "buttonOpenSpecies";
             this.buttonOpenSpecies.UseVisualStyleBackColor = true;
-            this.buttonOpenSpecies.Click += new System.EventHandler(this.buttonOpenSpecies_Click);
             // 
             // tabPageInput
             // 
-            resources.ApplyResources(this.tabPageInput, "tabPageInput");
             this.tabPageInput.Controls.Add(this.tabControl1);
+            resources.ApplyResources(this.tabPageInput, "tabPageInput");
             this.tabPageInput.Name = "tabPageInput";
             this.tabPageInput.UseVisualStyleBackColor = true;
             // 
@@ -190,7 +186,6 @@
             // 
             // tabPageSpecies
             // 
-            resources.ApplyResources(this.tabPageSpecies, "tabPageSpecies");
             this.tabPageSpecies.Controls.Add(this.checkBoxSpeciesExpand);
             this.tabPageSpecies.Controls.Add(this.checkBoxSpeciesExpandVisualControl);
             this.tabPageSpecies.Controls.Add(this.buttonClearRecent);
@@ -198,6 +193,7 @@
             this.tabPageSpecies.Controls.Add(this.numericUpDownRecentCount);
             this.tabPageSpecies.Controls.Add(this.checkBoxAutoLog);
             this.tabPageSpecies.Controls.Add(this.labelInputFish);
+            resources.ApplyResources(this.tabPageSpecies, "tabPageSpecies");
             this.tabPageSpecies.Name = "tabPageSpecies";
             this.tabPageSpecies.UseVisualStyleBackColor = true;
             // 
@@ -206,7 +202,6 @@
             resources.ApplyResources(this.checkBoxSpeciesExpand, "checkBoxSpeciesExpand");
             this.checkBoxSpeciesExpand.Name = "checkBoxSpeciesExpand";
             this.checkBoxSpeciesExpand.UseVisualStyleBackColor = true;
-            this.checkBoxSpeciesExpand.CheckedChanged += new System.EventHandler(this.checkBoxSpeciesExpand_CheckedChanged);
             // 
             // checkBoxSpeciesExpandVisualControl
             // 
@@ -219,7 +214,6 @@
             resources.ApplyResources(this.buttonClearRecent, "buttonClearRecent");
             this.buttonClearRecent.Name = "buttonClearRecent";
             this.buttonClearRecent.UseVisualStyleBackColor = true;
-            this.buttonClearRecent.Click += new System.EventHandler(this.buttonClearRecent_Click);
             // 
             // labelRecent
             // 
@@ -260,7 +254,6 @@
             // 
             // tabPageIndividuals
             // 
-            resources.ApplyResources(this.tabPageIndividuals, "tabPageIndividuals");
             this.tabPageIndividuals.Controls.Add(this.listViewAddtVars);
             this.tabPageIndividuals.Controls.Add(this.buttonRemoveVar);
             this.tabPageIndividuals.Controls.Add(this.buttonNewVar);
@@ -269,6 +262,7 @@
             this.tabPageIndividuals.Controls.Add(this.labelAddtsVars);
             this.tabPageIndividuals.Controls.Add(this.labelCommonVars);
             this.tabPageIndividuals.Controls.Add(this.checkBoxAutoIncreaseBio);
+            resources.ApplyResources(this.tabPageIndividuals, "tabPageIndividuals");
             this.tabPageIndividuals.Name = "tabPageIndividuals";
             this.tabPageIndividuals.UseVisualStyleBackColor = true;
             // 
@@ -334,11 +328,11 @@
             // 
             // tabPageFactors
             // 
-            resources.ApplyResources(this.tabPageFactors, "tabPageFactors");
             this.tabPageFactors.Controls.Add(this.listViewAddtFctr);
             this.tabPageFactors.Controls.Add(this.buttonAddtFctrsDelete);
             this.tabPageFactors.Controls.Add(this.buttonAddtFctrsAdd);
             this.tabPageFactors.Controls.Add(this.labelAddtFctrs);
+            resources.ApplyResources(this.tabPageFactors, "tabPageFactors");
             this.tabPageFactors.Name = "tabPageFactors";
             this.tabPageFactors.UseVisualStyleBackColor = true;
             // 
@@ -380,13 +374,13 @@
             // 
             // tabPagePrint
             // 
-            resources.ApplyResources(this.tabPagePrint, "tabPagePrint");
             this.tabPagePrint.Controls.Add(this.comboBoxLogOrder);
             this.tabPagePrint.Controls.Add(this.checkBoxBreakBetweenSpecies);
             this.tabPagePrint.Controls.Add(this.checkBoxOrderLog);
             this.tabPagePrint.Controls.Add(this.checkBoxCardOdd);
             this.tabPagePrint.Controls.Add(this.checkBoxBreakBeforeIndividuals);
             this.tabPagePrint.Controls.Add(this.labelPrintCaption);
+            resources.ApplyResources(this.tabPagePrint, "tabPagePrint");
             this.tabPagePrint.Name = "tabPagePrint";
             this.tabPagePrint.UseVisualStyleBackColor = true;
             // 
@@ -413,21 +407,18 @@
             resources.ApplyResources(this.checkBoxOrderLog, "checkBoxOrderLog");
             this.checkBoxOrderLog.Name = "checkBoxOrderLog";
             this.checkBoxOrderLog.UseVisualStyleBackColor = true;
-            this.checkBoxOrderLog.CheckedChanged += new System.EventHandler(this.checkBoxOrderLog_CheckedChanged);
             // 
             // checkBoxCardOdd
             // 
             resources.ApplyResources(this.checkBoxCardOdd, "checkBoxCardOdd");
             this.checkBoxCardOdd.Name = "checkBoxCardOdd";
             this.checkBoxCardOdd.UseVisualStyleBackColor = true;
-            this.checkBoxCardOdd.CheckedChanged += new System.EventHandler(this.checkBoxBreakBeforeIndividuals_CheckedChanged);
             // 
             // checkBoxBreakBeforeIndividuals
             // 
             resources.ApplyResources(this.checkBoxBreakBeforeIndividuals, "checkBoxBreakBeforeIndividuals");
             this.checkBoxBreakBeforeIndividuals.Name = "checkBoxBreakBeforeIndividuals";
             this.checkBoxBreakBeforeIndividuals.UseVisualStyleBackColor = true;
-            this.checkBoxBreakBeforeIndividuals.CheckedChanged += new System.EventHandler(this.checkBoxBreakBeforeIndividuals_CheckedChanged);
             // 
             // labelPrintCaption
             // 
@@ -469,8 +460,7 @@
             // 
             // tdbRecentCancel
             // 
-            this.tdbRecentCancel.ButtonType = global::Mayfly.TaskDialogs.ButtonType.Cancel;
-            resources.ApplyResources(this.tdbRecentCancel, "tdbRecentCancel");
+            this.tdbRecentCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
             // 
             // buttonBasicSettings
             // 

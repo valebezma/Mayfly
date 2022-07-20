@@ -15,8 +15,7 @@ namespace Mayfly.Benthos.Explorer
 {
     public partial class MainForm : Form
     {
-        public MainForm()
-        {
+        public MainForm() {
             InitializeComponent();
 
             listViewWaters.Shine();
@@ -29,9 +28,9 @@ namespace Mayfly.Benthos.Explorer
             spreadSheetLog.UpdateStatus();
             spreadSheetInd.UpdateStatus();
 
-            SetSpeciesIndex(Benthos.UserSettings.TaxonomicIndexPath);
+            SetSpeciesIndex(SettingsReader.TaxonomicIndexPath);
 
-            selectedLogRows = new List<Wild.Survey.LogRow>();
+            selectedLogRows = new List<Survey.LogRow>();
 
             columnCardWater.ValueType = typeof(string);
             columnCardLabel.ValueType = typeof(string);
@@ -56,7 +55,7 @@ namespace Mayfly.Benthos.Explorer
 
             tabPageCard.Parent = null;
 
-            columnSpcSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
+            //columnSpcSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
             columnSpcQuantity.ValueType = typeof(int);
             columnSpcMass.ValueType = typeof(double);
             columnSpcAbundance.ValueType = typeof(double);
@@ -68,7 +67,7 @@ namespace Mayfly.Benthos.Explorer
 
             tabPageComposition.Parent = null;
 
-            columnLogSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
+            //columnLogSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
             columnLogQuantity.ValueType = typeof(int);
             columnLogMass.ValueType = typeof(double);
             columnLogAbundance.ValueType = typeof(double);
@@ -96,7 +95,7 @@ namespace Mayfly.Benthos.Explorer
             spreadSheetSpc.SetBioAcceptable(LoadCards);
             spreadSheetLog.SetBioAcceptable(LoadCards);
 
-            data = new Data(Benthos.UserSettings.SpeciesIndex, Benthos.UserSettings.SamplersIndex);
+            data = new Survey();
             FullStack = new CardStack();
 
             loadTaxonList();
@@ -105,47 +104,39 @@ namespace Mayfly.Benthos.Explorer
         }
 
         public MainForm(string[] args)
-            : this()
-        {
-            if (args.Length == 0)
-            {
+            : this() {
+            if (args.Length == 0) {
                 return;
             }
 
-            this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(Benthos.UserSettings.Interface.Extension)); };
+            this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(SettingsReader.Interface.Extension)); };
 
         }
 
         public MainForm(CardStack stack)
-            : this()
-        {
-            foreach (Wild.Survey.CardRow cardRow in stack)
-            {
+            : this() {
+            foreach (Wild.Survey.CardRow cardRow in stack) {
                 cardRow.SingleCardDataset().CopyTo(data);
             }
 
             updateSummary();
         }
 
-        public MainForm(Wild.Survey _data) : this()
-        {
+        public MainForm(Wild.Survey _data) : this() {
             data = _data;
             data.RefreshBios();
         }
-        
 
 
-        private void mainForm_Load(object sender, EventArgs e)
-        {
+
+        private void mainForm_Load(object sender, EventArgs e) {
             updateSummary();
         }
 
-        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e) {
             isClosing = true;
 
-            switch (CheckAndSave())
-            {
+            switch (CheckAndSave()) {
                 case DialogResult.OK:
                     e.Cancel = true;
                     break;
@@ -159,67 +150,51 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void tab_Changed(object sender, EventArgs e)
-        {
+        private void tab_Changed(object sender, EventArgs e) {
             menuCards.Visible = (tabControl.SelectedTab == tabPageCard);
             menuComposition.Visible = (tabControl.SelectedTab == tabPageComposition);
             menuIndividuals.Visible = (tabControl.SelectedTab == tabPageInd);
         }
 
-        private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void comboBox_KeyPress(object sender, KeyPressEventArgs e) {
             ((ComboBox)sender).HandleInput(e);
         }
 
-        private void progressChanged(object sender, ProgressChangedEventArgs e)
-        {
+        private void progressChanged(object sender, ProgressChangedEventArgs e) {
             processDisplay.SetProgress(e.ProgressPercentage);
         }
 
 
 
-        private void dataLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void dataLoader_DoWork(object sender, DoWorkEventArgs e) {
             string[] filenames = (string[])e.Argument;
 
             processDisplay.SetProgressMaximum(filenames.Length);
 
-            for (int i = 0; i < filenames.Length; i++)
-            {
-                if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfaceBio.Extension)
-                {
+            for (int i = 0; i < filenames.Length; i++) {
+                if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfaceBio.Extension) {
                     processDisplay.SetStatus(Wild.Resources.Interface.Process.BioLoading);
 
-                    if (data.IsBioLoaded)
-                    {
+                    if (data.IsBioLoaded) {
                         TaskDialogButton tdb = taskDialogBio.ShowDialog();
 
-                        if (tdb != tdbSpecCancel)
-                        {
+                        if (tdb != tdbSpecCancel) {
                             data.ImportBio(filenames[i], tdb == tdbSpecClear);
                         }
-                    }
-                    else
-                    {
+                    } else {
                         data.ImportBio(filenames[i]);
                     }
 
                     processDisplay.ResetStatus();
-                }
-                else if (Path.GetExtension(filenames[i]) == Benthos.UserSettings.Interface.Extension)
-                {
+                } else if (Path.GetExtension(filenames[i]) == SettingsReader.Interface.Extension) {
                     if (data.IsLoaded(filenames[i])) continue;
 
                     Wild.Survey _data = new Wild.Survey();
 
-                    if (_data.Read(filenames[i]))
-                    {
-                        if (_data.Card.Count == 0)
-                        {
+                    if (_data.Read(filenames[i])) {
+                        if (_data.Card.Count == 0) {
                             Log.Write(string.Format("File is empty: {0}.", filenames[i]));
-                        }
-                        else
-                        {
+                        } else {
                             _data.CopyTo(data);
                         }
                     }
@@ -229,26 +204,20 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void dataLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void dataLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             spreadSheetCard.StopProcessing();
             updateSummary();
         }
 
 
-        private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void modelCalc_DoWork(object sender, DoWorkEventArgs e) {
             data.RefreshBios();
         }
 
-        private void modelCalc_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (!e.Cancelled)
-            {
+        private void modelCalc_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            if (!e.Cancelled) {
                 processDisplay.StartProcessing(Wild.Resources.Interface.Process.ArtifactsProcessing);
-            }
-            else
-            {
+            } else {
                 processDisplay.StopProcessing();
                 IsBusy = false;
             }
@@ -260,10 +229,8 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void artifactFinder_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (!UserSettings.CheckConsistency)
-            {
+        private void artifactFinder_DoWork(object sender, DoWorkEventArgs e) {
+            if (!SettingsExplorer.CheckConsistency) {
                 e.Cancel = true;
                 return;
             }
@@ -271,22 +238,17 @@ namespace Mayfly.Benthos.Explorer
             e.Result = FullStack.CheckConsistency();
         }
 
-        private void artifactFinder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (!e.Cancelled)
-            {
+        private void artifactFinder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            if (!e.Cancelled) {
                 ConsistencyChecker[] artifacts = (ConsistencyChecker[])e.Result;
 
                 labelArtifacts.Visible = pictureBoxArtifacts.Visible = artifacts.Length > 0;
 
-                if (artifacts.Length > 0)
-                {
+                if (artifacts.Length > 0) {
                     Notification.ShowNotification(
                         Wild.Resources.Interface.Messages.ArtifactsNotification,
                         Wild.Resources.Interface.Messages.ArtifactsNotificationInstruction);
-                }
-                else
-                {
+                } else {
                     Notification.ShowNotification(Wild.Resources.Interface.Messages.ArtifactsNoneNotification,
                         Wild.Resources.Interface.Messages.ArtifactsNoneNotificationInstruction);
                 }
@@ -299,20 +261,17 @@ namespace Mayfly.Benthos.Explorer
         }
 
 
-        private void dataSaver_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void dataSaver_DoWork(object sender, DoWorkEventArgs e) {
             int index = 0;
             processDisplay.SetProgressMaximum(ChangedCards.Count);
 
-            while (ChangedCards.Count > 0)
-            {
+            while (ChangedCards.Count > 0) {
                 Wild.Survey.CardRow cardRow = ChangedCards[0];
 
                 index++;
                 dataSaver.ReportProgress(index);
 
-                if (cardRow.Path != null)
-                {
+                if (cardRow.Path != null) {
                     Wild.Survey _data = cardRow.SingleCardDataset();
                     _data.WriteToFile(cardRow.Path);
                 }
@@ -323,8 +282,7 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void dataSaver_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void dataSaver_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             IsBusy = false;
             spreadSheetCard.StopProcessing();
             updateSummary();
@@ -333,8 +291,7 @@ namespace Mayfly.Benthos.Explorer
         }
 
 
-        private void extender_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void extender_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             IsBusy = false;
             processDisplay.StopProcessing();
         }
@@ -346,67 +303,53 @@ namespace Mayfly.Benthos.Explorer
 
         #region File
 
-        private void menuItemAddData_Click(object sender, EventArgs e)
-        {
-            if (UserSettings.Interface.OpenDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                LoadCards(UserSettings.Interface.OpenDialog.FileNames);
+        private void menuItemAddData_Click(object sender, EventArgs e) {
+            if (SettingsReader.Interface.OpenDialog.ShowDialog(this) == DialogResult.OK) {
+                LoadCards(SettingsReader.Interface.OpenDialog.FileNames);
             }
         }
 
-        private void menuItemSave_Click(object sender, EventArgs e)
-        {
+        private void menuItemSave_Click(object sender, EventArgs e) {
             SaveCards();
         }
 
-        private void menuItemBackup_Click(object sender, EventArgs e)
-        {
-            if (fbdBackup.ShowDialog(this) == DialogResult.OK)
-            {
-                if (ModifierKeys.HasFlag(Keys.Shift))
-                {
+        private void menuItemBackup_Click(object sender, EventArgs e) {
+            if (fbdBackup.ShowDialog(this) == DialogResult.OK) {
+                if (ModifierKeys.HasFlag(Keys.Shift)) {
                     data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, "backup.xml"));
-                }
-                else foreach (Wild.Survey.CardRow cardRow in data.Card)
-                    {
-                        string filename = IO.SuggestName(fbdBackup.SelectedPath, cardRow.GetSuggestedName());
-                        Wild.Survey _data = cardRow.SingleCardDataset();
+                } else {
+                    SettingsReader.Interface.FolderPath = fbdBackup.SelectedPath;
+                    foreach (Survey.CardRow cardRow in data.Card) {
+                        string filename = SettingsReader.Interface.SuggestName(cardRow.GetSuggestedName());
+                        Survey _data = cardRow.SingleCardDataset();
                         _data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, filename));
                     }
+                }
             }
         }
 
-        private void menuItemSaveSet_Click(object sender, EventArgs e)
-        {
-            if (UserSettings.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                File.WriteAllLines(UserSettings.Interface.SaveDialog.FileName, data.GetFilenames());
+        private void menuItemSaveSet_Click(object sender, EventArgs e) {
+            if (SettingsReader.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK) {
+                File.WriteAllLines(SettingsReader.Interface.SaveDialog.FileName, data.GetFilenames());
             }
         }
 
-        private void menuItemExportBio_Click(object sender, EventArgs e)
-        {
-            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
-                Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
-                IO.GetFriendlyCommonName(data.GetFilenames())
-                );
+        private void menuItemExportBio_Click(object sender, EventArgs e) {
+            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = Wild.UserSettings.InterfaceBio.SuggestName(
+                IO.GetFriendlyCommonName(data.GetFilenames()));
 
-            if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)
-            {
+            if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK) {
                 data.GetBenthosBio().ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
             }
         }
 
-        private void menuItemImportBio_Click(object sender, EventArgs e)
-        {
-            if (Wild.UserSettings.InterfaceBio.OpenDialog.ShowDialog(this) == DialogResult.OK)
-            {
+        private void menuItemImportBio_Click(object sender, EventArgs e) {
+            if (Wild.UserSettings.InterfaceBio.OpenDialog.ShowDialog(this) == DialogResult.OK) {
                 LoadCards(Wild.UserSettings.InterfaceBio.OpenDialog.FileName);
             }
         }
 
-        private void menuItemExit_Click(object sender, EventArgs e)
-        {
+        private void menuItemExit_Click(object sender, EventArgs e) {
             Close();
         }
 
@@ -414,30 +357,25 @@ namespace Mayfly.Benthos.Explorer
 
         #region Materials
 
-        private void menuItemCards_Click(object sender, EventArgs e)
-        {
+        private void menuItemCards_Click(object sender, EventArgs e) {
             loadCards();
         }
 
-        private void menuItemLog_Click(object sender, EventArgs e)
-        {
+        private void menuItemLog_Click(object sender, EventArgs e) {
             loadLog();
         }
 
-        private void menuItemIndAll_Click(object sender, EventArgs e)
-        {
+        private void menuItemIndAll_Click(object sender, EventArgs e) {
             loadIndividuals();
         }
 
         #endregion
 
-        private void menuItemComposition_Click(object sender, EventArgs e)
-        {
+        private void menuItemComposition_Click(object sender, EventArgs e) {
             loadSpc();
         }
 
-        private void menuItemBriefSpecies_Click(object sender, EventArgs e)
-        {
+        private void menuItemBriefSpecies_Click(object sender, EventArgs e) {
             Report report = new Report(Resources.Reports.Cenosis.Title);
             FullStack.AddBrief(report, null);
             report.Run();
@@ -445,21 +383,18 @@ namespace Mayfly.Benthos.Explorer
 
         #region Service
 
-        private void menuItemSettings_Click(object sender, EventArgs e)
-        {
+        private void menuItemSettings_Click(object sender, EventArgs e) {
             Settings settings = new Settings();
             settings.ShowDialog();
         }
 
-        private void menuItemLicenses_Click(object sender, EventArgs e)
-        {
+        private void menuItemLicenses_Click(object sender, EventArgs e) {
             Software.Settings settings = new Software.Settings();
             settings.OpenFeatures();
             settings.ShowDialog();
         }
 
-        private void menuItemAbout_Click(object sender, EventArgs e)
-        {
+        private void menuItemAbout_Click(object sender, EventArgs e) {
             About about = new About(Properties.Resources.logo);
             about.SetPowered(Benthos.Properties.Resources.ibiw, Wild.Resources.Interface.Powered.IBIW);
             about.ShowDialog();
@@ -471,57 +406,47 @@ namespace Mayfly.Benthos.Explorer
 
         #region Main page
 
-        private void cards_DragDrop(object sender, DragEventArgs e)
-        {
+        private void cards_DragDrop(object sender, DragEventArgs e) {
             cards_DragLeave(sender, e);
             List<string> ext = new List<string>();
-            ext.Add(Benthos.UserSettings.Interface.Extension);
+            ext.Add(SettingsReader.Interface.Extension);
             ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             LoadCards(e.GetOperableFilenames(ext.ToArray()));
         }
 
-        private void cards_DragEnter(object sender, DragEventArgs e)
-        {
+        private void cards_DragEnter(object sender, DragEventArgs e) {
             List<string> ext = new List<string>();
-            ext.Add(Benthos.UserSettings.Interface.Extension);
+            ext.Add(SettingsReader.Interface.Extension);
             ext.Add(Wild.UserSettings.InterfaceBio.Extension);
-            if (e.GetOperableFilenames(ext.ToArray()).Length > 0)
-            {
+            if (e.GetOperableFilenames(ext.ToArray()).Length > 0) {
                 e.Effect = DragDropEffects.All;
 
-                foreach (Control ctrl in tabPageInfo.Controls)
-                {
+                foreach (Control ctrl in tabPageInfo.Controls) {
                     ctrl.ForeColor = Color.LightGray;
                 }
             }
         }
 
-        private void cards_DragLeave(object sender, EventArgs e)
-        {
-            foreach (Control ctrl in tabPageInfo.Controls)
-            {
+        private void cards_DragLeave(object sender, EventArgs e) {
+            foreach (Control ctrl in tabPageInfo.Controls) {
                 ctrl.ForeColor = SystemColors.ControlText;
             }
         }
 
 
-        private void listViewWaters_ItemActivate(object sender, EventArgs e)
-        {
+        private void listViewWaters_ItemActivate(object sender, EventArgs e) {
             loadCards(FullStack.GetStack(data.Water.FindByID(listViewWaters.FocusedItem.GetID())));
         }
 
-        private void listViewSamplers_ItemActivate(object sender, EventArgs e)
-        {
+        private void listViewSamplers_ItemActivate(object sender, EventArgs e) {
             loadCards(FullStack.GetStack("SamplerID", listViewSamplers.FocusedItem.GetID()));
         }
 
-        private void listViewInvestigators_ItemActivate(object sender, EventArgs e)
-        {
+        private void listViewInvestigators_ItemActivate(object sender, EventArgs e) {
             loadCards(FullStack.GetStack("Investigator", listViewInvestigators.FocusedItem.Text));
         }
 
-        private void listViewDates_ItemActivate(object sender, EventArgs e)
-        {
+        private void listViewDates_ItemActivate(object sender, EventArgs e) {
             DateTime[] dt = (DateTime[])listViewDates.FocusedItem.Tag;
             spreadSheetCard.EnsureFilter(columnCardWhen, dt[0].ToOADate(), dt[dt.Length - 1].ToOADate() + 1, loaderCard, menuItemCards_Click);
         }
@@ -532,39 +457,32 @@ namespace Mayfly.Benthos.Explorer
 
         #region Cards
 
-        private void menuItemCardMeteo_CheckedChanged(object sender, EventArgs e)
-        {
+        private void menuItemCardMeteo_CheckedChanged(object sender, EventArgs e) {
             columnCardWeather.Visible =
             columnCardTempSurface.Visible =
                 menuItemCardMeteo.Checked;
         }
 
-        private void menuItemAssignVariants_Click(object sender, EventArgs e)
-        {
+        private void menuItemAssignVariants_Click(object sender, EventArgs e) {
             Wild.Service.AssignAsFactors(spreadSheetCard.GetInsertedColumns(), true);
         }
 
-        private void menuItemSplitExplorer_Click(object sender, EventArgs e)
-        {
+        private void menuItemSplitExplorer_Click(object sender, EventArgs e) {
             SelectionValue selectionValue = new SelectionValue(spreadSheetCard.GetInsertedColumns());
 
             if (selectionValue.ShowDialog() != DialogResult.OK) return;
 
-            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns)
-            {
-                foreach (string value in gridColumn.GetStrings(true))
-                {
+            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns) {
+                foreach (string value in gridColumn.GetStrings(true)) {
                     List<string> filenames = new List<string>();
 
-                    foreach (DataGridViewRow gridRow in gridColumn.GetRows(value))
-                    {
+                    foreach (DataGridViewRow gridRow in gridColumn.GetRows(value)) {
                         filenames.Add(findCardRow(gridRow).Path);
                     }
 
                     Wild.Survey data = new Wild.Survey();
 
-                    foreach (string filename in filenames)
-                    {
+                    foreach (string filename in filenames) {
                         Wild.Survey d = new Wild.Survey();
                         d.Read(filename);
                         //d.Solitary.Path = filename;
@@ -578,42 +496,35 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void menuItemCardFindEmpty_Click(object sender, EventArgs e)
-        {
+        private void menuItemCardFindEmpty_Click(object sender, EventArgs e) {
             spreadSheetCard.ClearSelection();
-            foreach (DataGridViewRow gridRow in spreadSheetCard.Rows)
-            {
+            foreach (DataGridViewRow gridRow in spreadSheetCard.Rows) {
                 Wild.Survey.CardRow cardRow = findCardRow(gridRow);
                 gridRow.Selected = cardRow.GetLogRows().Length == 0;
             }
         }
 
-        private void menuItemCardPrintNotes_Click(object sender, EventArgs e)
-        {
+        private void menuItemCardPrintNotes_Click(object sender, EventArgs e) {
             getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note).Run();
         }
 
-        private void menuItemCardPrint_Click(object sender, EventArgs e)
-        {
+        private void menuItemCardPrint_Click(object sender, EventArgs e) {
             getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log).Run();
         }
 
-        private void menuItemCardPrintFull_Click(object sender, EventArgs e)
-        {
+        private void menuItemCardPrintFull_Click(object sender, EventArgs e) {
             getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals).Run();
         }
 
 
 
-        private void cardLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void cardLoader_DoWork(object sender, DoWorkEventArgs e) {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
             CardStack stack = (CardStack)e.Argument;
             processDisplay.SetProgressMaximum(stack.Count);
 
-            for (int i = 0; i < stack.Count; i++)
-            {
+            for (int i = 0; i < stack.Count; i++) {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetCard);
                 setCardValue(stack[i], gridRow, columnCardID, "ID");
@@ -626,8 +537,7 @@ namespace Mayfly.Benthos.Explorer
             e.Result = result.ToArray();
         }
 
-        private void cardLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void cardLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             spreadSheetCard.Rows.AddRange(e.Result as DataGridViewRow[]);
             IsBusy = false;
             spreadSheetCard.StopProcessing();
@@ -641,24 +551,20 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void spreadSheetCard_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
+        private void spreadSheetCard_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
             if (e.ColumnIndex == -1) return;
             if (e.RowIndex == -1) return;
 
-            if (spreadSheetCard.ContainsFocus)
-            {
+            if (spreadSheetCard.ContainsFocus) {
                 saveCardRow(spreadSheetCard.Rows[e.RowIndex]);
             }
         }
 
 
-        private void contextCard_Opening(object sender, CancelEventArgs e)
-        {
+        private void contextCard_Opening(object sender, CancelEventArgs e) {
             contextCardOpen.Enabled = false;
 
-            foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows)
-            {
+            foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows) {
                 Wild.Survey.CardRow cardRow = findCardRow(gridRow);
                 if (cardRow.Path == null) continue;
                 contextCardOpen.Enabled = true;
@@ -666,45 +572,35 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void contextCardOpen_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows)
-            {
+        private void contextCardOpen_Click(object sender, EventArgs e) {
+            foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows) {
                 Wild.Survey.CardRow cardRow = findCardRow(gridRow);
                 if (cardRow.Path == null) continue;
 
-                if (DietExplorer && !cardRow.IsLabelNull())
-                {
+                if (DietExplorer && !cardRow.IsLabelNull()) {
                     IO.RunFile(cardRow.Path, new string[] { "diet", cardRow.Label });
-                }
-                else
-                {
+                } else {
                     IO.RunFile(cardRow.Path);
                 }
             }
         }
 
-        private void contextCardPrintNotes_Click(object sender, EventArgs e)
-        {
+        private void contextCardPrintNotes_Click(object sender, EventArgs e) {
             getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note).Run();
         }
 
-        private void contextCardPrint_Click(object sender, EventArgs e)
-        {
+        private void contextCardPrint_Click(object sender, EventArgs e) {
             getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log).Run();
         }
 
-        private void contextCardPrintFull_Click(object sender, EventArgs e)
-        {
+        private void contextCardPrintFull_Click(object sender, EventArgs e) {
             getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals).Run();
         }
 
-        private void contextCardExplore_Click(object sender, EventArgs e)
-        {
+        private void contextCardExplore_Click(object sender, EventArgs e) {
             List<string> filenames = new List<string>();
 
-            foreach (string path in getCardStack(spreadSheetCard.SelectedRows).GetFilenames())
-            {
+            foreach (string path in getCardStack(spreadSheetCard.SelectedRows).GetFilenames()) {
                 if (!filenames.Contains("\"" + path + "\"")) filenames.Add("\"" + path + "\"");
             }
 
@@ -717,15 +613,12 @@ namespace Mayfly.Benthos.Explorer
 
         #region Species
 
-        private void contextSpcAddToReference_Click(object sender, EventArgs e)
-        {
+        private void contextSpcAddToReference_Click(object sender, EventArgs e) {
 
         }
 
-        private void menuItemSpcSave_Click(object sender, EventArgs e)
-        {
-            if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
-            {
+        private void menuItemSpcSave_Click(object sender, EventArgs e) {
+            if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK) {
                 TaxonomicIndex speciesKey = data.GetSpeciesKey();
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
                 Mayfly.IO.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
@@ -764,40 +657,32 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void spcLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void spcLoader_DoWork(object sender, DoWorkEventArgs e) {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
             Composition composition;
 
-            if (rankSpc == null)
-            {
+            if (rankSpc == null) {
                 composition = FullStack.GetCenosisComposition();
-            }
-            else
-            {
+            } else {
                 composition = FullStack.GetCenosisComposition(rankSpc);
             }
 
             processDisplay.SetProgressMaximum(composition.Count);
 
-            for (int i = 0; i < composition.Count; i++)
-            {
+            for (int i = 0; i < composition.Count; i++) {
                 if (composition[i].Quantity == 0) continue;
 
                 DataGridViewRow gridRow = new DataGridViewRow();
 
-                gridRow.CreateCells(spreadSheetSpc);                
+                gridRow.CreateCells(spreadSheetSpc);
 
-                if (composition is TaxonomicComposition tc)
-                {
+                if (composition is TaxonomicComposition tc) {
                     gridRow.Cells[columnSpcSpc.Index].Value = tc[i].DataRow;
                     gridRow.Cells[columnSpcID.Index].Value = tc[i].DataRow?.ID;
 
                     if (tc[i].DataRow == null) gridRow.Cells[columnSpcSpc.Index].Value = tc[i].Name;
-                }
-                else if (composition is SpeciesComposition sc)
-                {
+                } else if (composition is SpeciesComposition sc) {
                     gridRow.Cells[columnSpcSpc.Index].Value = sc[i].SpeciesRow;
                     gridRow.Cells[columnSpcID.Index].Value = sc[i].SpeciesRow?.ID;
                 }
@@ -811,8 +696,7 @@ namespace Mayfly.Benthos.Explorer
                 gridRow.Cells[columnSpcOccurrence.Index].Value = composition[i].Occurrence;
                 gridRow.Cells[columnSpcDominance.Index].Value = composition[i].Dominance;
 
-                if (composition is TaxonomicComposition composition1)
-                {
+                if (composition is TaxonomicComposition composition1) {
                     gridRow.Cells[columnSpcDiversityA.Index].Value = composition1[i].DiversityA;
                     gridRow.Cells[columnSpcDiversityB.Index].Value = composition1[i].DiversityB;
                 }
@@ -825,8 +709,7 @@ namespace Mayfly.Benthos.Explorer
             e.Result = result.ToArray();
         }
 
-        private void spcLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void spcLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             spreadSheetSpc.Rows.AddRange(e.Result as DataGridViewRow[]);
             IsBusy = false;
             spreadSheetSpc.StopProcessing();
@@ -841,8 +724,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void comboBoxSpcTaxon_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxSpcTaxon_SelectedIndexChanged(object sender, EventArgs e) {
             rankSpc = comboBoxSpcTaxon.SelectedItem as TaxonomicRank;
 
             menuItemSpcTaxon.Enabled =
@@ -852,8 +734,7 @@ namespace Mayfly.Benthos.Explorer
                 columnSpcDiversityB.Visible =
                 rankSpc != null;
 
-            if (rankSpc != null)
-            {
+            if (rankSpc != null) {
                 spreadSheetSpc.ClearInsertedColumns();
             }
 
@@ -862,21 +743,18 @@ namespace Mayfly.Benthos.Explorer
             loadSpc();
         }
 
-        private void spreadSheetSpc_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
+        private void spreadSheetSpc_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
 
         }
 
-        private void speciesValidator_SpeciesSelected(object sender, SpeciesSelectEventArgs e)
-        {
+        private void speciesValidator_SpeciesSelected(object sender, SpeciesSelectEventArgs e) {
             if (string.Equals(e.OriginalValue, e.SelectedTaxon.Name)) return;
 
             tdSpecies.Content = string.Format(
                 Wild.Resources.Interface.Messages.SpeciesRename,
                 e.OriginalValue, e.SelectedTaxon.Name);
 
-            if (tdSpecies.ShowDialog() == tdbSpcRename)
-            {
+            if (tdSpecies.ShowDialog() == tdbSpcRename) {
                 // TODO: If already exist?
 
                 Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.OriginalValue);
@@ -887,15 +765,12 @@ namespace Mayfly.Benthos.Explorer
                     spcRow.Taxon = e.SelectedTaxon.Name;
                     spcRow.Rank = e.SelectedTaxon.Rank;
 
-                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows())
-                    {
+                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows()) {
                         rememberChanged(logRow.CardRow);
                     }
-                }
-                else // If new species is already in index
-                {
-                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows())
-                    {
+                } else // If new species is already in index
+                  {
+                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows()) {
                         logRow.DefinitionRow = spcRow1;
                         rememberChanged(logRow.CardRow);
                     }
@@ -904,22 +779,17 @@ namespace Mayfly.Benthos.Explorer
                 }
 
                 updateSpeciesArtifacts(e.Row);
-            }
-            else
-            {
+            } else {
                 e.GetCell().Value = e.OriginalValue;
             }
         }
 
 
-        private void buttonSpcSave_Click(object sender, EventArgs e)
-        {
-            if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
-            {
+        private void buttonSpcSave_Click(object sender, EventArgs e) {
+            if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK) {
                 TaxonomicIndex speciesKey = new TaxonomicIndex();
 
-                foreach (Wild.Survey.DefinitionRow speciesRow in data.Definition)
-                {
+                foreach (Wild.Survey.DefinitionRow speciesRow in data.Definition) {
                     speciesKey.Taxon.AddTaxonRow(speciesKey.Taxon.NewTaxonRow(speciesRow.Rank, speciesRow.Taxon));
                 }
 
@@ -931,27 +801,22 @@ namespace Mayfly.Benthos.Explorer
 
         #region Log
 
-        private void contextLogOpen_Click(object sender, EventArgs e)
-        {
-            foreach (Wild.Survey.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
-            {
+        private void contextLogOpen_Click(object sender, EventArgs e) {
+            foreach (Wild.Survey.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows)) {
                 IO.RunFile(logRow.CardRow.Path,
                     new object[] { logRow.DefinitionRow.Taxon });
             }
         }
 
-        private void logLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void logLoader_DoWork(object sender, DoWorkEventArgs e) {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
             Wild.Survey.LogRow[] logRows = (Wild.Survey.LogRow[])e.Argument;
 
-            if (rankLog == null)
-            {
+            if (rankLog == null) {
                 processDisplay.SetProgressMaximum(logRows.Length);
 
-                for (int i = 0; i < logRows.Length; i++)
-                {
+                for (int i = 0; i < logRows.Length; i++) {
                     DataGridViewRow gridRow = new DataGridViewRow();
                     gridRow.CreateCells(spreadSheetLog);
                     gridRow.Cells[columnLogID.Index].Value = logRows[i].ID;
@@ -960,19 +825,15 @@ namespace Mayfly.Benthos.Explorer
 
                     (sender as BackgroundWorker).ReportProgress(i + 1);
                 }
-            }
-            else
-            {
+            } else {
                 int j = 0;
                 processDisplay.SetProgressMaximum(FullStack.Count * SpeciesIndex.GetTaxonRows(rankLog).Length);
-                foreach (Wild.Survey.CardRow cardRow in FullStack)
-                {
+                foreach (Wild.Survey.CardRow cardRow in FullStack) {
                     CardStack singleCardStack = new CardStack(new List<Wild.Survey.CardRow>() { cardRow });
 
                     TaxonomicComposition composition = singleCardStack.GetCenosisComposition(rankLog);
 
-                    for (int i = 0; i < composition.Count; i++)
-                    {
+                    for (int i = 0; i < composition.Count; i++) {
                         (sender as BackgroundWorker).ReportProgress(j);
                         j++;
 
@@ -1022,8 +883,7 @@ namespace Mayfly.Benthos.Explorer
             e.Result = result.ToArray();
         }
 
-        private void logLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void logLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             spreadSheetLog.Rows.AddRange(e.Result as DataGridViewRow[]);
             IsBusy = false;
             spreadSheetLog.StopProcessing();
@@ -1045,14 +905,12 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void logExtender_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void logExtender_DoWork(object sender, DoWorkEventArgs e) {
             ValueSetEventHandler valueSetter = new ValueSetEventHandler(setCardValue);
             processDisplay.SetProgressMaximum(spreadSheetLog.Rows.Count);
 
-            foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
-            {
-                gridRow.DataGridView.Invoke(valueSetter, new object[] { 
+            foreach (DataGridViewRow gridRow in spreadSheetLog.Rows) {
+                gridRow.DataGridView.Invoke(valueSetter, new object[] {
                     rankLog == null ? findLogRow(gridRow).CardRow : data.Card.FindByID((int)gridRow.Cells[columnLogID.Index].Value), gridRow, spreadSheetLog.GetInsertedColumns()
                 });
                 ((BackgroundWorker)sender).ReportProgress(gridRow.Index + 1);
@@ -1061,25 +919,21 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void comboBoxLogTaxon_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxLogTaxon_SelectedIndexChanged(object sender, EventArgs e) {
             rankLog = comboBoxLogTaxon.SelectedItem as TaxonomicRank;
             menuItemSpcTaxon.Enabled = rankLog == null;
             loadLog();
         }
 
-        private void speciesLog_SpeciesSelected(object sender, SpeciesSelectEventArgs e)
-        {
+        private void speciesLog_SpeciesSelected(object sender, SpeciesSelectEventArgs e) {
             tdLog.Content = string.Format(
                 Wild.Resources.Interface.Messages.LogRename,
                 e.OriginalValue, e.SelectedTaxon.Name);
 
-            if (tdLog.ShowDialog() == tdbLogRename)
-            {
+            if (tdLog.ShowDialog() == tdbLogRename) {
                 Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
 
-                if (spcRow == null)
-                {
+                if (spcRow == null) {
                     spcRow = data.Definition.AddDefinitionRow(e.SelectedTaxon.Rank, e.SelectedTaxon.Name);
                 }
 
@@ -1087,17 +941,13 @@ namespace Mayfly.Benthos.Explorer
                 logRow.DefinitionRow = spcRow;
 
                 rememberChanged(logRow.CardRow);
-            }
-            else
-            {
+            } else {
                 e.GetCell().Value = e.OriginalValue;
             }
         }
 
-        private void buttonSelectLog_Click(object sender, EventArgs e)
-        {
-            if (loadCardAddt(spreadSheetLog))
-            {
+        private void buttonSelectLog_Click(object sender, EventArgs e) {
+            if (loadCardAddt(spreadSheetLog)) {
                 IsBusy = true;
                 spreadSheetLog.StartProcessing(Wild.Resources.Interface.Process.ExtLog);
                 loaderLogExtended.RunWorkerAsync();
@@ -1108,18 +958,15 @@ namespace Mayfly.Benthos.Explorer
 
         #region Individuals
 
-        private void menuItemIndPrint_Click(object sender, EventArgs e)
-        {
+        private void menuItemIndPrint_Click(object sender, EventArgs e) {
             getIndividuals(spreadSheetInd.Rows).GetReport().Run();
         }
 
-        private void printIndividualsLogToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void printIndividualsLogToolStripMenuItem_Click(object sender, EventArgs e) {
             getIndividuals(spreadSheetInd.SelectedRows).GetReport().Run();
         }
 
-        private void RecoverMassToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void RecoverMassToolStripMenuItem_Click(object sender, EventArgs e) {
             //WizardRecoverer recoverer = new WizardRecoverer(GetIndividuals(spreadSheetInd.Rows));
             WizardRecoverer recoverer = new WizardRecoverer(data);
             recoverer.SetFriendlyDesktopLocation(this, FormLocation.Centered);
@@ -1127,11 +974,9 @@ namespace Mayfly.Benthos.Explorer
             recoverer.Show();
         }
 
-        private void recoverer_DataRecovered(object sender, EventArgs e)
-        {
+        private void recoverer_DataRecovered(object sender, EventArgs e) {
             WizardRecoverer recoverer = (WizardRecoverer)sender;
-            foreach (Wild.Survey.IndividualRow indRow in recoverer.RecoveredIndividualRows)
-            {
+            foreach (Wild.Survey.IndividualRow indRow in recoverer.RecoveredIndividualRows) {
                 updateIndividualRow(columnIndID.GetRow(indRow.ID));
                 rememberChanged(indRow.LogRow.CardRow);
             }
@@ -1139,15 +984,13 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void indLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void indLoader_DoWork(object sender, DoWorkEventArgs e) {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
             Wild.Survey.IndividualRow[] indRows = (Wild.Survey.IndividualRow[])e.Argument;
             processDisplay.SetProgressMaximum(indRows.Length);
 
-            for (int i = 0; i < indRows.Length; i++)
-            {
+            for (int i = 0; i < indRows.Length; i++) {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetInd);
                 gridRow.Cells[columnIndID.Index].Value = indRows[i].ID;
@@ -1186,8 +1029,7 @@ namespace Mayfly.Benthos.Explorer
 
         }
 
-        private void indLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void indLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             spreadSheetInd.Rows.AddRange(e.Result as DataGridViewRow[]);
             spreadSheetInd.UpdateStatus();
             IsBusy = false;
@@ -1210,72 +1052,57 @@ namespace Mayfly.Benthos.Explorer
         }
 
 
-        private void indExtender_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void indExtender_DoWork(object sender, DoWorkEventArgs e) {
             processDisplay.SetProgressMaximum(spreadSheetInd.Rows.Count);
-            foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
-            {
+            foreach (DataGridViewRow gridRow in spreadSheetInd.Rows) {
                 ValueSetEventHandler valueSetter = new ValueSetEventHandler(setCardValue);
                 gridRow.DataGridView.Invoke(valueSetter, new object[] { findIndividualRow(gridRow).LogRow.CardRow, gridRow, spreadSheetInd.GetInsertedColumns() });
                 ((BackgroundWorker)sender).ReportProgress(gridRow.Index + 1);
             }
         }
 
-        private void spreadSheetInd_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
+        private void spreadSheetInd_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
             if (e.ColumnIndex == -1) return;
             if (e.RowIndex == -1) return;
 
-            if (spreadSheetInd[e.ColumnIndex, e.RowIndex].Value is Age age)
-            {
-                if (age.Gain)
-                {
+            if (spreadSheetInd[e.ColumnIndex, e.RowIndex].Value is Age age) {
+                if (age.Gain) {
                     spreadSheetInd[e.ColumnIndex, e.RowIndex].Style.Padding = new Padding(0, 0, 2, 0);
-                }
-                else
-                {
+                } else {
                     spreadSheetInd[e.ColumnIndex, e.RowIndex].Style.Padding = new Padding(0, 0, 8, 0);
                 }
             }
 
             Benthos.Service.HandleInstarInput(e, columnIndGrade, columnIndInstar);
 
-            if (spreadSheetInd.ContainsFocus)
-            {
+            if (spreadSheetInd.ContainsFocus) {
                 saveIndividualRow(spreadSheetInd.Rows[e.RowIndex]);
             }
         }
 
-        private void speciesInd_SpeciesSelected(object sender, SpeciesSelectEventArgs e)
-        {
+        private void speciesInd_SpeciesSelected(object sender, SpeciesSelectEventArgs e) {
             tdInd.Content = string.Format(
                 Wild.Resources.Interface.Messages.IndRename,
                 e.OriginalValue, e.SelectedTaxon.Name);
 
-            if (tdInd.ShowDialog() == tdbIndRename)
-            {
+            if (tdInd.ShowDialog() == tdbIndRename) {
                 Wild.Survey.IndividualRow individualRow = findIndividualRow(e.Row);
 
                 Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
 
-                if (spcRow == null)
-                {
+                if (spcRow == null) {
                     spcRow = data.Definition.AddDefinitionRow(e.SelectedTaxon.Rank, e.SelectedTaxon.Name);
                 }
 
-                if (individualRow.LogRow.GetIndividualRows().Length == 1)
-                {
+                if (individualRow.LogRow.GetIndividualRows().Length == 1) {
                     // If individual is single - just replace log.species
                     individualRow.LogRow.DefinitionRow = spcRow;
-                }
-                else
-                {
+                } else {
                     // If there are more individual(-s) - 
                     // create new log                   
                     Wild.Survey.LogRow logRow = data.Log.FindByCardIDDefID(individualRow.LogRow.CardRow.ID, spcRow.ID);
 
-                    if (logRow == null)
-                    {
+                    if (logRow == null) {
                         logRow = data.Log.NewLogRow();
                         logRow.DefinitionRow = spcRow;
                         logRow.CardRow = individualRow.LogRow.CardRow;
@@ -1295,39 +1122,30 @@ namespace Mayfly.Benthos.Explorer
                 }
 
                 rememberChanged(individualRow.LogRow.CardRow);
-            }
-            else
-            {
+            } else {
                 e.GetCell().Value = e.OriginalValue;
             }
         }
 
 
-        private void contextInd_Opening(object sender, CancelEventArgs e)
-        {
+        private void contextInd_Opening(object sender, CancelEventArgs e) {
             printIndividualsLogToolStripMenuItem.Enabled = spreadSheetInd.SelectedRows.Count > 1;
         }
 
-        private void contextIndCard_Click(object sender, EventArgs e)
-        {
-            if (spreadSheetCard.RowCount > 0)
-            {
+        private void contextIndCard_Click(object sender, EventArgs e) {
+            if (spreadSheetCard.RowCount > 0) {
                 selectCorrespondingCardRows();
                 tabControl.SelectedTab = tabPageCard;
-            }
-            else
-            {
+            } else {
                 loaderCard.RunWorkerCompleted += selectCorrespondingCardRows;
                 menuItemCards_Click(sender, e);
             }
         }
 
-        private void selectCorrespondingCardRows()
-        {
+        private void selectCorrespondingCardRows() {
             spreadSheetCard.ClearSelection();
 
-            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
-            {
+            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows) {
                 if (!gridRow.Visible) continue;
 
                 Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
@@ -1339,32 +1157,25 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void selectCorrespondingCardRows(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void selectCorrespondingCardRows(object sender, RunWorkerCompletedEventArgs e) {
             selectCorrespondingCardRows();
             loaderLog.RunWorkerCompleted -= selectCorrespondingLogRows;
         }
 
-        private void contextIndLog_Click(object sender, EventArgs e)
-        {
-            if (spreadSheetLog.RowCount > 0)
-            {
+        private void contextIndLog_Click(object sender, EventArgs e) {
+            if (spreadSheetLog.RowCount > 0) {
                 selectCorrespondingLogRows();
                 tabControl.SelectedTab = tabPageLog;
-            }
-            else
-            {
+            } else {
                 loaderLog.RunWorkerCompleted += selectCorrespondingLogRows;
                 menuItemLog_Click(sender, e);
             }
         }
 
-        private void selectCorrespondingLogRows()
-        {
+        private void selectCorrespondingLogRows() {
             spreadSheetLog.ClearSelection();
 
-            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
-            {
+            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows) {
                 if (!gridRow.Visible) continue;
 
                 Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
@@ -1376,8 +1187,7 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void selectCorrespondingLogRows(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void selectCorrespondingLogRows(object sender, RunWorkerCompletedEventArgs e) {
             selectCorrespondingLogRows();
             loaderLog.RunWorkerCompleted -= selectCorrespondingLogRows;
         }
@@ -1386,10 +1196,8 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void contextIndOpen_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
-            {
+        private void contextIndOpen_Click(object sender, EventArgs e) {
+            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows) {
                 Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
 
                 Mayfly.IO.RunFile(individualRow.LogRow.CardRow.Path,
@@ -1399,10 +1207,8 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void contextIndDelete_Click(object sender, EventArgs e)
-        {
-            while (spreadSheetInd.SelectedRows.Count > 0)
-            {
+        private void contextIndDelete_Click(object sender, EventArgs e) {
+            while (spreadSheetInd.SelectedRows.Count > 0) {
                 Wild.Survey.IndividualRow individualRow = findIndividualRow(spreadSheetInd.SelectedRows[0]);
                 rememberChanged(individualRow.LogRow.CardRow);
                 data.Individual.Rows.Remove(individualRow);
@@ -1410,17 +1216,14 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void spreadSheetInd_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
+        private void spreadSheetInd_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
             Wild.Survey.IndividualRow individualRow = findIndividualRow(e.Row);
             rememberChanged(individualRow.LogRow.CardRow);
             data.Individual.Rows.Remove(individualRow);
         }
 
-        private void buttonSelectInd_Click(object sender, EventArgs e)
-        {
-            if (loadCardAddt(spreadSheetInd))
-            {
+        private void buttonSelectInd_Click(object sender, EventArgs e) {
+            if (loadCardAddt(spreadSheetInd)) {
                 IsBusy = true;
                 spreadSheetInd.StartProcessing(Wild.Resources.Interface.Process.ExtInd);
                 loaderIndExtended.RunWorkerAsync();
@@ -1429,8 +1232,7 @@ namespace Mayfly.Benthos.Explorer
 
         #endregion
 
-        private void menuItemCompareComp_Click(object sender, EventArgs e)
-        {
+        private void menuItemCompareComp_Click(object sender, EventArgs e) {
             SelectionValue selectionValue = new SelectionValue(spreadSheetCard);
 
             if (selectionValue.ShowDialog(this) != DialogResult.OK) return;
@@ -1438,8 +1240,7 @@ namespace Mayfly.Benthos.Explorer
             IsBusy = true;
             spreadSheetLog.StartProcessing(Wild.Resources.Interface.Process.LoadLog);
 
-            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns)
-            {
+            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns) {
                 string field = gridColumn.Name.TrimStart("columnCard".ToCharArray());
 
                 BackgroundWorker comparerLog = new BackgroundWorker();
@@ -1448,8 +1249,7 @@ namespace Mayfly.Benthos.Explorer
                 comparerLog.RunWorkerAsync(field);
             }
         }
-        private void comparerLog_DoWork(object sender, DoWorkEventArgs e)
-        {
+        private void comparerLog_DoWork(object sender, DoWorkEventArgs e) {
             string field = (string)e.Argument;
 
             string format = spreadSheetLog.Columns[field] == null ? string.Empty :
@@ -1459,18 +1259,14 @@ namespace Mayfly.Benthos.Explorer
 
             List<Composition> result = new List<Composition>();
 
-            foreach (string variant in variants)
-            {
+            foreach (string variant in variants) {
                 CardStack stack = FullStack.GetStack(field, variant, format);
 
                 Composition composition;
 
-                if (rankLog == null)
-                {
+                if (rankLog == null) {
                     composition = stack.GetCenosisComposition();
-                }
-                else
-                {
+                } else {
                     composition = stack.GetCenosisComposition(rankLog);
                 }
 
@@ -1481,16 +1277,12 @@ namespace Mayfly.Benthos.Explorer
             e.Result = result;
         }
 
-        private void comparerLog_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+        private void comparerLog_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             Composition composition;
 
-            if (rankLog == null)
-            {
+            if (rankLog == null) {
                 composition = FullStack.GetCenosisComposition();
-            }
-            else
-            {
+            } else {
                 composition = FullStack.GetCenosisComposition(rankLog);
             }
 

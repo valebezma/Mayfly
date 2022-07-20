@@ -1204,17 +1204,17 @@ namespace Mayfly.Wild
                 }
 
                 if ((individualRows.Count + stratifiedRows.Count) > 0 && (level.HasFlag(CardReportLevel.Individuals) || level.HasFlag(CardReportLevel.Stratified))) {
-                    if (ReaderSettings.BreakBeforeIndividuals) { report.BreakPage(); }
+                    if (SettingsReader.BreakBeforeIndividuals) { report.BreakPage(); }
                     report.AddSectionTitle(Resources.Reports.Header.IndividualsLog);
                     foreach (LogRow logRow in GetLogRows()) {
                         string speciesPresentation = logRow.DefinitionRow.KeyRecord.FullNameReport;
                         logRow.AddReport(report, level, speciesPresentation, string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));
-                        if (ReaderSettings.BreakBetweenSpecies && GetLogRows().Last() != logRow) { report.BreakPage(); }
+                        if (SettingsReader.BreakBetweenSpecies && GetLogRows().Last() != logRow) { report.BreakPage(); }
                     }
                 }
 
                 if (individualRows.Count > 0 && level.HasFlag(CardReportLevel.Profile)) {
-                    if (ReaderSettings.BreakBeforeIndividuals) { report.BreakPage(); }
+                    if (SettingsReader.BreakBeforeIndividuals) { report.BreakPage(); }
                     individualRows.ToArray().AddReport(report, CardReportLevel.Profile, string.Empty);
                 }
             }
@@ -1446,7 +1446,7 @@ namespace Mayfly.Wild
             }
         }
 
-        partial class DefinitionRow : IFormattable
+        partial class DefinitionRow : IFormattable//, IConvertible
         {
             public int TotalQuantity {
                 get {
@@ -1462,8 +1462,8 @@ namespace Mayfly.Wild
 
             public TaxonomicIndex.TaxonRow KeyRecord {
                 get {
-                    TaxonomicIndex.TaxonRow spcRow = ReaderSettings.TaxonomicIndex?.FindByName(this.Taxon);
-                    if (spcRow == null) return null;
+                    TaxonomicIndex.TaxonRow spcRow = SettingsReader.TaxonomicIndex?.FindByName(this.Taxon);
+                    if (spcRow == null) return TaxonomicIndex.GetFakeTaxon(this.Rank, this.Taxon);
                     if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
                     return spcRow;
                 }
@@ -1499,6 +1499,8 @@ namespace Mayfly.Wild
 
                 return result.ToArray();
             }
+
+
 
             public string ToString(string format, IFormatProvider formatProvider) {
                 return Taxon;

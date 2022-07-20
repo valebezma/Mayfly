@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Wild.SettingsReader;
 
 namespace Mayfly.Fish
 {

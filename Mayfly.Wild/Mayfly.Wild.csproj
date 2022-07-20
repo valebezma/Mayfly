@@ -75,19 +75,75 @@
     <Compile Include="Compositions\LengthComposition.cs" />
     <Compile Include="Compositions\SpeciesComposition.cs" />
     <Compile Include="Compositions\TaxonomicComposition.cs" />
+    <Compile Include="Controls\SettingsControlEquipment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlEquipment.Designer.cs">
+      <DependentUpon>SettingsControlEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlExplorer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlExplorer.Designer.cs">
+      <DependentUpon>SettingsControlExplorer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LogProcessor.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\LogProcessor.Designer.cs">
       <DependentUpon>LogProcessor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Survey.cs">
-      <DependentUpon>Survey.xsd</DependentUpon>
+    <Compile Include="Controls\SettingsControlReader.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Survey.Designer.cs">
-      <DependentUpon>Survey.xsd</DependentUpon>
+    <Compile Include="Controls\SettingsControlReader.Designer.cs">
+      <DependentUpon>SettingsControlReader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingControlFactors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingControlFactors.Designer.cs">
+      <DependentUpon>SettingControlFactors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlPrint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlPrint.Designer.cs">
+      <DependentUpon>SettingsControlPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlVariables.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlVariables.Designer.cs">
+      <DependentUpon>SettingsControlVariables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsControlPrediction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsControlPrediction.Designer.cs">
+      <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsExplorer.cs" />
+    <Compile Include="Mass.cs" />
+    <Compile Include="SettingsReader.cs" />
+    <Compile Include="Resources\Interface\Mass.ru.Designer.cs">
+      <DependentUpon>Mass.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface\Mass.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mass.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Survey.cs">
+      <DependentUpon>Survey.xsd</DependentUpon>
     </Compile>
     <Compile Include="EnvironmentMonitor.cs" />
     <Compile Include="Extensions\Data.Reporting.cs" />
@@ -243,12 +299,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Forms\Settings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Compositions\CompositionMatch.cs" />
     <Compile Include="Forms\DialogTaxonChange.cs">
       <SubType>Form</SubType>
@@ -311,6 +361,11 @@
     <Compile Include="Forms\DialogStratified.Designer.cs">
       <DependentUpon>DialogStratified.cs</DependentUpon>
     </Compile>
+    <Compile Include="Survey.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Survey.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UserSettings.cs" />
     <Compile Include="Resources\Interface\Sex.Designer.cs">
       <DependentUpon>Sex.resx</DependentUpon>
@@ -372,8 +427,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\SettingsControlEquipment.resx">
+      <DependentUpon>SettingsControlEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlExplorer.resx">
+      <DependentUpon>SettingsControlExplorer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\LogProcessor.resx">
       <DependentUpon>LogProcessor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlReader.resx">
+      <DependentUpon>SettingsControlReader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingControlFactors.resx">
+      <DependentUpon>SettingControlFactors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlPrint.resx">
+      <DependentUpon>SettingsControlPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlVariables.resx">
+      <DependentUpon>SettingsControlVariables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutData.resx">
       <DependentUpon>AboutData.cs</DependentUpon>
@@ -395,6 +468,12 @@
     <EmbeddedResource Include="Forms\DialogReference.ru.resx">
       <DependentUpon>DialogReference.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.ru.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Artifact.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Artifact.Designer.cs</LastGenOutput>
@@ -413,6 +492,14 @@
     <EmbeddedResource Include="Resources\Interface\FriendlyUnits.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FriendlyUnits.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Mass.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mass.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Mass.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mass.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Interface\Powered.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -570,14 +657,6 @@
     <EmbeddedResource Include="Forms\DialogTaxonChange.ru.resx">
       <DependentUpon>DialogTaxonChange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings.ru.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Interface\WaterColor.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>WaterColor.ru.Designer.cs</LastGenOutput>
@@ -594,6 +673,9 @@
       <LastGenOutput>Prompt.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Prompt.ru.resx" />
+    <EmbeddedResource Include="SettingsControlPrediction.resx">
+      <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -602,8 +684,8 @@
     </None>
     <None Include="Survey.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Survey.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Survey.Designer.cs</LastGenOutput>
     </None>
     <None Include="interface\weatherevts.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

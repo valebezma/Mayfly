@@ -19,7 +19,7 @@ namespace Mayfly.Wild.Resources.Interface {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class FriendlyUnits {
@@ -61,42 +61,6 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:N0} g.
-        /// </summary>
-        internal static string g {
-            get {
-                return ResourceManager.GetString("g", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:N1} kg.
-        /// </summary>
-        internal static string g1000 {
-            get {
-                return ResourceManager.GetString("g1000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:N1} t.
-        /// </summary>
-        internal static string g1000000 {
-            get {
-                return ResourceManager.GetString("g1000000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:N1} thsd t.
-        /// </summary>
-        internal static string g1000000000 {
-            get {
-                return ResourceManager.GetString("g1000000000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0:N0} ind..
         /// </summary>
         internal static string ind {
@@ -120,15 +84,6 @@ namespace Mayfly.Wild.Resources.Interface {
         internal static string ind1000000 {
             get {
                 return ResourceManager.GetString("ind1000000", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:N0} mg.
-        /// </summary>
-        internal static string mg {
-            get {
-                return ResourceManager.GetString("mg", resourceCulture);
             }
         }
     }

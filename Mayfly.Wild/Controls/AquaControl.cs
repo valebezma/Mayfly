@@ -26,6 +26,7 @@ namespace Mayfly.Wild.Controls
 
 
         public AquaControl() {
+
             InitializeComponent();
 
             AquaState = new AquaState();

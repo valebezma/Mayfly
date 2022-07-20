@@ -2,11 +2,11 @@
 using System;
 using System.Collections;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Globalization;
 
 namespace Mayfly.Extensions
 {
@@ -14,8 +14,7 @@ namespace Mayfly.Extensions
     {
         #region Placing form to the right and to the left of control 
 
-        public static void SnapToRight(this Form form, Control control)
-        {
+        public static void SnapToRight(this Form form, Control control) {
             form.StartPosition = FormStartPosition.Manual;
             Point point = control.PointToScreen(new Point(control.Width, 0));
             Size screen = Screen.FromHandle(control.Handle).WorkingArea.Size;
@@ -24,8 +23,7 @@ namespace Mayfly.Extensions
             form.DesktopLocation = point;
         }
 
-        public static void SnapToLeft(this Form form, Control control)
-        {
+        public static void SnapToLeft(this Form form, Control control) {
             form.StartPosition = FormStartPosition.Manual;
             Point point = control.PointToScreen(new Point(-form.Width, 0));
             Size screen = Screen.FromHandle(control.Handle).WorkingArea.Size;
@@ -34,10 +32,9 @@ namespace Mayfly.Extensions
             form.DesktopLocation = point;
         }
 
-        public static void SnapToTop(this Form form, Control control)
-        {
+        public static void SnapToTop(this Form form, Control control) {
             form.StartPosition = FormStartPosition.Manual;
-            Point point = control.PointToScreen(new Point(-2, -form.Height-5));
+            Point point = control.PointToScreen(new Point(-2, -form.Height - 5));
             Size screen = Screen.FromHandle(control.Handle).WorkingArea.Size;
             if (point.X < 5) point.X = 5;
             if (point.Y + form.Height > screen.Height) point.Y = screen.Height - form.Height - 5;
@@ -48,47 +45,39 @@ namespace Mayfly.Extensions
 
         #region Placing form above and to right to point on control
 
-        public static void SetFriendlyDesktopLocation(this Form form, DataGridView dataGrid)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, DataGridView dataGrid) {
             form.SetFriendlyDesktopLocation(dataGrid, new Point(dataGrid.Width, dataGrid.ColumnHeadersHeight));
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, DataGridViewCell gridCell)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, DataGridViewCell gridCell) {
             Rectangle rect = gridCell.DataGridView.GetCellDisplayRectangle(gridCell.ColumnIndex, gridCell.RowIndex, true);
             form.SetFriendlyDesktopLocation(gridCell.DataGridView, new Point(rect.Right, rect.Bottom));
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, DataGridViewRow gridRow)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, DataGridViewRow gridRow) {
             form.SetFriendlyDesktopLocation(gridRow.DataGridView,
                 new Point(gridRow.DataGridView.RowHeadersWidth,
                     gridRow.DataGridView.GetRowDisplayRectangle(gridRow.Index, true).Bottom));
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, DataGridViewColumn gridColumn)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, DataGridViewColumn gridColumn) {
             form.SetFriendlyDesktopLocation(gridColumn.DataGridView,
                 new Point(gridColumn.DataGridView.GetColumnDisplayRectangle(gridColumn.Index, true).Right,
                     gridColumn.DataGridView.ColumnHeadersHeight));
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, ListViewItem li)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, ListViewItem li) {
             Rectangle rect = li.ListView.GetItemRect(li.Index, ItemBoundsPortion.Label);
             form.SetFriendlyDesktopLocation(li.ListView, new Point(rect.Right, rect.Bottom));
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, Control control)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, Control control) {
             SetFriendlyDesktopLocation(form, control, FormLocation.AboveRight);
             //form.SetFriendlyDesktopLocation(control, new Point(control.Size));
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, Control control, FormLocation formLocation)
-        {
-            switch (formLocation)
-            {
+        public static void SetFriendlyDesktopLocation(this Form form, Control control, FormLocation formLocation) {
+            switch (formLocation) {
                 case FormLocation.NextToHost:
                     form.SnapToRight(control);
                     break;
@@ -101,30 +90,23 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, Control control, Point objectPositionOnControl)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, Control control, Point objectPositionOnControl) {
             form.SetAboveRightLocation(control.PointToScreen(objectPositionOnControl));
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, ContextMenuStrip contextMenuStrip)
-        {
-            if (contextMenuStrip.Visible)
-            {
+        public static void SetFriendlyDesktopLocation(this Form form, ContextMenuStrip contextMenuStrip) {
+            if (contextMenuStrip.Visible) {
                 form.SetAboveRightLocation(contextMenuStrip.Bounds.Location);
-            }
-            else
-            {
+            } else {
                 form.SetFriendlyDesktopLocation(Form.MousePosition);
             }
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, Point objectPositionOnScreen)
-        {
+        public static void SetFriendlyDesktopLocation(this Form form, Point objectPositionOnScreen) {
             form.SetAboveRightLocation(objectPositionOnScreen);
         }
 
-        public static void SetMaximumDesktopView(this Form form, int margin)
-        {
+        public static void SetMaximumDesktopView(this Form form, int margin) {
             form.StartPosition = FormStartPosition.Manual;
             form.DesktopLocation = new Point(margin, margin);
             form.Size = new Size(Screen.GetWorkingArea(form).Width - 2 * margin,
@@ -133,23 +115,19 @@ namespace Mayfly.Extensions
 
         #endregion
 
-        public static void Expand(this Form form)
-        {
+        public static void Expand(this Form form) {
             form.Expand(0);
         }
 
-        public static void Expand(this Form form, int margin)
-        {
+        public static void Expand(this Form form, int margin) {
             form.StartPosition = FormStartPosition.Manual;
             form.Left = form.Top = margin;
             form.Width = Screen.PrimaryScreen.WorkingArea.Width - 2 * margin;
             form.Height = Screen.PrimaryScreen.WorkingArea.Height - 2 * margin;
         }
 
-        public static void SetFriendlyDesktopLocation(this Form form, Form launchForm, FormLocation formLocation)
-        {
-            switch (formLocation)
-            {
+        public static void SetFriendlyDesktopLocation(this Form form, Form launchForm, FormLocation formLocation) {
+            switch (formLocation) {
                 case FormLocation.NextToHost:
                     form.SetNextToHostLocation(launchForm);
                     break;
@@ -162,8 +140,7 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static Point GetNextToHostLocation(this Form form, Form hostForm)
-        {
+        public static Point GetNextToHostLocation(this Form form, Form hostForm) {
             Point point = new Point(hostForm.DesktopLocation.X + hostForm.Width, hostForm.DesktopLocation.Y);
             Size screen = Screen.FromHandle(hostForm.Handle).WorkingArea.Size;
             if (point.X + form.Width > screen.Width) point.X = screen.Width - form.Width - 5;
@@ -171,8 +148,7 @@ namespace Mayfly.Extensions
             return point;
         }
 
-        public static Point GetCenteredLocation(this Form form, Form hostForm)
-        {
+        public static Point GetCenteredLocation(this Form form, Form hostForm) {
             Point point = new Point(hostForm.DesktopLocation.X + hostForm.Width / 2 - form.Width / 2,
                 hostForm.DesktopLocation.Y + hostForm.Height / 2 - form.Height / 2);
             Size screen = Screen.FromHandle(hostForm.Handle).WorkingArea.Size;
@@ -181,8 +157,7 @@ namespace Mayfly.Extensions
             return point;
         }
 
-        public static Point GetAboveRightLocation(this Form form, Point objectLocationOnDesktop)
-        {
+        public static Point GetAboveRightLocation(this Form form, Point objectLocationOnDesktop) {
             Point point = new Point(objectLocationOnDesktop.X + 15, objectLocationOnDesktop.Y + 15);
             Size screen = Screen.FromHandle(form.Handle).WorkingArea.Size;
             if (point.X + form.Width > screen.Width) point.X = screen.Width - form.Width - 5;
@@ -190,14 +165,11 @@ namespace Mayfly.Extensions
             return point;
         }
 
-        private static Point GetFreePosition(this Form form, Point point)
-        {
-            foreach (Form f in Application.OpenForms)
-            {
+        private static Point GetFreePosition(this Form form, Point point) {
+            foreach (Form f in Application.OpenForms) {
                 if (f == form) continue;
 
-                if (f.DesktopLocation.Equals(point))
-                {
+                if (f.DesktopLocation.Equals(point)) {
                     Point freeLocation = form.GetNextToHostLocation(f);
                     if (freeLocation.Equals(point)) return form.GetAboveRightLocation(freeLocation);
                     else return freeLocation;
@@ -207,30 +179,25 @@ namespace Mayfly.Extensions
             return point;
         }
 
-        public static void SetNextToHostLocation(this Form form, Form hostForm)
-        {
+        public static void SetNextToHostLocation(this Form form, Form hostForm) {
             form.StartPosition = FormStartPosition.Manual;
             form.DesktopLocation = form.GetFreePosition(form.GetNextToHostLocation(hostForm));
         }
 
-        public static void SetCenteredLocation(this Form form, Form hostForm)
-        {
+        public static void SetCenteredLocation(this Form form, Form hostForm) {
             form.StartPosition = FormStartPosition.Manual;
             form.DesktopLocation = form.GetFreePosition(form.GetCenteredLocation(hostForm));
         }
 
-        public static void SetAboveRightLocation(this Form form, Point objectLocationOnDesktop)
-        {
+        public static void SetAboveRightLocation(this Form form, Point objectLocationOnDesktop) {
             form.StartPosition = FormStartPosition.Manual;
             form.DesktopLocation = form.GetFreePosition(form.GetAboveRightLocation(objectLocationOnDesktop));
         }
 
-        public static Point GetPositionInForm(this Control ctrl)
-        {
+        public static Point GetPositionInForm(this Control ctrl) {
             Point p = ctrl.Location;
             Control parent = ctrl.Parent;
-            while (!(parent is Form))
-            {
+            while (!(parent is Form)) {
                 p.Offset(parent.Location.X, parent.Location.Y);
                 parent = parent.Parent;
             }
@@ -239,39 +206,30 @@ namespace Mayfly.Extensions
 
 
 
-        public static void ResetText(this Form form, string title, bool icon)
-        {
+        public static void ResetText(this Form form, string title, bool icon) {
             form.Text = title;
 
-            if (icon)
-            {
+            if (icon) {
                 form.Icon = Service.GetIcon(Application.ExecutablePath, 0, new Size(16, 16));
             }
         }
 
-        public static void ResetText(this Form form, string filename, string applicationName)
-        {
+        public static void ResetText(this Form form, string filename, string applicationName) {
             form.ResetText(string.Format("{0} — {1} ({2})", System.IO.Path.GetFileNameWithoutExtension(filename), applicationName, License.AllowedFeaturesLevel), true);
         }
 
-        public static void ResetText(this Form form, string applicationName)
-        {
+        public static void ResetText(this Form form, string applicationName) {
             form.ResetText(string.Format("{0} ({1})", applicationName, License.AllowedFeaturesLevel), true);
         }
 
 
-        public static void SetMenuIcons(this MenuStrip menuStrip)
-        {
-            foreach (ToolStripMenuItem j in menuStrip.Items)
-            {
-                foreach (ToolStripItem i in j.DropDownItems)
-                {
-                    if (i is ToolStripMenuItem m)
-                    {
+        public static void SetMenuIcons(this MenuStrip menuStrip) {
+            foreach (ToolStripMenuItem j in menuStrip.Items) {
+                foreach (ToolStripItem i in j.DropDownItems) {
+                    if (i is ToolStripMenuItem m) {
                         if (m.HasDropDownItems) continue;
 
-                        switch (m.Name)
-                        {
+                        switch (m.Name) {
                             case "menuItemNew":
                                 m.Image = Pictogram.New;
                                 break;
@@ -307,17 +265,15 @@ namespace Mayfly.Extensions
 
 
 
-        public static string GetLocalizedText(this Control ctrl)
-        {
+        public static string GetLocalizedText(this Control ctrl) {
             ResourceManager resources = new ResourceManager(ctrl.FindForm().GetType());
             return resources.GetString(ctrl.Name + ".Text");
         }
 
-        public static void Sync(this Form form, Form original)
-        {
+        public static void Sync(this Form form, Form original) {
             form.WindowState = original.WindowState;
 
-            if (original.Visible && 
+            if (original.Visible &&
                 original.WindowState == FormWindowState.Normal) {
                 form.DesktopLocation = original.DesktopLocation;
                 form.StartPosition = FormStartPosition.Manual;
@@ -325,8 +281,7 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static void Replace(this Form form, Form original)
-        {
+        public static void Replace(this Form form, Form original) {
             form.Sync(original);
 
             form.Resize += new EventHandler(
@@ -336,10 +291,8 @@ namespace Mayfly.Extensions
             //original.VisibleChanged += new EventHandler((object sender, EventArgs e) => { form.Visible = original.Visible; });
 
 
-            foreach (Control c in form.Controls.OfType<WizardControl>())
-            {
-                foreach (Control d in original.Controls.OfType<WizardControl>())
-                {
+            foreach (Control c in form.Controls.OfType<WizardControl>()) {
+                foreach (Control d in original.Controls.OfType<WizardControl>()) {
                     ((WizardControl)c).Title = ((WizardControl)d).Title;
                     break;
                 }
@@ -350,42 +303,37 @@ namespace Mayfly.Extensions
             original.Hide();
         }
 
-        public static Form GetForm(this Control ctrl)
-        {
+        public static Form GetForm(this Control ctrl) {
             object o = ctrl.Parent;
             return (o is Form) ? (Form)o : GetForm((Control)o);
         }
 
         //public static void EnsureSelected(this WizardControl ctrl, WizardPage page, bool forward)
-        public static void EnsureSelected(this WizardControl ctrl, WizardPage page)
-        {
+        public static void EnsureSelected(this WizardControl ctrl, WizardPage page) {
             if (ctrl.SelectedPage == null) return;
 
             if (ctrl.SelectedPage == page) return;
 
             //else
             //{
-                while (ctrl.SelectedPage != ctrl.Pages[0])
-                {
-                    ctrl.PreviousPage();
-                    if (ctrl.SelectedPage == page) return;
-                }
+            while (ctrl.SelectedPage != ctrl.Pages[0]) {
+                ctrl.PreviousPage();
+                if (ctrl.SelectedPage == page) return;
+            }
             //}
 
             //if (forward)
             //{
-                while (ctrl.SelectedPage != ctrl.Pages[ctrl.Pages.Count() - 1])
-                {
-                    ctrl.NextPage();
-                    if (ctrl.SelectedPage == page) return;
-                }
+            while (ctrl.SelectedPage != ctrl.Pages[ctrl.Pages.Count() - 1]) {
+                ctrl.NextPage();
+                if (ctrl.SelectedPage == page) return;
+            }
             //}
         }
 
         private static ToolTip toolTip;
 
-        public static void NotifyInstantly(this Form form, /*string title,*/ string format, params object[] values)
-        {
+        public static void NotifyInstantly(this Form form, /*string title,*/ string format, params object[] values) {
             if (toolTip == null) { toolTip = new ToolTip(); }
             //toolTip.ToolTipTitle = title;
             Point pt = Cursor.Position;
@@ -398,8 +346,7 @@ namespace Mayfly.Extensions
         //    NotifyInstantly(form, string.Empty, format, values);
         //}
 
-        public static void NotifyInstantly(this Control ctrl, string format, params object[] values)
-        {
+        public static void NotifyInstantly(this Control ctrl, string format, params object[] values) {
             NotifyInstantly(ctrl.FindForm(), string.Empty, format, values);
         }
 
@@ -409,73 +356,52 @@ namespace Mayfly.Extensions
         //}
 
 
-        public static void SaveAllCheckStates(this Form form)
-        {
+        public static void SaveAllCheckStates(this Form form) {
             SaveAllCheckStates(form.Controls);
         }
 
-        public static void SaveAllCheckStates(this Control.ControlCollection collection)
-        {
-            foreach (Control ctrl in collection)
-            {
-                if (ctrl is CheckBox)
-                {
+        public static void SaveAllCheckStates(this Control.ControlCollection collection) {
+            foreach (Control ctrl in collection) {
+                if (ctrl is CheckBox) {
                     ((CheckBox)ctrl).SaveCheckState();
-                }
-                else if (ctrl is WizardControl)
-                {
-                    foreach (WizardPage wzrdPage in ((WizardControl)ctrl).Pages)
-                    {
+                } else if (ctrl is WizardControl) {
+                    foreach (WizardPage wzrdPage in ((WizardControl)ctrl).Pages) {
                         SaveAllCheckStates(wzrdPage.Controls);
                     }
-                }
-                else if (ctrl.Controls.Count > 0)
-                {
+                } else if (ctrl.Controls.Count > 0) {
                     SaveAllCheckStates(ctrl.Controls);
                 }
             }
         }
 
-        public static void RestoreAllCheckStates(this Form form)
-        {
+        public static void RestoreAllCheckStates(this Form form) {
             RestoreAllCheckStates(form.Controls);
             form.FormClosing += Form_FormClosing;
         }
 
-        private static void Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private static void Form_FormClosing(object sender, FormClosingEventArgs e) {
             ((Form)sender).SaveAllCheckStates();
         }
 
-        public static void RestoreAllCheckStates(this Control.ControlCollection collection)
-        {
-            foreach (Control ctrl in collection)
-            {
-                if (ctrl is CheckBox)
-                {
+        public static void RestoreAllCheckStates(this Control.ControlCollection collection) {
+            foreach (Control ctrl in collection) {
+                if (ctrl is CheckBox) {
                     ((CheckBox)ctrl).RestoreCheckState();
-                }
-                else if (ctrl is WizardControl)
-                {
-                    foreach (WizardPage wzrdPage in ((WizardControl)ctrl).Pages)
-                    {
+                } else if (ctrl is WizardControl) {
+                    foreach (WizardPage wzrdPage in ((WizardControl)ctrl).Pages) {
                         RestoreAllCheckStates(wzrdPage.Controls);
                     }
-                }
-                else if (ctrl.Controls.Count > 0)
-                {
+                } else if (ctrl.Controls.Count > 0) {
                     RestoreAllCheckStates(ctrl.Controls);
                 }
             }
         }
 
-        public static void SaveCheckState(this CheckBox checkBox)
-        {
+        public static void SaveCheckState(this CheckBox checkBox) {
             UI.SaveCheckState(GetForm(checkBox).Name, checkBox.Name, checkBox.CheckState);
         }
 
-        public static void RestoreCheckState(this CheckBox checkBox)
-        {
+        public static void RestoreCheckState(this CheckBox checkBox) {
             checkBox.CheckState = UI.GetCheckState(GetForm(checkBox).Name, checkBox.Name);
         }
 
@@ -483,8 +409,7 @@ namespace Mayfly.Extensions
         [DllImport("uxtheme.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
         public static extern int SetWindowTheme(IntPtr hWnd, string appName, string partList);
 
-        public static void Shine(this Control control)
-        {
+        public static void Shine(this Control control) {
             SetWindowTheme(control.Handle, "explorer", null);
         }
 
@@ -496,42 +421,42 @@ namespace Mayfly.Extensions
 
         #region Control extensions
 
-        public static void UpdateStatus(this Label label, int newStatus)
-        {
+        public static void UpdateStatus(this Label label, int newStatus) {
+
             if (label.FindForm() == null) label.Text = newStatus.ToString();
             else label.Text = newStatus.ToCorrectString(
                 new ResourceManager(label.FindForm().GetType()).GetString(label.Name + ".Text"));
         }
 
-        public static void ResetFormatted(this ToolStripStatusLabel label, object value)
-        {
-            if (label.GetCurrentParent() == null || label.GetCurrentParent().FindForm() == null) label.Text = value.ToString();
-            else label.Text = string.Format(
-                new ResourceManager(label.GetCurrentParent().FindForm().GetType()).GetString(label.Name + ".Text"),
-                value);
+        public static void ResetFormatted(this ToolStripStatusLabel label, object value) {
+
+            if (label.GetCurrentParent() == null || label.GetCurrentParent().FindForm() == null) {
+                label.Text = value.ToString();
+            } else {
+                label.Text = string.Format(
+                    new ResourceManager(label.GetCurrentParent().FindForm().GetType()).GetString(label.Name + ".Text"),
+                    value);
+            }
         }
 
-        public static void ResetTitle(this WizardControl wizard, object value)
-        {
+        public static void ResetTitle(this WizardControl wizard, object value) {
+
             if (wizard.FindForm() == null) wizard.Text = value.ToString();
             else wizard.Title = string.Format(
                 new ResourceManager(wizard.FindForm().GetType()).GetString(wizard.Name + ".Title"),
                 value);
         }
 
-        public static void ResetFormatted(this Form form, object value)
-        {
+        public static void ResetFormatted(this Form form, object value) {
+
             form.Text = string.Format(new ResourceManager(form.GetType()).GetString("$this.Text"), value);
         }
 
-        public static void ResetFormatted(this Control label, params object[] values)
-        {
-            if (label.FindForm() == null)
-            {
+        public static void ResetFormatted(this Control label, params object[] values) {
+
+            if (label.FindForm() == null) {
                 label.Text = values.Merge();
-            }
-            else
-            {
+            } else {
                 string resString = new ResourceManager(label.FindForm().GetType()).GetString(label.Name + ".Text");
                 label.Text = resString == null ? values.Merge() : string.Format(resString, values);
             }
@@ -553,8 +478,7 @@ namespace Mayfly.Extensions
         //        value1, value2, value3);
         //}
 
-        public static void ResetFormatted(this DataGridViewColumn column, string value)
-        {
+        public static void ResetFormatted(this DataGridViewColumn column, string value) {
             if (column.DataGridView.FindForm() == null) column.HeaderText = value;
             else column.HeaderText = string.Format(
                 new ResourceManager(column.DataGridView.FindForm().GetType()).
@@ -566,8 +490,7 @@ namespace Mayfly.Extensions
         //    taskDialog.WindowTitle = string.Format(new ResourceManager(((Form)taskDialog.Container).GetType()).GetString(taskDialog + ".WindowTitle"), value);
         //}
 
-        public static void ScrollToEnd(this TextBox textBox)
-        {
+        public static void ScrollToEnd(this TextBox textBox) {
             const int EM_LINESCROLL = 0x00B6;
             //const int SB_HORZ = 0;
             const int SB_VERT = 1;
@@ -576,8 +499,7 @@ namespace Mayfly.Extensions
             SendMessage(textBox.Handle, EM_LINESCROLL, 0, textBox.Lines.Length - 1);
         }
 
-        public static void SortItems(this ToolStripMenuItem itemParent)
-        {
+        public static void SortItems(this ToolStripMenuItem itemParent) {
             ArrayList itemList = new ArrayList();
 
             itemList.AddRange(itemParent.DropDownItems);
@@ -586,45 +508,37 @@ namespace Mayfly.Extensions
 
             itemParent.DropDownItems.Clear();
 
-            foreach (ToolStripItem item in itemList)
-            {
+            foreach (ToolStripItem item in itemList) {
                 itemParent.DropDownItems.Add(item);
             }
         }
 
         #region ListView logics
 
-        public static ListViewItem GetItem(this ListView listView, string name)
-        {
-            foreach (ListViewItem item in listView.Items)
-            {
-                if (item.Name == name)
-                {
+        public static ListViewItem GetItem(this ListView listView, string name) {
+            foreach (ListViewItem item in listView.Items) {
+                if (item.Name == name) {
                     return item;
                 }
             }
             return null;
         }
 
-        public static ListViewItem CreateItem(string itemName, string itemText)
-        {
+        public static ListViewItem CreateItem(string itemName, string itemText) {
             ListViewItem result = new ListViewItem();
             result.Name = itemName;
             result.Text = itemText;
             return result;
         }
 
-        public static ListViewItem CreateItem(this ListView listView, string itemName)
-        {
+        public static ListViewItem CreateItem(this ListView listView, string itemName) {
             return listView.CreateItem(itemName, itemName);
         }
 
-        public static ListViewItem CreateItem(this ListView listView, string itemName, string itemText)
-        {
+        public static ListViewItem CreateItem(this ListView listView, string itemName, string itemText) {
             ListViewItem result = listView.GetItem(itemName);
 
-            if (result == null)
-            {
+            if (result == null) {
                 result = new ListViewItem();
                 listView.Items.Add(result);
             }
@@ -650,36 +564,29 @@ namespace Mayfly.Extensions
         //    return result;
         //}
 
-        public static ListViewItem CreateItem(this ListView listView, string itemName, string itemText, int imageIndex)
-        {
+        public static ListViewItem CreateItem(this ListView listView, string itemName, string itemText, int imageIndex) {
             ListViewItem result = listView.CreateItem(itemName, itemText);
             result.ImageIndex = imageIndex;
             return result;
         }
 
-        public static ListViewGroup GetGroup(this ListView listView, string name)
-        {
-            foreach (ListViewGroup group in listView.Groups)
-            {
-                if (group.Name == name)
-                {
+        public static ListViewGroup GetGroup(this ListView listView, string name) {
+            foreach (ListViewGroup group in listView.Groups) {
+                if (group.Name == name) {
                     return group;
                 }
             }
             return null;
         }
 
-        public static ListViewGroup CreateGroup(this ListView listView, string name)
-        {
+        public static ListViewGroup CreateGroup(this ListView listView, string name) {
             return listView.CreateGroup(name, name);
         }
 
-        public static ListViewGroup CreateGroup(this ListView listView, string name, string header)
-        {
+        public static ListViewGroup CreateGroup(this ListView listView, string name, string header) {
             ListViewGroup result = listView.GetGroup(name);
 
-            if (result == null)
-            {
+            if (result == null) {
                 result = new ListViewGroup();
                 listView.Groups.Add(result);
             }
@@ -689,75 +596,57 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static void UpdateItem(this ListViewItem item, object[] values)
-        {
-            while (item.SubItems.Count > 1)
-            {
+        public static void UpdateItem(this ListViewItem item, object[] values) {
+            while (item.SubItems.Count > 1) {
                 item.SubItems.RemoveAt(1);
             }
 
-            foreach (object value in values)
-            {
+            foreach (object value in values) {
                 item.SubItems.Add(value.ToString());
             }
         }
 
-        public static ListViewItem GetHoveringItem(this ListView listView, int X, int Y)
-        {
+        public static ListViewItem GetHoveringItem(this ListView listView, int X, int Y) {
             return listView.HitTest(listView.PointToClient(new Point(X, Y))).Item;
         }
 
-        public static int GetID(this ListViewItem item)
-        {
-            try
-            {
+        public static int GetID(this ListViewItem item) {
+            try {
                 return int.Parse(item.Name);
-            }
-            catch
-            {
+            } catch {
                 return 0;
             }
         }
 
-        public static int GetID(this ListView listView)
-        {
+        public static int GetID(this ListView listView) {
             if (listView.SelectedItems.Count > 0)
                 return listView.SelectedItems[0].GetID();
             else return 0;
         }
 
-        public static void MakeSortable(this ListView listView)
-        {
+        public static void MakeSortable(this ListView listView) {
             listView.MakeSortable(0, SortOrder.Ascending);
         }
 
-        public static void MakeSortable(this ListView listView, int defaultColumn, SortOrder defaultOrder)
-        {
+        public static void MakeSortable(this ListView listView, int defaultColumn, SortOrder defaultOrder) {
             listView.ListViewItemSorter = new ListViewColumnSorter();
             ((ListViewColumnSorter)listView.ListViewItemSorter).SortColumn = defaultColumn;
             ((ListViewColumnSorter)listView.ListViewItemSorter).Order = defaultOrder;
             listView.ColumnClick += listView_ColumnClick;
         }
 
-        static void listView_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
+        static void listView_ColumnClick(object sender, ColumnClickEventArgs e) {
             ListViewColumnSorter lvis = (ListViewColumnSorter)((ListView)sender).ListViewItemSorter;
 
             // Determine if clicked column is already the column that is being sorted.
-            if (e.Column == lvis.SortColumn)
-            {
+            if (e.Column == lvis.SortColumn) {
                 // Reverse the current sort direction for this column.
-                if (lvis.Order == SortOrder.Ascending)
-                {
+                if (lvis.Order == SortOrder.Ascending) {
                     lvis.Order = SortOrder.Descending;
-                }
-                else
-                {
+                } else {
                     lvis.Order = SortOrder.Ascending;
                 }
-            }
-            else
-            {
+            } else {
                 // Set the column number that is to be sorted; default to ascending.
                 lvis.SortColumn = e.Column;
                 lvis.Order = SortOrder.Ascending;
@@ -771,51 +660,41 @@ namespace Mayfly.Extensions
 
         #region TreeView logics
 
-        public static TreeNode GetNode(this TreeView treeView, string name)
-        {
-            foreach (TreeNode node in treeView.Nodes)
-            {
-                if (node.Name == name)
-                {
+        public static TreeNode GetNode(this TreeView treeView, string name) {
+            foreach (TreeNode node in treeView.Nodes) {
+                if (node.Name == name) {
                     return node;
                 }
 
                 TreeNode childNode = node.GetNode(name);
 
-                if (childNode != null)
-                {
+                if (childNode != null) {
                     return childNode;
                 }
             }
             return null;
         }
 
-        public static TreeNode GetNode(this TreeNode treeNode, string name)
-        {
-            foreach (TreeNode node in treeNode.Nodes)
-            {
-                if (node.Name == name)
-                {
+        public static TreeNode GetNode(this TreeNode treeNode, string name) {
+            foreach (TreeNode node in treeNode.Nodes) {
+                if (node.Name == name) {
                     return node;
                 }
 
                 TreeNode childNode = node.GetNode(name);
 
-                if (childNode != null)
-                {
+                if (childNode != null) {
                     return childNode;
                 }
             }
             return null;
         }
 
-        public static TreeNode GetHoveringNode(this TreeView treeView, int X, int Y)
-        {
+        public static TreeNode GetHoveringNode(this TreeView treeView, int X, int Y) {
             return treeView.HitTest(treeView.PointToClient(new Point(X, Y))).Node;
         }
 
-        public static void AutoScroll(this TreeView treeView)
-        {
+        public static void AutoScroll(this TreeView treeView) {
             // Set a constant to define the autoscroll region
             const Single scrollRegion = 20;
 
@@ -823,13 +702,10 @@ namespace Mayfly.Extensions
             Point pt = treeView.PointToClient(Cursor.Position);
 
             // See if we need to scroll up or down
-            if ((pt.Y + scrollRegion) > treeView.Height)
-            {
+            if ((pt.Y + scrollRegion) > treeView.Height) {
                 // Call the API to scroll down
                 SendMessage(treeView.Handle, (int)277, (int)1, 0);
-            }
-            else if (pt.Y < (treeView.Top + scrollRegion))
-            {
+            } else if (pt.Y < (treeView.Top + scrollRegion)) {
                 // Call thje API to scroll up
                 SendMessage(treeView.Handle, (int)277, (int)0, 0);
             }
@@ -837,13 +713,11 @@ namespace Mayfly.Extensions
 
         #endregion
 
-        public static void CenterWith(this Control control, Control bigger)
-        {
+        public static void CenterWith(this Control control, Control bigger) {
             control.Left = bigger.Left + bigger.Width / 2 - control.Width / 2;
         }
 
-        public static void SetNavigation(this WizardPage page, bool isFree)
-        {
+        public static void SetNavigation(this WizardPage page, bool isFree) {
             page.AllowBack = page.AllowNext = isFree;
 
             //if (isFree)
@@ -856,19 +730,14 @@ namespace Mayfly.Extensions
             //}
         }
 
-        public static Button GetFinishButton(this WizardControl wizardControl)
-        {
+        public static Button GetFinishButton(this WizardControl wizardControl) {
             return (Button)wizardControl.Controls[2].Controls[1];
         }
 
-        public static void SetNullValue(this DataGridViewCell gridCell, object nullValue)
-        {
-            if (gridCell.DataGridView == null || !gridCell.DataGridView.InvokeRequired)
-            {
+        public static void SetNullValue(this DataGridViewCell gridCell, object nullValue) {
+            if (gridCell.DataGridView == null || !gridCell.DataGridView.InvokeRequired) {
                 gridCell.Style.NullValue = nullValue;
-            }
-            else
-            {
+            } else {
                 NullValueSetEventHandler ageSetter = new NullValueSetEventHandler(SetNullValue);
                 gridCell.DataGridView.Invoke(ageSetter, new object[] { gridCell, nullValue });
             }
@@ -880,31 +749,25 @@ namespace Mayfly.Extensions
 
         #region Handling input
 
-        public static void HandleInput(this ComboBox comboBox, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (Char)Keys.Back)
-            {
+        public static void HandleInput(this ComboBox comboBox, KeyPressEventArgs e) {
+            if (e.KeyChar == (Char)Keys.Back) {
                 comboBox.SelectedIndex = -1;
             }
         }
 
-        public static void HandleInput(this Control control, KeyPressEventArgs e, Type valueType)
-        {
+        public static void HandleInput(this Control control, KeyPressEventArgs e, Type valueType) {
             if (valueType == typeof(double) &&
-                e.KeyChar.ToString() == CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator)
-            {
+                e.KeyChar.ToString() == CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator) {
                 e.KeyChar = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
                 //control.Text = control.Text.Replace('.', ',');
             }
 
             InputVariant inputVariant = control.AllowInput(e.KeyChar, valueType);
 
-            if (inputVariant != InputVariant.Allow)
-            {
+            if (inputVariant != InputVariant.Allow) {
                 ToolTip toolTip = new ToolTip();
                 string instruction = string.Empty;
-                switch (inputVariant)
-                {
+                switch (inputVariant) {
                     case InputVariant.DecimalRepeat:
                         toolTip.ToolTipTitle = Mayfly.Resources.Interface.InputDecimalRepeat;
                         instruction = String.Format(Mayfly.Resources.Interface.InputDecimalRepeatInstruction, e.KeyChar);
@@ -925,71 +788,50 @@ namespace Mayfly.Extensions
             e.Handled = inputVariant != InputVariant.Allow;
         }
 
-        public static InputVariant AllowInput(this Control control, char symbol, Type valueType)
-        {
-            if (symbol == (char)Keys.Back)
-            {
+        public static InputVariant AllowInput(this Control control, char symbol, Type valueType) {
+            if (symbol == (char)Keys.Back) {
                 return InputVariant.Allow;
             }
 
-            if (valueType == typeof(string))
-            {
-                if (Constants.Forbidden.Contains(symbol))
-                {
+            if (valueType == typeof(string)) {
+                if (Constants.Forbidden.Contains(symbol)) {
                     return InputVariant.Other;
-                }
-                else
-                {
+                } else {
                     return InputVariant.Allow;
                 }
             }
 
-            if (valueType == typeof(int))
-            {
-                if (Constants.Numbers.Contains(symbol))
-                {
+            if (valueType == typeof(int)) {
+                if (Constants.Numbers.Contains(symbol)) {
                     return InputVariant.Allow;
-                }
-                else
-                {
+                } else {
                     return InputVariant.NotNumber;
                 }
             }
 
-            if (valueType == typeof(double))
-            {
+            if (valueType == typeof(double)) {
                 // If symbol is decinal separator
                 if (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol) ||
-                    CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol))
-                {
+                    CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol)) {
                     // If separator is already in value
                     if (control.Text.Contains(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator) ||
-                        control.Text.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator))
-                    {
+                        control.Text.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator)) {
                         // If separator is in selected part
                         if (control is TextBoxBase && (((TextBoxBase)control).SelectedText.Contains(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator) ||
-                                ((TextBoxBase)control).SelectedText.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator)))
-                        {
+                                ((TextBoxBase)control).SelectedText.Contains(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator))) {
                             return InputVariant.Allow;
-                        }
-                        else
-                        {
+                        } else {
                             return InputVariant.DecimalRepeat;
                         }
-                    }
-                    else // If it is first instance of separator
-                    {
+                    } else // If it is first instance of separator
+                      {
                         return InputVariant.Allow;
                     }
-                }
-                else // If symbol is digit
-                {
-                    if (Constants.Numbers.Contains(symbol))
-                    {
+                } else // If symbol is digit
+                  {
+                    if (Constants.Numbers.Contains(symbol)) {
                         return InputVariant.Allow;
-                    }
-                    else
-                    {
+                    } else {
                         return InputVariant.NotNumber;
                     }
                 }
@@ -1020,8 +862,7 @@ namespace Mayfly.Extensions
     {
         public class ToolStripItemComparer : IComparer
         {
-            int IComparer.Compare(Object x, Object y)
-            {
+            int IComparer.Compare(Object x, Object y) {
                 return ((new CaseInsensitiveComparer()).Compare(
                     ((ToolStripItem)x).Text,
                     ((ToolStripItem)y).Text));
@@ -1047,8 +888,7 @@ namespace Mayfly.Extensions
         /// <summary>
         /// Class constructor.  Initializes various elements
         /// </summary>
-        public ListViewColumnSorter()
-        {
+        public ListViewColumnSorter() {
             // Initialize the column to '0'
             ColumnToSort = 0;
 
@@ -1065,8 +905,7 @@ namespace Mayfly.Extensions
         /// <param name="x">First object to be compared</param>
         /// <param name="y">Second object to be compared</param>
         /// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
-        public int Compare(object x, object y)
-        {
+        public int Compare(object x, object y) {
             int compareResult;
             ListViewItem listviewX, listviewY;
 
@@ -1078,18 +917,13 @@ namespace Mayfly.Extensions
             compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
 
             // Calculate correct return value based on object comparison
-            if (OrderOfSort == SortOrder.Ascending)
-            {
+            if (OrderOfSort == SortOrder.Ascending) {
                 // Ascending sort is selected, return normal result of compare operation
                 return compareResult;
-            }
-            else if (OrderOfSort == SortOrder.Descending)
-            {
+            } else if (OrderOfSort == SortOrder.Descending) {
                 // Descending sort is selected, return negative result of compare operation
                 return (-compareResult);
-            }
-            else
-            {
+            } else {
                 // Return '0' to indicate they are equal
                 return 0;
             }
@@ -1098,14 +932,11 @@ namespace Mayfly.Extensions
         /// <summary>
         /// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
         /// </summary>
-        public int SortColumn
-        {
-            set
-            {
+        public int SortColumn {
+            set {
                 ColumnToSort = value;
             }
-            get
-            {
+            get {
                 return ColumnToSort;
             }
         }
@@ -1113,14 +944,11 @@ namespace Mayfly.Extensions
         /// <summary>
         /// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
         /// </summary>
-        public SortOrder Order
-        {
-            set
-            {
+        public SortOrder Order {
+            set {
                 OrderOfSort = value;
             }
-            get
-            {
+            get {
                 return OrderOfSort;
             }
         }

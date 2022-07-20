@@ -1,37 +1,39 @@
-﻿namespace Mayfly.Software
+﻿namespace Mayfly.Controls
 {
-    partial class Settings
+    partial class SettingControlUser
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            this.tabControlSettings = new System.Windows.Forms.TabControl();
-            this.tabPagePersonal = new System.Windows.Forms.TabPage();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingControlUser));
+            this.taskDialogNameMismatch = new Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbMismatchSupport = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbMismatchCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbMismatchReplace = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.taskDialogLogout = new Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbSignoutCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbSignoutConfirm = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.comboBoxCulture = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
@@ -48,56 +50,51 @@
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.labelPersonal = new System.Windows.Forms.Label();
-            this.tabPageOther = new System.Windows.Forms.TabPage();
             this.checkBoxUseUnsafeConnection = new System.Windows.Forms.CheckBox();
             this.labelUpdates = new System.Windows.Forms.Label();
             this.labelUpdatePolicy = new System.Windows.Forms.Label();
             this.comboBoxUpdatePolicy = new System.Windows.Forms.ComboBox();
             this.labelDiagnosics = new System.Windows.Forms.Label();
             this.checkBoxShareDiagnostics = new System.Windows.Forms.CheckBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.buttonApply = new System.Windows.Forms.Button();
-            this.taskDialogNameMismatch = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbMismatchSupport = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbMismatchCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbMismatchReplace = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.taskDialogLogout = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbSignoutCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbSignoutConfirm = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tabControlSettings.SuspendLayout();
-            this.tabPagePersonal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
-            this.tabPageOther.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControlSettings
+            // taskDialogNameMismatch
             // 
-            resources.ApplyResources(this.tabControlSettings, "tabControlSettings");
-            this.tabControlSettings.Controls.Add(this.tabPagePersonal);
-            this.tabControlSettings.Controls.Add(this.tabPageOther);
-            this.tabControlSettings.Name = "tabControlSettings";
-            this.tabControlSettings.SelectedIndex = 0;
+            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchSupport);
+            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchCancel);
+            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchReplace);
+            this.taskDialogNameMismatch.CenterParent = true;
+            resources.ApplyResources(this.taskDialogNameMismatch, "taskDialogNameMismatch");
+            this.taskDialogNameMismatch.ExpandFooterArea = true;
             // 
-            // tabPagePersonal
+            // tdbMismatchSupport
             // 
-            resources.ApplyResources(this.tabPagePersonal, "tabPagePersonal");
-            this.tabPagePersonal.Controls.Add(this.comboBoxCulture);
-            this.tabPagePersonal.Controls.Add(this.label2);
-            this.tabPagePersonal.Controls.Add(this.pictureBoxLogin);
-            this.tabPagePersonal.Controls.Add(this.maskedPass);
-            this.tabPagePersonal.Controls.Add(this.checkBoxCredentials);
-            this.tabPagePersonal.Controls.Add(this.listViewLicenses);
-            this.tabPagePersonal.Controls.Add(this.buttonLogin);
-            this.tabPagePersonal.Controls.Add(this.labelFeaturesInstruction);
-            this.tabPagePersonal.Controls.Add(this.labelPass);
-            this.tabPagePersonal.Controls.Add(this.labelEmail);
-            this.tabPagePersonal.Controls.Add(this.labelUsername);
-            this.tabPagePersonal.Controls.Add(this.textBoxEmail);
-            this.tabPagePersonal.Controls.Add(this.textBoxUsername);
-            this.tabPagePersonal.Controls.Add(this.labelPersonal);
-            this.tabPagePersonal.Name = "tabPagePersonal";
-            this.tabPagePersonal.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.tdbMismatchSupport, "tdbMismatchSupport");
+            // 
+            // tdbMismatchCancel
+            // 
+            this.tdbMismatchCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
+            // 
+            // tdbMismatchReplace
+            // 
+            this.tdbMismatchReplace.Default = true;
+            resources.ApplyResources(this.tdbMismatchReplace, "tdbMismatchReplace");
+            // 
+            // taskDialogLogout
+            // 
+            this.taskDialogLogout.Buttons.Add(this.tdbSignoutCancel);
+            this.taskDialogLogout.Buttons.Add(this.tdbSignoutConfirm);
+            this.taskDialogLogout.CenterParent = true;
+            resources.ApplyResources(this.taskDialogLogout, "taskDialogLogout");
+            // 
+            // tdbSignoutCancel
+            // 
+            resources.ApplyResources(this.tdbSignoutCancel, "tdbSignoutCancel");
+            // 
+            // tdbSignoutConfirm
+            // 
+            resources.ApplyResources(this.tdbSignoutConfirm, "tdbSignoutConfirm");
             // 
             // comboBoxCulture
             // 
@@ -126,7 +123,6 @@
             this.maskedPass.Name = "maskedPass";
             this.maskedPass.PasswordChar = '*';
             this.maskedPass.ReadOnly = true;
-            this.maskedPass.DoubleClick += new System.EventHandler(this.textBoxEmail_DoubleClick);
             // 
             // checkBoxCredentials
             // 
@@ -203,18 +199,6 @@
             this.labelPersonal.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelPersonal.Name = "labelPersonal";
             // 
-            // tabPageOther
-            // 
-            resources.ApplyResources(this.tabPageOther, "tabPageOther");
-            this.tabPageOther.Controls.Add(this.checkBoxUseUnsafeConnection);
-            this.tabPageOther.Controls.Add(this.labelUpdates);
-            this.tabPageOther.Controls.Add(this.labelUpdatePolicy);
-            this.tabPageOther.Controls.Add(this.comboBoxUpdatePolicy);
-            this.tabPageOther.Controls.Add(this.labelDiagnosics);
-            this.tabPageOther.Controls.Add(this.checkBoxShareDiagnostics);
-            this.tabPageOther.Name = "tabPageOther";
-            this.tabPageOther.UseVisualStyleBackColor = true;
-            // 
             // checkBoxUseUnsafeConnection
             // 
             resources.ApplyResources(this.checkBoxUseUnsafeConnection, "checkBoxUseUnsafeConnection");
@@ -256,122 +240,66 @@
             this.checkBoxShareDiagnostics.Name = "checkBoxShareDiagnostics";
             this.checkBoxShareDiagnostics.UseVisualStyleBackColor = true;
             // 
-            // buttonCancel
-            // 
-            resources.ApplyResources(this.buttonCancel, "buttonCancel");
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // buttonOK
-            // 
-            resources.ApplyResources(this.buttonOK, "buttonOK");
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-            // 
-            // buttonApply
-            // 
-            resources.ApplyResources(this.buttonApply, "buttonApply");
-            this.buttonApply.Name = "buttonApply";
-            this.buttonApply.UseVisualStyleBackColor = true;
-            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
-            // 
-            // taskDialogNameMismatch
-            // 
-            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchSupport);
-            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchCancel);
-            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchReplace);
-            this.taskDialogNameMismatch.CenterParent = true;
-            resources.ApplyResources(this.taskDialogNameMismatch, "taskDialogNameMismatch");
-            this.taskDialogNameMismatch.ExpandFooterArea = true;
-            // 
-            // tdbMismatchSupport
-            // 
-            resources.ApplyResources(this.tdbMismatchSupport, "tdbMismatchSupport");
-            // 
-            // tdbMismatchCancel
-            // 
-            this.tdbMismatchCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
-            resources.ApplyResources(this.tdbMismatchCancel, "tdbMismatchCancel");
-            // 
-            // tdbMismatchReplace
-            // 
-            resources.ApplyResources(this.tdbMismatchReplace, "tdbMismatchReplace");
-            this.tdbMismatchReplace.Default = true;
-            // 
-            // taskDialogLogout
-            // 
-            this.taskDialogLogout.Buttons.Add(this.tdbSignoutCancel);
-            this.taskDialogLogout.Buttons.Add(this.tdbSignoutConfirm);
-            this.taskDialogLogout.CenterParent = true;
-            resources.ApplyResources(this.taskDialogLogout, "taskDialogLogout");
-            // 
-            // tdbSignoutCancel
-            // 
-            resources.ApplyResources(this.tdbSignoutCancel, "tdbSignoutCancel");
-            // 
-            // tdbSignoutConfirm
-            // 
-            resources.ApplyResources(this.tdbSignoutConfirm, "tdbSignoutConfirm");
-            // 
-            // Settings
+            // SettingControlUser
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonCancel;
-            this.Controls.Add(this.buttonApply);
-            this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.tabControlSettings);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "Settings";
-            this.tabControlSettings.ResumeLayout(false);
-            this.tabPagePersonal.ResumeLayout(false);
-            this.tabPagePersonal.PerformLayout();
+            this.Controls.Add(this.checkBoxUseUnsafeConnection);
+            this.Controls.Add(this.labelUpdates);
+            this.Controls.Add(this.labelUpdatePolicy);
+            this.Controls.Add(this.comboBoxUpdatePolicy);
+            this.Controls.Add(this.labelDiagnosics);
+            this.Controls.Add(this.checkBoxShareDiagnostics);
+            this.Controls.Add(this.comboBoxCulture);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBoxLogin);
+            this.Controls.Add(this.maskedPass);
+            this.Controls.Add(this.checkBoxCredentials);
+            this.Controls.Add(this.listViewLicenses);
+            this.Controls.Add(this.buttonLogin);
+            this.Controls.Add(this.labelFeaturesInstruction);
+            this.Controls.Add(this.labelPass);
+            this.Controls.Add(this.labelEmail);
+            this.Controls.Add(this.labelUsername);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.textBoxUsername);
+            this.Controls.Add(this.labelPersonal);
+            this.Name = "SettingControlUser";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
-            this.tabPageOther.ResumeLayout(false);
-            this.tabPageOther.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        protected System.Windows.Forms.Button buttonCancel;
-        protected System.Windows.Forms.TabControl tabControlSettings;
-        protected System.Windows.Forms.Button buttonOK;
-        protected System.Windows.Forms.Button buttonApply;
-        protected System.Windows.Forms.ComboBox comboBoxCulture;
-        protected System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabPagePersonal;
-        protected System.Windows.Forms.Label labelUsername;
-        protected System.Windows.Forms.TextBox textBoxUsername;
-        protected System.Windows.Forms.Label labelPersonal;
-        private System.Windows.Forms.TabPage tabPageOther;
-        protected System.Windows.Forms.Label labelUpdates;
-        protected System.Windows.Forms.Label labelUpdatePolicy;
-        protected System.Windows.Forms.ComboBox comboBoxUpdatePolicy;
-        protected System.Windows.Forms.Label labelDiagnosics;
-        protected System.Windows.Forms.ListView listViewLicenses;
-        protected System.Windows.Forms.ColumnHeader columnHeaderLicense;
-        private System.Windows.Forms.ColumnHeader columnHeaderExpire;
-        protected System.Windows.Forms.CheckBox checkBoxUseUnsafeConnection;
-        protected System.Windows.Forms.CheckBox checkBoxShareDiagnostics;
-        protected System.Windows.Forms.Button buttonLogin;
-        protected System.Windows.Forms.Label labelFeaturesInstruction;
+
         private TaskDialogs.TaskDialog taskDialogNameMismatch;
+        private TaskDialogs.TaskDialog taskDialogLogout;
+        private System.Windows.Forms.PictureBox pictureBoxLogin;
+        private System.Windows.Forms.MaskedTextBox maskedPass;
+        private System.Windows.Forms.ColumnHeader columnHeaderExpire;
+        private System.Windows.Forms.ComboBox comboBoxCulture;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBoxCredentials;
+        private System.Windows.Forms.ListView listViewLicenses;
+        private System.Windows.Forms.ColumnHeader columnHeaderLicense;
+        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Label labelFeaturesInstruction;
+        private System.Windows.Forms.Label labelPass;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Label labelPersonal;
+        private System.Windows.Forms.CheckBox checkBoxUseUnsafeConnection;
+        private System.Windows.Forms.Label labelUpdates;
+        private System.Windows.Forms.Label labelUpdatePolicy;
+        private System.Windows.Forms.ComboBox comboBoxUpdatePolicy;
+        private System.Windows.Forms.Label labelDiagnosics;
+        private System.Windows.Forms.CheckBox checkBoxShareDiagnostics;
         private TaskDialogs.TaskDialogButton tdbMismatchCancel;
         private TaskDialogs.TaskDialogButton tdbMismatchReplace;
         private TaskDialogs.TaskDialogButton tdbMismatchSupport;
-        protected System.Windows.Forms.CheckBox checkBoxCredentials;
-        protected System.Windows.Forms.Label labelPass;
-        protected System.Windows.Forms.Label labelEmail;
-        protected System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.MaskedTextBox maskedPass;
-        private System.Windows.Forms.PictureBox pictureBoxLogin;
-        private TaskDialogs.TaskDialog taskDialogLogout;
         private TaskDialogs.TaskDialogButton tdbSignoutCancel;
         private TaskDialogs.TaskDialogButton tdbSignoutConfirm;
     }

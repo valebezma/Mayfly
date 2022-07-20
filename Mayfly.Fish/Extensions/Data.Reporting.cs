@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
-using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Wild.SettingsReader;
 
 namespace Mayfly.Fish
 {

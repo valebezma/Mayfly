@@ -15,7 +15,8 @@ namespace Mayfly.Benthos
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
-            Wild.ReaderSettings.SetFeature("Benthos", ".bcd");
+            Wild.SettingsReader.SetFeature("Benthos", ".bcd", Wild.MassDegree.Gramm, Wild.MassDegree.Milligramm);
+            Mayfly.UserSettings.SetApp(Properties.Resources.logo, Properties.Resources.ibiw, Wild.Resources.Interface.Powered.IBIW);
             Log.WriteAppStarted();
 
             if (args.Length == 0)

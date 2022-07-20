@@ -7,6 +7,8 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.UserSettings;
 
 namespace Mayfly.Benthos
 {
@@ -84,11 +86,16 @@ namespace Mayfly.Benthos
 
 
         public BenthosCard() : base() {
+
             InitializeComponent();
             Initiate();
+
+            tabPageLog.Parent = null;
+            tabPageLog.Parent = tabControl;
         }
 
         public BenthosCard(string filename) : this() {
+
             load(filename);
         }
 
@@ -338,7 +345,7 @@ namespace Mayfly.Benthos
             // 
             this.numericArea.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.numericArea.Format = "N0";
-            this.numericArea.Location = new System.Drawing.Point(214, 260);
+            this.numericArea.Location = new System.Drawing.Point(214, 232);
             this.numericArea.Maximum = 100D;
             this.numericArea.Minimum = 0D;
             this.numericArea.Name = "numericArea";
@@ -366,7 +373,7 @@ namespace Mayfly.Benthos
             // 
             this.labelArea.AutoSize = true;
             this.labelArea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelArea.Location = new System.Drawing.Point(45, 263);
+            this.labelArea.Location = new System.Drawing.Point(45, 235);
             this.labelArea.Name = "labelArea";
             this.labelArea.Size = new System.Drawing.Size(46, 13);
             this.labelArea.TabIndex = 15;
@@ -986,7 +993,7 @@ namespace Mayfly.Benthos
             // 
             // numericDepth
             // 
-            this.numericDepth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericDepth.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.numericDepth.Format = "N0";
             this.numericDepth.Location = new System.Drawing.Point(214, 141);
             this.numericDepth.Maximum = 100D;
@@ -999,7 +1006,6 @@ namespace Mayfly.Benthos
             // 
             // labelDepth
             // 
-            this.labelDepth.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelDepth.AutoSize = true;
             this.labelDepth.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.labelDepth.Location = new System.Drawing.Point(45, 144);
@@ -1292,7 +1298,7 @@ namespace Mayfly.Benthos
         private void logger_IndividualsRequired(object sender, EventArgs e) {
 
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
-                if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
+                if (gridRow.Cells[ColumnDefinition.Name].Value != null) {
 
                     Wild.Survey.LogRow logRow = Logger.SaveLogRow(gridRow);
                     Individuals individuals = null;
@@ -1306,7 +1312,7 @@ namespace Mayfly.Benthos
 
                     if (individuals == null) {
                         individuals = new Individuals(logRow);
-                        individuals.SetColumns(ColumnSpecies, ColumnQuantity, ColumnMass);
+                        individuals.SetColumns(ColumnDefinition, ColumnQty, ColumnMass);
                         individuals.LogLine = gridRow;
                         individuals.SetFriendlyDesktopLocation(spreadSheetLog);
                         individuals.FormClosing += new FormClosingEventHandler(individuals_FormClosing);
@@ -1350,6 +1356,7 @@ namespace Mayfly.Benthos
 
             saveEffort();
             numericArea.Value = data.Solitary.GetArea();
+            numericArea.Format = "N3";
             isChanged = true;
         }
 

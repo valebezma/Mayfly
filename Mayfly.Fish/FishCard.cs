@@ -77,6 +77,7 @@ namespace Mayfly.Fish
 
 
         public FishCard() : base() {
+
             InitializeComponent();
             Initiate();
             if (Wild.UserSettings.SelectedDate != null) {
@@ -84,9 +85,11 @@ namespace Mayfly.Fish
                      dateTimePickerEnd.Value =
                      Wild.UserSettings.SelectedDate;
             }
+            isChanged = false;
         }
 
         public FishCard(string filename) : this() {
+
             load(filename);
         }
 

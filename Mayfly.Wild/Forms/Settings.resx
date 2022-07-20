@@ -117,479 +117,1301 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;buttonBasicSettings.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControlSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="labelWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelWaters.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWaters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabPageInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>452, 381</value>
+  <data name="labelWaters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 133</value>
   </data>
-  <data name="checkBoxAutoIncreaseBio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 17</value>
+  <data name="labelWaters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="labelWaters.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;buttonAddtFctrsAdd.Parent" xml:space="preserve">
-    <value>tabPageFactors</value>
+  <data name="labelWaters.Text" xml:space="preserve">
+    <value>Waters index</value>
   </data>
-  <data name="&gt;&gt;buttonRemoveVar.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;labelWaters.Name" xml:space="preserve">
+    <value>labelWaters</value>
   </data>
-  <data name="labelAddtFctrs.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="&gt;&gt;labelWaters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonClearRecent.Parent" xml:space="preserve">
-    <value>tabPageSpecies</value>
+  <data name="&gt;&gt;labelWaters.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;labelWaters.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="buttonBrowseWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="buttonBrowseWaters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonBrowseWaters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonBrowseWaters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 152</value>
+  </data>
+  <data name="buttonBrowseWaters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonBrowseWaters.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonBrowseWaters.Text" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="&gt;&gt;buttonBrowseWaters.Name" xml:space="preserve">
+    <value>buttonBrowseWaters</value>
   </data>
   <data name="&gt;&gt;buttonBrowseWaters.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxAutoIncreaseBio.Name" xml:space="preserve">
-    <value>checkBoxAutoIncreaseBio</value>
+  <data name="&gt;&gt;buttonBrowseWaters.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
   </data>
-  <data name="labelAddtsVars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 15</value>
+  <data name="&gt;&gt;buttonBrowseWaters.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="textBoxWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="textBoxWaters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxWaters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 154</value>
+  </data>
+  <data name="textBoxWaters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 20</value>
+  </data>
+  <data name="textBoxWaters.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaters.Name" xml:space="preserve">
+    <value>textBoxWaters</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaters.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaters.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="buttonOpenWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="buttonOpenWaters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonOpenWaters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonOpenWaters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>332, 152</value>
+  </data>
+  <data name="buttonOpenWaters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonOpenWaters.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonOpenWaters.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenWaters.Name" xml:space="preserve">
+    <value>buttonOpenWaters</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenWaters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenWaters.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenWaters.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelRef.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRef.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelRef.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelRef.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="labelRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 15</value>
+  </data>
+  <data name="labelRef.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelRef.Text" xml:space="preserve">
+    <value>References</value>
+  </data>
+  <data name="&gt;&gt;labelRef.Name" xml:space="preserve">
+    <value>labelRef</value>
+  </data>
+  <data name="&gt;&gt;labelRef.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRef.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;labelRef.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="buttonBrowseSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="buttonBrowseSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonBrowseSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonBrowseSpecies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 90</value>
+  </data>
+  <data name="buttonBrowseSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonBrowseSpecies.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonBrowseSpecies.Text" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+  <data name="&gt;&gt;buttonBrowseSpecies.Name" xml:space="preserve">
+    <value>buttonBrowseSpecies</value>
+  </data>
+  <data name="&gt;&gt;buttonBrowseSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonBrowseSpecies.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;buttonBrowseSpecies.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="textBoxSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="textBoxSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxSpecies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 92</value>
+  </data>
+  <data name="textBoxSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 20</value>
+  </data>
+  <data name="textBoxSpecies.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpecies.Name" xml:space="preserve">
+    <value>textBoxSpecies</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpecies.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpecies.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <metadata name="labelSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="labelSpecies.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="labelSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSpecies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 71</value>
+  </data>
+  <data name="labelSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="labelSpecies.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelSpecies.Text" xml:space="preserve">
+    <value>Species index</value>
+  </data>
+  <data name="&gt;&gt;labelSpecies.Name" xml:space="preserve">
+    <value>labelSpecies</value>
+  </data>
+  <data name="&gt;&gt;labelSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSpecies.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;labelSpecies.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <metadata name="buttonOpenSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="buttonOpenSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonOpenSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonOpenSpecies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>332, 90</value>
+  </data>
+  <data name="buttonOpenSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonOpenSpecies.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonOpenSpecies.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenSpecies.Name" xml:space="preserve">
+    <value>buttonOpenSpecies</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenSpecies.Parent" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;buttonOpenSpecies.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tabPageReferences.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageReferences.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageReferences.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 381</value>
+  </data>
+  <data name="tabPageReferences.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabPageReferences.Text" xml:space="preserve">
+    <value>References</value>
+  </data>
+  <data name="&gt;&gt;tabPageReferences.Name" xml:space="preserve">
+    <value>tabPageReferences</value>
+  </data>
+  <data name="&gt;&gt;tabPageReferences.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageReferences.Parent" xml:space="preserve">
+    <value>tabControlSettings</value>
+  </data>
+  <data name="&gt;&gt;tabPageReferences.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 115</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 17</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.Text" xml:space="preserve">
+    <value>Automatically expand taxonomic index</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpand.Name" xml:space="preserve">
+    <value>checkBoxSpeciesExpand</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpand.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpand.Parent" xml:space="preserve">
+    <value>tabPageSpecies</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpand.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 138</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 17</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.Text" xml:space="preserve">
+    <value>Visually confirm and edit new species records</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.Name" xml:space="preserve">
+    <value>checkBoxSpeciesExpandVisualControl</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.Parent" xml:space="preserve">
+    <value>tabPageSpecies</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonClearRecent.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonClearRecent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonClearRecent.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 86</value>
   </data>
-  <data name="&gt;&gt;tdClearRecent.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="buttonClearRecent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="listViewAddtFctr.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="buttonClearRecent.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="buttonClearRecent.Text" xml:space="preserve">
+    <value>Clear list</value>
   </data>
-  <data name="labelInputFish.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;buttonClearRecent.Name" xml:space="preserve">
+    <value>buttonClearRecent</value>
   </data>
-  <data name="checkBoxBreakBetweenSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 131</value>
+  <data name="&gt;&gt;buttonClearRecent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxFixTotals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;buttonClearRecent.Parent" xml:space="preserve">
+    <value>tabPageSpecies</value>
   </data>
-  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tdClearRecent.Name" xml:space="preserve">
-    <value>tdClearRecent</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoDecreaseBio.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="checkBoxOrderLog.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;buttonClearRecent.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tabPageFactors.Text" xml:space="preserve">
-    <value>Factors</value>
+  <data name="labelRecent.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="checkBoxSpeciesExpandVisualControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 138</value>
+  <data name="labelRecent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="buttonOpenWaters.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="labelRecent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 90</value>
   </data>
-  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
-    <value>205</value>
+  <data name="labelRecent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 15, 3, 0</value>
   </data>
-  <data name="labelCommonVars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 25</value>
+  <data name="labelRecent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 13</value>
   </data>
-  <data name="tdClearRecent.MainInstruction" xml:space="preserve">
-    <value>Clear recent species?</value>
+  <data name="labelRecent.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="tabPageReferences.Size" type="System.Drawing.Size, System.Drawing">
-    <value>452, 381</value>
+  <data name="labelRecent.Text" xml:space="preserve">
+    <value>Recent species list length</value>
   </data>
-  <data name="checkBoxOrderLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="&gt;&gt;labelRecent.Name" xml:space="preserve">
+    <value>labelRecent</value>
   </data>
-  <data name="&gt;&gt;textBoxSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;labelRecent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRecent.Parent" xml:space="preserve">
+    <value>tabPageSpecies</value>
+  </data>
+  <data name="&gt;&gt;labelRecent.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericUpDownRecentCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericUpDownRecentCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 88</value>
+  </data>
+  <data name="numericUpDownRecentCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
   </data>
   <data name="numericUpDownRecentCount.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="textBoxWaters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 20</value>
+  <data name="numericUpDownRecentCount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="&gt;&gt;labelCommonVars.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
+  <data name="&gt;&gt;numericUpDownRecentCount.Name" xml:space="preserve">
+    <value>numericUpDownRecentCount</value>
   </data>
-  <data name="buttonAddtFctrsAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="&gt;&gt;numericUpDownRecentCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonOpenWaters.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
+  <data name="&gt;&gt;numericUpDownRecentCount.Parent" xml:space="preserve">
+    <value>tabPageSpecies</value>
   </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 18</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="&gt;&gt;numericUpDownRecentCount.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="checkBoxAutoLog.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="checkBoxAutoLog.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxAutoLog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="checkBoxAutoLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 17</value>
+  </data>
+  <data name="checkBoxAutoLog.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxAutoLog.Text" xml:space="preserve">
+    <value>Open individuals log when adding new definition</value>
+  </data>
+  <data name="checkBoxAutoLog.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoLog.Name" xml:space="preserve">
+    <value>checkBoxAutoLog</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoLog.Parent" xml:space="preserve">
+    <value>tabPageSpecies</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoLog.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelInputFish.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInputFish.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelInputFish.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInputFish.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="labelInputFish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 15</value>
+  </data>
+  <data name="labelInputFish.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelInputFish.Text" xml:space="preserve">
+    <value>Default Behaviour</value>
+  </data>
+  <data name="&gt;&gt;labelInputFish.Name" xml:space="preserve">
+    <value>labelInputFish</value>
+  </data>
+  <data name="&gt;&gt;labelInputFish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelInputFish.Parent" xml:space="preserve">
+    <value>tabPageSpecies</value>
+  </data>
+  <data name="&gt;&gt;labelInputFish.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tabPageSpecies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSpecies.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>408, 320</value>
+  </data>
+  <data name="tabPageSpecies.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="tabPageSpecies.Text" xml:space="preserve">
+    <value>Definitions Log</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpecies.Name" xml:space="preserve">
+    <value>tabPageSpecies</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpecies.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpecies.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="listViewAddtVars.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;checkBoxOrderLog.ZOrder" xml:space="preserve">
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Variable</value>
+  </data>
+  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
+    <value>205</value>
+  </data>
+  <data name="listViewAddtVars.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 199</value>
+  </data>
+  <data name="listViewAddtVars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 89</value>
+  </data>
+  <data name="listViewAddtVars.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;listViewAddtVars.Name" xml:space="preserve">
+    <value>listViewAddtVars</value>
+  </data>
+  <data name="&gt;&gt;listViewAddtVars.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listViewAddtVars.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
+  </data>
+  <data name="&gt;&gt;listViewAddtVars.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonRemoveVar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonRemoveVar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonRemoveVar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 199</value>
+  </data>
+  <data name="buttonRemoveVar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonRemoveVar.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonRemoveVar.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveVar.Name" xml:space="preserve">
+    <value>buttonRemoveVar</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveVar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveVar.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveVar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonNewVar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonNewVar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonNewVar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 265</value>
+  </data>
+  <data name="buttonNewVar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonNewVar.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonNewVar.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;buttonNewVar.Name" xml:space="preserve">
+    <value>buttonNewVar</value>
+  </data>
+  <data name="&gt;&gt;buttonNewVar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonNewVar.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
+  </data>
+  <data name="&gt;&gt;buttonNewVar.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 111</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 17</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.Text" xml:space="preserve">
+    <value>Decrease total with individual values being reduced</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoDecreaseBio.Name" xml:space="preserve">
+    <value>checkBoxAutoDecreaseBio</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoDecreaseBio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoDecreaseBio.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoDecreaseBio.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBoxFixTotals.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxFixTotals.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxFixTotals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxFixTotals.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="checkBoxFixTotals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 17</value>
+  </data>
+  <data name="checkBoxFixTotals.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxFixTotals.Text" xml:space="preserve">
+    <value>Calculate species quantity and mass totals with data on individuals</value>
+  </data>
+  <data name="checkBoxFixTotals.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFixTotals.Name" xml:space="preserve">
+    <value>checkBoxFixTotals</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFixTotals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFixTotals.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFixTotals.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelAddtsVars.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelAddtsVars.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelAddtsVars.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelAddtsVars.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 156</value>
+  </data>
+  <data name="labelAddtsVars.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="labelAddtsVars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 15</value>
+  </data>
+  <data name="labelAddtsVars.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelAddtsVars.Text" xml:space="preserve">
+    <value>Additional Variables</value>
+  </data>
+  <data name="&gt;&gt;labelAddtsVars.Name" xml:space="preserve">
+    <value>labelAddtsVars</value>
+  </data>
+  <data name="&gt;&gt;labelAddtsVars.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAddtsVars.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
+  </data>
+  <data name="&gt;&gt;labelAddtsVars.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelCommonVars.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCommonVars.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelCommonVars.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelCommonVars.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="labelCommonVars.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="labelCommonVars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 15</value>
+  </data>
+  <data name="labelCommonVars.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelCommonVars.Text" xml:space="preserve">
+    <value>Common Variables</value>
+  </data>
+  <data name="&gt;&gt;labelCommonVars.Name" xml:space="preserve">
+    <value>labelCommonVars</value>
+  </data>
+  <data name="&gt;&gt;labelCommonVars.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCommonVars.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
+  </data>
+  <data name="&gt;&gt;labelCommonVars.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 88</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 17</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="checkBoxAutoIncreaseBio.Text" xml:space="preserve">
     <value>Increase total if individual values sum overlaps it</value>
   </data>
-  <data name="buttonOpenSpecies.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="checkBoxBreakBeforeIndividuals.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="tabPagePrint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="buttonBrowseSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>397, 425</value>
-  </data>
-  <data name="labelPrintCaption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 25</value>
-  </data>
-  <data name="listViewAddtFctr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 71</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
-    <value>buttonCancel</value>
-  </data>
-  <data name="checkBoxOrderLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 88</value>
-  </data>
-  <data name="&gt;&gt;labelInputFish.Name" xml:space="preserve">
-    <value>labelInputFish</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 17</value>
-  </data>
-  <data name="tabControlSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 407</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCardOdd.Parent" xml:space="preserve">
-    <value>tabPagePrint</value>
-  </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonAddtFctrsAdd.Text" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="buttonClearRecent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;tabPagePrint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxSpeciesExpand.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="checkBoxAutoIncreaseBio.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
   </data>
-  <data name="checkBoxSpeciesExpand.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
+  <data name="&gt;&gt;checkBoxAutoIncreaseBio.Name" xml:space="preserve">
+    <value>checkBoxAutoIncreaseBio</value>
   </data>
-  <data name="&gt;&gt;labelRecent.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="buttonOpenSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="tabPageReferences.Text" xml:space="preserve">
-    <value>References</value>
-  </data>
-  <data name="labelAddtFctrs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 25, 3, 25</value>
-  </data>
-  <data name="tabPageIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 320</value>
-  </data>
-  <data name="buttonOpenWaters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="buttonBrowseSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 17</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixTotals.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxAutoIncreaseBio.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageIndividuals.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;checkBoxAutoIncreaseBio.Parent" xml:space="preserve">
+    <value>tabPageIndividuals</value>
   </data>
-  <data name="tabPageInput.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="tabControlSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;listViewAddtVars.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownRecentCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAddtFctrsDelete.Parent" xml:space="preserve">
-    <value>tabPageFactors</value>
-  </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpand.Name" xml:space="preserve">
-    <value>checkBoxSpeciesExpand</value>
-  </data>
-  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogOrder.Parent" xml:space="preserve">
-    <value>tabPagePrint</value>
-  </data>
-  <data name="labelSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 13</value>
-  </data>
-  <data name="labelInputFish.Text" xml:space="preserve">
-    <value>Species Log</value>
-  </data>
-  <data name="&gt;&gt;buttonBrowseWaters.Name" xml:space="preserve">
-    <value>buttonBrowseWaters</value>
-  </data>
-  <data name="buttonClearRecent.Text" xml:space="preserve">
-    <value>Clear list</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenWaters.Name" xml:space="preserve">
-    <value>buttonOpenWaters</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>tabPageInput</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoDecreaseBio.Name" xml:space="preserve">
-    <value>checkBoxAutoDecreaseBio</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>484, 461</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveVar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;checkBoxAutoIncreaseBio.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="tabPageIndividuals.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="labelRecent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 15, 3, 0</value>
+  <data name="tabPageIndividuals.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="labelCommonVars.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 25, 3, 25</value>
+  <data name="tabPageIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>408, 320</value>
   </data>
-  <data name="checkBoxSpeciesExpand.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tabPageIndividuals.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="checkBoxOrderLog.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
+  <data name="tabPageIndividuals.Text" xml:space="preserve">
+    <value>Individuals</value>
   </data>
-  <data name="&gt;&gt;labelAddtsVars.Name" xml:space="preserve">
-    <value>labelAddtsVars</value>
+  <data name="&gt;&gt;tabPageIndividuals.Name" xml:space="preserve">
+    <value>tabPageIndividuals</value>
   </data>
-  <data name="comboBoxLogOrder.Items2" xml:space="preserve">
-    <value>By mass</value>
+  <data name="&gt;&gt;tabPageIndividuals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonRemoveVar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 199</value>
+  <data name="&gt;&gt;tabPageIndividuals.Parent" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
-  <data name="checkBoxAutoLog.Text" xml:space="preserve">
-    <value>Open individuals log when adding new species</value>
+  <data name="&gt;&gt;tabPageIndividuals.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBoxCardOdd.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="listViewAddtFctr.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="buttonOpenWaters.Text" xml:space="preserve">
-    <value>Open</value>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Variable</value>
   </data>
-  <data name="checkBoxBreakBeforeIndividuals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 111</value>
+  <data name="columnHeader2.Width" type="System.Int32, mscorlib">
+    <value>215</value>
   </data>
-  <data name="&gt;&gt;labelInputFish.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="listViewAddtFctr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 71</value>
   </data>
-  <data name="&gt;&gt;labelPrintCaption.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="listViewAddtFctr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 217</value>
   </data>
-  <data name="labelAddtsVars.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="listViewAddtFctr.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;buttonRemoveVar.Name" xml:space="preserve">
-    <value>buttonRemoveVar</value>
-  </data>
-  <data name="&gt;&gt;tabPagePrint.Parent" xml:space="preserve">
-    <value>tabControlSettings</value>
-  </data>
-  <data name="&gt;&gt;listViewAddtFctr.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelWaters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
-  </data>
-  <data name="buttonApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpand.Parent" xml:space="preserve">
-    <value>tabPageSpecies</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;listViewAddtFctr.Name" xml:space="preserve">
+    <value>listViewAddtFctr</value>
   </data>
   <data name="&gt;&gt;listViewAddtFctr.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;listViewAddtFctr.Parent" xml:space="preserve">
+    <value>tabPageFactors</value>
   </data>
-  <data name="buttonOpenWaters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>332, 152</value>
+  <data name="&gt;&gt;listViewAddtFctr.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="buttonRemoveVar.Text" xml:space="preserve">
-    <value>Delete</value>
+  <data name="buttonAddtFctrsDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
-  <data name="tabPageSpecies.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="buttonAddtFctrsDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;tabPageFactors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonAddtFctrsDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 71</value>
   </data>
   <data name="buttonAddtFctrsDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;tabControlSettings.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="checkBoxOrderLog.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;labelWaters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listViewAddtVars.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="&gt;&gt;tabPageReferences.Name" xml:space="preserve">
-    <value>tabPageReferences</value>
-  </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.Parent" xml:space="preserve">
-    <value>tabPageSpecies</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>416, 346</value>
-  </data>
-  <data name="labelRecent.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textBoxSpecies.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.Parent" xml:space="preserve">
-    <value>tabPagePrint</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="buttonOpenSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;tabControlSettings.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPagePrint.Name" xml:space="preserve">
-    <value>tabPagePrint</value>
-  </data>
-  <data name="labelRecent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 90</value>
-  </data>
-  <data name="&gt;&gt;labelPrintCaption.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tabPageReferences.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
   <data name="buttonAddtFctrsDelete.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="buttonClearRecent.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="buttonAddtFctrsDelete.Text" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="&gt;&gt;labelInputFish.Parent" xml:space="preserve">
-    <value>tabPageSpecies</value>
+  <data name="&gt;&gt;buttonAddtFctrsDelete.Name" xml:space="preserve">
+    <value>buttonAddtFctrsDelete</value>
   </data>
-  <data name="tabPageReferences.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;buttonAddtFctrsDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageInput.Text" xml:space="preserve">
-    <value>Input</value>
-  </data>
-  <data name="buttonNewVar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;buttonBrowseWaters.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;listViewAddtFctr.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonAddtFctrsDelete.Parent" xml:space="preserve">
     <value>tabPageFactors</value>
   </data>
-  <data name="&gt;&gt;buttonOpenSpecies.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
+  <data name="&gt;&gt;buttonAddtFctrsDelete.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;tabPageFactors.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="buttonAddtFctrsAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
-  <data name="labelCommonVars.Text" xml:space="preserve">
-    <value>Common Variables</value>
+  <data name="buttonAddtFctrsAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="textBoxSpecies.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonAddtFctrsAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 265</value>
+  </data>
+  <data name="buttonAddtFctrsAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonAddtFctrsAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="buttonAddtFctrsAdd.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;buttonAddtFctrsAdd.Name" xml:space="preserve">
+    <value>buttonAddtFctrsAdd</value>
+  </data>
+  <data name="&gt;&gt;buttonAddtFctrsAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddtFctrsAdd.Parent" xml:space="preserve">
+    <value>tabPageFactors</value>
+  </data>
+  <data name="&gt;&gt;buttonAddtFctrsAdd.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;columnHeader2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="labelAddtFctrs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="columnHeader1.Text" xml:space="preserve">
-    <value>Variable</value>
-  </data>
-  <data name="labelRef.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelAddtFctrs.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelAddtFctrs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelAddtFctrs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 28</value>
+  </data>
+  <data name="labelAddtFctrs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="labelAddtFctrs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 15</value>
+  </data>
+  <data name="labelAddtFctrs.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelAddtFctrs.Text" xml:space="preserve">
+    <value>Additional factors</value>
+  </data>
+  <data name="&gt;&gt;labelAddtFctrs.Name" xml:space="preserve">
+    <value>labelAddtFctrs</value>
+  </data>
+  <data name="&gt;&gt;labelAddtFctrs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAddtFctrs.Parent" xml:space="preserve">
+    <value>tabPageFactors</value>
+  </data>
+  <data name="&gt;&gt;labelAddtFctrs.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="tabPageFactors.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpand.Type" xml:space="preserve">
+  <data name="tabPageFactors.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageFactors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>408, 320</value>
+  </data>
+  <data name="tabPageFactors.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="tabPageFactors.Text" xml:space="preserve">
+    <value>Factors</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Name" xml:space="preserve">
+    <value>tabPageFactors</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 18</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>416, 346</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>tabPageInput</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageInput.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>15, 15, 15, 15</value>
+  </data>
+  <data name="tabPageInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 381</value>
+  </data>
+  <data name="tabPageInput.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="tabPageInput.Text" xml:space="preserve">
+    <value>Input</value>
+  </data>
+  <data name="&gt;&gt;tabPageInput.Name" xml:space="preserve">
+    <value>tabPageInput</value>
+  </data>
+  <data name="&gt;&gt;tabPageInput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageInput.Parent" xml:space="preserve">
+    <value>tabControlSettings</value>
+  </data>
+  <data name="&gt;&gt;tabPageInput.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxLogOrder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="comboBoxLogOrder.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxLogOrder.Items" xml:space="preserve">
+    <value>Alphabetically</value>
+  </data>
+  <data name="comboBoxLogOrder.Items1" xml:space="preserve">
+    <value>By quantity</value>
+  </data>
+  <data name="comboBoxLogOrder.Items2" xml:space="preserve">
+    <value>By mass</value>
+  </data>
+  <data name="comboBoxLogOrder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>229, 86</value>
+  </data>
+  <data name="comboBoxLogOrder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 21</value>
+  </data>
+  <data name="comboBoxLogOrder.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLogOrder.Name" xml:space="preserve">
+    <value>comboBoxLogOrder</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLogOrder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLogOrder.Parent" xml:space="preserve">
+    <value>tabPagePrint</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLogOrder.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 131</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 17</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.Text" xml:space="preserve">
+    <value>for each species</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.Name" xml:space="preserve">
+    <value>checkBoxBreakBetweenSpecies</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxAutoLog.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.Parent" xml:space="preserve">
+    <value>tabPagePrint</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxOrderLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkBoxOrderLog.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxOrderLog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxOrderLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 88</value>
+  </data>
+  <data name="checkBoxOrderLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 17</value>
+  </data>
+  <data name="checkBoxOrderLog.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxOrderLog.Text" xml:space="preserve">
+    <value>Sort log as printed</value>
+  </data>
+  <data name="checkBoxOrderLog.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOrderLog.Name" xml:space="preserve">
+    <value>checkBoxOrderLog</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOrderLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOrderLog.Parent" xml:space="preserve">
+    <value>tabPagePrint</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOrderLog.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxCardOdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkBoxCardOdd.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxCardOdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxCardOdd.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 65</value>
+  </data>
+  <data name="checkBoxCardOdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 17</value>
+  </data>
+  <data name="checkBoxCardOdd.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxCardOdd.Text" xml:space="preserve">
+    <value>Start card with odd page</value>
+  </data>
+  <data name="checkBoxCardOdd.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCardOdd.Name" xml:space="preserve">
+    <value>checkBoxCardOdd</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCardOdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCardOdd.Parent" xml:space="preserve">
+    <value>tabPagePrint</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCardOdd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 111</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 17</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.Text" xml:space="preserve">
+    <value>Start individuals log with new page</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.Name" xml:space="preserve">
+    <value>checkBoxBreakBeforeIndividuals</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.Parent" xml:space="preserve">
+    <value>tabPagePrint</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelPrintCaption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPrintCaption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelPrintCaption.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPrintCaption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 25</value>
+  </data>
+  <data name="labelPrintCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 15</value>
+  </data>
+  <data name="labelPrintCaption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelPrintCaption.Text" xml:space="preserve">
+    <value>Print and Preview Settings</value>
+  </data>
+  <data name="&gt;&gt;labelPrintCaption.Name" xml:space="preserve">
+    <value>labelPrintCaption</value>
+  </data>
+  <data name="&gt;&gt;labelPrintCaption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPrintCaption.Parent" xml:space="preserve">
+    <value>tabPagePrint</value>
+  </data>
+  <data name="&gt;&gt;labelPrintCaption.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabPagePrint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPagePrint.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
   </data>
   <data name="tabPagePrint.Size" type="System.Drawing.Size, System.Drawing">
     <value>452, 381</value>
@@ -597,113 +1419,182 @@
   <data name="tabPagePrint.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="checkBoxFixTotals.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="tabPagePrint.Text" xml:space="preserve">
+    <value>Print Settings</value>
   </data>
-  <data name="buttonClearRecent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="&gt;&gt;tabPagePrint.Name" xml:space="preserve">
+    <value>tabPagePrint</value>
+  </data>
+  <data name="&gt;&gt;tabPagePrint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPagePrint.Parent" xml:space="preserve">
+    <value>tabControlSettings</value>
+  </data>
+  <data name="&gt;&gt;tabPagePrint.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControlSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tabControlSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 407</value>
+  </data>
+  <data name="tabControlSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControlSettings.Name" xml:space="preserve">
+    <value>tabControlSettings</value>
+  </data>
+  <data name="&gt;&gt;tabControlSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControlSettings.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="textBoxWaters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 425</value>
   </data>
-  <data name="buttonBasicSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 426</value>
-  </data>
-  <data name="labelInputFish.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonOpenWaters.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
+  </data>
+  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
+    <value>buttonCancel</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="buttonOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="checkBoxSpeciesExpand.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;tabPageReferences.Parent" xml:space="preserve">
-    <value>tabControlSettings</value>
-  </data>
-  <data name="buttonBrowseWaters.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogOrder.Name" xml:space="preserve">
-    <value>comboBoxLogOrder</value>
-  </data>
-  <data name="labelAddtFctrs.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="buttonBrowseSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;labelSpecies.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 425</value>
   </data>
-  <data name="tabPageFactors.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;labelInputFish.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="textBoxWaters.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpecies.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="labelAddtsVars.Text" xml:space="preserve">
-    <value>Additional Variables</value>
-  </data>
-  <data name="&gt;&gt;labelRecent.Parent" xml:space="preserve">
-    <value>tabPageSpecies</value>
-  </data>
-  <data name="buttonNewVar.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;labelCommonVars.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClearRecent.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelPrintCaption.Parent" xml:space="preserve">
-    <value>tabPagePrint</value>
-  </data>
-  <data name="checkBoxAutoLog.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="buttonOpenSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>332, 90</value>
-  </data>
-  <data name="buttonRemoveVar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tabPageInput.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>15, 15, 15, 15</value>
-  </data>
-  <data name="checkBoxCardOdd.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="labelPrintCaption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="tabPageSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
+    <value>buttonOK</value>
   </data>
-  <data name="buttonRemoveVar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxCardOdd.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
+  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;checkBoxAutoLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 425</value>
   </data>
   <data name="buttonApply.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="checkBoxFixTotals.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonApply.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Name" xml:space="preserve">
+    <value>buttonApply</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <metadata name="tdClearRecent.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="tdbRecentClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="tdClearRecent.MainInstruction" xml:space="preserve">
+    <value>Clear recent species?</value>
+  </data>
+  <data name="buttonBasicSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonBasicSettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonBasicSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 426</value>
+  </data>
+  <data name="buttonBasicSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
+  </data>
+  <data name="buttonBasicSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonBasicSettings.Text" xml:space="preserve">
+    <value>Basic settings...</value>
+  </data>
+  <data name="&gt;&gt;buttonBasicSettings.Name" xml:space="preserve">
+    <value>buttonBasicSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonBasicSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonBasicSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonBasicSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>62</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>484, 461</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2346,940 +3237,49 @@
         AAAAAQAAgAEAAOAHAADgBwAA/n8AAA==
 </value>
   </data>
-  <data name="buttonOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="labelWaters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 133</value>
-  </data>
-  <data name="checkBoxAutoLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 17</value>
-  </data>
-  <data name="buttonBrowseWaters.Text" xml:space="preserve">
-    <value>Browse...</value>
-  </data>
-  <data name="checkBoxAutoIncreaseBio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;labelSpecies.Name" xml:space="preserve">
-    <value>labelSpecies</value>
-  </data>
-  <data name="labelRecent.Text" xml:space="preserve">
-    <value>Recent species list length</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixTotals.Name" xml:space="preserve">
-    <value>checkBoxFixTotals</value>
-  </data>
-  <data name="&gt;&gt;buttonBasicSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonOpenSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="columnHeader2.Text" xml:space="preserve">
-    <value>Variable</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveVar.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="tdbRecentClear.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="labelAddtsVars.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="labelAddtFctrs.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoIncreaseBio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxOrderLog.Text" xml:space="preserve">
-    <value>Sort log as printed</value>
-  </data>
-  <data name="buttonBrowseWaters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="checkBoxCardOdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 17</value>
-  </data>
-  <data name="&gt;&gt;buttonClearRecent.Name" xml:space="preserve">
-    <value>buttonClearRecent</value>
-  </data>
-  <data name="buttonRemoveVar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonAddtFctrsDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 71</value>
-  </data>
-  <data name="&gt;&gt;labelPrintCaption.Name" xml:space="preserve">
-    <value>labelPrintCaption</value>
-  </data>
-  <data name="&gt;&gt;columnHeader2.Name" xml:space="preserve">
-    <value>columnHeader2</value>
-  </data>
-  <data name="checkBoxBreakBeforeIndividuals.Text" xml:space="preserve">
-    <value>Start individuals log with new page</value>
-  </data>
-  <data name="numericUpDownRecentCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 20</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenWaters.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labelInputFish.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxCardOdd.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;checkBoxOrderLog.Name" xml:space="preserve">
-    <value>checkBoxOrderLog</value>
-  </data>
-  <data name="labelAddtFctrs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonAddtFctrsDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonNewVar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 265</value>
-  </data>
-  <data name="labelAddtFctrs.Text" xml:space="preserve">
-    <value>Additional factors</value>
-  </data>
-  <data name="comboBoxLogOrder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="listViewAddtFctr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 217</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelWaters.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;buttonAddtFctrsAdd.Name" xml:space="preserve">
-    <value>buttonAddtFctrsAdd</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 71</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpecies.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPageReferences.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClearRecent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="listViewAddtVars.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="labelPrintCaption.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelAddtsVars.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 25, 3, 25</value>
-  </data>
-  <data name="buttonOpenWaters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonBasicSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="checkBoxFixTotals.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCardOdd.Name" xml:space="preserve">
-    <value>checkBoxCardOdd</value>
-  </data>
-  <data name="&gt;&gt;buttonNewVar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBasicSettings.Name" xml:space="preserve">
-    <value>buttonBasicSettings</value>
-  </data>
-  <data name="tabPageIndividuals.Text" xml:space="preserve">
-    <value>Individuals</value>
-  </data>
-  <data name="comboBoxLogOrder.Items1" xml:space="preserve">
-    <value>By quantity</value>
-  </data>
-  <data name="&gt;&gt;tabPageInput.Name" xml:space="preserve">
-    <value>tabPageInput</value>
-  </data>
-  <data name="buttonBrowseSpecies.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="buttonCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelWaters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;labelRecent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageIndividuals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonBasicSettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tabPageInput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonBasicSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoDecreaseBio.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labelCommonVars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 15</value>
-  </data>
-  <data name="checkBoxAutoIncreaseBio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.Text" xml:space="preserve">
-    <value>Decrease total with individual values being reduced</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoLog.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="listViewAddtVars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 199</value>
-  </data>
-  <data name="checkBoxAutoLog.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
-    <value>buttonOK</value>
-  </data>
-  <data name="tabPageFactors.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelAddtsVars.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelWaters.Text" xml:space="preserve">
-    <value>Waters index</value>
-  </data>
-  <data name="&gt;&gt;labelRef.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenSpecies.Name" xml:space="preserve">
-    <value>buttonOpenSpecies</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="numericUpDownRecentCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 88</value>
-  </data>
-  <data name="&gt;&gt;buttonAddtFctrsAdd.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tdbRecentCancel.Name" xml:space="preserve">
-    <value>tdbRecentCancel</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownRecentCount.Name" xml:space="preserve">
-    <value>numericUpDownRecentCount</value>
-  </data>
-  <data name="buttonApply.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoDecreaseBio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelInputFish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 25</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="labelAddtsVars.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxSpeciesExpand.Text" xml:space="preserve">
-    <value>Automatically expand species index</value>
-  </data>
-  <data name="buttonAddtFctrsAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpecies.Name" xml:space="preserve">
-    <value>tabPageSpecies</value>
-  </data>
-  <data name="&gt;&gt;listViewAddtVars.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPageFactors.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="buttonApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>316, 425</value>
-  </data>
-  <data name="&gt;&gt;labelAddtFctrs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tabPagePrint.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 45, 45</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="labelRef.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 25</value>
-  </data>
-  <data name="&gt;&gt;labelAddtFctrs.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="textBoxSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 20</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixTotals.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpand.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="checkBoxSpeciesExpand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 17</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 17</value>
-  </data>
-  <data name="buttonAddtFctrsDelete.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="labelSpecies.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.Parent" xml:space="preserve">
-    <value>tabPagePrint</value>
-  </data>
-  <data name="&gt;&gt;buttonAddtFctrsAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonNewVar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="tabPageSpecies.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="checkBoxAutoIncreaseBio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 88</value>
-  </data>
-  <data name="labelCommonVars.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelPrintCaption.Text" xml:space="preserve">
-    <value>Print and Preview Settings</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="labelAddtFctrs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 28</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoIncreaseBio.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="labelRef.Text" xml:space="preserve">
-    <value>References</value>
-  </data>
-  <data name="&gt;&gt;tdbRecentClear.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="buttonBasicSettings.Text" xml:space="preserve">
-    <value>Basic settings...</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.Text" xml:space="preserve">
-    <value>Visually confirm and edit new species records</value>
-  </data>
-  <data name="labelAddtsVars.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;tabPageFactors.Name" xml:space="preserve">
-    <value>tabPageFactors</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;labelRef.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBreakBetweenSpecies.Name" xml:space="preserve">
-    <value>checkBoxBreakBetweenSpecies</value>
-  </data>
-  <data name="&gt;&gt;textBoxWaters.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
-  </data>
-  <data name="&gt;&gt;tabPageInput.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelRef.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelWaters.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="buttonNewVar.Text" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="&gt;&gt;buttonBasicSettings.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tdbRecentCancel.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;textBoxSpecies.Name" xml:space="preserve">
-    <value>textBoxSpecies</value>
-  </data>
-  <data name="tabControlSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="labelAddtFctrs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 15</value>
-  </data>
-  <data name="textBoxSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="tabPageFactors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 320</value>
-  </data>
-  <data name="&gt;&gt;tabPageInput.Parent" xml:space="preserve">
-    <value>tabControlSettings</value>
-  </data>
-  <data name="checkBoxFixTotals.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="buttonOpenSpecies.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxOrderLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="labelRecent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonBrowseSpecies.Name" xml:space="preserve">
-    <value>buttonBrowseSpecies</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenSpecies.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tabControlSettings.Name" xml:space="preserve">
-    <value>tabControlSettings</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControlSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonAddtFctrsAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="buttonBrowseSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 90</value>
-  </data>
-  <data name="buttonApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="&gt;&gt;buttonNewVar.Name" xml:space="preserve">
-    <value>buttonNewVar</value>
-  </data>
-  <data name="labelSpecies.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;buttonNewVar.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkBoxAutoLog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelRef.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.Name" xml:space="preserve">
-    <value>checkBoxSpeciesExpandVisualControl</value>
-  </data>
-  <data name="checkBoxFixTotals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 17</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 111</value>
-  </data>
-  <data name="&gt;&gt;buttonNewVar.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="checkBoxAutoIncreaseBio.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="listViewAddtVars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 89</value>
-  </data>
-  <data name="&gt;&gt;tabPageIndividuals.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageIndividuals.Name" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="checkBoxFixTotals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 65</value>
-  </data>
-  <data name="&gt;&gt;buttonAddtFctrsDelete.Name" xml:space="preserve">
-    <value>buttonAddtFctrsDelete</value>
-  </data>
-  <data name="&gt;&gt;checkBoxOrderLog.Parent" xml:space="preserve">
-    <value>tabPagePrint</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.Name" xml:space="preserve">
-    <value>buttonApply</value>
-  </data>
-  <data name="&gt;&gt;labelRef.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
-  </data>
-  <data name="&gt;&gt;labelCommonVars.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="checkBoxCardOdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFixTotals.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="&gt;&gt;columnHeader1.Name" xml:space="preserve">
-    <value>columnHeader1</value>
-  </data>
-  <data name="checkBoxCardOdd.Text" xml:space="preserve">
-    <value>Start card with odd page</value>
-  </data>
-  <data name="checkBoxBreakBeforeIndividuals.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonBrowseWaters.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
-  </data>
-  <data name="&gt;&gt;buttonOpenWaters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelPrintCaption.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonAddtFctrsDelete.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonBrowseSpecies.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
-  </data>
-  <data name="buttonRemoveVar.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="checkBoxBreakBeforeIndividuals.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="labelInputFish.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericUpDownRecentCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="buttonAddtFctrsAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 265</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelSpecies.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="checkBoxCardOdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="labelPrintCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 15</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogOrder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelCommonVars.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonBasicSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
-  </data>
-  <data name="checkBoxCardOdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 65</value>
-  </data>
-  <data name="comboBoxLogOrder.Items" xml:space="preserve">
-    <value>Alphabetically</value>
-  </data>
-  <data name="buttonOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelAddtsVars.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="checkBoxAutoLog.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.Text" xml:space="preserve">
-    <value>for each species</value>
-  </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Apply</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownRecentCount.Parent" xml:space="preserve">
-    <value>tabPageSpecies</value>
-  </data>
-  <data name="&gt;&gt;tdbRecentClear.Name" xml:space="preserve">
-    <value>tdbRecentClear</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.Name" xml:space="preserve">
-    <value>checkBoxBreakBeforeIndividuals</value>
-  </data>
-  <data name="&gt;&gt;labelAddtFctrs.Name" xml:space="preserve">
-    <value>labelAddtFctrs</value>
-  </data>
-  <data name="&gt;&gt;tabPageReferences.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 15</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 500</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="&gt;&gt;labelWaters.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textBoxWaters.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelWaters.Parent" xml:space="preserve">
-    <value>tabPageReferences</value>
-  </data>
-  <data name="&gt;&gt;textBoxWaters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBrowseSpecies.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="checkBoxAutoIncreaseBio.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="checkBoxBreakBeforeIndividuals.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;listViewAddtFctr.Name" xml:space="preserve">
-    <value>listViewAddtFctr</value>
+  <data name="&gt;&gt;columnHeader1.Name" xml:space="preserve">
+    <value>columnHeader1</value>
   </data>
   <data name="&gt;&gt;columnHeader1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxBreakBeforeIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 17</value>
+  <data name="&gt;&gt;columnHeader2.Name" xml:space="preserve">
+    <value>columnHeader2</value>
   </data>
-  <data name="tabControlSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="&gt;&gt;columnHeader2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tdClearRecent.Name" xml:space="preserve">
+    <value>tdClearRecent</value>
   </data>
-  <data name="buttonNewVar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;tdClearRecent.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="textBoxSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 92</value>
+  <data name="&gt;&gt;tdbRecentClear.Name" xml:space="preserve">
+    <value>tdbRecentClear</value>
   </data>
-  <data name="buttonClearRecent.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;tdbRecentClear.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="labelPrintCaption.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;tdbRecentCancel.Name" xml:space="preserve">
+    <value>tdbRecentCancel</value>
   </data>
-  <data name="numericUpDownRecentCount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="&gt;&gt;tdbRecentCancel.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tabPageIndividuals.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="&gt;&gt;checkBoxBreakBeforeIndividuals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxAutoIncreaseBio.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 425</value>
-  </data>
-  <data name="labelSpecies.Text" xml:space="preserve">
-    <value>Species index</value>
-  </data>
-  <data name="buttonAddtFctrsDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoLog.Parent" xml:space="preserve">
-    <value>tabPageSpecies</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoIncreaseBio.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownRecentCount.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabPageReferences.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="checkBoxOrderLog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelAddtsVars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 156</value>
-  </data>
-  <data name="checkBoxSpeciesExpand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 115</value>
-  </data>
-  <data name="&gt;&gt;textBoxWaters.Name" xml:space="preserve">
-    <value>textBoxWaters</value>
-  </data>
-  <data name="comboBoxLogOrder.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tabPagePrint.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelCommonVars.Name" xml:space="preserve">
-    <value>labelCommonVars</value>
-  </data>
-  <data name="checkBoxBreakBeforeIndividuals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelRecent.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;labelRef.Name" xml:space="preserve">
-    <value>labelRef</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCardOdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBrowseSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxOrderLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 17</value>
-  </data>
-  <data name="&gt;&gt;tabPageInput.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogOrder.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonApply.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelAddtsVars.Parent" xml:space="preserve">
-    <value>tabPageIndividuals</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;labelRecent.Name" xml:space="preserve">
-    <value>labelRecent</value>
-  </data>
-  <data name="buttonBrowseWaters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tabPagePrint.Text" xml:space="preserve">
-    <value>Print Settings</value>
-  </data>
-  <data name="buttonAddtFctrsAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="buttonAddtFctrsDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelCommonVars.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="&gt;&gt;listViewAddtVars.Name" xml:space="preserve">
-    <value>listViewAddtVars</value>
-  </data>
-  <data name="&gt;&gt;checkBoxSpeciesExpandVisualControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tabPageSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 320</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoLog.Name" xml:space="preserve">
-    <value>checkBoxAutoLog</value>
-  </data>
-  <data name="&gt;&gt;textBoxSpecies.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tabPageIndividuals.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="checkBoxSpeciesExpand.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="buttonBrowseWaters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 152</value>
-  </data>
-  <data name="checkBoxFixTotals.Text" xml:space="preserve">
-    <value>Calculate species quantity and mass totals with data on individuals</value>
-  </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 500</value>
-  </data>
-  <data name="textBoxWaters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 154</value>
-  </data>
-  <data name="labelRecent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 13</value>
-  </data>
-  <data name="columnHeader2.Width" type="System.Int32, mscorlib">
-    <value>215</value>
-  </data>
-  <data name="&gt;&gt;labelAddtFctrs.Parent" xml:space="preserve">
-    <value>tabPageFactors</value>
-  </data>
-  <data name="&gt;&gt;labelWaters.Name" xml:space="preserve">
-    <value>labelWaters</value>
-  </data>
-  <data name="comboBoxLogOrder.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tabPageSpecies.Text" xml:space="preserve">
-    <value>Species Log</value>
-  </data>
-  <data name="listViewAddtVars.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="comboBoxLogOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 21</value>
-  </data>
-  <data name="buttonBrowseWaters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonBrowseSpecies.Text" xml:space="preserve">
-    <value>Browse...</value>
-  </data>
-  <data name="labelCommonVars.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="comboBoxLogOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 86</value>
-  </data>
-  <data name="listViewAddtFctr.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="labelInputFish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 15</value>
-  </data>
-  <data name="labelRef.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <metadata name="buttonBrowseWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tdClearRecent.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>62</value>
-  </metadata>
-  <metadata name="buttonBrowseSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="buttonOpenWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="buttonOpenSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="textBoxSpecies.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="textBoxWaters.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

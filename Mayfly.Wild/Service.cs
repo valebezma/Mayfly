@@ -1,35 +1,29 @@
 ﻿using Mayfly.Controls;
 using Mayfly.Extensions;
 using Mayfly.Waters;
+using Meta.Numerics;
 using System;
 using System.Collections.Generic;
-using System.Resources;
-using System.Windows.Forms;
 using System.IO;
-using Meta.Numerics;
+using System.Windows.Forms;
+using static Mayfly.UserSettings;
 
 namespace Mayfly.Wild
 {
     public abstract class Service
     {
-        public static bool IsRowEmpty(DataGridViewRow gridRow)
-        {
-            foreach (DataGridViewColumn gridColumn in gridRow.DataGridView.Columns)
-            {
+        public static bool IsRowEmpty(DataGridViewRow gridRow) {
+            foreach (DataGridViewColumn gridColumn in gridRow.DataGridView.Columns) {
                 if (!gridColumn.Visible) continue;
 
-                if (gridColumn.Name == "ColumnSpecies")
-                {
+                if (gridColumn.Name == "ColumnSpecies") {
                     if (gridRow.Cells[gridColumn.Index].Value != null &&
                         gridRow.Cells[gridColumn.Index].Value is string s &&
-                        s != Species.Resources.Interface.UnidentifiedTitle)
-                    {
+                        s != Species.Resources.Interface.UnidentifiedTitle) {
                         return false;
                     }
-                }
-                else if (gridRow.Cells[gridColumn.Index].Value != null &&
-                    gridRow.Cells[gridColumn.Index].Value != System.DBNull.Value)
-                {
+                } else if (gridRow.Cells[gridColumn.Index].Value != null &&
+                      gridRow.Cells[gridColumn.Index].Value != System.DBNull.Value) {
                     return false;
                 }
             }
@@ -37,11 +31,9 @@ namespace Mayfly.Wild
             return true;
         }
 
-        public static string GroupMask(string sourceValue)
-        {
+        public static string GroupMask(string sourceValue) {
             string result = string.Empty;
-            switch (sourceValue)
-            {
+            switch (sourceValue) {
                 case "Wealth":
                 case "Quantity":
                     result = "N0";
@@ -62,12 +54,10 @@ namespace Mayfly.Wild
 
 
 
-        public static string[] GetDiversityIndices()
-        {
+        public static string[] GetDiversityIndices() {
             List<string> result = new List<string>();
 
-            foreach (DiversityIndex type in Enum.GetValues(typeof(DiversityIndex)))
-            {
+            foreach (DiversityIndex type in Enum.GetValues(typeof(DiversityIndex))) {
                 string name = Resources.Interface.Diversity.ResourceManager.GetString(type.ToString());
                 result.Add(string.IsNullOrWhiteSpace(name) ? type.ToString() : name);
             }
@@ -77,8 +67,7 @@ namespace Mayfly.Wild
 
 
 
-        public static Report.Table GetBlankTable(string title, string massCaption, int lines)
-        {
+        public static Report.Table GetBlankTable(string title, string massCaption, int lines) {
             Report.Table table = new Report.Table(title);
 
             table.AddHeader(new string[]{
@@ -86,8 +75,7 @@ namespace Mayfly.Wild
                             Resources.Reports.Caption.QuantityUnit,
                             massCaption }, new double[] { .5 });
 
-            for (int i = 1; i <= lines; i++)
-            {
+            for (int i = 1; i <= lines; i++) {
                 table.StartRow();
                 table.AddCell(i);
                 table.AddCell();
@@ -111,32 +99,26 @@ namespace Mayfly.Wild
         //    AddStratifiedNote(report, string.Format(Wild.Resources.Reports.Data.StratifiedSample, string.Empty), min, max, interval, (l) => { return 0; });
         //}
 
-        public static Report.Table GetStratifiedNote(double min, double max, double interval, int stratesInRow)
-        {
+        public static Report.Table GetStratifiedNote(double min, double max, double interval, int stratesInRow) {
             return GetStratifiedNote(string.Format(Resources.Reports.Header.StratifiedSample, string.Empty), min, max, interval, (l) => { return ""; }, stratesInRow);
         }
 
-        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, int> getQ)
-        {
+        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, int> getQ) {
             return GetStratifiedNote(title, min, max, interval, getQ, 10);
         }
 
-        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, object> getQ)
-        {
+        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, object> getQ) {
             return GetStratifiedNote(title, min, max, interval, getQ, 10);
         }
 
-        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, int> getQ, int stratesInRow)
-        {
-            return GetStratifiedNote(title, min, max, interval, (l) =>
-            {
+        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, int> getQ, int stratesInRow) {
+            return GetStratifiedNote(title, min, max, interval, (l) => {
                 int q = getQ == null ? 0 : getQ.Invoke(l);
                 return q == 0 ? string.Empty : q.ToStratifiedDots();
             }, stratesInRow);
         }
 
-        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, object> getQ, int stratesInRow)
-        {
+        public static Report.Table GetStratifiedNote(string title, double min, double max, double interval, Func<double, object> getQ, int stratesInRow) {
             if (max <= min) return null;
 
             Report.Table table = new Report.Table(title);
@@ -147,16 +129,14 @@ namespace Mayfly.Wild
             table.AddCell();
             string subline = string.Empty;
 
-            for (double l = Mathematics.Service.GetStrate(min, interval).LeftEndpoint; l <= max; l += interval)
-            {
+            for (double l = Mathematics.Service.GetStrate(min, interval).LeftEndpoint; l <= max; l += interval) {
                 strate = Interval.FromEndpointAndWidth(l, interval);
                 table.WriteLine("<td class='strate value' colspan='2'>{0}</td>", getQ.Invoke(l));
                 subline += string.Format("<td class='strate' colspan='2'>{0}</td>", strate.LeftEndpoint);
 
                 lineLimiter++;
 
-                if (lineLimiter == stratesInRow)
-                {
+                if (lineLimiter == stratesInRow) {
                     table.AddCell();
                     table.EndRow();
 
@@ -169,8 +149,7 @@ namespace Mayfly.Wild
                     subline = string.Empty;
                     lineLimiter = 0;
 
-                    if (strate.RightEndpoint <= max)
-                    {
+                    if (strate.RightEndpoint <= max) {
                         table.StartRow();
                         table.AddCell();
                     }
@@ -181,8 +160,7 @@ namespace Mayfly.Wild
             {
                 strate = Interval.FromEndpointAndWidth(strate.RightEndpoint, interval);
 
-                while (lineLimiter < stratesInRow)
-                {
+                while (lineLimiter < stratesInRow) {
                     table.WriteLine("<td class='strate value' colspan='2'></td>");
                     subline += string.Format("<td class='strate' colspan='2'>{0}</td>", strate.LeftEndpoint);
 
@@ -203,8 +181,7 @@ namespace Mayfly.Wild
         }
 
 
-        public static void AssignAsFactors(List<DataGridViewColumn> factorColumns, bool ignoreZeros)
-        {
+        public static void AssignAsFactors(List<DataGridViewColumn> factorColumns, bool ignoreZeros) {
             SpreadSheet sheet = (SpreadSheet)factorColumns[0].DataGridView;
 
             SelectionValue selectionValue = new SelectionValue(factorColumns);
@@ -215,8 +192,7 @@ namespace Mayfly.Wild
             string columnName = string.Empty;
             string format = factorColumns[0].GetDoubles().MeanFormat();
 
-            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns)
-            {
+            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns) {
                 columnName += gridColumn.HeaderText + " × ";
                 if (new OmniSorter().Compare(gridColumn.GetDoubles().MeanFormat(), format) > 0)
                     format = gridColumn.GetDoubles().MeanFormat();
@@ -227,12 +203,10 @@ namespace Mayfly.Wild
             DataGridViewColumn assignedColumn = sheet.InsertColumn(columnName, columnName,
                 typeof(string), selectionValue.Picker.SelectedColumns[0].Index);
 
-            foreach (DataGridViewRow gridRow in sheet.Rows)
-            {
+            foreach (DataGridViewRow gridRow in sheet.Rows) {
                 string variant = string.Empty;
 
-                foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns)
-                {
+                foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns) {
                     double value = (double)gridRow.Cells[gridColumn.Index].Value;
 
                     variant += value == 0 && ignoreZeros ? string.Empty :
@@ -247,8 +221,7 @@ namespace Mayfly.Wild
             }
         }
 
-        public static void HandleAgeInput(DataGridViewCell cell)
-        {
+        public static void HandleAgeInput(DataGridViewCell cell) {
             if (cell.DataGridView == null) return;
             HandleAgeInput(cell,
                 cell.OwningColumn.DefaultCellStyle.Padding.All != 0 ?
@@ -257,22 +230,17 @@ namespace Mayfly.Wild
 
         delegate void AgeHandler(DataGridViewCell cell, DataGridViewCellStyle basicStyle);
 
-        public static void HandleAgeInput(DataGridViewCell cell, DataGridViewCellStyle basicStyle)
-        {
-            if (cell.DataGridView != null && cell.DataGridView.InvokeRequired)
-            {
+        public static void HandleAgeInput(DataGridViewCell cell, DataGridViewCellStyle basicStyle) {
+            if (cell.DataGridView != null && cell.DataGridView.InvokeRequired) {
                 AgeHandler ageHandler = new AgeHandler(HandleAgeInput);
                 cell.DataGridView.Invoke(ageHandler, new object[] { cell, basicStyle });
-            }
-            else
-            {
+            } else {
                 Padding example = basicStyle.Padding;
                 Padding pads = new Padding(example.Left, example.Top, example.Right, example.Bottom);
 
                 string formatted = cell.Value == null ? cell.Style.NullValue.ToString() : ((Age)cell.Value).ToString(basicStyle.Format);
 
-                if (formatted.Contains("+"))
-                {
+                if (formatted.Contains("+")) {
                     pads.Right -= 6;
                 }
 
@@ -283,10 +251,8 @@ namespace Mayfly.Wild
 
 
 
-        public static string[] CrossSection(WaterType waterType)
-        {
-            switch (waterType)
-            {
+        public static string[] CrossSection(WaterType waterType) {
+            switch (waterType) {
                 case WaterType.Stream: return Resources.Interface.Section.Stream.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 case WaterType.Lake: return Resources.Interface.Section.Tank.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 case WaterType.Tank: return Resources.Interface.Section.Tank.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
@@ -294,24 +260,20 @@ namespace Mayfly.Wild
             return new string[0];
         }
 
-        public static string CrossSection(WaterType waterType, int Value)
-        {
+        public static string CrossSection(WaterType waterType, int Value) {
             return CrossSection(waterType)[Value];
         }
 
-        public static string Bank(int bankValue)
-        {
+        public static string Bank(int bankValue) {
             return Resources.Interface.Section.Bank.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)[bankValue];
         }
 
 
 
-        public static string CloudageName(int okts)
-        {
+        public static string CloudageName(int okts) {
             string result = string.Empty;
 
-            switch (okts)
-            {
+            switch (okts) {
                 case 0:
                     result = Resources.Interface.Clouds.SKC;
                     break;
@@ -336,10 +298,8 @@ namespace Mayfly.Wild
             return string.Format("{0} / 8: {1} ", okts, result);
         }
 
-        public static string WaterColorName(int value)
-        {
-            switch (value)
-            {
+        public static string WaterColorName(int value) {
+            switch (value) {
                 case 0: return Resources.Interface.WaterColor.NoColor;
                 case 1: return Resources.Interface.WaterColor.Blue;
                 case 2: return Resources.Interface.WaterColor.Gray;
@@ -355,67 +315,25 @@ namespace Mayfly.Wild
 
 
 
-        /// <param name="w">Mass in gramms</param>
-        public static string GetFriendlyMass(double w)
-        {
-            if (double.IsNaN(w)) return Constants.Null;
-
-            if (w < 0) // Less than 0
-            {
-                return Constants.Null;
-            }
-            else if (w < 1.25) // Less than 1.25 g
-            {
-                return string.Format(Resources.Interface.FriendlyUnits.mg, w * 1000);
-            }
-            else if (w < 1250) // Less than 1.25 kg
-            {
-                return string.Format(Resources.Interface.FriendlyUnits.g, w);
-            }
-            else if (w < 1250000) // Between 1.25 kg and 1250kg
-            {
-                return string.Format(Resources.Interface.FriendlyUnits.g1000, w / 1000);
-            }
-            else if (w < 1250000000) // Between 1.25 t and 1250 t
-            {
-                return string.Format(Resources.Interface.FriendlyUnits.g1000000, w / 1000000);
-            }
-            else // 1.25 thousands of tonnes and more
-            {
-                return string.Format(Resources.Interface.FriendlyUnits.g1000000000, w / 1000000000);
-            }
-        }
-
         /// <param name="q">Quantity in individuals</param>
-        public static string GetFriendlyQuantity(int q)
-        {
-            if (q < 0)
-            {
+        public static string GetFriendlyQuantity(int q) {
+            if (q < 0) {
                 return Constants.Null;
-            }
-            else if (q < 1250)
-            {
+            } else if (q < 1250) {
                 return string.Format(Resources.Interface.FriendlyUnits.ind, q);
-            }
-            else if (q < 1250000)
-            {
+            } else if (q < 1250000) {
                 return string.Format(Resources.Interface.FriendlyUnits.ind1000, (double)q / 1000);
-            }
-            else
-            {
+            } else {
                 return string.Format(Resources.Interface.FriendlyUnits.ind1000000, (double)q / 1000000);
             }
         }
 
 
 
-        public static void HandleFrequency(DataGridView grid, DataGridViewCellEventArgs e)
-        {
-            if (grid[e.ColumnIndex, e.RowIndex].Value is int)
-            {
+        public static void HandleFrequency(DataGridView grid, DataGridViewCellEventArgs e) {
+            if (grid[e.ColumnIndex, e.RowIndex].Value is int) {
                 int value = (int)grid[e.ColumnIndex, e.RowIndex].Value;
-                if (value < 2)
-                {
+                if (value < 2) {
                     grid[e.ColumnIndex, e.RowIndex].Value = null;
                     System.Media.SystemSounds.Beep.Play();
                 }
@@ -424,8 +342,7 @@ namespace Mayfly.Wild
 
 
 
-        public static string GetTaxonomicIndexPath(string groupName)
-        {
+        public static string GetTaxonomicIndexPath(string groupName) {
             return IO.GetIndexPath(
                 Species.UserSettings.Interface.OpenDialog,
                 groupName + " (auto).txn",
@@ -435,9 +352,9 @@ namespace Mayfly.Wild
 
         public static void SaveEquipment() {
 
-            ReaderSettings.Equipment.SetAttributable();
-            string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", ReaderSettings.Feature.ToLowerInvariant()));
-            ReaderSettings.Equipment.WriteToFile(path);
+            SettingsReader.Equipment.SetAttributable();
+            string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", Feature.ToLowerInvariant()));
+            SettingsReader.Equipment.WriteToFile(path);
         }
     }
 }

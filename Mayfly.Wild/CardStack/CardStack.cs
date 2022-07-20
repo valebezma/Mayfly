@@ -364,10 +364,11 @@ namespace Mayfly.Wild
                 foreach (Survey.DefinitionRow spcRow in Parent.Definition) {
                     TaxonomicIndex.TaxonRow currentRecord = spcRow.KeyRecord;
 
-                    if (currentRecord == null) {
-                        TaxonomicIndex.TaxonRow newSpcRow = ReaderSettings.TaxonomicIndex.Taxon.NewTaxonRow(spcRow.Rank, spcRow.Taxon);
-                        currentRecord = newSpcRow;
-                    }
+                    //if (currentRecord.RowState == System.Data.DataRowState.Detached) {
+                    //    //TaxonomicIndex.TaxonRow newSpcRow = ReaderSettings.TaxonomicIndex.Taxon.NewTaxonRow(spcRow.Rank, spcRow.Taxon);
+                    //    //currentRecord = newSpcRow;
+                    //    ReaderSettings.TaxonomicIndex.Taxon.AddTaxonRow(currentRecord);
+                    //}
 
                     if (minimalSample > 0 && Quantity(currentRecord) < minimalSample) continue;
 

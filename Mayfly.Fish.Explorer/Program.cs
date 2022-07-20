@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
-            Wild.ExplorerSettings.SetFeature("Fish", ".fcd");
+            Wild.SettingsExplorer.SetFeature("Fish", ".fcd");
             Log.WriteAppStarted();
 
             if (args.Length == 0)

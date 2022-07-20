@@ -12,7 +12,7 @@ using System.IO;
 using System.Text;
 using Mayfly.Wild;
 using Mayfly.Species;
-using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Wild.SettingsReader;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -670,7 +670,7 @@ namespace Mayfly.Benthos.Explorer
             if (openNatural.ShowDialog(this) == DialogResult.OK)
             {
                 CardsToLoad.AddRange(IO.MaskedNames(openNatural.FileNames,
-                    new string[] { ReaderSettings.Interface.Extension, Wild.UserSettings.InterfaceBio.Extension }));
+                    new string[] { SettingsReader.Interface.Extension, Wild.UserSettings.InterfaceBio.Extension }));
                 LoadCards();
             }
         }

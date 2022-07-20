@@ -127,7 +127,7 @@ namespace Mayfly.Fish
 
         public static string ToDisplay(this FishSamplerType type) {
             if (type == FishSamplerType.None) return string.Empty;
-            return ReaderSettings.SamplersIndex.SamplerType.FindByID((int)type).Name.GetLocalizedValue();
+            return SettingsReader.SamplersIndex.SamplerType.FindByID((int)type).Name.GetLocalizedValue();
         }
     }
 

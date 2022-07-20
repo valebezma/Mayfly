@@ -18,12 +18,12 @@ namespace Mayfly.Fish
 
         public static Survey.SamplerRow Sampler(int samplerID)
         {
-            return ReaderSettings.SamplersIndex.Sampler.FindByID(samplerID);
+            return SettingsReader.SamplersIndex.Sampler.FindByID(samplerID);
         }
 
         public static double DefaultOpening()
         {
-            object result = GetValue(ReaderSettings.FeatureKey, nameof(Opening), 600);
+            object result = GetValue(SettingsReader.FeatureKey, nameof(Opening), 600);
 
             if (result == null)
             {
@@ -37,7 +37,7 @@ namespace Mayfly.Fish
 
         public static double DefaultOpening(int samplerID)
         {
-            object result = GetValue(ReaderSettings.FeatureKey, nameof(Opening), Sampler(samplerID).ShortName, 600);
+            object result = GetValue(SettingsReader.FeatureKey, nameof(Opening), Sampler(samplerID).ShortName, 600);
 
             if (result == null)
             {
@@ -51,7 +51,7 @@ namespace Mayfly.Fish
 
         public static void SaveOpening(int samplerID, double value)
         {
-            SetValue(ReaderSettings.FeatureKey, nameof(Opening), Sampler(samplerID).ShortName, 
+            SetValue(SettingsReader.FeatureKey, nameof(Opening), Sampler(samplerID).ShortName, 
                 (int)(value * 100));
         }
 

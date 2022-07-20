@@ -25,9 +25,9 @@ namespace Mayfly.Plankton.Explorer
 
         private void LoadSettings()
         {
-            checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
+            checkBoxBioAutoLoad.Checked = SettingsReader.AutoLoadBio;
 
-            foreach (string bio in UserSettings.Bios)
+            foreach (string bio in SettingsReader.Bios)
             {
                 ListViewItem li = listViewBio.CreateItem(bio,
                     Path.GetFileNameWithoutExtension(bio));

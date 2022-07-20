@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="g" xml:space="preserve">
-    <value>{0:N0} г</value>
-  </data>
-  <data name="g1000" xml:space="preserve">
-    <value>{0:N1} кг</value>
-  </data>
-  <data name="g1000000" xml:space="preserve">
-    <value>{0:N1} т</value>
-  </data>
-  <data name="g1000000000" xml:space="preserve">
-    <value>{0:N1} тыс. т</value>
-  </data>
   <data name="ind" xml:space="preserve">
     <value>{0:N0} экз.</value>
   </data>
@@ -137,8 +125,5 @@
   </data>
   <data name="ind1000000" xml:space="preserve">
     <value>{0:N1} млн экз.</value>
-  </data>
-  <data name="mg" xml:space="preserve">
-    <value>{0:N0} мг</value>
   </data>
 </root>

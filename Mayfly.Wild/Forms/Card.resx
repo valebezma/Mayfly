@@ -408,32 +408,32 @@
   <data name="spreadSheetLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <metadata name="ColumnID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="ColumnID.HeaderText" xml:space="preserve">
     <value>ID</value>
   </data>
   <data name="ColumnID.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <metadata name="ColumnSpecies.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnSpecies.HeaderText" xml:space="preserve">
+  <data name="ColumnDefinition.HeaderText" xml:space="preserve">
     <value>Definition</value>
   </data>
-  <metadata name="ColumnQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnQuantity.HeaderText" xml:space="preserve">
+  <data name="ColumnQtyExam.HeaderText" xml:space="preserve">
+    <value>Qty examined, ind.</value>
+  </data>
+  <data name="ColumnQtyExam.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ColumnQty.HeaderText" xml:space="preserve">
     <value>Quantity, ind.</value>
   </data>
-  <metadata name="ColumnMass.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="ColumnMassExam.HeaderText" xml:space="preserve">
+    <value>Mass examined, g</value>
+  </data>
+  <data name="ColumnMassExam.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="ColumnMass.HeaderText" xml:space="preserve">
-    <value>Mass, mg</value>
+    <value>Mass, g</value>
   </data>
   <data name="spreadSheetLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 48</value>
@@ -1207,7 +1207,7 @@
     <value>170, 19</value>
   </data>
   <data name="StatusCount.Text" xml:space="preserve">
-    <value>Total quantity: {0:N0} ind.</value>
+    <value>Total quantity: 0 ind.</value>
   </data>
   <data name="StatusCount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -1219,7 +1219,7 @@
     <value>170, 19</value>
   </data>
   <data name="StatusMass.Text" xml:space="preserve">
-    <value>Total mass: {0:N2} mg</value>
+    <value>Total mass: 0,00 g</value>
   </data>
   <data name="StatusMass.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -1280,6 +1280,9 @@
   </data>
   <data name="&gt;&gt;contextEquipment.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Mass, g</value>
   </data>
   <metadata name="Logger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>524, 17</value>
@@ -1458,16 +1461,28 @@
   <data name="&gt;&gt;ColumnID.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnSpecies.Name" xml:space="preserve">
-    <value>ColumnSpecies</value>
+  <data name="&gt;&gt;ColumnDefinition.Name" xml:space="preserve">
+    <value>ColumnDefinition</value>
   </data>
-  <data name="&gt;&gt;ColumnSpecies.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnDefinition.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnQuantity.Name" xml:space="preserve">
-    <value>ColumnQuantity</value>
+  <data name="&gt;&gt;ColumnQtyExam.Name" xml:space="preserve">
+    <value>ColumnQtyExam</value>
   </data>
-  <data name="&gt;&gt;ColumnQuantity.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnQtyExam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnQty.Name" xml:space="preserve">
+    <value>ColumnQty</value>
+  </data>
+  <data name="&gt;&gt;ColumnQty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnMassExam.Name" xml:space="preserve">
+    <value>ColumnMassExam</value>
+  </data>
+  <data name="&gt;&gt;ColumnMassExam.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColumnMass.Name" xml:space="preserve">
@@ -1535,6 +1550,12 @@
   </data>
   <data name="&gt;&gt;statusCard.Type" xml:space="preserve">
     <value>Mayfly.Controls.Status, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Logger.Name" xml:space="preserve">
     <value>Logger</value>

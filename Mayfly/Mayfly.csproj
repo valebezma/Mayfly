@@ -267,6 +267,12 @@
     <Compile Include="Controls\ProcessLook.Designer.cs">
       <DependentUpon>ProcessLook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SettingControlUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingControlUser.Designer.cs">
+      <DependentUpon>SettingControlUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\NumberExtensions.cs" />
     <Compile Include="Geographics\Controls\WaypointControl.cs">
@@ -337,6 +343,7 @@
     <Compile Include="Controls\SpreadSheetCalendarColumn.cs" />
     <Compile Include="Controls\SpreadSheetIconTextBoxColumn.cs" />
     <Compile Include="Controls\Taskbar.cs" />
+    <Compile Include="ISettingControl.cs" />
     <Compile Include="Pictogram.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -398,12 +405,6 @@
     </Compile>
     <Compile Include="Service\Hardware.cs" />
     <Compile Include="Service\License.cs" />
-    <Compile Include="Software\Settings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Software\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Software\ShellLink.cs" />
     <Compile Include="UserSettings.cs" />
     <Compile Include="Service\Constants.cs" />
@@ -557,6 +558,9 @@
     <EmbeddedResource Include="Controls\ProcessLook.resx">
       <DependentUpon>ProcessLook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingControlUser.resx">
+      <DependentUpon>SettingControlUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\SpreadSheet.resx">
       <DependentUpon>SpreadSheet.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -661,14 +665,6 @@
     <EmbeddedResource Include="Resources\TaskDialogs.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TaskDialogs.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Software\Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Software\Settings.ru.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\TaskDialogs\ExtendedForm.resx">
       <DependentUpon>ExtendedForm.cs</DependentUpon>

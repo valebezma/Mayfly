@@ -1,4 +1,5 @@
 ﻿using Mayfly.Wild;
+using System;
 
 namespace Mayfly.Plankton
 {
@@ -9,7 +10,7 @@ namespace Mayfly.Plankton
         }
 
         public static double GetDiameter(this Survey.EquipmentRow eqpRow) {
-            return eqpRow.GetVirtue("Diameter");
+            return eqpRow.GetVirtue("Diameter") * .001; // Converting mm to m
         }
 
         public static double GetTakenVolume(this Survey.EquipmentRow eqpRow, int replications) {
@@ -23,16 +24,18 @@ namespace Mayfly.Plankton
 
             if (double.IsNaN(e)) return double.NaN;
 
-            double w = eqpRow.GetDiameter();
-
-            return w * e;
+            double d = eqpRow.GetDiameter();
+            double s = Math.PI * d * d * .5;
+            return s * e * 1000;
         }
 
         public static double GetVolume(this Survey.CardRow cardRow) {
 
-            if (cardRow.IsEqpIDNull()) return double.NaN;
+            if (cardRow.IsEffortNull()) return double.NaN;
 
             if (cardRow.Effort < 0) return -cardRow.Effort;
+
+            if (cardRow.IsEqpIDNull()) return double.NaN;
 
             switch (cardRow.SamplerRow.GetSamplerType()) {
 

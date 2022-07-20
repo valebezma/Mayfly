@@ -26,10 +26,10 @@ namespace Mayfly.Software
             label1.ResetFormatted(EntryAssemblyInfo.Title);
         }
 
-        public About(Image logo) 
+        public About(Image banner) 
             : this()
         {
-            pictureLogo.Image = logo;
+            pictureLogo.Image = banner;
 
             try
             {
