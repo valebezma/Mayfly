@@ -3,17 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static Mayfly.Wild.SettingsReader;
-using System;
+using Mayfly.Controls;
 
 namespace Mayfly.Wild.Controls
 {
-    public partial class SettingsControlVariables : UserControl, ISettingControl
+    public partial class SettingsControlVariables : SettingsControl, ISettingsControl
     {
         public SettingsControlVariables() {
 
             InitializeComponent();
             listView.Shine();
         }
+
+
 
         public void LoadSettings() {
 
@@ -35,6 +37,8 @@ namespace Mayfly.Wild.Controls
                 addvars.Add(item.Text);
             AddtVariables = addvars.ToArray();
         }
+
+
 
         private void buttonRemoveVar_Click(object sender, EventArgs e) {
             foreach (ListViewItem li in listView.SelectedItems) {

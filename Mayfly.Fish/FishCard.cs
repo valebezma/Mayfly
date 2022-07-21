@@ -774,7 +774,7 @@ namespace Mayfly.Fish
 
         private void logger_IndividualsRequired(object sender, EventArgs e) {
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
-                if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
+                if (gridRow.Cells[ColumnDefinition.Name].Value != null) {
 
                     Wild.Survey.LogRow logRow = Logger.SaveLogRow(gridRow);
                     Individuals individuals = null;

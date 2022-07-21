@@ -19,7 +19,7 @@ namespace Mayfly.Fish.Explorer
 {
     partial class MainForm
     {
-        public Wild.Survey data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
+        public Survey data = new Survey();
 
         public CardStack FullStack { get; private set; }
 
@@ -130,7 +130,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                UserSettings.Interface.SaveDialog.FileName = FullStack.FriendlyName;
+                SettingsReader.Interface.SaveDialog.FileName = FullStack.FriendlyName;
                 this.ResetText(FullStack.FriendlyName, EntryAssemblyInfo.Title);
 
                 Log.Write("{0} cards are under consideration (common path: {1}).",
@@ -178,7 +178,7 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 listViewSamplers.Items.Clear();
-                foreach (Samplers.SamplerRow samplerRow in FullStack.GetSamplers())
+                foreach (Survey.SamplerRow samplerRow in FullStack.GetSamplers())
                 {
                     listViewSamplers.CreateItem(samplerRow.ID.ToString(), samplerRow.Sampler);
                 }
@@ -188,7 +188,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     mono = false;
                     menuItemCardGear.DropDownItems.Clear();
-                    foreach (Samplers.SamplerRow samplerRow in FullStack.GetSamplers())
+                    foreach (Survey.SamplerRow samplerRow in FullStack.GetSamplers())
                     {
                         var menuItem = new ToolStripMenuItem(samplerRow.Sampler);
                         menuItem.Click += (sender, e) =>
@@ -797,7 +797,7 @@ namespace Mayfly.Fish.Explorer
             // Clear list
             menuItemSpcTaxon.DropDownItems.Clear();
 
-            if (Fish.UserSettings.SpeciesIndex == null) return;
+            if (SettingsReader.TaxonomicIndex == null) return;
 
             // Fill list
             foreach (TaxonomicRank rank in TaxonomicRank.MajorRanks)
@@ -850,14 +850,14 @@ namespace Mayfly.Fish.Explorer
 
         private TaxonomicIndex.TaxonRow findSpeciesRow(DataGridViewRow gridRow)
         {
-            return rank == null ? Fish.UserSettings.SpeciesIndex.Taxon.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
+            return rank == null ? SettingsReader.TaxonomicIndex.Taxon.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
         }
 
         private void updateSpeciesArtifacts(DataGridViewRow gridRow)
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.CheckConsistency) return;
+            if (!SettingsExplorer.CheckConsistency) return;
 
             SpeciesConsistencyChecker artifact = findSpeciesRow(gridRow).CheckConsistency(FullStack);
 
@@ -991,7 +991,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.CheckConsistency) return;
+            if (!SettingsExplorer.CheckConsistency) return;
 
             CardConsistencyChecker artifact = findCardRow(gridRow).CheckConsistency();
 
@@ -1303,7 +1303,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.CheckConsistency) return;
+            if (!SettingsExplorer.CheckConsistency) return;
 
             LogConsistencyChecker artifact = findLogRow(gridRow).CheckConsistency();
 
@@ -1335,7 +1335,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (rank != null) return;
 
-            if (!UserSettings.CheckConsistency) return;
+            if (!SettingsExplorer.CheckConsistency) return;
 
             Wild.Survey.LogRow logRow = findLogRow(gridRow);
 
@@ -1604,7 +1604,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.CheckConsistency) return;
+            if (!SettingsExplorer.CheckConsistency) return;
 
             IndividualConsistencyChecker artifact = findIndividualRow(gridRow).CheckConsistency();
 

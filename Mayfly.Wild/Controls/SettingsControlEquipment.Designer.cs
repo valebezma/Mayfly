@@ -25,8 +25,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonClear = new System.Windows.Forms.Button();
             this.spreadSheetGears = new Mayfly.Controls.SpreadSheet();
             this.columnSampler = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -40,7 +40,7 @@
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClear.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonClear.Location = new System.Drawing.Point(297, 449);
+            this.buttonClear.Location = new System.Drawing.Point(302, 474);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 1;
@@ -62,20 +62,20 @@
             this.columnMesh,
             this.columnLength,
             this.columnHeight});
-            this.spreadSheetGears.Location = new System.Drawing.Point(28, 28);
+            this.spreadSheetGears.Location = new System.Drawing.Point(28, 3);
             this.spreadSheetGears.Name = "spreadSheetGears";
             this.spreadSheetGears.RowHeadersWidth = 35;
             this.spreadSheetGears.RowTemplate.Height = 24;
             this.spreadSheetGears.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.spreadSheetGears.Size = new System.Drawing.Size(344, 415);
+            this.spreadSheetGears.Size = new System.Drawing.Size(349, 465);
             this.spreadSheetGears.StatusFormat = null;
             this.spreadSheetGears.TabIndex = 0;
             // 
             // columnSampler
             // 
             this.columnSampler.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSampler.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnSampler.DefaultCellStyle = dataGridViewCellStyle1;
             this.columnSampler.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.columnSampler.HeaderText = "Sampler";
             this.columnSampler.Name = "columnSampler";
@@ -84,8 +84,8 @@
             // 
             // columnMesh
             // 
-            dataGridViewCellStyle6.Format = "N0";
-            this.columnMesh.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "N0";
+            this.columnMesh.DefaultCellStyle = dataGridViewCellStyle2;
             this.columnMesh.HeaderText = "Mesh";
             this.columnMesh.Name = "columnMesh";
             this.columnMesh.Width = 50;
@@ -108,8 +108,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.spreadSheetGears);
+            this.Group = "Reader";
             this.Name = "SettingsControlEquipment";
-            this.Padding = new System.Windows.Forms.Padding(25);
+            this.Section = "Equipment";
             this.Size = new System.Drawing.Size(400, 500);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetGears)).EndInit();
             this.ResumeLayout(false);

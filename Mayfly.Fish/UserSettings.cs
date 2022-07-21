@@ -12,7 +12,7 @@ namespace Mayfly.Fish
     {
         public static string ParasitesIndexPath {
             get {
-                string filepath = IO.GetPath(GetValue(SettingsReader.FeatureKey, nameof(ParasitesIndexPath), string.Empty));
+                string filepath = IO.GetPath(GetValue(FeatureKey, nameof(ParasitesIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
                     ParasitesIndexPath = Wild.Service.GetTaxonomicIndexPath("Fish Parasites");
@@ -22,7 +22,7 @@ namespace Mayfly.Fish
                 }
             }
             set {
-                SetValue(SettingsReader.FeatureKey, nameof(ParasitesIndexPath), value);
+                SetValue(FeatureKey, nameof(ParasitesIndexPath), value);
             }
         }
 
@@ -46,7 +46,7 @@ namespace Mayfly.Fish
 
         public static string DietIndexPath {
             get {
-                string filepath = IO.GetPath(GetValue(SettingsReader.FeatureKey, nameof(DietIndexPath), string.Empty));
+                string filepath = IO.GetPath(GetValue(FeatureKey, nameof(DietIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
                     DietIndexPath = Wild.Service.GetTaxonomicIndexPath("Fish Diet");
@@ -57,7 +57,7 @@ namespace Mayfly.Fish
             }
 
             set {
-                SetValue(SettingsReader.FeatureKey, nameof(DietIndexPath), value);
+                SetValue(FeatureKey, nameof(DietIndexPath), value);
             }
         }
 
@@ -80,30 +80,30 @@ namespace Mayfly.Fish
 
 
         public static double DefaultOpening {
-            get { return (double)(int)GetValue(SettingsReader.FeatureKey, nameof(DefaultOpening), 60) / 100; }
-            set { SetValue(SettingsReader.FeatureKey, nameof(DefaultOpening), (int)(value * 100)); }
+            get { return (double)(int)GetValue(FeatureKey, nameof(DefaultOpening), 60) / 100; }
+            set { SetValue(FeatureKey, nameof(DefaultOpening), (int)(value * 100)); }
         }
 
         public static double GillnetStdLength {
-            get { return (double)((int)GetValue(SettingsReader.FeatureKey, nameof(GillnetStdLength), 3750)) / 100; }
-            set { SetValue(SettingsReader.FeatureKey, nameof(GillnetStdLength), (int)(value * 100)); }
+            get { return (double)((int)GetValue(FeatureKey, nameof(GillnetStdLength), 3750)) / 100; }
+            set { SetValue(FeatureKey, nameof(GillnetStdLength), (int)(value * 100)); }
         }
 
         public static double GillnetStdHeight {
-            get { return (double)((int)GetValue(SettingsReader.FeatureKey, nameof(GillnetStdHeight), 200)) / 100; }
-            set { SetValue(SettingsReader.FeatureKey, nameof(GillnetStdHeight), (int)(value * 100)); }
+            get { return (double)((int)GetValue(FeatureKey, nameof(GillnetStdHeight), 200)) / 100; }
+            set { SetValue(FeatureKey, nameof(GillnetStdHeight), (int)(value * 100)); }
         }
 
         public static int GillnetStdExposure {
-            get { return (int)GetValue(SettingsReader.FeatureKey, nameof(GillnetStdExposure), 24); }
-            set { SetValue(SettingsReader.FeatureKey, nameof(GillnetStdExposure), value); }
+            get { return (int)GetValue(FeatureKey, nameof(GillnetStdExposure), 24); }
+            set { SetValue(FeatureKey, nameof(GillnetStdExposure), value); }
         }
 
 
 
         public static double DefaultStratifiedInterval {
-            get { return (double)((int)GetValue(SettingsReader.FeatureKey, nameof(DefaultStratifiedInterval), 1000)) / 100; }
-            set { SetValue(SettingsReader.FeatureKey, nameof(DefaultStratifiedInterval), (int)(value * 100)); }
+            get { return (double)((int)GetValue(FeatureKey, nameof(DefaultStratifiedInterval), 1000)) / 100; }
+            set { SetValue(FeatureKey, nameof(DefaultStratifiedInterval), (int)(value * 100)); }
         }
     }
 }

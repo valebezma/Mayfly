@@ -35,7 +35,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> warnings = new List<string>();
 
-            if (UserSettings.CheckConsistency)
+            if (SettingsExplorer.CheckConsistency)
             {
                 if (speciesRow == null)
                 {
@@ -47,9 +47,9 @@ namespace Mayfly.Fish.Explorer
                         {
                             if (diagnostic is CardConsistencyChecker ccc)
                             {
-                                ccc.Filterate(UserSettings.ReportCriticality);
+                                ccc.Filterate(SettingsExplorer.ReportCriticality);
 
-                                if (ccc.ArtifactsCount > 0 && ccc.WorstCriticality >= UserSettings.ReportCriticality)
+                                if (ccc.ArtifactsCount > 0 && ccc.WorstCriticality >= SettingsExplorer.ReportCriticality)
                                 {
                                     warnings.Add(diagnostic.ToString());
                                 }
@@ -57,9 +57,9 @@ namespace Mayfly.Fish.Explorer
 
                             if (diagnostic is SpeciesConsistencyChecker scc)
                             {
-                                scc.Filterate(UserSettings.ReportCriticality);
+                                scc.Filterate(SettingsExplorer.ReportCriticality);
 
-                                if (scc.ArtifactsCount > 0 && scc.WorstCriticality >= UserSettings.ReportCriticality)
+                                if (scc.ArtifactsCount > 0 && scc.WorstCriticality >= SettingsExplorer.ReportCriticality)
                                 {
                                     warnings.Add(diagnostic.ToString());
                                 }
@@ -71,9 +71,9 @@ namespace Mayfly.Fish.Explorer
                 {
                     var scc = speciesRow.CheckConsistency(stack);
 
-                    scc.Filterate(UserSettings.ReportCriticality);
+                    scc.Filterate(SettingsExplorer.ReportCriticality);
 
-                    if (scc.ArtifactsCount > 0 && scc.WorstCriticality >= UserSettings.ReportCriticality)
+                    if (scc.ArtifactsCount > 0 && scc.WorstCriticality >= SettingsExplorer.ReportCriticality)
                     {
                         warnings.AddRange(scc.GetNotices(true));
                         //warnings.AddRange(LogConsistencyChecker.GetAllNotices(scc.LogArtifacts));
@@ -188,7 +188,7 @@ namespace Mayfly.Fish.Explorer
             bool first = true;
             foreach (Wild.Survey.CardRow cardRow in stack)
             {
-                if (first) { first = false; } else { report.BreakPage(Fish.UserSettings.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None); }
+                if (first) { first = false; } else { report.BreakPage(SettingsReader.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None); }
                 report.AddHeader(cardRow.FriendlyPath);
                 cardRow.AddReport(report, level);
             }

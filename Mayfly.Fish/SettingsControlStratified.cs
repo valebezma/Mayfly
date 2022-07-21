@@ -1,14 +1,17 @@
 ﻿using System.Windows.Forms;
 using static Mayfly.Fish.UserSettings;
+using Mayfly.Controls;
 
 
 namespace Mayfly.Fish
 {
-    public partial class SettingsControlStratified : UserControl, ISettingControl
+    public partial class SettingsControlStratified : SettingsControl, ISettingsControl
     {
         public SettingsControlStratified() {
             InitializeComponent();
         }
+
+
 
         public void LoadSettings() {
 

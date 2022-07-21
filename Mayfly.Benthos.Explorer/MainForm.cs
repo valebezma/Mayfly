@@ -4,6 +4,7 @@ using Mayfly.Software;
 using Mayfly.Species;
 using Mayfly.TaskDialogs;
 using Mayfly.Wild;
+using Mayfly.Wild.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace Mayfly.Benthos.Explorer
     public partial class MainForm : Form
     {
         public MainForm() {
+
             InitializeComponent();
 
             listViewWaters.Shine();
@@ -384,14 +386,23 @@ namespace Mayfly.Benthos.Explorer
         #region Service
 
         private void menuItemSettings_Click(object sender, EventArgs e) {
-            Settings settings = new Settings();
-            settings.ShowDialog();
+
+            Mayfly.UserSettings.Settings.LoadSettingControls(
+                typeof(SettingsControlIndices),
+                typeof(SettingsControlEquipment),
+                typeof(SettingsControlLog),
+                typeof(SettingsControlFactors),
+                typeof(SettingsControlVariables),
+                typeof(SettingsControlPrint),
+                typeof(SettingsControlExplorer),
+                typeof(SettingsControlPrediction));
+            Mayfly.UserSettings.Settings.ShowDialog();
         }
 
         private void menuItemLicenses_Click(object sender, EventArgs e) {
-            Software.Settings settings = new Software.Settings();
-            settings.OpenFeatures();
-            settings.ShowDialog();
+            //Software.Settings settings = new Software.Settings();
+            //settings.OpenFeatures();
+            //settings.ShowDialog();
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e) {
@@ -618,10 +629,11 @@ namespace Mayfly.Benthos.Explorer
         }
 
         private void menuItemSpcSave_Click(object sender, EventArgs e) {
+
             if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK) {
                 TaxonomicIndex speciesKey = data.GetSpeciesKey();
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
-                Mayfly.IO.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
+                IO.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
             }
         }
 
@@ -629,9 +641,9 @@ namespace Mayfly.Benthos.Explorer
         //{
         //    if (ModifierKeys.HasFlag(Keys.Control))
         //    {
-        //        if (Mayfly.Species.UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
+        //        if (Mayfly.Species.SettingsReader.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
         //        {
-        //            speciesValidator.IndexPath = Mayfly.Species.UserSettings.Interface.OpenDialog.FileName;
+        //            speciesValidator.IndexPath = Mayfly.Species.SettingsReader.Interface.OpenDialog.FileName;
         //        }
         //    }
 
@@ -786,6 +798,7 @@ namespace Mayfly.Benthos.Explorer
 
 
         private void buttonSpcSave_Click(object sender, EventArgs e) {
+
             if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK) {
                 TaxonomicIndex speciesKey = new TaxonomicIndex();
 

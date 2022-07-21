@@ -94,12 +94,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Service.cs" />
-    <Compile Include="Settings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </Compile>
     <Compile Include="SpeciesSelector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,13 +124,6 @@
       <LastGenOutput>Interface.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Interface.ru.resx" />
-    <EmbeddedResource Include="Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Settings.ru.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SpeciesSelector.resx">
       <DependentUpon>SpeciesSelector.cs</DependentUpon>
     </EmbeddedResource>

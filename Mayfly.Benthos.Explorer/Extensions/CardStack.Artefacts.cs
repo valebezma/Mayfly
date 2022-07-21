@@ -1,26 +1,22 @@
-﻿using Mayfly.Extensions;
+﻿using Mayfly.Species;
 using Mayfly.Wild;
 using System.Collections.Generic;
-using Mayfly.Species;
 
 namespace Mayfly.Benthos.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static ConsistencyChecker[] CheckConsistency(this CardStack stack)
-        {
+        public static ConsistencyChecker[] CheckConsistency(this CardStack stack) {
             List<ConsistencyChecker> result = new List<ConsistencyChecker>();
             result.AddRange(stack.GetCardArtifacts());
             result.AddRange(stack.GetSpeciesArtifacts());
             return result.ToArray();
         }
 
-        public static CardArtifact[] GetCardArtifacts(this CardStack stack)
-        {
+        public static CardArtifact[] GetCardArtifacts(this CardStack stack) {
             List<CardArtifact> result = new List<CardArtifact>();
 
-            foreach (Wild.Survey.CardRow cardRow in stack)
-            {
+            foreach (Wild.Survey.CardRow cardRow in stack) {
                 CardArtifact artifact = new CardArtifact(cardRow);
                 if (artifact.GetFacts() > 0) result.Add(artifact);
             }
@@ -28,12 +24,10 @@ namespace Mayfly.Benthos.Explorer
             return result.ToArray();
         }
 
-        public static SpeciesArtifact[] GetSpeciesArtifacts(this CardStack stack)
-        {
+        public static SpeciesArtifact[] GetSpeciesArtifacts(this CardStack stack) {
             List<SpeciesArtifact> result = new List<SpeciesArtifact>();
 
-            foreach (TaxonomicIndex.TaxonRow speciesRow in stack.GetSpecies())
-            {
+            foreach (TaxonomicIndex.TaxonRow speciesRow in stack.GetSpecies()) {
                 SpeciesArtifact artifact = new SpeciesArtifact(speciesRow);
                 if (artifact.GetFacts() > 0) result.Add(artifact);
                 artifact.Quantity = (int)stack.Quantity(speciesRow);
@@ -51,31 +45,26 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public CardArtifact(Wild.Survey.CardRow cardRow)
-        {
+        public CardArtifact(Wild.Survey.CardRow cardRow) {
             Card = cardRow;
 
-            SamplingSquareMissing = cardRow.IsSquareNull();
+            SamplingSquareMissing = double.IsNaN(cardRow.GetArea());
         }
 
 
 
-        public int GetFacts()
-        {
+        public int GetFacts() {
             return (this.SamplingSquareMissing ? 1 : 0);
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return base.ToString(Card.ToString());
         }
 
-        public override string[] GetNotices(bool includeChildren)
-        {
+        public override string[] GetNotices(bool includeChildren) {
             List<string> result = new List<string>();
 
-            if (SamplingSquareMissing)
-            {
+            if (SamplingSquareMissing) {
                 result.Add(Resources.Artifact.Square);
             }
 
@@ -93,34 +82,29 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public SpeciesArtifact(TaxonomicIndex.TaxonRow speciesRow)
-        {
+        public SpeciesArtifact(TaxonomicIndex.TaxonRow speciesRow) {
             SpeciesRow = speciesRow;
 
-            ReferenceMissing = !Benthos.UserSettings.SpeciesIndex.Contains(speciesRow.Name);
+            ReferenceMissing = !SettingsReader.TaxonomicIndex.Contains(speciesRow.Name);
         }
 
 
 
-        public int GetFacts()
-        {
+        public int GetFacts() {
             return (this.ReferenceMissing ? 1 : 0);
         }
 
-        public override string[] GetNotices(bool includeChildren)
-        {
+        public override string[] GetNotices(bool includeChildren) {
             List<string> result = new List<string>();
 
-            if (ReferenceMissing)
-            {
+            if (ReferenceMissing) {
                 result.Add(Resources.Artifact.Species);
             }
 
             return result.ToArray();
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return base.ToString(SpeciesRow.Name);
         }
     }

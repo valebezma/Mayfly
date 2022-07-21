@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Mayfly.Wild.Controls;
 
 namespace Mayfly.Benthos
 {

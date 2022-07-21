@@ -1,22 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System;
-using Mayfly.Wild;
-using System.Windows.Forms;
-using static Mayfly.Fish.UserSettings;
-using static Mayfly.UserSettings;
 using static Mayfly.Wild.SettingsReader;
+using Mayfly.Controls;
 
 namespace Mayfly.Wild.Controls
 {
-    public partial class SettingsControlEquipment : UserControl, ISettingControl
+    public partial class SettingsControlEquipment : SettingsControl, ISettingsControl
     {
         public SettingsControlEquipment() {
 
@@ -28,7 +17,7 @@ namespace Mayfly.Wild.Controls
 
             //columnSampler.DataSource = SamplersIndex.GetPassives();
             columnSampler.DataSource = SamplersIndex.Sampler.Select();
-            columnSampler.DisplayMember = "Sampler";
+            columnSampler.DisplayMember = "Name";
             columnSampler.ValueMember = "ShortName";
         }
 

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 using static Mayfly.Wild.SettingsReader;
+using Mayfly.Controls;
 
 namespace Mayfly.Wild.Controls
 {
-    public partial class SettingsControlPrint : UserControl, ISettingControl
+    public partial class SettingsControlPrint : SettingsControl, ISettingsControl
     {
         public SettingsControlPrint() {
 
             InitializeComponent();
         }
+
+
 
         public void LoadSettings() {
 
@@ -29,6 +32,8 @@ namespace Mayfly.Wild.Controls
             LogOrder = checkBoxOrderLog.Checked ? (LogSortOrder)comboBoxLogOrder.SelectedIndex : LogSortOrder.AsInput;
 
         }
+
+
 
         private void checkBoxBreakBeforeIndividuals_CheckedChanged(object sender, EventArgs e) {
             checkBoxBreakBetweenSpecies.Enabled = checkBoxBreakBeforeIndividuals.Checked;

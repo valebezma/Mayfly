@@ -267,11 +267,35 @@
     <Compile Include="Controls\ProcessLook.Designer.cs">
       <DependentUpon>ProcessLook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControlUser.cs">
+    <Compile Include="Controls\SettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingControlUser.Designer.cs">
-      <DependentUpon>SettingControlUser.cs</DependentUpon>
+    <Compile Include="Controls\SettingsControl.Designer.cs">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlUI.Designer.cs">
+      <DependentUpon>SettingsControlUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlMaintenance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlMaintenance.Designer.cs">
+      <DependentUpon>SettingsControlMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlUser.Designer.cs">
+      <DependentUpon>SettingsControlUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlLicenses.Designer.cs">
+      <DependentUpon>SettingsControlLicenses.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\NumberExtensions.cs" />
@@ -343,7 +367,7 @@
     <Compile Include="Controls\SpreadSheetCalendarColumn.cs" />
     <Compile Include="Controls\SpreadSheetIconTextBoxColumn.cs" />
     <Compile Include="Controls\Taskbar.cs" />
-    <Compile Include="ISettingControl.cs" />
+    <Compile Include="Controls\ISettingsControl.cs" />
     <Compile Include="Pictogram.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -405,6 +429,12 @@
     </Compile>
     <Compile Include="Service\Hardware.cs" />
     <Compile Include="Service\License.cs" />
+    <Compile Include="Software\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Software\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Software\ShellLink.cs" />
     <Compile Include="UserSettings.cs" />
     <Compile Include="Service\Constants.cs" />
@@ -558,8 +588,20 @@
     <EmbeddedResource Include="Controls\ProcessLook.resx">
       <DependentUpon>ProcessLook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingControlUser.resx">
-      <DependentUpon>SettingControlUser.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsControl.resx">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlLicenses.resx">
+      <DependentUpon>SettingsControlLicenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlUI.resx">
+      <DependentUpon>SettingsControlUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlMaintenance.resx">
+      <DependentUpon>SettingsControlMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlUser.resx">
+      <DependentUpon>SettingsControlUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SpreadSheet.resx">
       <DependentUpon>SpreadSheet.cs</DependentUpon>
@@ -673,6 +715,9 @@
       <DependentUpon>InputDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\TaskDialogs\ProgressDialog.resx" />
+    <EmbeddedResource Include="Software\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="interface\reports\fonts\FiraGO\FiraGO-Bold.ttf">

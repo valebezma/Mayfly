@@ -28,12 +28,12 @@ namespace Mayfly.Extensions
             return -1;
         }
         
-        public static object Get(this Wild.Survey.CardRow cardRow, string field)
+        public static object Get(this Survey.CardRow cardRow, string field)
         {
             switch (field)
             {
                 case "Sampler":
-                    return cardRow.SamplerRow == null ? null : cardRow.SamplerRow.Sampler;
+                    return cardRow.SamplerRow == null ? null : cardRow.SamplerRow.Name;
 
                 case "Substrate":
                     if (cardRow.IsSubstrateNull()) return null;

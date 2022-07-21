@@ -43,10 +43,10 @@
             this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listView.HideSelection = false;
             this.listView.LabelEdit = true;
-            this.listView.Location = new System.Drawing.Point(48, 68);
+            this.listView.Location = new System.Drawing.Point(48, 43);
             this.listView.Name = "listView";
             this.listView.ShowGroups = false;
-            this.listView.Size = new System.Drawing.Size(226, 84);
+            this.listView.Size = new System.Drawing.Size(251, 154);
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -60,7 +60,7 @@
             // 
             this.buttonAddtFctrsDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddtFctrsDelete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddtFctrsDelete.Location = new System.Drawing.Point(280, 68);
+            this.buttonAddtFctrsDelete.Location = new System.Drawing.Point(305, 43);
             this.buttonAddtFctrsDelete.Name = "buttonAddtFctrsDelete";
             this.buttonAddtFctrsDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonAddtFctrsDelete.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             this.buttonAddtFctrsAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddtFctrsAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddtFctrsAdd.Location = new System.Drawing.Point(280, 129);
+            this.buttonAddtFctrsAdd.Location = new System.Drawing.Point(305, 174);
             this.buttonAddtFctrsAdd.Name = "buttonAddtFctrsAdd";
             this.buttonAddtFctrsAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAddtFctrsAdd.TabIndex = 3;
@@ -86,7 +86,7 @@
             this.labelAddtFctrs.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.labelAddtFctrs.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelAddtFctrs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelAddtFctrs.Location = new System.Drawing.Point(28, 25);
+            this.labelAddtFctrs.Location = new System.Drawing.Point(28, 0);
             this.labelAddtFctrs.Name = "labelAddtFctrs";
             this.labelAddtFctrs.Size = new System.Drawing.Size(111, 15);
             this.labelAddtFctrs.TabIndex = 0;
@@ -100,9 +100,9 @@
             this.Controls.Add(this.buttonAddtFctrsDelete);
             this.Controls.Add(this.buttonAddtFctrsAdd);
             this.Controls.Add(this.labelAddtFctrs);
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.Group = "Reader";
             this.Name = "SettingsControlVariables";
-            this.Padding = new System.Windows.Forms.Padding(25, 25, 45, 45);
+            this.Section = "Variables";
             this.Size = new System.Drawing.Size(400, 200);
             this.ResumeLayout(false);
             this.PerformLayout();

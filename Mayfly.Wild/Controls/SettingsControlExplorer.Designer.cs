@@ -51,9 +51,9 @@
             "Czekanowski, 1911",
             "Shorygin, 1939",
             "Weinstein, 1976"});
-            this.comboBoxConnectance.Location = new System.Drawing.Point(183, 146);
+            this.comboBoxConnectance.Location = new System.Drawing.Point(183, 118);
             this.comboBoxConnectance.Name = "comboBoxConnectance";
-            this.comboBoxConnectance.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxConnectance.Size = new System.Drawing.Size(200, 21);
             this.comboBoxConnectance.TabIndex = 8;
             // 
             // comboBoxSimilarity
@@ -71,16 +71,16 @@
             "Braun-Blanquet, 1932",
             "Ochiai, 1957; Barkman, 1958",
             "Sokal, Sneath, 1963"});
-            this.comboBoxSimilarity.Location = new System.Drawing.Point(183, 119);
+            this.comboBoxSimilarity.Location = new System.Drawing.Point(183, 91);
             this.comboBoxSimilarity.Name = "comboBoxSimilarity";
-            this.comboBoxSimilarity.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxSimilarity.Size = new System.Drawing.Size(200, 21);
             this.comboBoxSimilarity.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(48, 149);
+            this.label2.Location = new System.Drawing.Point(48, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 13);
             this.label2.TabIndex = 7;
@@ -90,7 +90,7 @@
             // 
             this.labelSimilarity.AutoSize = true;
             this.labelSimilarity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelSimilarity.Location = new System.Drawing.Point(48, 122);
+            this.labelSimilarity.Location = new System.Drawing.Point(48, 94);
             this.labelSimilarity.Name = "labelSimilarity";
             this.labelSimilarity.Size = new System.Drawing.Size(75, 13);
             this.labelSimilarity.TabIndex = 5;
@@ -120,16 +120,16 @@
             "Дедю И. И., 1990",
             "Щербина Г. Х., 1993",
             "Шитиков В. К. и др., 2003"});
-            this.comboBoxDominance.Location = new System.Drawing.Point(183, 92);
+            this.comboBoxDominance.Location = new System.Drawing.Point(183, 64);
             this.comboBoxDominance.Name = "comboBoxDominance";
-            this.comboBoxDominance.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxDominance.Size = new System.Drawing.Size(200, 21);
             this.comboBoxDominance.TabIndex = 4;
             // 
             // labelDominance
             // 
             this.labelDominance.AutoSize = true;
             this.labelDominance.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDominance.Location = new System.Drawing.Point(48, 95);
+            this.labelDominance.Location = new System.Drawing.Point(48, 67);
             this.labelDominance.Name = "labelDominance";
             this.labelDominance.Size = new System.Drawing.Size(89, 13);
             this.labelDominance.TabIndex = 3;
@@ -141,16 +141,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDiversity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDiversity.FormattingEnabled = true;
-            this.comboBoxDiversity.Location = new System.Drawing.Point(183, 65);
+            this.comboBoxDiversity.Location = new System.Drawing.Point(183, 37);
             this.comboBoxDiversity.Name = "comboBoxDiversity";
-            this.comboBoxDiversity.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxDiversity.Size = new System.Drawing.Size(200, 21);
             this.comboBoxDiversity.TabIndex = 2;
             // 
             // labelDiversity
             // 
             this.labelDiversity.AutoSize = true;
             this.labelDiversity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelDiversity.Location = new System.Drawing.Point(48, 68);
+            this.labelDiversity.Location = new System.Drawing.Point(48, 40);
             this.labelDiversity.Name = "labelDiversity";
             this.labelDiversity.Size = new System.Drawing.Size(75, 13);
             this.labelDiversity.TabIndex = 1;
@@ -162,7 +162,7 @@
             this.labelIndices.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.labelIndices.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelIndices.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelIndices.Location = new System.Drawing.Point(28, 28);
+            this.labelIndices.Location = new System.Drawing.Point(28, 0);
             this.labelIndices.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
             this.labelIndices.Name = "labelIndices";
             this.labelIndices.Size = new System.Drawing.Size(44, 15);
@@ -180,16 +180,16 @@
             "Allowed or worse",
             "Bad or worse",
             "Critical only"});
-            this.comboBoxReportCriticality.Location = new System.Drawing.Point(183, 275);
+            this.comboBoxReportCriticality.Location = new System.Drawing.Point(183, 247);
             this.comboBoxReportCriticality.Name = "comboBoxReportCriticality";
-            this.comboBoxReportCriticality.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxReportCriticality.Size = new System.Drawing.Size(200, 21);
             this.comboBoxReportCriticality.TabIndex = 18;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(48, 278);
+            this.label3.Location = new System.Drawing.Point(48, 250);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 13);
             this.label3.TabIndex = 17;
@@ -199,7 +199,7 @@
             // 
             this.checkBoxConsistency.AutoSize = true;
             this.checkBoxConsistency.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxConsistency.Location = new System.Drawing.Point(48, 250);
+            this.checkBoxConsistency.Location = new System.Drawing.Point(48, 222);
             this.checkBoxConsistency.Name = "checkBoxConsistency";
             this.checkBoxConsistency.Size = new System.Drawing.Size(140, 17);
             this.checkBoxConsistency.TabIndex = 15;
@@ -210,7 +210,7 @@
             // 
             this.checkBoxKeepWizards.AutoSize = true;
             this.checkBoxKeepWizards.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxKeepWizards.Location = new System.Drawing.Point(48, 227);
+            this.checkBoxKeepWizards.Location = new System.Drawing.Point(48, 199);
             this.checkBoxKeepWizards.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.checkBoxKeepWizards.Name = "checkBoxKeepWizards";
             this.checkBoxKeepWizards.Size = new System.Drawing.Size(214, 17);
@@ -224,7 +224,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(28, 187);
+            this.label5.Location = new System.Drawing.Point(28, 159);
             this.label5.Margin = new System.Windows.Forms.Padding(25, 25, 3, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 15);
@@ -249,10 +249,10 @@
             this.Controls.Add(this.comboBoxDiversity);
             this.Controls.Add(this.labelDiversity);
             this.Controls.Add(this.labelIndices);
-            this.MinimumSize = new System.Drawing.Size(400, 500);
+            this.Group = "Explorer";
             this.Name = "SettingsControlExplorer";
-            this.Padding = new System.Windows.Forms.Padding(25, 25, 45, 45);
-            this.Size = new System.Drawing.Size(400, 500);
+            this.Section = "Common";
+            this.Size = new System.Drawing.Size(400, 350);
             this.ResumeLayout(false);
             this.PerformLayout();
 

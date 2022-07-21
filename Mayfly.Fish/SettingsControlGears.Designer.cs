@@ -25,8 +25,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.spreadSheetOpening = new Mayfly.Controls.SpreadSheet();
             this.columnOpeningGear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnOpeningValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,8 +75,8 @@
             // columnOpeningGear
             // 
             this.columnOpeningGear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnOpeningGear.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnOpeningGear.DefaultCellStyle = dataGridViewCellStyle1;
             this.columnOpeningGear.HeaderText = "Gear";
             this.columnOpeningGear.Name = "columnOpeningGear";
             this.columnOpeningGear.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -84,8 +84,8 @@
             // columnOpeningValue
             // 
             this.columnOpeningValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Format = "P0";
-            this.columnOpeningValue.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "P0";
+            this.columnOpeningValue.DefaultCellStyle = dataGridViewCellStyle2;
             this.columnOpeningValue.HeaderText = "Opening";
             this.columnOpeningValue.Name = "columnOpeningValue";
             this.columnOpeningValue.Width = 75;
@@ -273,9 +273,11 @@
             this.Controls.Add(this.numericUpDownOpeningDefault);
             this.Controls.Add(this.labelActive);
             this.Controls.Add(this.labelActiveInstruction);
+            this.Group = "Fishing";
             this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "SettingsControlGears";
             this.Padding = new System.Windows.Forms.Padding(25, 25, 45, 45);
+            this.Section = "Opening";
             this.Size = new System.Drawing.Size(400, 500);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetOpening)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOpeningDefault)).EndInit();

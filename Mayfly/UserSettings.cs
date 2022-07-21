@@ -215,5 +215,16 @@ namespace Mayfly
 
             return Registry.CurrentUser.CreateSubKey(path + "\\" + folders.Merge("\\"));
         }
+
+        public static Software.Settings settings;
+
+        public static Software.Settings Settings {
+            get {
+                if (settings == null) {
+                    settings = new Software.Settings();
+                }
+                return settings;
+            }
+        }
     }
 }

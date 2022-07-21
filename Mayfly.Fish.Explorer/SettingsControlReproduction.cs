@@ -1,10 +1,11 @@
 ﻿using Mayfly.Species;
 using Mayfly.Wild;
 using System.Windows.Forms;
+using Mayfly.Controls;
 
 namespace Mayfly.Fish.Explorer
 {
-    public partial class SettingsControlReproduction : UserControl, ISettingControl
+    public partial class SettingsControlReproduction : SettingsControl, ISettingsControl
     {
         public SettingsControlReproduction() {
 

@@ -389,10 +389,10 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public CardConsistencyChecker(Wild.Survey.CardRow cardRow)
+        public CardConsistencyChecker(Survey.CardRow cardRow)
         {
             CardRow = cardRow;
-            SquareMissing = cardRow.IsSquareNull();
+            SquareMissing = double.IsNaN(cardRow.GetArea());
             WhereMissing = cardRow.IsWhereNull();
 
             List<LogConsistencyChecker> logArtifacts = new List<LogConsistencyChecker>();

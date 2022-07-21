@@ -18,16 +18,6 @@ namespace Mayfly.Wild
             };
         }
 
-        public static bool SuggestMass {
-            get {
-                return Convert.ToBoolean(GetValue(FeatureKey, nameof(SuggestMass), true));
-            }
-
-            set {
-                SetValue(FeatureKey, nameof(SuggestMass), value);
-            }
-        }
-
         public static bool AutoLoadBio {
             get {
                 return Convert.ToBoolean(GetValue(FeatureKey, nameof(AutoLoadBio), false));

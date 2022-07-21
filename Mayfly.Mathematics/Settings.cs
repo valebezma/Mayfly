@@ -21,27 +21,29 @@ namespace Mayfly.Mathematics
 
         private void loadSettings()
         {
-            dialogSelected.Color =
-                panelSelected.BackColor =
-                UserSettings.ColorSelected;
-
-
             numericUpDownSL.Value = (decimal)UserSettings.DefaultAlpha;
             numericUpDownStrongSize.Value = UserSettings.RequiredSampleSize;
+
             comboBoxNormality.SelectedIndex = UserSettings.NormalityTest;
             comboBoxHomogeneity.SelectedIndex = UserSettings.HomogeneityTest;
             comboBoxLSD.SelectedIndex = UserSettings.LsdIndex;
+
             dialogSelected.Color = panelSelected.BackColor = UserSettings.ColorSelected;
             dialogTrend.Color = panelTrend.BackColor = UserSettings.ColorAccent;
+            dialogSelected.Color =
+                panelSelected.BackColor =
+                UserSettings.ColorSelected;
         }
 
         private void saveSettings()
         {
             UserSettings.DefaultAlpha = (double)numericUpDownSL.Value;
             UserSettings.RequiredSampleSize = (int)numericUpDownStrongSize.Value;
+
             UserSettings.NormalityTest = comboBoxNormality.SelectedIndex;
             UserSettings.HomogeneityTest = comboBoxHomogeneity.SelectedIndex;
             UserSettings.LsdIndex = comboBoxLSD.SelectedIndex;
+
             UserSettings.ColorSelected = dialogSelected.Color;
             UserSettings.ColorAccent = dialogTrend.Color;
         }

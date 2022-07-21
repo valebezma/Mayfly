@@ -9,21 +9,18 @@ namespace Mayfly.Benthos.Explorer
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
-        {
+        static void Main(string[] args) {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
-            Wild.SettingsExplorer.SetFeature("Benthos", ".bcd");
+            Wild.SettingsExplorer.SetFeature("Benthos", ".bcd", Wild.MassDegree.Gramm, Wild.MassDegree.Milligramm);
             Log.WriteAppStarted();
 
-            if (args.Length == 0)
-            {
+            if (args.Length == 0) {
                 Application.Run(new MainForm());
-            }
-            else
-            {
+            } else {
                 Application.Run(new MainForm(args));
             }
 

@@ -5,6 +5,7 @@ using System.Resources;
 using System.Windows.Forms;
 using Mayfly.Wild;
 using Mayfly.Species;
+using static Mayfly.UserSettings;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -89,7 +90,7 @@ namespace Mayfly.Benthos.Explorer
 
         public static string[] GetAssociates(string species)
         {
-            object result = UserSettings.GetValue(UserSettings.FeatureKey,
+            object result = GetValue(FeatureKey,
                 new string[] { "Restoration", "Assosiciation" },
                 species, new string[0]);
 
@@ -143,9 +144,7 @@ namespace Mayfly.Benthos.Explorer
 
         public static void SaveAssociates(string species, string[] associates)
         {
-            UserSettings.SetValue(UserSettings.FeatureKey,
-                new string[] { "Restoration", "Assosiciation" },
-                species, associates);
+            SetValue(FeatureKey, new string[] { "Restoration", "Assosiciation" }, species, associates);
         }
     }
 }

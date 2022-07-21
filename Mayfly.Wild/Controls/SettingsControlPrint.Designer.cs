@@ -45,9 +45,9 @@
             "Alphabetically",
             "By quantity",
             "By mass"});
-            this.comboBoxLogOrder.Location = new System.Drawing.Point(177, 86);
+            this.comboBoxLogOrder.Location = new System.Drawing.Point(177, 61);
             this.comboBoxLogOrder.Name = "comboBoxLogOrder";
-            this.comboBoxLogOrder.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxLogOrder.Size = new System.Drawing.Size(200, 21);
             this.comboBoxLogOrder.TabIndex = 3;
             // 
             // checkBoxBreakBetweenSpecies
@@ -55,7 +55,7 @@
             this.checkBoxBreakBetweenSpecies.AutoSize = true;
             this.checkBoxBreakBetweenSpecies.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.checkBoxBreakBetweenSpecies.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxBreakBetweenSpecies.Location = new System.Drawing.Point(65, 131);
+            this.checkBoxBreakBetweenSpecies.Location = new System.Drawing.Point(65, 106);
             this.checkBoxBreakBetweenSpecies.Name = "checkBoxBreakBetweenSpecies";
             this.checkBoxBreakBetweenSpecies.Size = new System.Drawing.Size(104, 17);
             this.checkBoxBreakBetweenSpecies.TabIndex = 5;
@@ -68,7 +68,7 @@
             this.checkBoxOrderLog.AutoSize = true;
             this.checkBoxOrderLog.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.checkBoxOrderLog.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxOrderLog.Location = new System.Drawing.Point(45, 88);
+            this.checkBoxOrderLog.Location = new System.Drawing.Point(45, 63);
             this.checkBoxOrderLog.Name = "checkBoxOrderLog";
             this.checkBoxOrderLog.Size = new System.Drawing.Size(111, 17);
             this.checkBoxOrderLog.TabIndex = 2;
@@ -82,7 +82,7 @@
             this.checkBoxCardOdd.AutoSize = true;
             this.checkBoxCardOdd.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.checkBoxCardOdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxCardOdd.Location = new System.Drawing.Point(45, 65);
+            this.checkBoxCardOdd.Location = new System.Drawing.Point(45, 40);
             this.checkBoxCardOdd.Name = "checkBoxCardOdd";
             this.checkBoxCardOdd.Size = new System.Drawing.Size(142, 17);
             this.checkBoxCardOdd.TabIndex = 1;
@@ -95,7 +95,7 @@
             this.checkBoxBreakBeforeIndividuals.AutoSize = true;
             this.checkBoxBreakBeforeIndividuals.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.checkBoxBreakBeforeIndividuals.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxBreakBeforeIndividuals.Location = new System.Drawing.Point(45, 111);
+            this.checkBoxBreakBeforeIndividuals.Location = new System.Drawing.Point(45, 86);
             this.checkBoxBreakBeforeIndividuals.Name = "checkBoxBreakBeforeIndividuals";
             this.checkBoxBreakBeforeIndividuals.Size = new System.Drawing.Size(189, 17);
             this.checkBoxBreakBeforeIndividuals.TabIndex = 4;
@@ -110,7 +110,7 @@
             this.labelPrintCaption.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.labelPrintCaption.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelPrintCaption.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelPrintCaption.Location = new System.Drawing.Point(28, 25);
+            this.labelPrintCaption.Location = new System.Drawing.Point(28, 0);
             this.labelPrintCaption.Name = "labelPrintCaption";
             this.labelPrintCaption.Size = new System.Drawing.Size(144, 15);
             this.labelPrintCaption.TabIndex = 0;
@@ -126,10 +126,9 @@
             this.Controls.Add(this.checkBoxCardOdd);
             this.Controls.Add(this.checkBoxBreakBeforeIndividuals);
             this.Controls.Add(this.labelPrintCaption);
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.Group = "Reader";
             this.Name = "SettingsControlPrint";
-            this.Padding = new System.Windows.Forms.Padding(25, 25, 45, 45);
-            this.Size = new System.Drawing.Size(400, 200);
+            this.Section = "Printing";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,6 +13,7 @@ using System.Linq;
 using System.Windows.Forms;
 using static Mayfly.UserSettings;
 using static Mayfly.Wild.SettingsReader;
+using Mayfly.Wild.Controls;
 
 namespace Mayfly.Wild
 {
@@ -743,7 +744,15 @@ namespace Mayfly.Wild
             string currentSpc = TaxonomicIndexPath;
             int currentRecentCount = RecentSpeciesCount;
 
-            if (SettingsForm.ShowDialog(this) == DialogResult.OK) {
+            Mayfly.UserSettings.Settings.LoadSettingControls(
+                typeof(SettingsControlIndices),
+                typeof(SettingsControlEquipment),
+                typeof(SettingsControlLog),
+                typeof(SettingsControlFactors),
+                typeof(SettingsControlVariables),
+                typeof(SettingsControlPrint));
+
+            if (Mayfly.UserSettings.Settings.ShowDialog(this) == DialogResult.OK) {
 
                 if (currentWaters != UserSettings.WatersIndexPath) {
 

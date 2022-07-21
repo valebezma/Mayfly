@@ -3,10 +3,11 @@ using Mayfly.Wild;
 using System.Windows.Forms;
 using static Mayfly.UserSettings;
 using System;
+using Mayfly.Controls;
 
 namespace Mayfly.Fish.Explorer
 {
-    public partial class SettingsControlCatchability : UserControl, ISettingControl
+    public partial class SettingsControlCatchability : SettingsControl, ISettingsControl
     {
         Survey.SamplerRow selectedSampler;
 
@@ -15,6 +16,7 @@ namespace Mayfly.Fish.Explorer
 
             InitializeComponent();
 
+            comboBoxGear.DataSource = SettingsReader.SamplersIndex.Sampler.Select();
             columnCatchabilitySpecies.ValueType = typeof(string);
             columnCatchabilityValue.ValueType = typeof(double);
             speciesSelectorCatchability.IndexPath = SettingsReader.TaxonomicIndexPath;
@@ -82,6 +84,19 @@ namespace Mayfly.Fish.Explorer
             }
 
             spreadSheetCatchability.ClearSelection();
+        }
+
+        private void spreadSheetCatchability_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            if (selectedSampler != null) {
+                spreadSheetCatchability.Rows[e.RowIndex].Tag = selectedSampler;
+            }
+
+            if (e.ColumnIndex == columnCatchabilityValue.Index &&
+                spreadSheetCatchability[e.ColumnIndex, e.RowIndex].Value is double &&
+                (double)spreadSheetCatchability[e.ColumnIndex, e.RowIndex].Value == (double)numericUpDownCatchabilityDefault.Value) {
+                ToolTip toolTip = new ToolTip();
+                toolTip.Show("Default value", spreadSheetCatchability, spreadSheetCatchability.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex + 1, true).Location);
+            }
         }
     }
 }

@@ -45,7 +45,7 @@
             this.comboBoxAlk.Location = new System.Drawing.Point(202, 89);
             this.comboBoxAlk.Name = "comboBoxAlk";
             this.comboBoxAlk.Size = new System.Drawing.Size(150, 21);
-            this.comboBoxAlk.TabIndex = 10;
+            this.comboBoxAlk.TabIndex = 4;
             // 
             // AlkTypeLabel
             // 
@@ -54,7 +54,7 @@
             this.AlkTypeLabel.Location = new System.Drawing.Point(48, 92);
             this.AlkTypeLabel.Name = "AlkTypeLabel";
             this.AlkTypeLabel.Size = new System.Drawing.Size(116, 13);
-            this.AlkTypeLabel.TabIndex = 8;
+            this.AlkTypeLabel.TabIndex = 3;
             this.AlkTypeLabel.Text = "Length-to-age key type";
             // 
             // numericUpDownInterval
@@ -63,7 +63,7 @@
             this.numericUpDownInterval.Location = new System.Drawing.Point(277, 63);
             this.numericUpDownInterval.Name = "numericUpDownInterval";
             this.numericUpDownInterval.Size = new System.Drawing.Size(75, 20);
-            this.numericUpDownInterval.TabIndex = 12;
+            this.numericUpDownInterval.TabIndex = 2;
             this.numericUpDownInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelSizeInterval
@@ -74,7 +74,7 @@
             this.labelSizeInterval.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.labelSizeInterval.Name = "labelSizeInterval";
             this.labelSizeInterval.Size = new System.Drawing.Size(192, 13);
-            this.labelSizeInterval.TabIndex = 11;
+            this.labelSizeInterval.TabIndex = 1;
             this.labelSizeInterval.Text = "Size interval for length composition, mm";
             // 
             // label4
@@ -86,7 +86,7 @@
             this.label4.Location = new System.Drawing.Point(28, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 15);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Assessment parameters";
             // 
             // SettingsControlOther

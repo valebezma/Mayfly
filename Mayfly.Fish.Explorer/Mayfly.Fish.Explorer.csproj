@@ -265,6 +265,9 @@
     <Compile Include="SettingsControlOther.Designer.cs">
       <DependentUpon>SettingsControlOther.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsControlPrediction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SettingsControlReproduction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -553,12 +556,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Settings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -689,6 +686,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsControlOther.resx">
       <DependentUpon>SettingsControlOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsControlPrediction.resx">
+      <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsControlReproduction.resx">
       <DependentUpon>SettingsControlReproduction.cs</DependentUpon>
@@ -984,14 +984,6 @@
       <LastGenOutput>Extrapolation1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Sections\Extrapolation.ru.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Settings.ru.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

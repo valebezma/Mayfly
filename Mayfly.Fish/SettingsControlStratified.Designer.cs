@@ -81,10 +81,10 @@
             this.Controls.Add(this.labelInterval);
             this.Controls.Add(this.numericUpDownInterval);
             this.Controls.Add(this.labelStratified);
-            this.MinimumSize = new System.Drawing.Size(400, 150);
+            this.Group = "Fishing";
             this.Name = "SettingsControlStratified";
             this.Padding = new System.Windows.Forms.Padding(25, 25, 45, 45);
-            this.Size = new System.Drawing.Size(400, 150);
+            this.Section = "Stratified sampling";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

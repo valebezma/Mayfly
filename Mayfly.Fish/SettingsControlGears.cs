@@ -11,10 +11,11 @@ using static Mayfly.Fish.UserSettings;
 using static Mayfly.UserSettings;
 using static Mayfly.Wild.SettingsReader;
 using Mayfly.Wild;
+using Mayfly.Controls;
 
 namespace Mayfly.Fish
 {
-    public partial class SettingsControlGears : UserControl, ISettingControl
+    public partial class SettingsControlGears : SettingsControl, ISettingsControl
     {
         public SettingsControlGears() {
 

@@ -90,6 +90,18 @@
     <Compile Include="Controls\DefinitionPanel.Designer.cs">
       <DependentUpon>DefinitionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SettingsControlPrint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlPrint.Designer.cs">
+      <DependentUpon>SettingsControlPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlTree.Designer.cs">
+      <DependentUpon>SettingsControlTree.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TaxonTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -207,12 +219,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\TaxonProvider.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -236,6 +242,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\DefinitionPanel.ru.resx">
       <DependentUpon>DefinitionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlPrint.resx">
+      <DependentUpon>SettingsControlPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlTree.resx">
+      <DependentUpon>SettingsControlTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TaxonTreeView.resx">
       <DependentUpon>TaxonTreeView.cs</DependentUpon>
@@ -295,12 +307,6 @@
     <EmbeddedResource Include="Resources\Rank.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Rank.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Settings.ru.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpeciesCard.resx">
       <DependentUpon>SpeciesCard.cs</DependentUpon>

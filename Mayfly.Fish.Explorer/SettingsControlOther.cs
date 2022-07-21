@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mayfly.Controls;
 
 namespace Mayfly.Fish.Explorer
 {
-    public partial class SettingsControlOther : UserControl, ISettingControl
+    public partial class SettingsControlOther : SettingsControl, ISettingsControl
     {
+        public string Group => "Explorer";
+
+        public string Section => "Other";
+
         public SettingsControlOther() {
 
             InitializeComponent();
@@ -19,6 +24,8 @@ namespace Mayfly.Fish.Explorer
             numericUpDownInterval.Minimum = numericUpDownInterval.Increment =
                 (decimal)Fish.UserSettings.DefaultStratifiedInterval;
         }
+
+
 
         public void LoadSettings() {
 

@@ -93,17 +93,23 @@
     <Compile Include="Controls\LogProcessor.Designer.cs">
       <DependentUpon>LogProcessor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlReader.cs">
+    <Compile Include="Controls\SettingsControlIndices.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlReader.Designer.cs">
-      <DependentUpon>SettingsControlReader.cs</DependentUpon>
+    <Compile Include="Controls\SettingsControlIndices.Designer.cs">
+      <DependentUpon>SettingsControlIndices.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingControlFactors.cs">
+    <Compile Include="Controls\SettingsControlLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingControlFactors.Designer.cs">
-      <DependentUpon>SettingControlFactors.cs</DependentUpon>
+    <Compile Include="Controls\SettingsControlLog.Designer.cs">
+      <DependentUpon>SettingsControlLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsControlFactors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SettingsControlFactors.Designer.cs">
+      <DependentUpon>SettingsControlFactors.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\SettingsControlPrint.cs">
       <SubType>UserControl</SubType>
@@ -117,16 +123,10 @@
     <Compile Include="Controls\SettingsControlVariables.Designer.cs">
       <DependentUpon>SettingsControlVariables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Settings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsControlPrediction.cs">
+    <Compile Include="Controls\SettingsControlPrediction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlPrediction.Designer.cs">
+    <Compile Include="Controls\SettingsControlPrediction.Designer.cs">
       <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
     </Compile>
     <Compile Include="SettingsExplorer.cs" />
@@ -436,11 +436,14 @@
     <EmbeddedResource Include="Controls\LogProcessor.resx">
       <DependentUpon>LogProcessor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlReader.resx">
-      <DependentUpon>SettingsControlReader.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsControlIndices.resx">
+      <DependentUpon>SettingsControlIndices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingControlFactors.resx">
-      <DependentUpon>SettingControlFactors.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsControlLog.resx">
+      <DependentUpon>SettingsControlLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsControlFactors.resx">
+      <DependentUpon>SettingsControlFactors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SettingsControlPrint.resx">
       <DependentUpon>SettingsControlPrint.cs</DependentUpon>
@@ -467,12 +470,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogReference.ru.resx">
       <DependentUpon>DialogReference.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Settings.ru.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Artifact.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -673,7 +670,7 @@
       <LastGenOutput>Prompt.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Prompt.ru.resx" />
-    <EmbeddedResource Include="SettingsControlPrediction.resx">
+    <EmbeddedResource Include="Controls\SettingsControlPrediction.resx">
       <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

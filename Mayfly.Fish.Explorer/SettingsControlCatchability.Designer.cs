@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.spreadSheetCatchability = new Mayfly.Controls.SpreadSheet();
             this.columnCatchabilitySpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCatchabilityValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,13 +62,14 @@
             this.spreadSheetCatchability.Size = new System.Drawing.Size(310, 140);
             this.spreadSheetCatchability.StatusFormat = null;
             this.spreadSheetCatchability.TabIndex = 6;
+            this.spreadSheetCatchability.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetCatchability_CellEndEdit);
             // 
             // columnCatchabilitySpecies
             // 
             this.columnCatchabilitySpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.NullValue = null;
-            this.columnCatchabilitySpecies.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.NullValue = null;
+            this.columnCatchabilitySpecies.DefaultCellStyle = dataGridViewCellStyle1;
             this.columnCatchabilitySpecies.HeaderText = "Species";
             this.columnCatchabilitySpecies.Name = "columnCatchabilitySpecies";
             // 
@@ -101,6 +102,7 @@
             this.comboBoxGear.Size = new System.Drawing.Size(200, 21);
             this.comboBoxGear.Sorted = true;
             this.comboBoxGear.TabIndex = 5;
+            this.comboBoxGear.SelectedIndexChanged += new System.EventHandler(this.comboBoxGear_SelectedIndexChanged);
             // 
             // numericUpDownCatchabilityDefault
             // 
@@ -176,7 +178,7 @@
             this.speciesSelectorCatchability.Grid = this.spreadSheetCatchability;
             this.speciesSelectorCatchability.RecentListCount = 0;
             // 
-            // SettingControlCatchability
+            // SettingsControlCatchability
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,7 +190,7 @@
             this.Controls.Add(this.labelCatchabilityTitle);
             this.Controls.Add(this.labelCatchabilityInstruction);
             this.MinimumSize = new System.Drawing.Size(400, 350);
-            this.Name = "SettingControlCatchability";
+            this.Name = "SettingsControlCatchability";
             this.Padding = new System.Windows.Forms.Padding(25, 25, 45, 45);
             this.Size = new System.Drawing.Size(400, 350);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetCatchability)).EndInit();

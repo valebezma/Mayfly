@@ -24,8 +24,6 @@ namespace Mayfly.Wild
 
         public static MassDegree LogMassDegree;
 
-        public static Form SettingsForm;
-
         //public static string CardsPath {
 
         //    get {
