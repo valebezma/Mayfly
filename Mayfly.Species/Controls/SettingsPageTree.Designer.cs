@@ -30,10 +30,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxLowerFormat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelLowerTaxon = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.dialogLowerTaxon = new System.Windows.Forms.ColorDialog();
+            this.colorBoxLower = new Mayfly.Controls.ColorBox();
             this.SuspendLayout();
             // 
             // checkBoxFillLower
@@ -86,16 +85,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Lower taxon name format";
             // 
-            // panelLowerTaxon
-            // 
-            this.panelLowerTaxon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelLowerTaxon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelLowerTaxon.Location = new System.Drawing.Point(327, 86);
-            this.panelLowerTaxon.Name = "panelLowerTaxon";
-            this.panelLowerTaxon.Size = new System.Drawing.Size(50, 20);
-            this.panelLowerTaxon.TabIndex = 14;
-            this.panelLowerTaxon.Click += new System.EventHandler(this.panelLowerTaxon_Click);
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -118,24 +107,31 @@
             this.label26.TabIndex = 8;
             this.label26.Text = "Taxonomic tree appearance";
             // 
-            // dialogLowerTaxon
+            // colorBoxLower
             // 
-            this.dialogLowerTaxon.AnyColor = true;
-            this.dialogLowerTaxon.FullOpen = true;
+            this.colorBoxLower.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorBoxLower.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorBoxLower.Color = System.Drawing.Color.Empty;
+            this.colorBoxLower.Location = new System.Drawing.Point(327, 86);
+            this.colorBoxLower.Name = "colorBoxLower";
+            this.colorBoxLower.Size = new System.Drawing.Size(50, 20);
+            this.colorBoxLower.TabIndex = 16;
             // 
-            // SettingsControlTree
+            // SettingsPageTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.colorBoxLower);
             this.Controls.Add(this.checkBoxFillLower);
             this.Controls.Add(this.textBoxHigherFormat);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxLowerFormat);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelLowerTaxon);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label26);
-            this.Name = "SettingsControlTree";
+            this.Group = "Taxonomics";
+            this.Name = "SettingsPageTree";
+            this.Section = "Tree appearance";
             this.Size = new System.Drawing.Size(400, 193);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,9 +145,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxLowerFormat;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panelLowerTaxon;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ColorDialog dialogLowerTaxon;
+        private Mayfly.Controls.ColorBox colorBoxLower;
     }
 }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FunctorProperties));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAppearance = new System.Windows.Forms.TabPage();
-            this.panelTrendColor = new System.Windows.Forms.Panel();
             this.trackBarTrendWidth = new System.Windows.Forms.TrackBar();
             this.label23 = new System.Windows.Forms.Label();
             this.label_trend_color = new System.Windows.Forms.Label();
@@ -42,7 +41,7 @@
             this.tabPageInteraction = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.checkBoxAllowCursors = new System.Windows.Forms.CheckBox();
-            this.colorDialogTrend = new System.Windows.Forms.ColorDialog();
+            this.colorBoxTrend = new Mayfly.Controls.ColorBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAppearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTrendWidth)).BeginInit();
@@ -59,7 +58,7 @@
             // 
             // tabPageAppearance
             // 
-            this.tabPageAppearance.Controls.Add(this.panelTrendColor);
+            this.tabPageAppearance.Controls.Add(this.colorBoxTrend);
             this.tabPageAppearance.Controls.Add(this.trackBarTrendWidth);
             this.tabPageAppearance.Controls.Add(this.label23);
             this.tabPageAppearance.Controls.Add(this.label_trend_color);
@@ -70,14 +69,6 @@
             resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
             this.tabPageAppearance.Name = "tabPageAppearance";
             this.tabPageAppearance.UseVisualStyleBackColor = true;
-            // 
-            // panelTrendColor
-            // 
-            this.panelTrendColor.BackColor = System.Drawing.Color.OrangeRed;
-            this.panelTrendColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelTrendColor, "panelTrendColor");
-            this.panelTrendColor.Name = "panelTrendColor";
-            this.panelTrendColor.Click += new System.EventHandler(this.panelTrendColor_Click);
             // 
             // trackBarTrendWidth
             // 
@@ -144,9 +135,12 @@
             this.checkBoxAllowCursors.UseVisualStyleBackColor = true;
             this.checkBoxAllowCursors.CheckedChanged += new System.EventHandler(this.valueChanged);
             // 
-            // colorDialogTrend
+            // colorBoxTrend
             // 
-            this.colorDialogTrend.Color = System.Drawing.Color.OrangeRed;
+            this.colorBoxTrend.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorBoxTrend.Color = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.colorBoxTrend, "colorBoxTrend");
+            this.colorBoxTrend.Name = "colorBoxTrend";
             // 
             // FunctorProperties
             // 
@@ -174,14 +168,13 @@
         public System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.ColorDialog colorDialogTrend;
         private System.Windows.Forms.TabPage tabPageInteraction;
         private System.Windows.Forms.CheckBox checkBoxAllowCursors;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panelTrendColor;
         private System.Windows.Forms.TrackBar trackBarTrendWidth;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label_trend_color;
         public System.Windows.Forms.Label label4;
+        private Mayfly.Controls.ColorBox colorBoxTrend;
     }
 }

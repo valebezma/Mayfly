@@ -19,31 +19,14 @@ namespace Mayfly.Mathematics.Controls
 
         public void LoadSettings() {
 
-            dialogSelected.Color = panelSelected.BackColor = UserSettings.ColorSelected;
-            dialogTrend.Color = panelTrend.BackColor = UserSettings.ColorAccent;
-            dialogSelected.Color =
-                panelSelected.BackColor =
-                UserSettings.ColorSelected;
+            colorPickerSelected.Color = UserSettings.ColorSelected;
+            colorPickerTrend.Color = UserSettings.ColorAccent;
         }
 
         public void SaveSettings() {
 
-            UserSettings.ColorSelected = dialogSelected.Color;
-            UserSettings.ColorAccent = dialogTrend.Color;
-        }
-
-
-
-        private void panelSelected_Click(object sender, EventArgs e) {
-            if (dialogSelected.ShowDialog(this) == DialogResult.OK) {
-                panelSelected.BackColor = dialogSelected.Color;
-            }
-        }
-
-        private void panelTrend_Click(object sender, EventArgs e) {
-            if (dialogTrend.ShowDialog(this) == DialogResult.OK) {
-                panelTrend.BackColor = dialogTrend.Color;
-            }
+            UserSettings.ColorSelected = colorPickerSelected.Color;
+            UserSettings.ColorAccent = colorPickerTrend.Color;
         }
     }
 }

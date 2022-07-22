@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Meta.Numerics.Statistics;
+﻿using Mayfly.Extensions;
 using Mayfly.Mathematics.Statistics;
-using Mayfly.Extensions;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Mayfly.Mathematics.Charts
 {
@@ -18,122 +12,93 @@ namespace Mayfly.Mathematics.Charts
 
         public Scatterplot Scatterplot { get; set; }
 
-        public string ScatterplotName
-        {
-            get 
-            {
+        public string ScatterplotName {
+            get {
                 return textBoxRegressionName.Text;
             }
 
-            set
-            {
+            set {
                 textBoxRegressionName.Text = value;
                 ResetTitle();
             }
         }
 
-        public string TrendName
-        {
+        public string TrendName {
             get;
             private set;
         }
 
-        public bool ShowTrend
-        {
+        public bool ShowTrend {
             get { return checkBoxShowTrend.Checked && comboBoxTrend.SelectedIndex > -1; }
 
             set { checkBoxShowTrend.Checked = value; }
         }
 
-        public TrendType SelectedApproximationType
-        {
+        public TrendType SelectedApproximationType {
             get { return (TrendType)comboBoxTrend.SelectedIndex; }
             set { comboBoxTrend.SelectedIndex = (int)value; }
-        } 
+        }
 
-        public bool AllowCursors
-        {
+        public bool AllowCursors {
             get { return ShowTrend && checkBoxAllowCursors.Checked; }
             set { checkBoxAllowCursors.Checked = value; }
         }
 
-        public bool ShowCount
-        {
+        public bool ShowCount {
             get { return ShowTrend && checkBoxShowCount.Checked; }
             set { checkBoxShowCount.Checked = value; }
         }
 
-        public bool ShowExplained
-        {
+        public bool ShowExplained {
             get { return ShowTrend && checkBoxShowExplained.Checked; }
             set { checkBoxShowExplained.Checked = value; }
         }
 
-        public bool ShowAnnotation
-        {
-            get
-            {
-                return ShowTrend && (ShowCount || ShowExplained);
-            }
+        public bool ShowAnnotation {
+            get { return ShowTrend && (ShowCount || ShowExplained); }
         }
 
-        public bool ShowConfidenceBands
-        {
+        public bool ShowConfidenceBands {
             get { return ShowTrend && checkBoxCI.Checked; }
             set { checkBoxCI.Checked = value; }
         }
 
-        public bool ShowPredictionBands
-        {
+        public bool ShowPredictionBands {
             get { return ShowTrend && checkBoxPI.Checked; }
             set { checkBoxPI.Checked = value; }
         }
 
-        public bool HighlightOutliers
-        {
+        public bool HighlightOutliers {
             get { return ShowTrend && checkBoxOutliers.Checked; }
             set { checkBoxOutliers.Checked = value; }
         }
 
-        public Color DataPointColor
-        {
-            get { return colorDialogMarker.Color; }
-            set { 
-
-                colorDialogMarker.Color = panelMarkerColor.BackColor = value;
-            }
+        public Color DataPointColor {
+            get { return colorBoxMarker.Color; }
+            set { colorBoxMarker.Color = value; }
         }
 
-        public Color TrendColor
-        {
-            get { return colorDialogTrend.Color; }
-            set
-            {
-                colorDialogTrend.Color = value;
-                if (ShowTrend) panelTrendColor.BackColor = value;
-            }
+        public Color TrendColor {
+            get { return colorBoxTrend.Color; }
+            set { colorBoxTrend.Color = value; }
         }
 
-        public int DataPointSize
-        {
+        public int DataPointSize {
             get { return trackBarMarkerSize.Value; }
             set { trackBarMarkerSize.Value = value; }
         }
 
-        public int DataPointBorderWidth
-        {
+        public int DataPointBorderWidth {
             get { return trackBarMarkerWidth.Value; }
             set { trackBarMarkerWidth.Value = value; }
         }
 
-        public int TrendWidth
-        {
+        public int TrendWidth {
             get { return trackBarTrendWidth.Value; }
             set { trackBarTrendWidth.Value = value; }
         }
 
-        public double ConfidenceLevel
-        {
+        public double ConfidenceLevel {
             get { return (double)numericUpDownConfidenceLevel.Value / 100; }
             set { numericUpDownConfidenceLevel.Value = 100 * (decimal)value; }
         }
@@ -142,8 +107,7 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        public ScatterplotProperties()
-        {
+        public ScatterplotProperties() {
             InitializeComponent();
 
             comboBoxTrend.Items.AddRange(Service.GetRegressionTypes());
@@ -151,8 +115,7 @@ namespace Mayfly.Mathematics.Charts
             ConfidenceLevel = 1 - UserSettings.DefaultAlpha;
         }
 
-        public ScatterplotProperties(Scatterplot scatterplot) : this()
-        {
+        public ScatterplotProperties(Scatterplot scatterplot) : this() {
             Scatterplot = scatterplot;
             TrendColor = DataPointColor.Darker();
             //checkBoxShowTrend.Enabled = 
@@ -162,39 +125,33 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        public void ResetTitle()
-        {
+        public void ResetTitle() {
             Text = string.Format(Resources.Interface.SeriesProperties, ScatterplotName);
         }
 
-        public void ShowTrendTab()
-        {
+        public void ShowTrendTab() {
             tabControl1.SelectedTab = tabPageTrendline;
         }
 
 
 
-        private void valueChanged(object sender, EventArgs e)
-        {
-            if (ValueChanged != null && ActiveControl == (Control)sender)
-            {
+        private void valueChanged(object sender, EventArgs e) {
+            if (ValueChanged != null && ActiveControl == (Control)sender) {
                 ValueChanged.Invoke(sender, new ScatterplotEventArgs(Scatterplot));
             }
 
-            if (Scatterplot != null && ActiveControl == (Control)sender)
-            {
+            if (Scatterplot != null && ActiveControl == (Control)sender) {
                 Scatterplot.Update();
             }
         }
 
-        private void checkBoxTrend_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxTrend_CheckedChanged(object sender, EventArgs e) {
             comboBoxTrend.Enabled =
             checkBoxShowCount.Enabled =
             checkBoxShowExplained.Enabled =
             checkBoxCI.Enabled =
             checkBoxPI.Enabled =
-            
+
             trackBarTrendWidth.Enabled =
             label_trend_color.Enabled =
             panelTrendColor.Enabled =
@@ -204,38 +161,32 @@ namespace Mayfly.Mathematics.Charts
 
                 checkBoxShowTrend.Checked && comboBoxTrend.SelectedIndex > -1;
 
-            if (checkBoxShowTrend.Checked && !TrendName.IsAcceptable())
-            {
+            if (checkBoxShowTrend.Checked && !TrendName.IsAcceptable()) {
                 TrendName = string.Format(Resources.Interface.TrendLineTitle, ScatterplotName);
             }
 
-            if (checkBoxShowTrend.Checked)
-            {
+            if (checkBoxShowTrend.Checked) {
                 panelTrendColor.BackColor = colorDialogTrend.Color;
 
                 //if (!TrendColored)
                 //{
                 //    TrendColor = DataPointColor.Darker();
                 //}
-            }
-            else
-            {
+            } else {
                 panelTrendColor.BackColor = Color.Transparent;
             }
 
             valueChanged(sender, e);
         }
 
-        private void panelTrendColor_Click(object sender, EventArgs e)
-        {
+        private void panelTrendColor_Click(object sender, EventArgs e) {
             colorDialogTrend.ShowDialog(this);
             //TrendColored = true;
             panelTrendColor.BackColor = colorDialogTrend.Color;
             valueChanged(ActiveControl, e);
         }
 
-        private void panelMarkerColor_Click(object sender, EventArgs e)
-        {
+        private void panelMarkerColor_Click(object sender, EventArgs e) {
             colorDialogMarker.ShowDialog(this);
             panelMarkerColor.BackColor = colorDialogMarker.Color;
             valueChanged(ActiveControl, e);
@@ -246,35 +197,29 @@ namespace Mayfly.Mathematics.Charts
             //}
         }
 
-        private void panelMarkerColor_BackColorChanged(object sender, EventArgs e)
-        {
-            if (DesignMode)
-            {
+        private void panelMarkerColor_BackColorChanged(object sender, EventArgs e) {
+            if (DesignMode) {
                 colorDialogMarker.Color = panelMarkerColor.BackColor;
             }
         }
 
-        private void comboBoxTrend_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBoxTrend_SelectedIndexChanged(object sender, EventArgs e) {
             valueChanged(sender, e);
         }
 
-        private void comboBoxTrend_Click(object sender, EventArgs e)
-        {
+        private void comboBoxTrend_Click(object sender, EventArgs e) {
             if (!comboBoxTrend.Enabled) ShowTrend = true;
         }
 
-        private void textBoxRegressionName_TextChanged(object sender, EventArgs e)
-        {
+        private void textBoxRegressionName_TextChanged(object sender, EventArgs e) {
             ResetTitle();
             TrendName = string.Format(Resources.Interface.TrendLineTitle, ScatterplotName);
             valueChanged(sender, e);
         }
 
-        private void checkBoxBands_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxBands_CheckedChanged(object sender, EventArgs e) {
             label5.Enabled =
-                numericUpDownConfidenceLevel.Enabled = 
+                numericUpDownConfidenceLevel.Enabled =
                 (ShowPredictionBands || ShowConfidenceBands);
 
             checkBoxOutliers.Enabled = ShowPredictionBands;
@@ -282,14 +227,12 @@ namespace Mayfly.Mathematics.Charts
             valueChanged(sender, e);
         }
 
-        private void Properties_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void Properties_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = true;
             Hide();
         }
 
-        private void checkBox_EnabledChanged(object sender, EventArgs e)
-        {
+        private void checkBox_EnabledChanged(object sender, EventArgs e) {
             if (!((CheckBox)sender).Enabled) ((CheckBox)sender).Checked = false;
         }
     }

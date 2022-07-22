@@ -25,34 +25,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.dialogSelected = new System.Windows.Forms.ColorDialog();
-            this.dialogTrend = new System.Windows.Forms.ColorDialog();
-            this.panelTrend = new System.Windows.Forms.Panel();
             this.labelDefaultTrendColor = new System.Windows.Forms.Label();
-            this.panelSelected = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.colorPickerSelected = new Mayfly.Controls.ColorBox();
+            this.colorPickerTrend = new Mayfly.Controls.ColorBox();
             this.SuspendLayout();
-            // 
-            // dialogSelected
-            // 
-            this.dialogSelected.AnyColor = true;
-            this.dialogSelected.FullOpen = true;
-            // 
-            // dialogTrend
-            // 
-            this.dialogTrend.AnyColor = true;
-            this.dialogTrend.FullOpen = true;
-            // 
-            // panelTrend
-            // 
-            this.panelTrend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelTrend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelTrend.Location = new System.Drawing.Point(327, 60);
-            this.panelTrend.Name = "panelTrend";
-            this.panelTrend.Size = new System.Drawing.Size(50, 20);
-            this.panelTrend.TabIndex = 4;
-            this.panelTrend.Click += new System.EventHandler(this.panelTrend_Click);
             // 
             // labelDefaultTrendColor
             // 
@@ -63,16 +41,6 @@
             this.labelDefaultTrendColor.Size = new System.Drawing.Size(94, 13);
             this.labelDefaultTrendColor.TabIndex = 3;
             this.labelDefaultTrendColor.Text = "Default trend color";
-            // 
-            // panelSelected
-            // 
-            this.panelSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSelected.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelSelected.Location = new System.Drawing.Point(327, 34);
-            this.panelSelected.Name = "panelSelected";
-            this.panelSelected.Size = new System.Drawing.Size(50, 20);
-            this.panelSelected.TabIndex = 2;
-            this.panelSelected.Click += new System.EventHandler(this.panelSelected_Click);
             // 
             // label19
             // 
@@ -97,17 +65,37 @@
             this.label26.TabIndex = 0;
             this.label26.Text = "Data coloring";
             // 
-            // SettingsControlAppearance
+            // colorPickerSelected
+            // 
+            this.colorPickerSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPickerSelected.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPickerSelected.Color = System.Drawing.Color.Empty;
+            this.colorPickerSelected.Location = new System.Drawing.Point(327, 33);
+            this.colorPickerSelected.Name = "colorPickerSelected";
+            this.colorPickerSelected.Size = new System.Drawing.Size(50, 20);
+            this.colorPickerSelected.TabIndex = 5;
+            // 
+            // colorPickerTrend
+            // 
+            this.colorPickerTrend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPickerTrend.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPickerTrend.Color = System.Drawing.Color.Empty;
+            this.colorPickerTrend.Location = new System.Drawing.Point(327, 59);
+            this.colorPickerTrend.Name = "colorPickerTrend";
+            this.colorPickerTrend.Size = new System.Drawing.Size(50, 20);
+            this.colorPickerTrend.TabIndex = 5;
+            // 
+            // SettingsPageAppearance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelTrend);
+            this.Controls.Add(this.colorPickerTrend);
+            this.Controls.Add(this.colorPickerSelected);
             this.Controls.Add(this.labelDefaultTrendColor);
-            this.Controls.Add(this.panelSelected);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label26);
             this.Group = "Statistics";
-            this.Name = "SettingsControlAppearance";
+            this.Name = "SettingsPageAppearance";
             this.Section = "Appearance";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -115,13 +103,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ColorDialog dialogSelected;
-        private System.Windows.Forms.ColorDialog dialogTrend;
-        private System.Windows.Forms.Panel panelTrend;
         private System.Windows.Forms.Label labelDefaultTrendColor;
-        private System.Windows.Forms.Panel panelSelected;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label26;
+        private Mayfly.Controls.ColorBox colorPickerSelected;
+        private Mayfly.Controls.ColorBox colorPickerTrend;
     }
 }

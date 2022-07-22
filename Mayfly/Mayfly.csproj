@@ -252,6 +252,12 @@
     <Compile Include="Components\IconLib\Win32.cs" />
     <Compile Include="Controls\BufferedPaint\BufferedPainter.cs" />
     <Compile Include="Controls\BufferedPaint\Interop.cs" />
+    <Compile Include="Controls\ColorBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorBox.Designer.cs">
+      <DependentUpon>ColorBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ComboBoxItem.cs" />
     <Compile Include="Controls\GroupedComboBox.cs" />
     <Compile Include="Controls\ListViewItemAddedEventHandler.cs" />
@@ -561,6 +567,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Components\IconLib\Resource.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ColorBox.resx">
+      <DependentUpon>ColorBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ColumnProperties.resx">
       <DependentUpon>ColumnProperties.cs</DependentUpon>

@@ -36,7 +36,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxSeriesName = new System.Windows.Forms.TextBox();
-            this.panelMarkerColor = new System.Windows.Forms.Panel();
             this.labelSeriesName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,12 +56,11 @@
             this.comboBoxFit = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panelFitColor = new System.Windows.Forms.Panel();
             this.trackBarFitWidth = new System.Windows.Forms.TrackBar();
             this.labelFitWidth = new System.Windows.Forms.Label();
             this.labelFitColor = new System.Windows.Forms.Label();
-            this.colorDialogColumn = new System.Windows.Forms.ColorDialog();
-            this.colorDialogFit = new System.Windows.Forms.ColorDialog();
+            this.colorBoxColumn = new Mayfly.Controls.ColorBox();
+            this.colorBoxFit = new Mayfly.Controls.ColorBox();
             this.tabControl.SuspendLayout();
             this.tabPageAppearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarWidth)).BeginInit();
@@ -85,12 +83,12 @@
             // 
             // tabPageAppearance
             // 
+            this.tabPageAppearance.Controls.Add(this.colorBoxColumn);
             this.tabPageAppearance.Controls.Add(this.label21);
             this.tabPageAppearance.Controls.Add(this.trackBarWidth);
             this.tabPageAppearance.Controls.Add(this.label16);
             this.tabPageAppearance.Controls.Add(this.label15);
             this.tabPageAppearance.Controls.Add(this.textBoxSeriesName);
-            this.tabPageAppearance.Controls.Add(this.panelMarkerColor);
             this.tabPageAppearance.Controls.Add(this.labelSeriesName);
             this.tabPageAppearance.Controls.Add(this.label5);
             this.tabPageAppearance.Controls.Add(this.label3);
@@ -132,14 +130,6 @@
             resources.ApplyResources(this.textBoxSeriesName, "textBoxSeriesName");
             this.textBoxSeriesName.Name = "textBoxSeriesName";
             this.textBoxSeriesName.TextChanged += new System.EventHandler(this.textBoxSeriesName_TextChanged);
-            // 
-            // panelMarkerColor
-            // 
-            this.panelMarkerColor.BackColor = System.Drawing.Color.OliveDrab;
-            this.panelMarkerColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelMarkerColor, "panelMarkerColor");
-            this.panelMarkerColor.Name = "panelMarkerColor";
-            this.panelMarkerColor.Click += new System.EventHandler(this.panelMarkerColor_Click);
             // 
             // labelSeriesName
             // 
@@ -225,6 +215,7 @@
             // 
             // tabPageFitDistribution
             // 
+            this.tabPageFitDistribution.Controls.Add(this.colorBoxFit);
             this.tabPageFitDistribution.Controls.Add(this.labelEquation);
             this.tabPageFitDistribution.Controls.Add(this.checkBoxShowFitResult);
             this.tabPageFitDistribution.Controls.Add(this.checkBoxShowCount);
@@ -232,7 +223,6 @@
             this.tabPageFitDistribution.Controls.Add(this.comboBoxFit);
             this.tabPageFitDistribution.Controls.Add(this.label2);
             this.tabPageFitDistribution.Controls.Add(this.label4);
-            this.tabPageFitDistribution.Controls.Add(this.panelFitColor);
             this.tabPageFitDistribution.Controls.Add(this.trackBarFitWidth);
             this.tabPageFitDistribution.Controls.Add(this.labelFitWidth);
             this.tabPageFitDistribution.Controls.Add(this.labelFitColor);
@@ -295,13 +285,6 @@
             this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label4.Name = "label4";
             // 
-            // panelFitColor
-            // 
-            this.panelFitColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelFitColor, "panelFitColor");
-            this.panelFitColor.Name = "panelFitColor";
-            this.panelFitColor.Click += new System.EventHandler(this.panelFitColor_Click);
-            // 
             // trackBarFitWidth
             // 
             resources.ApplyResources(this.trackBarFitWidth, "trackBarFitWidth");
@@ -324,13 +307,19 @@
             resources.ApplyResources(this.labelFitColor, "labelFitColor");
             this.labelFitColor.Name = "labelFitColor";
             // 
-            // colorDialogColumn
+            // colorBoxColumn
             // 
-            this.colorDialogColumn.Color = System.Drawing.Color.Coral;
+            this.colorBoxColumn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorBoxColumn.Color = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.colorBoxColumn, "colorBoxColumn");
+            this.colorBoxColumn.Name = "colorBoxColumn";
             // 
-            // colorDialogFit
+            // colorBoxFit
             // 
-            this.colorDialogFit.Color = System.Drawing.Color.Tomato;
+            this.colorBoxFit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorBoxFit.Color = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.colorBoxFit, "colorBoxFit");
+            this.colorBoxFit.Name = "colorBoxFit";
             // 
             // HistogramProperties
             // 
@@ -361,21 +350,17 @@
         public System.Windows.Forms.Label label16;
         public System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxSeriesName;
-        private System.Windows.Forms.Panel panelMarkerColor;
         private System.Windows.Forms.Label labelSeriesName;
         private System.Windows.Forms.Label label_marker_color;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TrackBar trackBarWidth;
-        private System.Windows.Forms.ColorDialog colorDialogColumn;
         private System.Windows.Forms.TabPage tabPageFitDistribution;
         public System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxBorder;
         public System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panelFitColor;
         private System.Windows.Forms.TrackBar trackBarFitWidth;
         private System.Windows.Forms.Label labelFitWidth;
         private System.Windows.Forms.Label labelFitColor;
-        private System.Windows.Forms.ColorDialog colorDialogFit;
         private System.Windows.Forms.TabPage tabPageValues;
         private System.Windows.Forms.RadioButton radioButtonUpper;
         private System.Windows.Forms.RadioButton radioButtonLower;
@@ -390,5 +375,7 @@
         public System.Windows.Forms.Label labelEquation;
         private System.Windows.Forms.CheckBox checkBoxShowCount;
         private System.Windows.Forms.CheckBox checkBoxShowFitResult;
+        private Mayfly.Controls.ColorBox colorBoxColumn;
+        private Mayfly.Controls.ColorBox colorBoxFit;
     }
 }

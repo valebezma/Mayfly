@@ -31,13 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScatterplotProperties));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAppearance = new System.Windows.Forms.TabPage();
-            this.panelTrendColor = new System.Windows.Forms.Panel();
             this.trackBarTrendWidth = new System.Windows.Forms.TrackBar();
             this.label23 = new System.Windows.Forms.Label();
             this.label_trend_color = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarMarkerWidth = new System.Windows.Forms.TrackBar();
-            this.panelMarkerColor = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -47,6 +45,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.trackBarMarkerSize = new System.Windows.Forms.TrackBar();
             this.tabPageTrendline = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBoxAllowCursors = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDownConfidenceLevel = new System.Windows.Forms.NumericUpDown();
             this.comboBoxTrend = new System.Windows.Forms.ComboBox();
@@ -58,10 +58,8 @@
             this.checkBoxCI = new System.Windows.Forms.CheckBox();
             this.checkBoxShowExplained = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCount = new System.Windows.Forms.CheckBox();
-            this.colorDialogMarker = new System.Windows.Forms.ColorDialog();
-            this.colorDialogTrend = new System.Windows.Forms.ColorDialog();
-            this.label8 = new System.Windows.Forms.Label();
-            this.checkBoxAllowCursors = new System.Windows.Forms.CheckBox();
+            this.colorBoxMarker = new Mayfly.Controls.ColorBox();
+            this.colorBoxTrend = new Mayfly.Controls.ColorBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAppearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTrendWidth)).BeginInit();
@@ -81,13 +79,13 @@
             // 
             // tabPageAppearance
             // 
-            this.tabPageAppearance.Controls.Add(this.panelTrendColor);
+            this.tabPageAppearance.Controls.Add(this.colorBoxTrend);
+            this.tabPageAppearance.Controls.Add(this.colorBoxMarker);
             this.tabPageAppearance.Controls.Add(this.trackBarTrendWidth);
             this.tabPageAppearance.Controls.Add(this.label23);
             this.tabPageAppearance.Controls.Add(this.label_trend_color);
             this.tabPageAppearance.Controls.Add(this.label4);
             this.tabPageAppearance.Controls.Add(this.trackBarMarkerWidth);
-            this.tabPageAppearance.Controls.Add(this.panelMarkerColor);
             this.tabPageAppearance.Controls.Add(this.label18);
             this.tabPageAppearance.Controls.Add(this.label21);
             this.tabPageAppearance.Controls.Add(this.label24);
@@ -99,14 +97,6 @@
             resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
             this.tabPageAppearance.Name = "tabPageAppearance";
             this.tabPageAppearance.UseVisualStyleBackColor = true;
-            // 
-            // panelTrendColor
-            // 
-            this.panelTrendColor.BackColor = System.Drawing.Color.Maroon;
-            this.panelTrendColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelTrendColor, "panelTrendColor");
-            this.panelTrendColor.Name = "panelTrendColor";
-            this.panelTrendColor.Click += new System.EventHandler(this.panelTrendColor_Click);
             // 
             // trackBarTrendWidth
             // 
@@ -147,15 +137,6 @@
             this.trackBarMarkerWidth.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarMarkerWidth.Value = 1;
             this.trackBarMarkerWidth.Scroll += new System.EventHandler(this.valueChanged);
-            // 
-            // panelMarkerColor
-            // 
-            this.panelMarkerColor.BackColor = System.Drawing.Color.SeaGreen;
-            this.panelMarkerColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelMarkerColor, "panelMarkerColor");
-            this.panelMarkerColor.Name = "panelMarkerColor";
-            this.panelMarkerColor.BackColorChanged += new System.EventHandler(this.panelMarkerColor_BackColorChanged);
-            this.panelMarkerColor.Click += new System.EventHandler(this.panelMarkerColor_Click);
             // 
             // label18
             // 
@@ -225,6 +206,19 @@
             resources.ApplyResources(this.tabPageTrendline, "tabPageTrendline");
             this.tabPageTrendline.Name = "tabPageTrendline";
             this.tabPageTrendline.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label8.Name = "label8";
+            // 
+            // checkBoxAllowCursors
+            // 
+            resources.ApplyResources(this.checkBoxAllowCursors, "checkBoxAllowCursors");
+            this.checkBoxAllowCursors.Name = "checkBoxAllowCursors";
+            this.checkBoxAllowCursors.UseVisualStyleBackColor = true;
+            this.checkBoxAllowCursors.CheckedChanged += new System.EventHandler(this.valueChanged);
             // 
             // label5
             // 
@@ -322,22 +316,19 @@
             this.checkBoxShowCount.CheckedChanged += new System.EventHandler(this.valueChanged);
             this.checkBoxShowCount.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
-            // colorDialogMarker
+            // colorBoxMarker
             // 
-            this.colorDialogMarker.Color = System.Drawing.Color.SeaGreen;
+            this.colorBoxMarker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorBoxMarker.Color = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.colorBoxMarker, "colorBoxMarker");
+            this.colorBoxMarker.Name = "colorBoxMarker";
             // 
-            // label8
+            // colorBoxTrend
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label8.Name = "label8";
-            // 
-            // checkBoxAllowCursors
-            // 
-            resources.ApplyResources(this.checkBoxAllowCursors, "checkBoxAllowCursors");
-            this.checkBoxAllowCursors.Name = "checkBoxAllowCursors";
-            this.checkBoxAllowCursors.UseVisualStyleBackColor = true;
-            this.checkBoxAllowCursors.CheckedChanged += new System.EventHandler(this.valueChanged);
+            this.colorBoxTrend.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorBoxTrend.Color = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.colorBoxTrend, "colorBoxTrend");
+            this.colorBoxTrend.Name = "colorBoxTrend";
             // 
             // ScatterplotProperties
             // 
@@ -376,7 +367,6 @@
         private System.Windows.Forms.CheckBox checkBoxShowExplained;
         private System.Windows.Forms.CheckBox checkBoxShowCount;
         public System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panelMarkerColor;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TrackBar trackBarMarkerWidth;
         private System.Windows.Forms.TrackBar trackBarMarkerSize;
@@ -385,16 +375,15 @@
         private System.Windows.Forms.CheckBox checkBoxShowTrend;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDownConfidenceLevel;
-        private System.Windows.Forms.ColorDialog colorDialogMarker;
-        private System.Windows.Forms.ColorDialog colorDialogTrend;
         public System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkBoxOutliers;
-        private System.Windows.Forms.Panel panelTrendColor;
         private System.Windows.Forms.TrackBar trackBarTrendWidth;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label_trend_color;
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBoxAllowCursors;
+        private Mayfly.Controls.ColorBox colorBoxTrend;
+        private Mayfly.Controls.ColorBox colorBoxMarker;
     }
 }

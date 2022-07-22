@@ -17,17 +17,13 @@ namespace Mayfly.Species.Controls
             InitializeComponent();
         }
 
-        public string Section => "Tree appearance";
 
-        public string Group => "Taxonomics";
 
         public void LoadSettings() {
 
             textBoxHigherFormat.Text = UserSettings.HigherTaxonNameFormat;
             textBoxLowerFormat.Text = UserSettings.LowerTaxonNameFormat;
-            dialogLowerTaxon.Color =
-                panelLowerTaxon.BackColor =
-                UserSettings.LowerTaxonColor;
+            colorBoxLower.Color = UserSettings.LowerTaxonColor;
 
             checkBoxFillLower.Checked = UserSettings.FillTreeWithLowerTaxon;
         }
@@ -36,14 +32,8 @@ namespace Mayfly.Species.Controls
 
             UserSettings.HigherTaxonNameFormat = textBoxHigherFormat.Text;
             UserSettings.LowerTaxonNameFormat = textBoxLowerFormat.Text;
-            UserSettings.LowerTaxonColor = panelLowerTaxon.BackColor;
+            UserSettings.LowerTaxonColor = colorBoxLower.Color;
             UserSettings.FillTreeWithLowerTaxon = checkBoxFillLower.Checked;
-        }
-
-        private void panelLowerTaxon_Click(object sender, EventArgs e) {
-            if (dialogLowerTaxon.ShowDialog(this) == DialogResult.OK) {
-                panelLowerTaxon.BackColor = dialogLowerTaxon.Color;
-            }
         }
     }
 }

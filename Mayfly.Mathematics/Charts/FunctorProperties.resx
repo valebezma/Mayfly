@@ -122,26 +122,26 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="panelTrendColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 143</value>
+  <data name="colorBoxTrend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 143</value>
   </data>
-  <data name="panelTrendColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+  <data name="colorBoxTrend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panelTrendColor.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="colorBoxTrend.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
   </data>
-  <data name="&gt;&gt;panelTrendColor.Name" xml:space="preserve">
-    <value>panelTrendColor</value>
+  <data name="&gt;&gt;colorBoxTrend.Name" xml:space="preserve">
+    <value>colorBoxTrend</value>
   </data>
-  <data name="&gt;&gt;panelTrendColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;colorBoxTrend.Type" xml:space="preserve">
+    <value>Mayfly.Controls.ColorBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;panelTrendColor.Parent" xml:space="preserve">
+  <data name="&gt;&gt;colorBoxTrend.Parent" xml:space="preserve">
     <value>tabPageAppearance</value>
   </data>
-  <data name="&gt;&gt;panelTrendColor.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;colorBoxTrend.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="trackBarTrendWidth.AutoSize" type="System.Boolean, mscorlib">
@@ -498,9 +498,6 @@
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="colorDialogTrend.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -518,12 +515,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Functor Properties</value>
-  </data>
-  <data name="&gt;&gt;colorDialogTrend.Name" xml:space="preserve">
-    <value>colorDialogTrend</value>
-  </data>
-  <data name="&gt;&gt;colorDialogTrend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FunctorProperties</value>
