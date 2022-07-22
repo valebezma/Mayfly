@@ -14,19 +14,23 @@ namespace Mayfly.Controls
     {
         private Color color;
 
+        public event EventHandler ValueChanged;
+
         [Browsable(true), DefaultValue(typeof(Color), "CornflowerBlue")]
         public Color Color {
 
             get { return color; }
 
             set {
+
                 color = value;
                 dialog.Color = value;
-                this.BackColor = value;
+                BackColor = Enabled ? color : Color.Transparent;
             }
         }
 
         public ColorBox() {
+
             InitializeComponent();
         }
 
@@ -34,10 +38,22 @@ namespace Mayfly.Controls
 
             if (dialog.ShowDialog(this) == DialogResult.OK) {
 
-                color = 
-                    dialog.Color = 
+                if (!color.Equals(dialog.Color)) {
+
+                color =
+                    BackColor = 
                     dialog.Color;
+
+                if (ValueChanged != null) {
+                        ValueChanged.Invoke(this, EventArgs.Empty);
+                    }
+                }
             }
+        }
+
+        private void ColorBox_EnabledChanged(object sender, EventArgs e) {
+
+            BackColor = Enabled ? color : Color.Transparent;
         }
     }
 }

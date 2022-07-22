@@ -16,7 +16,7 @@ namespace Mayfly.Plankton
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
-            Wild.SettingsReader.SetFeature("Plankton", ".pcd", Wild.MassDegree.Milligramm, Wild.MassDegree.Microgramm);
+            Wild.ReaderSettings.SetFeature("Plankton", ".pcd", Wild.MassDegree.Milligramm, Wild.MassDegree.Microgramm);
             UserSettings.SetApp(Properties.Resources.logo, null, null);
             Log.WriteAppStarted();
 

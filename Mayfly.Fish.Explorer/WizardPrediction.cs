@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         WizardMSY msyWizard;
 
@@ -42,10 +42,10 @@ namespace Mayfly.Fish.Explorer
             : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             wizardExplorer.ResetTitle(speciesRow.CommonName);
-            labelStart.ResetFormatted(SpeciesRow.CommonName);
+            labelStart.ResetFormatted(TaxonRow.CommonName);
 
             //Logger.Log(String.Format("Prediction wizard is started for {0}.", speciesRow.Name));
         }
@@ -56,7 +56,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.MSYR.Title,
-                    SpeciesRow.FullNameReport))
+                    TaxonRow.FullNameReport))
             {
                 UseTableNumeration = true
             };
@@ -71,7 +71,7 @@ namespace Mayfly.Fish.Explorer
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            msyWizard = (SpeciesRow == null ? new WizardMSY() : new WizardMSY(Data, SpeciesRow));
+            msyWizard = (TaxonRow == null ? new WizardMSY() : new WizardMSY(Data, TaxonRow));
             msyWizard.Returned += msyWizard_Returned;
             msyWizard.Calculated += msyWizard_Calculated;
             msyWizard.Replace(this);
@@ -105,7 +105,7 @@ namespace Mayfly.Fish.Explorer
             //foreach (CardStack annualStack in vpaWizard.AnnualStacks)
             //{
             //    double d = Service.GetCatchDate(int.Parse(annualStack.Name)).ToOADate();
-            //    double m = annualStack.Mass(SpeciesRow) / 1000;
+            //    double m = annualStack.Mass(TaxonRow) / 1000;
 
             //    yield.Add(d, m);
             //}
@@ -171,7 +171,7 @@ namespace Mayfly.Fish.Explorer
         {
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
-            Log.Write("Prediction wizard is finished. Species: {0}, {1}.", SpeciesRow.Name, "");
+            Log.Write("Prediction wizard is finished. Species: {0}, {1}.", TaxonRow.Name, "");
             if (!UserSettings.KeepWizard) Close();
         }
 

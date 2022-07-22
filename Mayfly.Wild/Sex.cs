@@ -7,13 +7,9 @@ namespace Mayfly.Wild
 {
     public partial class Sex : IComparable, IFormattable
     {
-        #region Properties
-
         public int Value = 0;
 
-        #endregion
 
-        #region Constructors
 
         public Sex(int value)
         {
@@ -47,45 +43,8 @@ namespace Mayfly.Wild
             }
         }
 
-        #endregion
 
-        #region Static values
 
-        public static Sex Juvenile
-        {
-            get
-            {
-                return new Sex(0);
-            }
-        }
-
-        public static Sex Male
-        {
-            get
-            {
-                return new Sex(1);
-            }
-        }
-
-        public static Sex Female
-        {
-            get
-            {
-                return new Sex(2);
-            }
-        }
-
-        #endregion
-
-        public override string ToString()
-        {
-            return ToString(string.Empty);
-        }
-
-        public string ToString(string format)
-        {
-            return ToString(format, CultureInfo.CurrentCulture);
-        }
 
         public string ToString(string format, IFormatProvider provider)
         {
@@ -134,12 +93,24 @@ namespace Mayfly.Wild
             }
         }
 
+        public string ToString(string format)
+        {
+            return ToString(format, CultureInfo.CurrentCulture);
+        }
+
+        public override string ToString()
+        {
+            return ToString(string.Empty);
+        }
+
+
+
         public static Sex Parse(string value)
         {
             return new Sex(value);
         }
 
-        #region Cast implementations
+
 
         public static implicit operator Sex(string value)
         {
@@ -161,9 +132,7 @@ namespace Mayfly.Wild
             return value.Value;
         }
 
-        #endregion
 
-        #region IComparable implementations
 
         public static bool operator ==(Sex a, Sex b)
         {
@@ -234,6 +203,30 @@ namespace Mayfly.Wild
             return (int)(Value * 100);
         }
 
-        #endregion
+
+
+        public static Sex Juvenile
+        {
+            get
+            {
+                return new Sex(0);
+            }
+        }
+
+        public static Sex Male
+        {
+            get
+            {
+                return new Sex(1);
+            }
+        }
+
+        public static Sex Female
+        {
+            get
+            {
+                return new Sex(2);
+            }
+        }
     }
 }

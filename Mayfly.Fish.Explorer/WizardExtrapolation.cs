@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
 
         private WizardGearSet gearWizard;
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         public double Area 
         {
@@ -118,11 +118,11 @@ namespace Mayfly.Fish.Explorer
         public WizardExtrapolation(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             wizardExplorer.ResetTitle(speciesRow.CommonName);
-            labelStart.ResetFormatted(SpeciesRow.CommonName);
-            labelStockInstruction.ResetFormatted(SpeciesRow.CommonName);
+            labelStart.ResetFormatted(TaxonRow.CommonName);
+            labelStockInstruction.ResetFormatted(TaxonRow.CommonName);
 
             Log.Write(EventType.WizardStarted, "Extrapolation wizard is started for {0}.", speciesRow.Name);
         }
@@ -205,7 +205,7 @@ namespace Mayfly.Fish.Explorer
                 //{
                 //    case CategoryType.Age:
 
-                //        Age age = Service.GetGamingAge(SpeciesRow.Name);
+                //        Age age = Service.GetGamingAge(TaxonRow.Taxon);
                 //        if (age != null)
                 //        {
                 //            spreadSheetStock.Rows[i].Selected = age <= new Age(Stock[i].Name);
@@ -215,7 +215,7 @@ namespace Mayfly.Fish.Explorer
 
                 //    case CategoryType.Length:
 
-                //        double sizeClass = Service.GetMeasure(SpeciesRow.Name);
+                //        double sizeClass = Service.GetMeasure(TaxonRow.Taxon);
                 //        if (!double.IsNaN(sizeClass))
                 //        {
                 //            string categoryName = sizeClass.ToString(Resources.Interface.SizeClassMask);
@@ -234,8 +234,8 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.Extrapolation.Title,
-                    SpeciesRow.FullNameReport));
-            gearWizard.SelectedData.AddCommon(report, SpeciesRow);
+                    TaxonRow.FullNameReport));
+            gearWizard.SelectedData.AddCommon(report, TaxonRow);
 
             report.UseTableNumeration = true;
 
@@ -255,7 +255,7 @@ namespace Mayfly.Fish.Explorer
             if (checkBoxComposition.Checked)
             {
                 report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph1,
-                    SpeciesRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay(),
+                    TaxonRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay(),
                     compositionWizard.CategoryType);
 
                 if (checkBoxCatches.Checked)
@@ -288,11 +288,11 @@ namespace Mayfly.Fish.Explorer
             {
                 report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph2 +
                     (gearWizard.IsSpatialOn ? Resources.Reports.Sections.Extrapolation.Paragraph2_1 : string.Empty),
-                    SpeciesRow.FullNameReport, Catchability, SpeciesRow.FullNameReport, report.NextTableNumber,
+                    TaxonRow.FullNameReport, Catchability, TaxonRow.FullNameReport, report.NextTableNumber,
                     (gearWizard.IsSpatialOn ? (report.NextTableNumber - 1).ToString() : string.Empty));
 
                 Report.Table table1 = new Report.Table(Resources.Reports.Sections.Extrapolation.Table1,
-                    SpeciesRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay());
+                    TaxonRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay());
 
                 table1.StartRow();
                 table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25, 2);
@@ -340,7 +340,7 @@ namespace Mayfly.Fish.Explorer
                 report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph3,
                     catches[0].Abundance, gearWizard.AbundanceUnits,
                     catches[0].Biomass, gearWizard.BiomassUnits,
-                    SpeciesRow.FullNameReport, Catchability);
+                    TaxonRow.FullNameReport, Catchability);
             }
 
             report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph4);
@@ -411,7 +411,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph6,
-                waterSize, SpeciesRow.FullNameReport);
+                waterSize, TaxonRow.FullNameReport);
 
             switch (gearWizard.SelectedUnit.Variant)
             {
@@ -514,7 +514,7 @@ namespace Mayfly.Fish.Explorer
 
             wizardExplorer.NextPage();
 
-            compositionWizard = new WizardComposition(Data, example, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
+            compositionWizard = new WizardComposition(Data, example, TaxonRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
             compositionWizard.Returned += compositionWizard_Returned;
             compositionWizard.Finished += compositionWizard_Finished;
             compositionWizard.Replace(this);
@@ -525,7 +525,7 @@ namespace Mayfly.Fish.Explorer
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            gearWizard = new WizardGearSet(Data, SpeciesRow);
+            gearWizard = new WizardGearSet(Data, TaxonRow);
             gearWizard.Returned += gearWizard_Returned;
             gearWizard.AfterDataSelected += gearWizard_AfterDataSelected;
             gearWizard.Replace(this);
@@ -554,7 +554,7 @@ namespace Mayfly.Fish.Explorer
 
             numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != EffortExpression.Square;
 
-            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.CommonName);
+            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), TaxonRow.CommonName);
 
             this.Replace(gearWizard);
             //if (wizardExplorer.SelectedPage != pageCpue) wizardExplorer.SetSelectedPage(pageCpue);
@@ -567,7 +567,7 @@ namespace Mayfly.Fish.Explorer
             catches = gearWizard.SelectedStacks.ToArray().GetWeightedCatches(
                 gearWizard.WeightType, gearWizard.SelectedSamplerType,
                 gearWizard.SelectedUnit.Variant,
-                SpeciesRow);
+                TaxonRow);
         }
 
         private void cpueCalc_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -611,11 +611,11 @@ namespace Mayfly.Fish.Explorer
 
             numericUpDownCatchability.Value = (decimal)Service.GetCatchability(
                 gearWizard.SelectedSamplerType,
-                SpeciesRow.Name);
+                TaxonRow.Name);
 
-            buttonLength.Enabled = Data.MeasuredAnyhow(SpeciesRow) > 0;
-            buttonAge.Enabled = Data.Aged(SpeciesRow) > 0 || Data.Parent.FindGrowthModel(SpeciesRow.Name) != null;
-            buttonSex.Enabled = Data.Sexed(SpeciesRow) > 0;
+            buttonLength.Enabled = Data.MeasuredAnyhow(TaxonRow) > 0;
+            buttonAge.Enabled = Data.Aged(TaxonRow) > 0 || Data.Parent.FindGrowthModel(TaxonRow.Name) != null;
+            buttonSex.Enabled = Data.Sexed(TaxonRow) > 0;
         }
 
         private void pageWater_Initialize(object sender, WizardPageInitEventArgs e)
@@ -659,7 +659,7 @@ namespace Mayfly.Fish.Explorer
 
         private void pageStock_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            Service.SaveCatchability(gearWizard.SelectedSamplerType, SpeciesRow.Name, Catchability);
+            Service.SaveCatchability(gearWizard.SelectedSamplerType, TaxonRow.Name, Catchability);
         }
 
 
@@ -667,21 +667,21 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonAge_Click(object sender, EventArgs e)
         {
-            Composition example = Data.GetAgeCompositionFrame(SpeciesRow);
+            Composition example = Data.GetAgeCompositionFrame(TaxonRow);
             example.Name = Wild.Resources.Reports.Caption.AgeUnit;
             RunComposition(example);
         }
 
         private void buttonLength_Click(object sender, EventArgs e)
         {
-            Composition example = Data.GetLengthCompositionFrame(SpeciesRow, UserSettings.SizeInterval);
+            Composition example = Data.GetLengthCompositionFrame(TaxonRow, UserSettings.SizeInterval);
             example.Name = Fish.Resources.Common.SizeUnits;
             RunComposition(example);
         }
 
         private void buttonSex_Click(object sender, EventArgs e)
         {
-            Composition example = Data.GetSexualCompositionFrame(SpeciesRow);
+            Composition example = Data.GetSexualCompositionFrame(TaxonRow);
             example.Name = "Sex";
             RunComposition(example);
         }
@@ -758,7 +758,7 @@ namespace Mayfly.Fish.Explorer
 
             if (compositionWizard.CatchesComposition[ri] is AgeGroup age)
             {
-                double measure = Service.GetMeasure(SpeciesRow.Name) * 10;
+                double measure = Service.GetMeasure(TaxonRow.Name) * 10;
 
                 contextStockSplit.Enabled = (!double.IsNaN(measure) &&
                     age.LengthSample.Maximum >= measure &&
@@ -777,7 +777,7 @@ namespace Mayfly.Fish.Explorer
                 compositionWizard.Split(gridRow.Index);
 
                 Age age = ((AgeGroup)compositionWizard.CatchesComposition[gridRow.Index]).Age;
-                double l = Service.GetMeasure(SpeciesRow.Name);
+                double l = Service.GetMeasure(TaxonRow.Name);
 
                 spreadSheetStock[columnStockCategory.Index, gridRow.Index].Value =
                     string.Format("{0} (<{1})", age.Group, l);
@@ -830,7 +830,7 @@ namespace Mayfly.Fish.Explorer
             ((Report)e.Result).Run();
             pageReport.SetNavigation(true);
             Log.Write(EventType.WizardEnded, "Extrapolation wizard is finished for {0} with result {1:N2} t.",
-                SpeciesRow.Name, StockMass / 1000.0);
+                TaxonRow.Name, StockMass / 1000.0);
             if (!UserSettings.KeepWizard) Close();
         }
 

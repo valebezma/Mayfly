@@ -36,9 +36,9 @@ namespace Mayfly.Fish.Explorer
         {
             Data = data;
 
-            foreach (Wild.Survey.DefinitionRow speciesRow in Data.Definition)
+            foreach (Wild.Survey.DefinitionRow definitionRow in Data.Definition)
             {
-                listViewSpecies.CreateItem(speciesRow.Taxon, speciesRow.KeyRecord.CommonName);
+                listViewSpecies.CreateItem(definitionRow.Taxon, definitionRow.KeyRecord.CommonName);
             }
 
             UpdateSample(SelectedSpecies);

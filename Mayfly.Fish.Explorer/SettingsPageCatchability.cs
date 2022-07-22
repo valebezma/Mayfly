@@ -16,10 +16,10 @@ namespace Mayfly.Fish.Explorer
 
             InitializeComponent();
 
-            comboBoxGear.DataSource = SettingsReader.SamplersIndex.Sampler.Select();
+            comboBoxGear.DataSource = ReaderSettings.SamplersIndex.Sampler.Select();
             columnCatchabilitySpecies.ValueType = typeof(string);
             columnCatchabilityValue.ValueType = typeof(double);
-            speciesSelectorCatchability.IndexPath = SettingsReader.TaxonomicIndexPath;
+            speciesSelectorCatchability.IndexPath = ReaderSettings.TaxonomicIndexPath;
         }
 
 
@@ -30,7 +30,7 @@ namespace Mayfly.Fish.Explorer
 
             spreadSheetCatchability.Rows.Clear();
 
-            foreach (TaxonomicIndex.TaxonRow speciesRow in SettingsReader.TaxonomicIndex.GetSpeciesRows()) {
+            foreach (TaxonomicIndex.TaxonRow speciesRow in ReaderSettings.TaxonomicIndex.GetSpeciesRows()) {
                 LoadCatchability(speciesRow);
             }
 
@@ -54,7 +54,7 @@ namespace Mayfly.Fish.Explorer
 
         private void LoadCatchability(TaxonomicIndex.TaxonRow speciesRow) {
 
-            foreach (Survey.SamplerRow samplerRow in SettingsReader.SamplersIndex.Sampler) {
+            foreach (Survey.SamplerRow samplerRow in ReaderSettings.SamplersIndex.Sampler) {
                 LoadCatchability(speciesRow, samplerRow);
             }
         }

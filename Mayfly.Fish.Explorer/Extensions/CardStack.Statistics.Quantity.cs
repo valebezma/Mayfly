@@ -75,19 +75,19 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int QuantitySampled(this Wild.Survey.LogRow logRow)
+        public static int QuantitySampled(this Survey.LogRow logRow)
         {
             int result = logRow.QuantityIndividual();
             result += logRow.QuantityStratified();
             return result;
         }
 
-        public static int QuantityIndividual(this Wild.Survey.LogRow logRow)
+        public static int QuantityIndividual(this Survey.LogRow logRow)
         {
             return logRow.GetIndividualRows().Length;
         }
 
-        public static int QuantityStratified(this Wild.Survey.LogRow logRow)
+        public static int QuantityStratified(this Survey.LogRow logRow)
         {
             int result = 0;
 

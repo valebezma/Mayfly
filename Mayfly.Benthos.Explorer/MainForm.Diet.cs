@@ -1081,7 +1081,7 @@ namespace Mayfly.Benthos.Explorer
 
         //private DataGridViewRow UpdateIndividualRow(DataGridViewRow result, Data.IndividualRow individualRow)
         //{
-        //    result.Cells[columnIndSpecies.Index].Value = individualRow.LogRow.IsSpcIDNull() ? null : individualRow.LogRow.SpeciesRow.Species;
+        //    result.Cells[columnIndSpecies.Index].Value = individualRow.LogRow.IsSpcIDNull() ? null : individualRow.LogRow.TaxonRow.Taxon;
         //    result.Cells[ColumnIndFrequency.Index].Value = individualRow.IsFrequencyNull() ? null : (object)individualRow.Frequency;
         //    result.Cells[columnIndLength.Index].Value = individualRow.IsLengthNull() ? null : (object)individualRow.Length;
         //    result.Cells[columnIndMass.Index].Value = individualRow.IsMassNull() ? null : (object)individualRow.Mass;
@@ -1181,7 +1181,7 @@ namespace Mayfly.Benthos.Explorer
 
         //        DataGridViewRow gridRow = new DataGridViewRow();
         //        gridRow.CreateCells(spreadSheetArtifactSpecies);
-        //        gridRow.Cells[columnArtifactSpecies.Index].Value = artifact.SpeciesRow.Species;
+        //        gridRow.Cells[columnArtifactSpecies.Index].Value = artifact.TaxonRow.Taxon;
         //        gridRow.Cells[columnArtifactN.Index].Value = artifact.Quantity;
         //        spreadSheetArtifactSpecies.Rows.Add(gridRow);
 
@@ -1196,7 +1196,7 @@ namespace Mayfly.Benthos.Explorer
         //        else
         //        {
         //            gridRow.Cells[columnArtifactValidName.Index].Value =
-        //                speciesValidator.Find(artifact.SpeciesRow.Species).FullName;
+        //                speciesValidator.Find(artifact.TaxonRow.Taxon).FullName;
         //            ((TextAndImageCell)gridRow.Cells[columnArtifactValidName.Index]).Image =
         //                Pictogram.Check;
         //        }

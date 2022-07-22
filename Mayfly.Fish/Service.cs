@@ -18,7 +18,7 @@ namespace Mayfly.Fish
 
         public static Survey.SamplerRow Sampler(int samplerID)
         {
-            return SettingsReader.SamplersIndex.Sampler.FindByID(samplerID);
+            return ReaderSettings.SamplersIndex.Sampler.FindByID(samplerID);
         }
 
         public static double DefaultOpening()

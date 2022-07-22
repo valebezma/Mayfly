@@ -13,14 +13,14 @@ namespace Mayfly.Fish.Explorer
 
             ColumnMeasureSpecies.ValueType = typeof(string);
             ColumnMeasureValue.ValueType = typeof(double);
-            speciesSelectorMeasure.IndexPath = SettingsReader.TaxonomicIndexPath;
+            speciesSelectorMeasure.IndexPath = ReaderSettings.TaxonomicIndexPath;
         }
 
         public void LoadSettings() {
 
             spreadSheetMeasure.Rows.Clear();
 
-            foreach (TaxonomicIndex.TaxonRow speciesRow in SettingsReader.TaxonomicIndex.GetSpeciesRows()) {
+            foreach (TaxonomicIndex.TaxonRow speciesRow in ReaderSettings.TaxonomicIndex.GetSpeciesRows()) {
                 LoadMeasure(speciesRow);
             }
         }

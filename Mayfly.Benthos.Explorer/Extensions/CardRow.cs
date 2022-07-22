@@ -10,7 +10,7 @@ namespace Mayfly.Extensions
 {
     public static class CardRowExtensions
     {
-        public static int AbundanceRating(this Wild.Survey.CardRow cardRow, Wild.Survey.DefinitionRow speciesRow)
+        public static int AbundanceRating(this Wild.Survey.CardRow cardRow, Wild.Survey.DefinitionRow definitionRow)
         {
             int s = 0;
 

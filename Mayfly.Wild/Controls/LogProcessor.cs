@@ -283,32 +283,6 @@ namespace Mayfly.Wild.Controls
                     result.DefID = existingSpeciesRow.ID;
                 }
             }
-            //SpeciesKey.TaxonRow speciesRow = UserSettings.SpeciesIndex.FindByName(gridRow.Cells[ColumnSpecies.Index].Value.ToString());
-
-            //if (speciesRow == null)
-            //{
-            //    // There is no such species in index
-            //    if ((string)gridRow.Cells[ColumnSpecies.Index].Value == Species.Resources.Interface.UnidentifiedTitle)
-            //    {
-            //        result.SetDefIDNull();
-            //    }
-            //    else if (gridRow.Cells[ColumnSpecies.Index].Value is SpeciesKey.TaxonRow tr)
-            //    {
-            //        Data.DefinitionRow newSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
-            //        result.DefID = newSpeciesRow.ID;
-            //    }
-            //}
-            //else
-            //{
-            //    // There is such species in index you using
-            //    Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(speciesRow.Name);
-            //    if (existingSpeciesRow == null)
-            //    {
-            //        existingSpeciesRow = (Data.DefinitionRow)data.Species.Rows.Add(null, speciesRow.Name);
-            //    }
-            //    result.SpeciesRow = existingSpeciesRow;
-            //}
-
 
             if (gridRow.Cells[columnQtyExam.Index].Value == null) {
                 result.SetQuantityExaminedNull();
@@ -907,8 +881,8 @@ namespace Mayfly.Wild.Controls
             if (Form.ModifierKeys.HasFlag(Keys.Control)) {
                 Provider.InsertFromKey(Provider.IndexPath);
             } else {
-                if (SettingsReader.Interface.OpenDialog.ShowDialog() == DialogResult.OK) {
-                    Provider.InsertFromKey(SettingsReader.Interface.OpenDialog.FileName);
+                if (ReaderSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK) {
+                    Provider.InsertFromKey(ReaderSettings.Interface.OpenDialog.FileName);
                 }
             }
         }

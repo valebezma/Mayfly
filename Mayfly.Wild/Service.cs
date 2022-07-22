@@ -352,9 +352,9 @@ namespace Mayfly.Wild
 
         public static void SaveEquipment() {
 
-            SettingsReader.Equipment.SetAttributable();
+            ReaderSettings.Equipment.SetAttributable();
             string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", Feature.ToLowerInvariant()));
-            SettingsReader.Equipment.WriteToFile(path);
+            ReaderSettings.Equipment.WriteToFile(path);
         }
     }
 }

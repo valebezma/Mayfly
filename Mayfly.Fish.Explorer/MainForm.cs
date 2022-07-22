@@ -42,7 +42,7 @@ namespace Mayfly.Fish.Explorer
             //    checkBoxQualOutliers,
             //    comboBoxQualValue);
 
-            SettingsReader.Interface.OpenDialog.Multiselect = true;
+            ReaderSettings.Interface.OpenDialog.Multiselect = true;
 
             listViewWaters.Shine();
             listViewSamplers.Shine();
@@ -183,7 +183,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(SettingsReader.Interface.Extension)); };
+            this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(ReaderSettings.Interface.Extension)); };
         }
 
         public MainForm(CardStack stack)
@@ -253,7 +253,7 @@ namespace Mayfly.Fish.Explorer
 
                         processDisplay.ResetStatus();
                     }
-                } else if (Path.GetExtension(filenames[i]) == SettingsReader.Interface.Extension) {
+                } else if (Path.GetExtension(filenames[i]) == ReaderSettings.Interface.Extension) {
                     if (data.IsLoaded(filenames[i])) continue;
 
                     Wild.Survey _data = new Wild.Survey();
@@ -303,7 +303,7 @@ namespace Mayfly.Fish.Explorer
 
 
         private void artifactFinder_DoWork(object sender, DoWorkEventArgs e) {
-            if (!SettingsExplorer.CheckConsistency) {
+            if (!ExplorerSettings.CheckConsistency) {
                 e.Cancel = true;
                 return;
             }
@@ -380,8 +380,8 @@ namespace Mayfly.Fish.Explorer
         #region File
 
         private void menuItemAddData_Click(object sender, EventArgs e) {
-            if (SettingsReader.Interface.OpenDialog.ShowDialog(this) == DialogResult.OK) {
-                LoadCards(SettingsReader.Interface.OpenDialog.FileNames);
+            if (ReaderSettings.Interface.OpenDialog.ShowDialog(this) == DialogResult.OK) {
+                LoadCards(ReaderSettings.Interface.OpenDialog.FileNames);
             }
         }
 
@@ -394,8 +394,8 @@ namespace Mayfly.Fish.Explorer
                 if (ModifierKeys.HasFlag(Keys.Shift)) {
                     data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, "backup.xml"));
                 } else foreach (Survey.CardRow cardRow in data.Card) {
-                        SettingsExplorer.Interface.FolderPath = fbdBackup.SelectedPath;
-                        string filename = SettingsExplorer.Interface.SuggestName(cardRow.GetSuggestedName());
+                        ExplorerSettings.Interface.FolderPath = fbdBackup.SelectedPath;
+                        string filename = ExplorerSettings.Interface.SuggestName(cardRow.GetSuggestedName());
                         Survey _data = cardRow.SingleCardDataset();
                         _data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, filename));
                     }
@@ -403,8 +403,8 @@ namespace Mayfly.Fish.Explorer
         }
 
         private void menuItemSaveSet_Click(object sender, EventArgs e) {
-            if (SettingsReader.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK) {
-                File.WriteAllLines(SettingsReader.Interface.SaveDialog.FileName, FullStack.GetFilenames());
+            if (ReaderSettings.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK) {
+                File.WriteAllLines(ReaderSettings.Interface.SaveDialog.FileName, FullStack.GetFilenames());
             }
         }
 
@@ -642,14 +642,14 @@ namespace Mayfly.Fish.Explorer
         private void cards_DragDrop(object sender, DragEventArgs e) {
             cards_DragLeave(sender, e);
             List<string> ext = new List<string>();
-            ext.Add(SettingsReader.Interface.Extension);
+            ext.Add(ReaderSettings.Interface.Extension);
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             LoadCards(e.GetOperableFilenames(ext.ToArray()));
         }
 
         private void cards_DragEnter(object sender, DragEventArgs e) {
             List<string> ext = new List<string>();
-            ext.Add(SettingsReader.Interface.Extension);
+            ext.Add(ReaderSettings.Interface.Extension);
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             if (e.GetOperableFilenames(ext.ToArray()).Length > 0) {
                 e.Effect = DragDropEffects.All;
@@ -1700,8 +1700,8 @@ namespace Mayfly.Fish.Explorer
         }
 
         private void contextCardSaveSet_Click(object sender, EventArgs e) {
-            if (SettingsReader.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK) {
-                File.WriteAllLines(SettingsReader.Interface.SaveDialog.FileName, getCardStack(spreadSheetCard.SelectedRows).GetFilenames());
+            if (ReaderSettings.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK) {
+                File.WriteAllLines(ReaderSettings.Interface.SaveDialog.FileName, getCardStack(spreadSheetCard.SelectedRows).GetFilenames());
             }
         }
 
@@ -1752,7 +1752,7 @@ namespace Mayfly.Fish.Explorer
             if (rank == null) {
                 composition = FullStack.GetBasicCenosisComposition();
             } else {
-                composition = FullStack.GetBasicTaxonomicComposition(SettingsReader.TaxonomicIndex, rank);
+                composition = FullStack.GetBasicTaxonomicComposition(ReaderSettings.TaxonomicIndex, rank);
             }
 
             processDisplay.SetProgressMaximum(composition.Count);
@@ -1770,8 +1770,8 @@ namespace Mayfly.Fish.Explorer
 
                     if (tc[i].DataRow == null) gridRow.Cells[columnSpcSpc.Index].Value = tc[i].Name;
                 } else if (composition is SpeciesComposition sc) {
-                    gridRow.Cells[columnSpcSpc.Index].Value = sc[i].SpeciesRow;
-                    gridRow.Cells[columnSpcID.Index].Value = sc[i].SpeciesRow?.ID;
+                    gridRow.Cells[columnSpcSpc.Index].Value = sc[i].TaxonRow;
+                    gridRow.Cells[columnSpcID.Index].Value = sc[i].TaxonRow?.ID;
                 }
 
                 gridRow.Cells[columnSpcQuantity.Index].Value = composition[i].Quantity;
@@ -2228,9 +2228,9 @@ namespace Mayfly.Fish.Explorer
         }
 
         private void bioUpdater_DoWork(object sender, DoWorkEventArgs e) {
-            Wild.Survey.DefinitionRow speciesRow = (Wild.Survey.DefinitionRow)e.Argument;
-            data.FindMassModel(speciesRow.Taxon).RefreshInternal();
-            data.FindGrowthModel(speciesRow.Taxon).RefreshInternal();
+            Wild.Survey.DefinitionRow definitionRow = (Wild.Survey.DefinitionRow)e.Argument;
+            data.FindMassModel(definitionRow.Taxon).RefreshInternal();
+            data.FindGrowthModel(definitionRow.Taxon).RefreshInternal();
             e.Result = speciesRow;
         }
 
@@ -2266,7 +2266,7 @@ namespace Mayfly.Fish.Explorer
             List<string> speciesNames = columnIndSpecies.GetStrings(true);
 
             pictureBoxStratified.Visible = speciesNames.Count == 1 &&
-                FullStack.QuantityStratified(SettingsReader.TaxonomicIndex.FindByName(speciesNames[0])) > 0;
+                FullStack.QuantityStratified(ReaderSettings.TaxonomicIndex.FindByName(speciesNames[0])) > 0;
 
             if (pictureBoxStratified.Visible) {
                 toolTipAttention.SetToolTip(pictureBoxStratified,

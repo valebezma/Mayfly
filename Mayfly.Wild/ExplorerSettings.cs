@@ -5,14 +5,14 @@ using Mayfly.Wild.Controls;
 
 namespace Mayfly.Wild
 {
-    public static class SettingsExplorer
+    public static class ExplorerSettings
     {
         public static FileSystemInterface Interface;
 
         public static void SetFeature(string feature, string ext,
             MassDegree logMassDegree, MassDegree indMassDegree) {
 
-            SettingsReader.SetFeature(feature, ext, logMassDegree, indMassDegree);
+            ReaderSettings.SetFeature(feature, ext, logMassDegree, indMassDegree);
             Feature = feature + ".Explorer";
             Interface = new FileSystemInterface(ext + "s", ".html") {
                 FolderPath = UserSettings.FieldDataFolder

@@ -371,7 +371,7 @@ namespace Mayfly.Fish.Legal
 
                 if (speciesRow == null)
                 {
-                    Species.TaxonomicIndex.SpeciesRow refSpeciesRow =
+                    Species.TaxonomicIndex.TaxonRow refSpeciesRow =
                         Fish.UserSettings.SpeciesIndex.Definition.FindByName(species);
                     speciesRow = Paper.Species.AddSpeciesRow(species, refSpeciesRow.Name);
                 }
@@ -465,12 +465,12 @@ namespace Mayfly.Fish.Legal
 
             spreadSheetCatches.Rows.Clear();
 
-            foreach (Wild.Survey.DefinitionRow speciesRow in catches.GetSpecies())
+            foreach (Survey.TaxonRow taxonRow in catches.GetSpecies())
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetCatches);
 
-                gridRow.Cells[ColumnSpecies.Index].Value = speciesRow.Species;
+                gridRow.Cells[ColumnSpecies.Index].Value = taxonRow.Taxon;
 
                 LegalPapers.QuoteRow quoteRow = License.GetQuoteRow(
                     (string)gridRow.Cells[ColumnSpecies.Index].Value);
@@ -480,10 +480,10 @@ namespace Mayfly.Fish.Legal
                     gridRow.Cells[ColumnExploration.Index].Value = quoteRow.CaughtMass() / quoteRow.Mass;
                 }
 
-                gridRow.Cells[ColumnQuantity.Index].Value = catches.Quantity(speciesRow);
+                gridRow.Cells[ColumnQuantity.Index].Value = catches.Quantity(taxonRow);
                 spreadSheetCatches.Rows.Add(gridRow);
 
-                double w = catches.Mass(speciesRow);
+                double w = catches.Mass(taxonRow);
 
                 // First - round the mass for further papers to be easier
                 if (UserSettings.RoundCatch != 0)

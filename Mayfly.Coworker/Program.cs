@@ -479,7 +479,7 @@ namespace Mayfly.ManualLicenser
         //                    Data.DefinitionRow spcRow = data.Species.AddSpeciesRow(spc.lat);
         //                    Data.LogRow lr = data.Log.NewLogRow();
         //                    lr.CardRow = cr;
-        //                    lr.SpeciesRow = spcRow;
+        //                    lr.TaxonRow = spcRow;
         //                    lr.Mass = 1000 * Convert.ToDouble(dr[spc.rus]);
 
         //                    data.Log.AddLogRow(lr);

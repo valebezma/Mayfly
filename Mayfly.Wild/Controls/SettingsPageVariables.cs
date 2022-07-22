@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using Mayfly.Controls;
 
 namespace Mayfly.Wild.Controls

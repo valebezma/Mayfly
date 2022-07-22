@@ -460,7 +460,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAdwBGAHcARgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAeQBGAHkARgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2204,19 +2204,19 @@
     <value>Using rank</value>
   </data>
   <data name="menuItemComposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>150, 22</value>
   </data>
   <data name="menuItemComposition.Text" xml:space="preserve">
     <value>Composition</value>
   </data>
   <data name="menuItemCompareComp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>148, 22</value>
   </data>
   <data name="menuItemCompareComp.Text" xml:space="preserve">
     <value>Compositions</value>
   </data>
   <data name="menuItemCompare.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>150, 22</value>
   </data>
   <data name="menuItemCompare.Text" xml:space="preserve">
     <value>Compare</value>
@@ -2231,7 +2231,7 @@
     <value>139, 6</value>
   </data>
   <data name="menuItemBrief.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>150, 22</value>
   </data>
   <data name="menuItemBrief.Text" xml:space="preserve">
     <value>Cenosis report</value>
@@ -3254,6 +3254,24 @@
   <data name="&gt;&gt;menuItemComposition.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuItemCompositionSpecies.Name" xml:space="preserve">
+    <value>menuItemCompositionSpecies</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompositionSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompositionLowest.Name" xml:space="preserve">
+    <value>menuItemCompositionLowest</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompositionLowest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompositionRanked.Name" xml:space="preserve">
+    <value>menuItemCompositionRanked</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompositionRanked.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuItemCompare.Name" xml:space="preserve">
     <value>menuItemCompare</value>
   </data>
@@ -3637,24 +3655,6 @@
   </data>
   <data name="&gt;&gt;mathInd.Type" xml:space="preserve">
     <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;menuItemCompositionSpecies.Name" xml:space="preserve">
-    <value>menuItemCompositionSpecies</value>
-  </data>
-  <data name="&gt;&gt;menuItemCompositionSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemCompositionLowest.Name" xml:space="preserve">
-    <value>menuItemCompositionLowest</value>
-  </data>
-  <data name="&gt;&gt;menuItemCompositionLowest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemCompositionRanked.Name" xml:space="preserve">
-    <value>menuItemCompositionRanked</value>
-  </data>
-  <data name="&gt;&gt;menuItemCompositionRanked.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

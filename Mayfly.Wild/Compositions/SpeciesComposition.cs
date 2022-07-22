@@ -56,27 +56,27 @@ namespace Mayfly.Wild
 
     public class SpeciesSwarm : Category
     {
-        public TaxonomicIndex.TaxonRow SpeciesRow { get; set; }
+        public TaxonomicIndex.TaxonRow TaxonRow { get; set; }
 
 
 
-        public SpeciesSwarm(TaxonomicIndex.TaxonRow dataRow)
+        public SpeciesSwarm(TaxonomicIndex.TaxonRow taxonRow)
         {
-            SpeciesRow = dataRow;
+            TaxonRow = taxonRow;
         }
 
         public override Category GetEmptyCopy()
         {
-            SpeciesSwarm result = new SpeciesSwarm(SpeciesRow)
+            SpeciesSwarm result = new SpeciesSwarm(TaxonRow)
             {
-                Name = Name
+                Name = TaxonRow.Name
             };
             return result;
         }
 
         public override string ToString()
         {
-            return Name == SpeciesRow.Name ? (SpeciesRow.CommonName) : Name;
+            return TaxonRow.ToString();
         }
     }
 }

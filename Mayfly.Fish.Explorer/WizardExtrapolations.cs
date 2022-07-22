@@ -119,7 +119,7 @@ namespace Mayfly.Fish.Explorer
 
         private void UpdateGamingStock(int i) 
         {
-            Wild.Survey.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
+            Survey.DefinitionRow definitionRow = Data.Parent.Definition.FindByName(
                 compositionWizard.CatchesComposition[i].Name);            
 
             if (spreadSheetStocks[ColumnGamingLength.Index, i].Value != null)
@@ -127,14 +127,14 @@ namespace Mayfly.Fish.Explorer
                 BackgroundWorker populationSizeComposer = new BackgroundWorker();
                 populationSizeComposer.DoWork += new DoWorkEventHandler(populationSizeComposer_DoWork);
                 populationSizeComposer.RunWorkerCompleted += new RunWorkerCompletedEventHandler(populationComposer_RunWorkerCompleted);
-                populationSizeComposer.RunWorkerAsync(speciesRow);
+                populationSizeComposer.RunWorkerAsync(definitionRow);
             }
             else if (spreadSheetStocks[ColumnGamingAge.Index, i].Value != null)
             {
                 BackgroundWorker populationAgeComposer = new BackgroundWorker();
                 populationAgeComposer.DoWork += new DoWorkEventHandler(populationAgeComposer_DoWork);
                 populationAgeComposer.RunWorkerCompleted += new RunWorkerCompletedEventHandler(populationComposer_RunWorkerCompleted);
-                populationAgeComposer.RunWorkerAsync(speciesRow);
+                populationAgeComposer.RunWorkerAsync(definitionRow);
             }
             else
             {
@@ -230,11 +230,11 @@ namespace Mayfly.Fish.Explorer
 
             for (int i = 0; i < compositionWizard.CatchesComposition.Count; i++)
             {
-                Wild.Survey.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
+                Wild.Survey.DefinitionRow definitionRow = Data.Parent.Definition.FindByName(
                     compositionWizard.CatchesComposition[i].Name);
 
                 table1.StartRow();
-                table1.AddCell(speciesRow.KeyRecord.CommonName);
+                table1.AddCell(definitionRow.KeyRecord.CommonName);
                 table1.AddCellRight(compositionWizard.CatchesComposition[i].Quantity / 1000, ColumnN.DefaultCellStyle.Format);
                 table1.AddCellRight(compositionWizard.CatchesComposition[i].Mass / 1000, ColumnB.DefaultCellStyle.Format);
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Resources;
 using Mayfly.Wild;
 using static Mayfly.Wild.UserSettings;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Benthos
 {
@@ -361,7 +361,7 @@ namespace Mayfly.Benthos
                 ResourceManager resources = new ResourceManager(typeof(Card));
                 Report report = new Report(string.Format(
                     "<span class='pretitle'>{0}.</span> [<span style='float:right'>]</span>",
-                    IO.GetFriendlyFiletypeName(SettingsReader.Interface.Extension)));
+                    IO.GetFriendlyFiletypeName(ReaderSettings.Interface.Extension)));
 
                 #region Common upper part
 

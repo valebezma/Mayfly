@@ -169,8 +169,6 @@ namespace Mayfly.Controls
             Point p = this.GetPositionInForm();
             p.Offset(0, this.Height + 3);
             listOptions.Location = p;
-            //listSpc.Visible = new Rectangle(this.FindForm().PointToClient(
-            //    this.Parent.PointToScreen(this.Location)), this.Size).Contains(p);
         }
 
         private void RunSelected(string entered)
@@ -196,8 +194,6 @@ namespace Mayfly.Controls
                     {
                         listOptions.Focus();
                         listOptions.Items[0].Selected = true;
-                        //listSpc.Items[0].Focused = true;
-                        //listSpc.Items[0].EnsureVisible();
                     }
                     break;
                 case Keys.Up:
@@ -320,7 +316,6 @@ namespace Mayfly.Controls
             {
                 listOptions_Leave(listOptions, e);
             }
-            //AllowSuggest = true;
         }
 
         private void listOptions_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -366,31 +361,7 @@ namespace Mayfly.Controls
         }
 
         private void listOptions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (listSpc.SelectedItems.Count > 0)
-            //{
-            //    if (listSpc.SelectedItems[0].Tag is SpeciesKey.SpeciesRow)
-            //    {
-            //        SpeciesKey.SpeciesRow speciesRow = listSpc.SelectedItems[0].Tag as SpeciesKey.SpeciesRow;
-
-            //        AllowSuggest = false;
-            //        if (InsertFullNames)
-            //        {
-            //            Grid.CurrentCell.Value = speciesRow.GetFullName();
-            //        }
-            //        else
-            //        {
-            //            Grid.CurrentCell.Value = speciesRow.Species;
-            //        }
-
-            //        AllowSuggest = true;
-            //    }
-            //    else
-            //    {
-            //        Grid.CurrentCell.Value = listSpc.SelectedItems[0].Text; 
-            //    }
-            //}
-        }
+        {        }
 
         private void listOptions_VisibleChanged(object sender, EventArgs e)
         {
@@ -399,12 +370,6 @@ namespace Mayfly.Controls
             }
             else
             {
-                //AllowSuggest = true;
-                //if (this.FindForm().ActiveControl == this) { }
-                //else
-                //{
-                //    this.Focus();
-                //}
 
                 this.Focus();
             }
@@ -412,15 +377,6 @@ namespace Mayfly.Controls
 
         private void listOptions_Enter(object sender, EventArgs e)
         {
-            //if (Grid.CurrentCell.Value == null)
-            //{
-            //    handEntered = string.Empty;
-            //}
-            //else
-            //{
-            //    handEntered = Grid.CurrentCell.Value.ToString();
-            //}
-
             valueBeforeEditing = this.Text;
         }
 

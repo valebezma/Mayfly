@@ -33,13 +33,14 @@
             this.dialog.AnyColor = true;
             this.dialog.FullOpen = true;
             // 
-            // ColorPicker
+            // ColorBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Name = "ColorPicker";
+            this.Name = "ColorBox";
             this.Size = new System.Drawing.Size(50, 20);
+            this.EnabledChanged += new System.EventHandler(this.ColorBox_EnabledChanged);
             this.Click += new System.EventHandler(this.ColorPicker_Click);
             this.ResumeLayout(false);
 

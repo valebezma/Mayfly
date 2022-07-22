@@ -30,7 +30,7 @@ namespace Mayfly.Benthos.Explorer
             spreadSheetLog.UpdateStatus();
             spreadSheetInd.UpdateStatus();
 
-            SetSpeciesIndex(SettingsReader.TaxonomicIndexPath);
+            SetSpeciesIndex(ReaderSettings.TaxonomicIndexPath);
 
             selectedLogRows = new List<Survey.LogRow>();
 
@@ -111,7 +111,7 @@ namespace Mayfly.Benthos.Explorer
                 return;
             }
 
-            this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(SettingsReader.Interface.Extension)); };
+            this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(ReaderSettings.Interface.Extension)); };
 
         }
 
@@ -188,7 +188,7 @@ namespace Mayfly.Benthos.Explorer
                     }
 
                     processDisplay.ResetStatus();
-                } else if (Path.GetExtension(filenames[i]) == SettingsReader.Interface.Extension) {
+                } else if (Path.GetExtension(filenames[i]) == ReaderSettings.Interface.Extension) {
                     if (data.IsLoaded(filenames[i])) continue;
 
                     Wild.Survey _data = new Wild.Survey();
@@ -232,7 +232,7 @@ namespace Mayfly.Benthos.Explorer
 
 
         private void artifactFinder_DoWork(object sender, DoWorkEventArgs e) {
-            if (!SettingsExplorer.CheckConsistency) {
+            if (!ExplorerSettings.CheckConsistency) {
                 e.Cancel = true;
                 return;
             }
@@ -306,8 +306,8 @@ namespace Mayfly.Benthos.Explorer
         #region File
 
         private void menuItemAddData_Click(object sender, EventArgs e) {
-            if (SettingsReader.Interface.OpenDialog.ShowDialog(this) == DialogResult.OK) {
-                LoadCards(SettingsReader.Interface.OpenDialog.FileNames);
+            if (ReaderSettings.Interface.OpenDialog.ShowDialog(this) == DialogResult.OK) {
+                LoadCards(ReaderSettings.Interface.OpenDialog.FileNames);
             }
         }
 
@@ -320,9 +320,9 @@ namespace Mayfly.Benthos.Explorer
                 if (ModifierKeys.HasFlag(Keys.Shift)) {
                     data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, "backup.xml"));
                 } else {
-                    SettingsReader.Interface.FolderPath = fbdBackup.SelectedPath;
+                    ReaderSettings.Interface.FolderPath = fbdBackup.SelectedPath;
                     foreach (Survey.CardRow cardRow in data.Card) {
-                        string filename = SettingsReader.Interface.SuggestName(cardRow.GetSuggestedName());
+                        string filename = ReaderSettings.Interface.SuggestName(cardRow.GetSuggestedName());
                         Survey _data = cardRow.SingleCardDataset();
                         _data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, filename));
                     }
@@ -331,8 +331,8 @@ namespace Mayfly.Benthos.Explorer
         }
 
         private void menuItemSaveSet_Click(object sender, EventArgs e) {
-            if (SettingsReader.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK) {
-                File.WriteAllLines(SettingsReader.Interface.SaveDialog.FileName, data.GetFilenames());
+            if (ReaderSettings.Interface.SaveDialog.ShowDialog(this) == DialogResult.OK) {
+                File.WriteAllLines(ReaderSettings.Interface.SaveDialog.FileName, data.GetFilenames());
             }
         }
 
@@ -411,14 +411,14 @@ namespace Mayfly.Benthos.Explorer
         private void cards_DragDrop(object sender, DragEventArgs e) {
             cards_DragLeave(sender, e);
             List<string> ext = new List<string>();
-            ext.Add(SettingsReader.Interface.Extension);
+            ext.Add(ReaderSettings.Interface.Extension);
             ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             LoadCards(e.GetOperableFilenames(ext.ToArray()));
         }
 
         private void cards_DragEnter(object sender, DragEventArgs e) {
             List<string> ext = new List<string>();
-            ext.Add(SettingsReader.Interface.Extension);
+            ext.Add(ReaderSettings.Interface.Extension);
             ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             if (e.GetOperableFilenames(ext.ToArray()).Length > 0) {
                 e.Effect = DragDropEffects.All;
@@ -686,8 +686,8 @@ namespace Mayfly.Benthos.Explorer
 
                     if (tc[i].DataRow == null) gridRow.Cells[columnSpcSpc.Index].Value = tc[i].Name;
                 } else if (composition is SpeciesComposition sc) {
-                    gridRow.Cells[columnSpcSpc.Index].Value = sc[i].SpeciesRow;
-                    gridRow.Cells[columnSpcID.Index].Value = sc[i].SpeciesRow?.ID;
+                    gridRow.Cells[columnSpcSpc.Index].Value = sc[i].TaxonRow;
+                    gridRow.Cells[columnSpcID.Index].Value = sc[i].TaxonRow?.ID;
                 }
 
                 gridRow.Cells[columnSpcQuantity.Index].Value = composition[i].Quantity;

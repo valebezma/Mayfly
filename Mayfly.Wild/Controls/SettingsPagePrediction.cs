@@ -22,17 +22,17 @@ namespace Mayfly.Wild.Controls
 
         public void LoadSettings() {
 
-            checkBoxBioAutoLoad.Checked = SettingsExplorer.AutoLoadBio;
+            checkBoxBioAutoLoad.Checked = ExplorerSettings.AutoLoadBio;
 
-            foreach (string bio in SettingsExplorer.Bios) {
+            foreach (string bio in ExplorerSettings.Bios) {
                 ListViewItem li = listViewBio.CreateItem(bio,
                     System.IO.Path.GetFileNameWithoutExtension(bio));
                 listViewBio.Items.Add(li);
             }
 
-            checkBoxBioAutoLoad.Checked = SettingsExplorer.AutoLoadBio;
+            checkBoxBioAutoLoad.Checked = ExplorerSettings.AutoLoadBio;
 
-            foreach (string bio in SettingsExplorer.Bios) {
+            foreach (string bio in ExplorerSettings.Bios) {
                 ListViewItem li = listViewBio.CreateItem(bio,
                     System.IO.Path.GetFileNameWithoutExtension(bio));
                 listViewBio.Items.Add(li);
@@ -41,13 +41,13 @@ namespace Mayfly.Wild.Controls
 
         public void SaveSettings() {
 
-            SettingsExplorer.AutoLoadBio = checkBoxBioAutoLoad.Checked;
+            ExplorerSettings.AutoLoadBio = checkBoxBioAutoLoad.Checked;
 
             List<string> bios = new List<string>();
             foreach (ListViewItem li in listViewBio.Items) {
                 bios.Add(li.Name);
             }
-            SettingsExplorer.Bios = bios.ToArray();
+            ExplorerSettings.Bios = bios.ToArray();
         }
 
 

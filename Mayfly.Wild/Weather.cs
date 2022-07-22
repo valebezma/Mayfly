@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Globalization;
 
 namespace Mayfly.Wild
@@ -29,10 +25,8 @@ namespace Mayfly.Wild
 
         public int AdditionalEvent { get; set; }
 
-        public bool IsAvailable
-        {
-            get
-            {
+        public bool IsAvailable {
+            get {
                 if (!double.IsNaN(Humidity)) return true;
                 if (!double.IsNaN(Temperature)) return true;
                 if (!double.IsNaN(Pressure)) return true;
@@ -47,8 +41,7 @@ namespace Mayfly.Wild
 
 
 
-        public WeatherState()
-        {
+        public WeatherState() {
             Humidity = double.NaN;
             Temperature = double.NaN;
             Pressure = double.NaN;
@@ -62,16 +55,13 @@ namespace Mayfly.Wild
             AdditionalEvent = -1;
         }
 
-        public WeatherState(string value) : this()
-        {
+        public WeatherState(string value) : this() {
             string[] parameters = value.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (string parameter in parameters)
-            {
+            foreach (string parameter in parameters) {
                 string[] fields = parameter.Split(new char[] { ':' });
 
-                switch (fields[0])
-                {
+                switch (fields[0]) {
                     case "HUM":
                         Humidity = fields[1] == "-" ? double.NaN : Convert.ToDouble(fields[1], CultureInfo.InvariantCulture);
                         break;
@@ -129,119 +119,60 @@ namespace Mayfly.Wild
         public bool IsAdditionalEventNull() { return AdditionalEvent == 0; }
 
 
-        
-        public override string ToString()
-        {
-            return ToString(string.Empty);
-        }
 
-        public string ToString(string format)
-        {
-            return ToString(format, CultureInfo.CurrentCulture);
-        }
+        public Report.Table GetReport() {
 
-        public string ToString(string format, IFormatProvider provider)
-        {
-            // TODO: rework this shit.
-
-            string result = string.Empty;
-
-            if (!double.IsNaN(Temperature)) result += string.Format("{0:0.0}°C;", Temperature);
-
-            //if (!this.IsTemperatureSurfaceNull()) result += string.Format(" ({0}°C)", this.TemperatureSurface);
-            //if (!this.IsAirPressureNull()) result += string.Format(" {0} кПа", this.AirPressure);
-            //if (!this.IsWindRateNull()) result += string.Format(" ветер {0} м/с", this.WindRate);
-            //if (!this.IsCloudageNull()) result += string.Format(" обл. {0}", this.Cloudage);
-
-
-             if (Degree != 0) result += UserSettings.WeatherIndex.Degree.FindByID(this.Degree).Display;
-
-             if (Event != 0) result += " " + UserSettings.WeatherIndex.Event.FindByID(this.Event).Display.ToLower();
-             else result += Resources.Interface.Interface.NoPrecip;
-
-             if (Discretion != 0) result += " " + UserSettings.WeatherIndex.Discretion.FindByID(this.Discretion).Display.ToLower();
-             if (AdditionalEvent != 0) result += " + " + UserSettings.WeatherIndex.Event.FindByID(this.AdditionalEvent).Display.ToLower();
-
-            return result;
-        }
-
-        public Report.Table GetReport()
-        {
             Report.Table table1 = new Report.Table(Resources.Reports.Header.Weather);
 
             System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Wild.Controls.WeatherControl));
 
             table1.StartRow();
-            if (this.IsHumidityNull())
-            {
+            if (this.IsHumidityNull()) {
                 table1.AddCellPrompt(resources.GetString("labelHumidity.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("labelHumidity.Text"), this.Humidity, 2);
             }
-            if (this.IsTemperatureNull())
-            {
+            if (this.IsTemperatureNull()) {
                 table1.AddCellPrompt(resources.GetString("labelTemperatureAir.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("labelTemperatureAir.Text"), this.Temperature, 2);
             }
             table1.EndRow();
 
             table1.StartRow();
-            if (this.IsPressureNull())
-            {
+            if (this.IsPressureNull()) {
                 table1.AddCellPrompt(resources.GetString("labelAirPressure.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("labelAirPressure.Text"), this.Pressure, 2);
             }
-            if (this.IsCloudageNull())
-            {
+            if (this.IsCloudageNull()) {
                 table1.AddCellPrompt(resources.GetString("checkBoxCloudage.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("checkBoxCloudage.Text"), this.Cloudage + " / 8", 2);
             }
             table1.EndRow();
 
             table1.StartRow();
-            if (this.IsWindRateNull())
-            {
+            if (this.IsWindRateNull()) {
                 table1.AddCellPrompt(resources.GetString("labelWindRate.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("labelWindRate.Text"), this.WindRate, 2);
             }
-            if (this.IsWindDirectionNull())
-            {
+            if (this.IsWindDirectionNull()) {
                 table1.AddCellPrompt(resources.GetString("labelWindDirection.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("labelWindDirection.Text"), this.WindDirection, 2);
             }
             table1.EndRow();
 
             table1.StartRow();
-            if (this.IsEventNull())
-            {
+            if (this.IsEventNull()) {
                 table1.AddCellPrompt(resources.GetString("labelEvent.Text"), Resources.Interface.Interface.NoPrecip, 4);
-            }
-            else
-            {
-                if (this.IsAdditionalEventNull())
-                {
+            } else {
+                if (this.IsAdditionalEventNull()) {
                     table1.AddCellPrompt(resources.GetString("labelEvent.Text"),
                         UserSettings.WeatherIndex.Event.FindByID(this.Event).Display, 4);
-                }
-                else
-                {
+                } else {
                     table1.AddCellPrompt(resources.GetString("labelEvent.Text"),
                         UserSettings.WeatherIndex.Event.FindByID(this.Event).Display + " + " +
                         UserSettings.WeatherIndex.Event.FindByID(this.AdditionalEvent).Display, 4);
@@ -250,21 +181,15 @@ namespace Mayfly.Wild
             table1.EndRow();
 
             table1.StartRow();
-            if (this.IsDegreeNull())
-            {
+            if (this.IsDegreeNull()) {
                 table1.AddCellPrompt(resources.GetString("labelEventDegree.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("labelEventDegree.Text"),
                     UserSettings.WeatherIndex.Degree.FindByID(this.Degree).Display, 2);
             }
-            if (this.IsDiscretionNull())
-            {
+            if (this.IsDiscretionNull()) {
                 table1.AddCellPrompt(resources.GetString("labelEventDiscretion.Text"), Constants.Null, 2);
-            }
-            else
-            {
+            } else {
                 table1.AddCellPrompt(resources.GetString("labelEventDiscretion.Text"),
                     UserSettings.WeatherIndex.Discretion.FindByID(this.Discretion).Display, 2);
             }
@@ -275,23 +200,51 @@ namespace Mayfly.Wild
 
 
 
-        public string Protocol
-        {
-            get
-            {
-                string result = string.Empty;
-                result += "HUM:" + (double.IsNaN(Humidity) ? "-" : Humidity.ToString("N1", CultureInfo.InvariantCulture)) + ";";
-                result += "TMP:" + (double.IsNaN(Temperature) ? "-" : Temperature.ToString("N1", CultureInfo.InvariantCulture)) + ";";
-                result += "PRS:" + (double.IsNaN(Pressure) ? "-" : Pressure.ToString("N1", CultureInfo.InvariantCulture)) + ";";
-                result += "CLD:" + (double.IsNaN(Cloudage) ? "-" : Cloudage.ToString("N0", CultureInfo.InvariantCulture)) + ";";
-                result += "WNR:" + (double.IsNaN(WindRate) ? "-" : WindRate.ToString("N1", CultureInfo.InvariantCulture)) + ";";
-                result += "WND:" + (double.IsNaN(WindDirection) ? "-" : WindDirection.ToString("N0", CultureInfo.InvariantCulture)) + ";";
-                result += "EVT:" + (IsEventNull() ? "-" : Event.ToString()) + ";";
-                result += "DEG:" + (IsDegreeNull() ? "-" : Degree.ToString()) + ";";
-                result += "DCR:" + (IsDiscretionNull() ? "-" : Discretion.ToString()) + ";";
-                result += "ADE:" + (IsAdditionalEventNull() ? "-" : AdditionalEvent.ToString()) + ";";
-                return result;
+        public string ToString(string format, IFormatProvider provider) {
+
+            string result = string.Empty;
+
+            switch (format) {
+                case "f":
+                    result += "HUM:" + (double.IsNaN(Humidity) ? "-" : Humidity.ToString("N1", provider)) + ";";
+                    result += "TMP:" + (double.IsNaN(Temperature) ? "-" : Temperature.ToString("N1", provider)) + ";";
+                    result += "PRS:" + (double.IsNaN(Pressure) ? "-" : Pressure.ToString("N1", provider)) + ";";
+                    result += "CLD:" + (double.IsNaN(Cloudage) ? "-" : Cloudage.ToString("N0", provider)) + ";";
+                    result += "WNR:" + (double.IsNaN(WindRate) ? "-" : WindRate.ToString("N1", provider)) + ";";
+                    result += "WND:" + (double.IsNaN(WindDirection) ? "-" : WindDirection.ToString("N0", provider)) + ";";
+                    result += "EVT:" + (IsEventNull() ? "-" : Event.ToString()) + ";";
+                    result += "DEG:" + (IsDegreeNull() ? "-" : Degree.ToString()) + ";";
+                    result += "DCR:" + (IsDiscretionNull() ? "-" : Discretion.ToString()) + ";";
+                    result += "ADE:" + (IsAdditionalEventNull() ? "-" : AdditionalEvent.ToString()) + ";";
+                    return result;
+
+                default:
+                    if (!double.IsNaN(Temperature)) result += string.Format("{0:0.0}°C;", Temperature);
+
+                    //if (!this.IsTemperatureSurfaceNull()) result += string.Format(" ({0}°C)", this.TemperatureSurface);
+                    //if (!this.IsAirPressureNull()) result += string.Format(" {0} кПа", this.AirPressure);
+                    //if (!this.IsWindRateNull()) result += string.Format(" ветер {0} м/с", this.WindRate);
+                    //if (!this.IsCloudageNull()) result += string.Format(" обл. {0}", this.Cloudage);
+
+
+                    if (Degree != 0) result += UserSettings.WeatherIndex.Degree.FindByID(Degree).Display;
+
+                    if (Event != 0) result += " " + UserSettings.WeatherIndex.Event.FindByID(Event).Display.ToLower();
+                    else result += Resources.Interface.Interface.NoPrecip;
+
+                    if (Discretion != 0) result += " " + UserSettings.WeatherIndex.Discretion.FindByID(Discretion).Display.ToLower();
+                    if (AdditionalEvent != 0) result += " + " + UserSettings.WeatherIndex.Event.FindByID(AdditionalEvent).Display.ToLower();
+
+                    return result;
             }
+        }
+
+        public string ToString(string format) {
+            return ToString(format, CultureInfo.InvariantCulture);
+        }
+
+        public override string ToString() {
+            return ToString(string.Empty);
         }
     }
 }

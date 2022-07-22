@@ -113,7 +113,7 @@ namespace Mayfly.Plankton
 
         public string[] AdditionalVariables {
             get {
-                List<string> result = new List<string>(SettingsReader.AddtVariables);
+                List<string> result = new List<string>(ReaderSettings.AddtVariables);
 
                 foreach (DataGridViewColumn gridColumn in spreadSheetLog.GetInsertedColumns()) {
                     if (result.Contains(gridColumn.HeaderText)) continue;
@@ -215,7 +215,7 @@ namespace Mayfly.Plankton
                 }
             }
 
-            numericUpDownMass.Enabled = numericUpDownQuantity.Enabled = !SettingsReader.FixTotals;
+            numericUpDownMass.Enabled = numericUpDownQuantity.Enabled = !ReaderSettings.FixTotals;
             spreadSheetLog.CurrentCell = spreadSheetLog.FirstClearCell();
             UpdateTotals();
             IsChanged = false;
@@ -239,7 +239,7 @@ namespace Mayfly.Plankton
             PrevDetailedMass = DetailedMass;
             PrevDetailedQuantity = DetailedQuantity;
 
-            if (SettingsReader.AutoIncreaseBio) {
+            if (ReaderSettings.AutoIncreaseBio) {
                 if (!double.IsNaN(DetailedMass) && DetailedMass > Mass) {
                     Mass = DetailedMass;
                 }
@@ -265,11 +265,11 @@ namespace Mayfly.Plankton
                 }
             }
 
-            if (SettingsReader.AutoDecreaseBio && MassDifference < 0) {
+            if (ReaderSettings.AutoDecreaseBio && MassDifference < 0) {
                 Mass += MassDifference;
             }
 
-            if (SettingsReader.AutoDecreaseBio && QuantityDifference < 0) {
+            if (ReaderSettings.AutoDecreaseBio && QuantityDifference < 0) {
                 Quantity += QuantityDifference;
             }
         }
@@ -317,8 +317,8 @@ namespace Mayfly.Plankton
                 contextMenuStripAdd.Items.RemoveAt(newVarPostion + 1);
             }
 
-            if (SettingsReader.AddtVariables != null) {
-                foreach (string addtVar in SettingsReader.AddtVariables) {
+            if (ReaderSettings.AddtVariables != null) {
+                foreach (string addtVar in ReaderSettings.AddtVariables) {
                     ToolStripMenuItem newVarMenu = new ToolStripMenuItem(addtVar);
                     newVarMenu.Click += new EventHandler(CustomVar_Click);
                     contextMenuStripAdd.Items.Insert(newVarPostion, newVarMenu);
@@ -327,9 +327,9 @@ namespace Mayfly.Plankton
         }
 
         private void InsertCurrentVariableColumns() {
-            if (SettingsReader.CurrentVariables == null) return;
+            if (ReaderSettings.CurrentVariables == null) return;
 
-            foreach (string currVar in SettingsReader.CurrentVariables) {
+            foreach (string currVar in ReaderSettings.CurrentVariables) {
                 DataGridViewColumn currVarColumn = spreadSheetLog.GetColumn(currVar);
                 if (currVarColumn == null) {
                     spreadSheetLog.InsertColumn(currVar, spreadSheetLog.ColumnCount - 1);
@@ -894,8 +894,8 @@ namespace Mayfly.Plankton
         }
 
         private void ToolStripMenuItemSaveVars_Click(object sender, EventArgs e) {
-            SettingsReader.AddtVariables = AdditionalVariables;
-            SettingsReader.CurrentVariables = CurrentVariables;
+            ReaderSettings.AddtVariables = AdditionalVariables;
+            ReaderSettings.CurrentVariables = CurrentVariables;
             AddVariableMenuItems();
         }
 

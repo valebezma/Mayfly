@@ -275,11 +275,11 @@ namespace Mayfly.Wild
                 foreach (Survey.LogRow logRow in logRows) { if (!speciesRows.Contains(logRow.DefinitionRow)) speciesRows.Add(logRow.DefinitionRow); }
 
                 Report report = new Report(string.Format(Resources.Interface.Interface.IndLog, string.Empty));
-                foreach (Survey.DefinitionRow speciesRow in speciesRows) {
+                foreach (Survey.DefinitionRow definitionRow in speciesRows) {
                     List<Survey.LogRow> _logRows = new List<Survey.LogRow>();
-                    foreach (Survey.LogRow logRow in logRows) { if (logRow.DefinitionRow == speciesRow) _logRows.Add(logRow); }
+                    foreach (Survey.LogRow logRow in logRows) { if (logRow.DefinitionRow == definitionRow) _logRows.Add(logRow); }
 
-                    string speciesPresentation = speciesRow.KeyRecord.FullNameReport;
+                    string speciesPresentation = definitionRow.KeyRecord.FullNameReport;
                     logRows.AddReport(report, level, speciesPresentation,
                         string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));
                 }

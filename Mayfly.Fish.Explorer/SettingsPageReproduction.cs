@@ -13,14 +13,14 @@ namespace Mayfly.Fish.Explorer
 
             ColumnAgeSpecies.ValueType = typeof(string);
             ColumnAgeValue.ValueType = typeof(Age);
-            speciesSelectorAge.IndexPath = SettingsReader.TaxonomicIndexPath;
+            speciesSelectorAge.IndexPath = ReaderSettings.TaxonomicIndexPath;
         }
 
         public void LoadSettings() {
 
             spreadSheetAge.Rows.Clear();
 
-            foreach (TaxonomicIndex.TaxonRow speciesRow in SettingsReader.TaxonomicIndex.GetSpeciesRows()) {
+            foreach (TaxonomicIndex.TaxonRow speciesRow in ReaderSettings.TaxonomicIndex.GetSpeciesRows()) {
                 LoadAge(speciesRow);
             }
         }

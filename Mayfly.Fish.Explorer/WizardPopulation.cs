@@ -27,7 +27,7 @@ namespace Mayfly.Fish.Explorer
 
         public CardStack Data { get; set; }
 
-        public TaxonomicIndex.TaxonRow SpeciesRow { set; get; }
+        public TaxonomicIndex.TaxonRow TaxonRow { set; get; }
 
         public SpeciesSwarm Swarm { set; get; }
 
@@ -69,19 +69,19 @@ namespace Mayfly.Fish.Explorer
         public WizardPopulation(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
-            wizardExplorer.ResetTitle(SpeciesRow.CommonName);
+            wizardExplorer.ResetTitle(TaxonRow.CommonName);
 
-            labelStart.ResetFormatted(SpeciesRow.CommonName);
-            labelBasicInstruction.ResetFormatted(SpeciesRow.CommonName);
+            labelStart.ResetFormatted(TaxonRow.CommonName);
+            labelBasicInstruction.ResetFormatted(TaxonRow.CommonName);
 
-            plotLW.ResetFormatted(SpeciesRow.CommonName);
-            plotAL.ResetFormatted(SpeciesRow.CommonName);
-            plotAW.ResetFormatted(SpeciesRow.CommonName);
+            plotLW.ResetFormatted(TaxonRow.CommonName);
+            plotAL.ResetFormatted(TaxonRow.CommonName);
+            plotAW.ResetFormatted(TaxonRow.CommonName);
 
-            plotLengthAdjusted.ResetFormatted(SpeciesRow.CommonName);
-            plotAgeAdjusted.ResetFormatted(SpeciesRow.CommonName);
+            plotLengthAdjusted.ResetFormatted(TaxonRow.CommonName);
+            plotAgeAdjusted.ResetFormatted(TaxonRow.CommonName);
 
             pageStart.SetNavigation(false);
 
@@ -131,9 +131,9 @@ namespace Mayfly.Fish.Explorer
 
         public Report GetReport()
         {
-            Report report = new Report(string.Format(Resources.Reports.Header.SummaryPopulation, SpeciesRow.FullNameReport));
+            Report report = new Report(string.Format(Resources.Reports.Header.SummaryPopulation, TaxonRow.FullNameReport));
 
-            Data.AddCommon(report, SpeciesRow);
+            Data.AddCommon(report, TaxonRow);
 
             report.UseTableNumeration = true;
 
@@ -200,10 +200,10 @@ namespace Mayfly.Fish.Explorer
 
         public void AppendBasicSectionTo(Report report)
         {
-            report.AddSectionTitle(Resources.Reports.Sections.Growth.Title, SpeciesRow.FullNameReport);
+            report.AddSectionTitle(Resources.Reports.Sections.Growth.Title, TaxonRow.FullNameReport);
 
             report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph1,
-                SpeciesRow.FullNameReport,
+                TaxonRow.FullNameReport,
                 Swarm.LengthSample.Minimum, Swarm.LengthSample.Maximum, Swarm.LengthSample.Mean,
                 Swarm.MassSample.Minimum, Swarm.MassSample.Maximum, Swarm.MassSample.Mean);
 
@@ -234,11 +234,11 @@ namespace Mayfly.Fish.Explorer
 
             // CPUE
             report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph6,
-                SpeciesRow.CommonName, Swarm.Abundance, gearWizard.SelectedUnit.Unit,
+                TaxonRow.CommonName, Swarm.Abundance, gearWizard.SelectedUnit.Unit,
                 Swarm.Biomass, gearWizard.SelectedSamplerType.ToDisplay(), report.NextTableNumber);
             Report.Table table = classedComposition.GetStandardCatchesTable(
                 string.Format(Resources.Reports.Sections.Growth.Table,
-                SpeciesRow.CommonName, gearWizard.SelectedSamplerType.ToDisplay()),
+                TaxonRow.CommonName, gearWizard.SelectedSamplerType.ToDisplay()),
                 Resources.Reports.Caption.GearClass);
             report.AddTable(table);
         }
@@ -249,7 +249,7 @@ namespace Mayfly.Fish.Explorer
                 gearWizard.SelectedSamplerType.ToDisplay());
 
             report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph1,
-                SpeciesRow.CommonName, report.NextFigureNumber);
+                TaxonRow.CommonName, report.NextFigureNumber);
             report.AddImage(plotSelectionSource.GetVector(17, 7), plotSelectionSource.Text);
 
             if (SelectivityModel == null)
@@ -261,7 +261,7 @@ namespace Mayfly.Fish.Explorer
                 report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph3, report.NextFigureNumber, report.NextFigureNumber);
                 report.AddImage(plotSelection.GetVector(17, 7), plotSelection.Text);
                 report.AddTable(SelectivityModel.GetReportTable(
-                    string.Format(Resources.Reports.Sections.Selectivity.Table3, SpeciesRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay())));
+                    string.Format(Resources.Reports.Sections.Selectivity.Table3, TaxonRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay())));
 
                 report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph5, report.NextFigureNumber);
                 report.AddImage(plotLengthAdjusted.GetVector(17, 7), plotLengthAdjusted.Text);
@@ -270,11 +270,11 @@ namespace Mayfly.Fish.Explorer
 
         public void AddMortality(Report report)
         {
-            report.AddSectionTitle(Resources.Reports.Sections.Mortality.Title, SpeciesRow.FullNameReport);
+            report.AddSectionTitle(Resources.Reports.Sections.Mortality.Title, TaxonRow.FullNameReport);
 
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1,
                 TotalMortalityModel.YoungestCaught.Age, TotalMortalityModel.OldestCaught.Age,
-                SpeciesRow.CommonName);
+                TaxonRow.CommonName);
             report.AddEquation(TotalMortalityModel.Exploited.Regression.GetEquation("NPUE", "t"));
             report.AddImage(plotMortality.GetVector(17, 7), plotMortality.Text);
 
@@ -283,7 +283,7 @@ namespace Mayfly.Fish.Explorer
             report.AddEquation(@"φ = 1 - " + TotalMortalityModel.S.ToString("N5") + " = " + TotalMortalityModel.Fi.ToString("N5"));
 
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph3,
-                SpeciesRow.CommonName, report.NextTableNumber, report.NextFigureNumber);
+                TaxonRow.CommonName, report.NextTableNumber, report.NextFigureNumber);
 
             report.AddTable(
                 new Composition[] { ageCompositionWizard.CatchesComposition, AgeStructure }.GetTable(
@@ -340,17 +340,17 @@ namespace Mayfly.Fish.Explorer
 
         private void structureCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            Swarm = Data.GetSwarm(SpeciesRow);
+            Swarm = Data.GetSwarm(TaxonRow);
 
-            GrowthModel = Data.Parent.FindGrowthModel(SpeciesRow.Name);
-            WeightModel = Data.Parent.FindMassModel(SpeciesRow.Name);
+            GrowthModel = Data.Parent.FindGrowthModel(TaxonRow.Name);
+            WeightModel = Data.Parent.FindMassModel(TaxonRow.Name);
 
-            LengthStructure = Data.GetLengthCompositionFrame(SpeciesRow, UserSettings.SizeInterval);
+            LengthStructure = Data.GetLengthCompositionFrame(TaxonRow, UserSettings.SizeInterval);
             LengthStructure.Name = Fish.Resources.Common.SizeUnits;
 
             try
             {
-                AgeStructure = Data.GetAgeCompositionFrame(SpeciesRow);
+                AgeStructure = Data.GetAgeCompositionFrame(TaxonRow);
                 AgeStructure.Name = Wild.Resources.Reports.Caption.AgeUnit;
             }
             catch
@@ -481,7 +481,7 @@ namespace Mayfly.Fish.Explorer
 
             #region Age to Mass
 
-            ContinuousBio cb = new ContinuousBio(Data.Parent, SpeciesRow,
+            ContinuousBio cb = new ContinuousBio(Data.Parent, TaxonRow,
                 Data.Parent.Individual.AgeColumn, Data.Parent.Individual.MassColumn, TrendType.Linear);
 
             plotAW.Visible = cb.CombinedData.Data.Count > 0;
@@ -498,7 +498,7 @@ namespace Mayfly.Fish.Explorer
             if (GrowthModel != null && GrowthModel.CombinedData.IsRegressionOK &&
                 WeightModel != null && WeightModel.CombinedData.IsRegressionOK)
             {
-                Functor aw = new Functor(string.Format(Resources.Interface.MassGrowth, SpeciesRow.Name), (t) =>
+                Functor aw = new Functor(string.Format(Resources.Interface.MassGrowth, TaxonRow.Name), (t) =>
                 {
                     double l = GrowthModel.CombinedData.Regression.Predict(t);
                     return WeightModel.CombinedData.Regression.Predict(l);
@@ -583,7 +583,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (gearWizard == null)
                 {
-                    gearWizard = new WizardGearSet(Data, SpeciesRow);
+                    gearWizard = new WizardGearSet(Data, TaxonRow);
                     gearWizard.AfterDataSelected += gearWizard_AfterDataSelected;
                     gearWizard.Returned += gearWizard_Returned;
                 }
@@ -633,7 +633,7 @@ namespace Mayfly.Fish.Explorer
 
         private void classesCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            classedComposition = gearWizard.SelectedStacks.GetClassedComposition(SpeciesRow,
+            classedComposition = gearWizard.SelectedStacks.GetClassedComposition(TaxonRow,
                 gearWizard.SelectedSamplerType, gearWizard.SelectedUnit);
 
             Swarm.Abundance = classedComposition.TotalAbundance / classedComposition.Count;
@@ -676,7 +676,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (lengthCompositionWizard == null)
                     {
-                        lengthCompositionWizard = new WizardComposition(Data, LengthStructure, SpeciesRow, CompositionColumn.MassSample);
+                        lengthCompositionWizard = new WizardComposition(Data, LengthStructure, TaxonRow, CompositionColumn.MassSample);
                         lengthCompositionWizard.Returned += lengthCompositionWizard_Returned;
                         lengthCompositionWizard.Finished += lengthCompositionWizard_Finished;
                     }
@@ -931,7 +931,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (ageCompositionWizard == null)
                     {
-                        ageCompositionWizard = new WizardComposition(Data, AgeStructure, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
+                        ageCompositionWizard = new WizardComposition(Data, AgeStructure, TaxonRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
                         ageCompositionWizard.Returned += ageCompositionWizard_Returned;
                         ageCompositionWizard.Finished += ageCompositionWizard_Finished;
                     }
@@ -1209,7 +1209,7 @@ namespace Mayfly.Fish.Explorer
         {
             ((Report)e.Result).Run();
             pageReport.SetNavigation(true);
-            Log.Write(EventType.WizardEnded, "Population wizard is finished for {0}.", SpeciesRow.Name);
+            Log.Write(EventType.WizardEnded, "Population wizard is finished for {0}.", TaxonRow.Name);
             if (!UserSettings.KeepWizard) Close();
         }
 

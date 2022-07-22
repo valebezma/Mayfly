@@ -51,7 +51,7 @@ namespace Mayfly.Wild
         /// <summary>
         /// Returns mass value degree for string representation
         /// </summary>
-        protected MassDegree Degree = SettingsReader.IndividualMassDegree;
+        protected MassDegree Degree = ReaderSettings.IndividualMassDegree;
 
         /// <summary>
         /// Mass units for string representation
@@ -330,8 +330,8 @@ namespace Mayfly.Wild
     [TypeConverter(typeof(SampleMassConverter))]
     public class SampleMass : Mass {
 
-        public SampleMass() : base(0, SettingsReader.LogMassDegree) { }
+        public SampleMass() : base(0, ReaderSettings.LogMassDegree) { }
 
-        public SampleMass(object value) : base(value, SettingsReader.LogMassDegree) { }
+        public SampleMass(object value) : base(value, ReaderSettings.LogMassDegree) { }
     }
 }

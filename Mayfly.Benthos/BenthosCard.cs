@@ -7,7 +7,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using static Mayfly.Wild.UserSettings;
 
 namespace Mayfly.Benthos

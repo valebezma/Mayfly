@@ -121,6 +121,17 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="colorBoxColumn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 137</value>
+  </data>
+  <data name="colorBoxColumn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="colorBoxColumn.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
   <data name="&gt;&gt;colorBoxColumn.Name" xml:space="preserve">
     <value>colorBoxColumn</value>
   </data>
@@ -131,434 +142,6 @@
     <value>tabPageAppearance</value>
   </data>
   <data name="&gt;&gt;colorBoxColumn.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;trackBarWidth.Name" xml:space="preserve">
-    <value>trackBarWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarWidth.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;trackBarWidth.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;textBoxSeriesName.Name" xml:space="preserve">
-    <value>textBoxSeriesName</value>
-  </data>
-  <data name="&gt;&gt;textBoxSeriesName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxSeriesName.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;textBoxSeriesName.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;labelSeriesName.Name" xml:space="preserve">
-    <value>labelSeriesName</value>
-  </data>
-  <data name="&gt;&gt;labelSeriesName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelSeriesName.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;labelSeriesName.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label_marker_color.Name" xml:space="preserve">
-    <value>label_marker_color</value>
-  </data>
-  <data name="&gt;&gt;label_marker_color.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_marker_color.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;label_marker_color.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBorder.Name" xml:space="preserve">
-    <value>checkBoxBorder</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBorder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBorder.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;checkBoxBorder.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabPageAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageAppearance.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 45, 45</value>
-  </data>
-  <data name="tabPageAppearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>452, 411</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabPageAppearance.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPageAppearance.Text" xml:space="preserve">
-    <value>Appearance</value>
-  </data>
-  <data name="&gt;&gt;tabPageAppearance.Name" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;tabPageAppearance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageAppearance.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageAppearance.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>tabPageValues</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUpper.Name" xml:space="preserve">
-    <value>radioButtonUpper</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUpper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUpper.Parent" xml:space="preserve">
-    <value>tabPageValues</value>
-  </data>
-  <data name="&gt;&gt;radioButtonUpper.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLower.Name" xml:space="preserve">
-    <value>radioButtonLower</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLower.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLower.Parent" xml:space="preserve">
-    <value>tabPageValues</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLower.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxUpper.Name" xml:space="preserve">
-    <value>pictureBoxUpper</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxUpper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxUpper.Parent" xml:space="preserve">
-    <value>tabPageValues</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxUpper.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLower.Name" xml:space="preserve">
-    <value>pictureBoxLower</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLower.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLower.Parent" xml:space="preserve">
-    <value>tabPageValues</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLower.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tabPageValues</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="tabPageValues.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageValues.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 45, 45</value>
-  </data>
-  <data name="tabPageValues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>452, 411</value>
-  </data>
-  <data name="tabPageValues.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabPageValues.Text" xml:space="preserve">
-    <value>Values</value>
-  </data>
-  <data name="&gt;&gt;tabPageValues.Name" xml:space="preserve">
-    <value>tabPageValues</value>
-  </data>
-  <data name="&gt;&gt;tabPageValues.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageValues.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageValues.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;colorBoxFit.Name" xml:space="preserve">
-    <value>colorBoxFit</value>
-  </data>
-  <data name="&gt;&gt;colorBoxFit.Type" xml:space="preserve">
-    <value>Mayfly.Controls.ColorBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorBoxFit.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;colorBoxFit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelEquation.Name" xml:space="preserve">
-    <value>labelEquation</value>
-  </data>
-  <data name="&gt;&gt;labelEquation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelEquation.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;labelEquation.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFitResult.Name" xml:space="preserve">
-    <value>checkBoxShowFitResult</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFitResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFitResult.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFitResult.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowCount.Name" xml:space="preserve">
-    <value>checkBoxShowCount</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowCount.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowCount.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFit.Name" xml:space="preserve">
-    <value>checkBoxShowFit</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFit.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowFit.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFit.Name" xml:space="preserve">
-    <value>comboBoxFit</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFit.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;comboBoxFit.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;trackBarFitWidth.Name" xml:space="preserve">
-    <value>trackBarFitWidth</value>
-  </data>
-  <data name="&gt;&gt;trackBarFitWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarFitWidth.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;trackBarFitWidth.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;labelFitWidth.Name" xml:space="preserve">
-    <value>labelFitWidth</value>
-  </data>
-  <data name="&gt;&gt;labelFitWidth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFitWidth.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;labelFitWidth.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;labelFitColor.Name" xml:space="preserve">
-    <value>labelFitColor</value>
-  </data>
-  <data name="&gt;&gt;labelFitColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFitColor.Parent" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;labelFitColor.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="tabPageFitDistribution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageFitDistribution.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 45, 45</value>
-  </data>
-  <data name="tabPageFitDistribution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>452, 411</value>
-  </data>
-  <data name="tabPageFitDistribution.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tabPageFitDistribution.Text" xml:space="preserve">
-    <value>Fit curve</value>
-  </data>
-  <data name="&gt;&gt;tabPageFitDistribution.Name" xml:space="preserve">
-    <value>tabPageFitDistribution</value>
-  </data>
-  <data name="&gt;&gt;tabPageFitDistribution.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageFitDistribution.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageFitDistribution.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 437</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label21.AutoSize" type="System.Boolean, mscorlib">
@@ -596,6 +179,9 @@
   </data>
   <data name="trackBarWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="trackBarWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="trackBarWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 172</value>
@@ -840,6 +426,9 @@
   <data name="checkBoxBorder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBoxBorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="checkBoxBorder.Location" type="System.Drawing.Point, System.Drawing">
     <value>270, 140</value>
   </data>
@@ -863,6 +452,33 @@
   </data>
   <data name="&gt;&gt;checkBoxBorder.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="tabPageAppearance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageAppearance.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
+  </data>
+  <data name="tabPageAppearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 411</value>
+  </data>
+  <data name="tabPageAppearance.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageAppearance.Text" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="&gt;&gt;tabPageAppearance.Name" xml:space="preserve">
+    <value>tabPageAppearance</value>
+  </data>
+  <data name="&gt;&gt;tabPageAppearance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageAppearance.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageAppearance.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -903,6 +519,9 @@
   <data name="radioButtonUpper.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="radioButtonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="radioButtonUpper.Location" type="System.Drawing.Point, System.Drawing">
     <value>312, 63</value>
   </data>
@@ -929,6 +548,9 @@
   </data>
   <data name="radioButtonLower.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="radioButtonLower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButtonLower.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 63</value>
@@ -957,6 +579,9 @@
   <data name="pictureBoxUpper.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <data name="pictureBoxUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="pictureBoxUpper.Location" type="System.Drawing.Point, System.Drawing">
     <value>292, 86</value>
   </data>
@@ -980,6 +605,9 @@
   </data>
   <data name="&gt;&gt;pictureBoxUpper.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="pictureBoxLower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="pictureBoxLower.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 86</value>
@@ -1034,6 +662,54 @@
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="tabPageValues.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageValues.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
+  </data>
+  <data name="tabPageValues.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 411</value>
+  </data>
+  <data name="tabPageValues.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabPageValues.Text" xml:space="preserve">
+    <value>Values</value>
+  </data>
+  <data name="&gt;&gt;tabPageValues.Name" xml:space="preserve">
+    <value>tabPageValues</value>
+  </data>
+  <data name="&gt;&gt;tabPageValues.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageValues.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageValues.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="colorBoxFit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 150</value>
+  </data>
+  <data name="colorBoxFit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="colorBoxFit.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;colorBoxFit.Name" xml:space="preserve">
+    <value>colorBoxFit</value>
+  </data>
+  <data name="&gt;&gt;colorBoxFit.Type" xml:space="preserve">
+    <value>Mayfly.Controls.ColorBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorBoxFit.Parent" xml:space="preserve">
+    <value>tabPageFitDistribution</value>
+  </data>
+  <data name="&gt;&gt;colorBoxFit.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelEquation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1284,6 +960,9 @@
   <data name="trackBarFitWidth.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="trackBarFitWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="trackBarFitWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 176</value>
   </data>
@@ -1371,46 +1050,52 @@
   <data name="&gt;&gt;labelFitColor.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="colorBoxColumn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 137</value>
+  <data name="tabPageFitDistribution.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="colorBoxColumn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+  <data name="tabPageFitDistribution.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
   </data>
-  <data name="colorBoxColumn.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="tabPageFitDistribution.Size" type="System.Drawing.Size, System.Drawing">
+    <value>452, 411</value>
   </data>
-  <data name="&gt;&gt;colorBoxColumn.Name" xml:space="preserve">
-    <value>colorBoxColumn</value>
+  <data name="tabPageFitDistribution.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;colorBoxColumn.Type" xml:space="preserve">
-    <value>Mayfly.Controls.ColorBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="tabPageFitDistribution.Text" xml:space="preserve">
+    <value>Fit curve</value>
   </data>
-  <data name="&gt;&gt;colorBoxColumn.Parent" xml:space="preserve">
-    <value>tabPageAppearance</value>
-  </data>
-  <data name="&gt;&gt;colorBoxColumn.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="colorBoxFit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 150</value>
-  </data>
-  <data name="colorBoxFit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="colorBoxFit.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;colorBoxFit.Name" xml:space="preserve">
-    <value>colorBoxFit</value>
-  </data>
-  <data name="&gt;&gt;colorBoxFit.Type" xml:space="preserve">
-    <value>Mayfly.Controls.ColorBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorBoxFit.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageFitDistribution.Name" xml:space="preserve">
     <value>tabPageFitDistribution</value>
   </data>
-  <data name="&gt;&gt;colorBoxFit.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageFitDistribution.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFitDistribution.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageFitDistribution.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 437</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1421,6 +1106,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>484, 461</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>500, 500</value>

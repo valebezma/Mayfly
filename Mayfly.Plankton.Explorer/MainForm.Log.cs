@@ -16,7 +16,7 @@ namespace Mayfly.Plankton.Explorer
 
         TaxonomicIndex.TaxonRow[] taxonLog;
 
-        TaxonomicIndex.SpeciesRow[] variaLog;
+        TaxonomicIndex.TaxonRow[] variaLog;
 
 
 

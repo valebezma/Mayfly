@@ -22,7 +22,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         public VirtualCohort VirtualCohort;
 
@@ -66,10 +66,10 @@ namespace Mayfly.Fish.Explorer
             : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             wizardExplorer.ResetTitle(speciesRow.CommonName);
-            labelStart.ResetFormatted(SpeciesRow.CommonName);
+            labelStart.ResetFormatted(TaxonRow.CommonName);
 
             buttonVpa.Enabled =
                 buttonGrowth.Enabled = true;
@@ -119,7 +119,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.MSYR.Title,
-                    SpeciesRow.FullNameReport));
+                    TaxonRow.FullNameReport));
 
             report.UseTableNumeration = true;
 
@@ -135,7 +135,7 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonVpa_Click(object sender, EventArgs e)
         {
-            vpaWizard = new WizardVirtualPopulation(Data, SpeciesRow);
+            vpaWizard = new WizardVirtualPopulation(Data, TaxonRow);
             vpaWizard.Returned += vpaWizard_Returned;
             vpaWizard.Calculated += vpaWizard_PopulationBuilt;
             vpaWizard.Replace(this);
@@ -176,7 +176,7 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonGrowth_Click(object sender, EventArgs e)
         {
-            growthWizard = new WizardPopulation(Data, SpeciesRow);
+            growthWizard = new WizardPopulation(Data, TaxonRow);
             growthWizard.ModelsReturned += growthWizard_Returned;
             growthWizard.ModelsCalculated += growthWizard_ModelConfirmed;
             growthWizard.Replace(this);
@@ -339,7 +339,7 @@ namespace Mayfly.Fish.Explorer
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
             Log.Write(EventType.WizardEnded, "MSY wizard is finished for {0} with MSY = {1}.",
-                SpeciesRow.Name, MaximumSustainableYield);
+                TaxonRow.Name, MaximumSustainableYield);
             if (!UserSettings.KeepWizard) Close();
         }
 

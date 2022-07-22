@@ -13,7 +13,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Mayfly.Extensions;
 using Mayfly.Controls;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using static Mayfly.Fish.UserSettings;
 
 namespace Mayfly.Fish.Explorer
@@ -516,7 +516,7 @@ namespace Mayfly.Fish.Explorer
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Data.Solitary;
 
-                TaxonomicIndex.TaxonRow clipSpeciesRow = SettingsReader.TaxonomicIndex.FindByName(clipLogRow.DefinitionRow.Taxon);
+                TaxonomicIndex.TaxonRow clipSpeciesRow = ReaderSettings.TaxonomicIndex.FindByName(clipLogRow.DefinitionRow.Taxon);
 
                 if (clipSpeciesRow == null) {
                     Survey.DefinitionRow newSpeciesRow = Data.Definition.AddDefinitionRow(

@@ -110,7 +110,7 @@ namespace Mayfly.Benthos.Explorer
 
                 IsBusy = false;
             } else {
-                SettingsReader.Interface.SaveDialog.FileName = FullStack.FriendlyName;
+                ReaderSettings.Interface.SaveDialog.FileName = FullStack.FriendlyName;
                 this.ResetText(FullStack.FriendlyName, DietExplorer ? Resources.Interface.DietTitle : EntryAssemblyInfo.Title);
 
                 Log.Write("{0} cards are under consideration (common path: {1}).",
@@ -421,7 +421,7 @@ namespace Mayfly.Benthos.Explorer
         private void updateSpeciesArtifacts(DataGridViewRow gridRow) {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             SpeciesConsistencyChecker artifact = findSpeciesRow(gridRow).CheckConsistency(FullStack);
 
@@ -513,7 +513,7 @@ namespace Mayfly.Benthos.Explorer
         private void updateCardArtifacts(DataGridViewRow gridRow) {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             CardConsistencyChecker artifact = findCardRow(gridRow).CheckConsistency();
 
@@ -750,7 +750,7 @@ namespace Mayfly.Benthos.Explorer
         private void updateLogArtifacts(DataGridViewRow gridRow) {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             LogConsistencyChecker artifact = findLogRow(gridRow).CheckConsistency();
 
@@ -766,7 +766,7 @@ namespace Mayfly.Benthos.Explorer
         private void saveLogRow(DataGridViewRow gridRow) {
             if (rankSpc != null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             Wild.Survey.LogRow logRow = findLogRow(gridRow);
 
@@ -963,7 +963,7 @@ namespace Mayfly.Benthos.Explorer
         private void updateIndividualArtifacts(DataGridViewRow gridRow) {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             IndividualConsistencyChecker artifact = findIndividualRow(gridRow).CheckConsistency();
 

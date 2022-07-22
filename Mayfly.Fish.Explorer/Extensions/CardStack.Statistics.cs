@@ -1,33 +1,28 @@
-﻿using Mayfly.Wild;
+﻿using Mayfly.Species;
+using Mayfly.Wild;
+using Meta.Numerics.Statistics;
 using System;
 using System.Collections.Generic;
-using Meta.Numerics.Statistics;
-using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static double Mesh(this CardStack stack)
-        {
+        public static double Mesh(this CardStack stack) {
             Sample result = new Sample();
 
-            foreach (Wild.Survey.CardRow cardRow in stack)
-            {
+            foreach (Wild.Survey.CardRow cardRow in stack) {
                 if (!cardRow.IsMeshNull()) result.Add(cardRow.Mesh);
             }
 
             return result.Mean;
         }
 
-        public static Sample LengthSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
-        {
+        public static Sample LengthSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow) {
             List<double> result = new List<double>();
 
-            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
-            {
-                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
-                {
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow)) {
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows()) {
                     if (individualRow.IsLengthNull()) continue;
                     result.Add(individualRow.Length);
                 }
@@ -36,12 +31,10 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample LengthSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Age age)
-        {
+        public static Sample LengthSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Age age) {
             List<double> result = new List<double>();
 
-            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
-            {
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow)) {
                 if (individualRow.IsAgeNull()) continue;
                 if (individualRow.IsLengthNull()) continue;
                 if (new Age(individualRow.Age).Years != age.Years) continue;
@@ -51,13 +44,11 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample LengthSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Sex sex)
-        {
+        public static Sample LengthSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Sex sex) {
             List<double> result = new List<double>();
 
 
-            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
-            {
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow)) {
                 if (individualRow.IsSexNull()) continue;
                 if (individualRow.IsLengthNull()) continue;
                 if (individualRow.Sex != sex.Value) continue;
@@ -67,18 +58,14 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static double LengthMin(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
-        {
+        public static double LengthMin(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow) {
             Sample lengths = stack.LengthSample(speciesRow);
 
             double result = lengths.Count > 0 ? lengths.Minimum : 0;
 
-            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
-            {
-                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-                {
-                    if (result > stratifiedRow.SizeClass.RightEndpoint)
-                    {
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow)) {
+                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) {
+                    if (result > stratifiedRow.SizeClass.RightEndpoint) {
                         result = stratifiedRow.SizeClass.LeftEndpoint;
                     }
                 }
@@ -87,18 +74,14 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double LengthMax(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
-        {
+        public static double LengthMax(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow) {
             Sample lengths = stack.LengthSample(speciesRow);
 
             double result = lengths.Count > 0 ? lengths.Maximum : 50;
 
-            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
-            {
-                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-                {
-                    if (result < stratifiedRow.SizeClass.Midpoint)
-                    {
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow)) {
+                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) {
+                    if (result < stratifiedRow.SizeClass.Midpoint) {
                         result = stratifiedRow.SizeClass.Midpoint;
                     }
                 }
@@ -107,31 +90,25 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double LengthMaxOfNonAged(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
-        {
+        public static double LengthMaxOfNonAged(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow) {
             double result = double.MinValue;
             int i = 0;
 
-            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
-            {
-                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
-                {
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow)) {
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows()) {
                     if (!individualRow.IsAgeNull()) continue;
 
                     if (individualRow.IsLengthNull()) continue;
 
-                    if (result < individualRow.Length)
-                    {
+                    if (result < individualRow.Length) {
                         result = individualRow.Length;
                         i++;
                     }
 
                 }
 
-                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-                {
-                    if (result < stratifiedRow.SizeClass.Midpoint)
-                    {
+                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) {
+                    if (result < stratifiedRow.SizeClass.Midpoint) {
                         result = stratifiedRow.SizeClass.Midpoint;
                         i++;
                     }
@@ -143,17 +120,14 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static Age AgeMin(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
-        {
+        public static Age AgeMin(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow) {
             return stack.AgeMin(speciesRow, UserSettings.SuggestAge);
         }
 
-        public static Age AgeMin(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, bool key)
-        {
+        public static Age AgeMin(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, bool key) {
             double a = 50;
 
-            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
-            {
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow)) {
                 if (individualRow.IsAgeNull()) continue;
                 a = Math.Min(a, individualRow.Age);
             }
@@ -161,8 +135,7 @@ namespace Mayfly.Fish.Explorer
 
             ContinuousBio bio = stack.Parent.FindGrowthModel(speciesRow.Name);
 
-            if (key && bio != null)
-            {
+            if (key && bio != null) {
                 double l = stack.LengthMin(speciesRow);
                 double t = bio.GetValue(l, true);
                 if (!double.IsNaN(t)) a = Math.Min(a, t);
@@ -171,25 +144,21 @@ namespace Mayfly.Fish.Explorer
             return new Age(a);
         }
 
-        public static Age AgeMax(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
-        {
+        public static Age AgeMax(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow) {
             return stack.AgeMax(speciesRow, UserSettings.SuggestAge);
         }
 
-        public static Age AgeMax(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, bool key)
-        {
+        public static Age AgeMax(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, bool key) {
             double a = 0.0;
 
-            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
-            {
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow)) {
                 if (individualRow.IsAgeNull()) continue;
                 a = Math.Max(a, individualRow.Age);
             }
 
             ContinuousBio bio = stack.Parent.FindGrowthModel(speciesRow.Name);
 
-            if (key && bio != null)
-            {
+            if (key && bio != null) {
                 double l = stack.LengthMaxOfNonAged(speciesRow);
                 double t = bio.GetValue(l, true);
                 if (!double.IsNaN(t)) a = Math.Max(a, t);
@@ -197,60 +166,5 @@ namespace Mayfly.Fish.Explorer
 
             return new Age(a);
         }
-
-        //public static double LengthMinStrat(Data.DefinitionRow speciesRow)
-        //{
-        //    double result = double.MaxValue;
-        //    int i = 0;
-
-        //    foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
-        //    {
-        //        foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-        //        {
-        //            if (result > stratifiedRow.SizeClass.Midpoint)
-        //            {
-        //                result = stratifiedRow.SizeClass.Midpoint;
-        //                i++;
-        //            }
-        //        }
-        //    }
-
-        //    if (i > 0)
-        //    {
-        //        return result;
-        //    }
-        //    else
-        //    {
-        //        return double.NaN;
-        //    }
-        //}
-
-        //public static double LengthMaxStrat(Data.DefinitionRow speciesRow)
-        //{
-        //    double result = double.MinValue;
-        //    int i = 0;
-
-        //    foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
-        //    {
-        //        foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-        //        {
-        //            if (result < stratifiedRow.SizeClass.Midpoint)
-        //            {
-        //                result = stratifiedRow.SizeClass.Midpoint;
-        //                i++;
-        //            }
-
-        //        }
-        //    }
-
-        //    if (i > 0)
-        //    {
-        //        return result;
-        //    }
-        //    else
-        //    {
-        //        return double.NaN;
-        //    }
-        //}
     }
 }

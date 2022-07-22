@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
 
         //public FishingGearType SelectedSamplerType { get; set; }
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         public AgeComposition Structure { get; internal set; }
 
@@ -62,10 +62,10 @@ namespace Mayfly.Fish.Explorer
         public WizardVirtualPopulation(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             wizardExplorer.ResetTitle(speciesRow.CommonName);
-            labelStart.ResetFormatted(SpeciesRow.CommonName);
+            labelStart.ResetFormatted(TaxonRow.CommonName);
 
             Log.Write(EventType.WizardStarted, "VPA wizard is started for {0}.", 
                 speciesRow.Name);
@@ -87,8 +87,8 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                 string.Format(Resources.Reports.Sections.VPA.Title,
-                SpeciesRow.FullNameReport));
-            gearWizard.SelectedData.AddCommon(report, SpeciesRow);
+                TaxonRow.FullNameReport));
+            gearWizard.SelectedData.AddCommon(report, TaxonRow);
 
             report.UseTableNumeration = true;
 
@@ -132,21 +132,21 @@ namespace Mayfly.Fish.Explorer
         {
             // Year-based catches
             report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph1,
-                SpeciesRow.FullNameReport, report.NextTableNumber);
+                TaxonRow.FullNameReport, report.NextTableNumber);
 
             report.AddAppendix(
                 AnnualCompositions.GetTable(
                     CompositionColumn.Quantity,
-                    string.Format(Resources.Reports.Sections.VPA.Table1, SpeciesRow.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
+                    string.Format(Resources.Reports.Sections.VPA.Table1, TaxonRow.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
                     Resources.Reports.Sections.VPA.Column1, Resources.Reports.Sections.VPA.Column2)
                     );
 
             //// Cohort-arranged catches
             //report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph2,
-            //    SpeciesRow.GetReportFullPresentation(), report.NextTableNumber, report.NextTableNumber - 1));
+            //    TaxonRow.GetReportFullPresentation(), report.NextTableNumber, report.NextTableNumber - 1));
 
             //Report.Table table1 = new Report.Table(Resources.Reports.Sections.VPA.Table2,
-            //    SpeciesRow.GetReportFullPresentation()));
+            //    TaxonRow.GetReportFullPresentation()));
             //Population.ToArray().AddCompositionTable(report, Resources.Reports.Sections.Growth.Column1,
             //    Resources.Reports.Sections.GrowthCohorts.Column1, ValueVariant.Quantity, "N0");
         }
@@ -168,18 +168,18 @@ namespace Mayfly.Fish.Explorer
             report.AddTable(
                 Survivors.GetTable(
                     CompositionColumn.Quantity,
-                    string.Format(Resources.Reports.Sections.VPA.Table4, SpeciesRow.FullNameReport),
+                    string.Format(Resources.Reports.Sections.VPA.Table4, TaxonRow.FullNameReport),
                     Resources.Reports.Sections.VPA.Column1, 
                     Resources.Reports.Sections.VPA.Column2)
                 );
 
             report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph5,
-                SpeciesRow.FullNameReport, report.NextTableNumber);
+                TaxonRow.FullNameReport, report.NextTableNumber);
 
             report.AddTable(
                 Survivors.GetTable(
                     CompositionColumn.Mass,
-                    string.Format(Resources.Reports.Sections.VPA.Table5, SpeciesRow.FullNameReport), 
+                    string.Format(Resources.Reports.Sections.VPA.Table5, TaxonRow.FullNameReport), 
                     Resources.Reports.Sections.VPA.Column1, 
                     Resources.Reports.Sections.VPA.Column2)
                 );
@@ -189,7 +189,7 @@ namespace Mayfly.Fish.Explorer
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            gearWizard = new WizardGearSet(Data, SpeciesRow);
+            gearWizard = new WizardGearSet(Data, TaxonRow);
             gearWizard.AfterDataSelected += gearWizard_AfterDataSelected;
             gearWizard.Returned += gearWizard_Returned;
             gearWizard.Replace(this);
@@ -218,7 +218,7 @@ namespace Mayfly.Fish.Explorer
         private void calcAnnuals_DoWork(object sender, DoWorkEventArgs e)
         {
             // 1 - Frame for age compositions
-            Structure = gearWizard.GearData.GetAgeCompositionFrame(SpeciesRow);
+            Structure = gearWizard.GearData.GetAgeCompositionFrame(TaxonRow);
 
             // 1.1 - Stacks by years
             List<CardStack> annualStacks = new List<CardStack>();
@@ -262,8 +262,8 @@ namespace Mayfly.Fish.Explorer
             foreach (CardStack annualStack in AnnualStacks)
             {
                 double d = Service.GetCatchDate(int.Parse(annualStack.Name)).ToOADate();
-                double m = annualStack.Mass(SpeciesRow) / 1000;
-                double s = annualStack.MassSampled(SpeciesRow) / 1000;
+                double m = annualStack.Mass(TaxonRow) / 1000;
+                double s = annualStack.MassSampled(TaxonRow) / 1000;
 
                 yield.Add(d, m);
                 if (s > 0) sample.Add(d, s);
@@ -314,7 +314,7 @@ namespace Mayfly.Fish.Explorer
         private void calcCatches_DoWork(object sender, DoWorkEventArgs e)
         {
             AnnualCompositions = gearWizard.GearData.GetAnnualAgeCompositions(
-                SpeciesRow, gearWizard.SelectedSamplerType, AnnualStacks, gearWizard.WeightType, gearWizard.SelectedUnit.Variant).ToArray();
+                TaxonRow, gearWizard.SelectedSamplerType, AnnualStacks, gearWizard.WeightType, gearWizard.SelectedUnit.Variant).ToArray();
             Population = new VirtualPopulation(AnnualCompositions);
         }
 
@@ -396,10 +396,10 @@ namespace Mayfly.Fish.Explorer
             //pageCatches.AllowNext = AnnualCompositions.Length > 0;
             //labelNoData.Visible = AnnualCompositions.Length == 0;
 
-            //double m = Service.GetNaturalMortality(SpeciesRow.Name);
+            //double m = Service.GetNaturalMortality(TaxonRow.Name);
             //if (!double.IsNaN(m)) numericUpDownM.Value = (decimal)m;
 
-            //double f = Service.GetFishingMortality(SpeciesRow.Name);
+            //double f = Service.GetFishingMortality(TaxonRow.Name);
             //if (!double.IsNaN(f)) numericUpDownF.Value = (decimal)f;
 
             ////pageCohorts.SetNavigation(true);
@@ -414,7 +414,7 @@ namespace Mayfly.Fish.Explorer
         private void annual_Click(object sender, EventArgs e)
         {
             CardStack annualStack = (CardStack)((ToolStripMenuItem)sender).Tag;
-            WizardPopulation wizard = new WizardPopulation(annualStack, SpeciesRow);
+            WizardPopulation wizard = new WizardPopulation(annualStack, TaxonRow);
             //wizard.SetGearSet(gearWizard);
             wizard.Show();
         }
@@ -529,10 +529,10 @@ namespace Mayfly.Fish.Explorer
             pageCatches.AllowNext = AnnualCompositions.Length > 0;
             labelNoData.Visible = AnnualCompositions.Length == 0;
 
-            double m = Service.GetNaturalMortality(SpeciesRow.Name);
+            double m = Service.GetNaturalMortality(TaxonRow.Name);
             if (!double.IsNaN(m)) numericUpDownM.Value = (decimal)m;
 
-            double f = Service.GetFishingMortality(SpeciesRow.Name);
+            double f = Service.GetFishingMortality(TaxonRow.Name);
             if (!double.IsNaN(f)) numericUpDownF.Value = (decimal)f;
 
             //pageCohorts.SetNavigation(true);
@@ -583,8 +583,8 @@ namespace Mayfly.Fish.Explorer
 
         private void pageVpa_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            Service.SaveNaturalMortality(SpeciesRow.Name, (double)numericUpDownM.Value);
-            Service.SaveFishingMortality(SpeciesRow.Name, (double)numericUpDownF.Value);
+            Service.SaveNaturalMortality(TaxonRow.Name, (double)numericUpDownM.Value);
+            Service.SaveFishingMortality(TaxonRow.Name, (double)numericUpDownF.Value);
 
             Survivors = new List<AgeComposition>();
 
@@ -701,7 +701,7 @@ namespace Mayfly.Fish.Explorer
             ((Report)e.Result).Run();
             pageReport.SetNavigation(true);
             Log.Write(EventType.WizardEnded, "VPA wizard is finished for {0}. Last years survivors quantity is calculated {1}.",
-                SpeciesRow.Name, Survivors.Last().TotalQuantity);
+                TaxonRow.Name, Survivors.Last().TotalQuantity);
             if (!UserSettings.KeepWizard) Close();
         }
 

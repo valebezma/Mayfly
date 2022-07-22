@@ -662,24 +662,6 @@ namespace Mayfly.Species
             }
         }
 
-        //public SpeciesRow[] CloseRelatives(SpeciesRow speciesRow)
-        //{
-        //    List<SpeciesRow> result = new List<SpeciesRow>();
-
-        //    string genus = Genus(speciesRow.Name);
-
-        //    foreach (SpeciesRow currentSpeciesRow in Species.Rows)
-        //    {
-        //        if (Genus(currentSpeciesRow.Species) == genus &&
-        //            !result.Contains(currentSpeciesRow))
-        //        {
-        //            result.Add(currentSpeciesRow);
-        //        }
-        //    }
-
-        //    return result.ToArray();
-        //}
-
         public static string SpecificName(string species) {
             string[] values = species.GetLongWords(4);
 
@@ -908,7 +890,7 @@ namespace Mayfly.Species
 
             //int Counter = 1;
 
-            //foreach (SpeciesRow speciesRow in Species.GetSorted())
+            //foreach (TaxonRow speciesRow in Taxon.GetSorted())
             //{
             //    table1.StartRow();
             //    table1.AddCell(Counter);

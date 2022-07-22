@@ -31,7 +31,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         private Composition selectedShoal;
 
@@ -75,7 +75,7 @@ namespace Mayfly.Fish.Explorer
 
         public WizardComposition(CardStack data, Composition frame, TaxonomicIndex.TaxonRow speciesRow, CompositionColumn column) : this(data, frame)
         {
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
             wizardExplorer.ResetTitle(speciesRow.CommonName);
 
             ColumnL.Visible = column.HasFlag(CompositionColumn.LengthSample);
@@ -125,7 +125,7 @@ namespace Mayfly.Fish.Explorer
 
         internal void Split(int j)
         {
-            CatchesComposition.Split(j, Service.GetMeasure(SpeciesRow.Name) * 10);
+            CatchesComposition.Split(j, Service.GetMeasure(TaxonRow.Name) * 10);
             CatchesComposition.SetLines(columnComposition);
             CatchesComposition.SetLines(ColumnCategory);
             CatchesComposition.SeparateCompositions.ToArray().UpdateValues(spreadSheetComposition, columnComposition, 
@@ -145,19 +145,19 @@ namespace Mayfly.Fish.Explorer
 
         public void AppendCategorialCatchesSectionTo(Report report)
         {
-            CatchesComposition.AppendCategorialCatchesSectionTo(report, SpeciesRow, Data.Parent);
+            CatchesComposition.AppendCategorialCatchesSectionTo(report, TaxonRow, Data.Parent);
         }
 
         public void AppendCalculationSectionTo(Report report)
         {
             if (CatchesComposition.SeparateCompositions.Count > 6) report.BreakPage(PageBreakOption.Landscape);
 
-            string holder = (SpeciesRow == null) ?  Wild.Resources.Reports.Caption.Species :
-                string.Format(Resources.Reports.Table.CategoriesHolder, CategoryType, SpeciesRow.FullNameReport);
+            string holder = (TaxonRow == null) ?  Wild.Resources.Reports.Caption.Species :
+                string.Format(Resources.Reports.Table.CategoriesHolder, CategoryType, TaxonRow.FullNameReport);
 
             string sectionTitle = string.Format(Resources.Reports.Section.TablesCompositionCatches,
-                (SpeciesRow == null) ? Wild.Resources.Reports.Caption.Species : CategoryType, 
-                (SpeciesRow == null) ? gearWizard.SelectedSamplerType.ToDisplay() : SpeciesRow.FullNameReport);
+                (TaxonRow == null) ? Wild.Resources.Reports.Caption.Species : CategoryType, 
+                (TaxonRow == null) ? gearWizard.SelectedSamplerType.ToDisplay() : TaxonRow.FullNameReport);
 
             report.AddSectionTitle(sectionTitle);
 
@@ -186,7 +186,7 @@ namespace Mayfly.Fish.Explorer
 
         public void AddAgeRecoveryRoutines(Report report)
         {
-            report.AddSectionTitle(Resources.Reports.Section.TablesALK, SpeciesRow.FullNameReport);
+            report.AddSectionTitle(Resources.Reports.Section.TablesALK, TaxonRow.FullNameReport);
 
             foreach (Composition classComposition in CatchesComposition.SeparateCompositions)
             {
@@ -213,8 +213,8 @@ namespace Mayfly.Fish.Explorer
 
         private void calculatorStructure_DoWork(object sender, DoWorkEventArgs e)
         {
-            CatchesComposition = SpeciesRow == null ? gearWizard.SelectedStacks.ToArray().GetWeightedComposition(gearWizard.WeightType, gearWizard.SelectedUnit.Variant, (SpeciesComposition)Frame) : 
-                gearWizard.SelectedStacks.ToArray().GetWeightedComposition(gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Frame, SpeciesRow, gearWizard.GearData.Mass(SpeciesRow));
+            CatchesComposition = TaxonRow == null ? gearWizard.SelectedStacks.ToArray().GetWeightedComposition(gearWizard.WeightType, gearWizard.SelectedUnit.Variant, (SpeciesComposition)Frame) : 
+                gearWizard.SelectedStacks.ToArray().GetWeightedComposition(gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Frame, TaxonRow, gearWizard.GearData.Mass(TaxonRow));
         }
 
         private void calculatorStructure_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -350,7 +350,7 @@ namespace Mayfly.Fish.Explorer
 
             if (CatchesComposition[ri] is AgeGroup age)
             {
-                double measure = Service.GetMeasure(SpeciesRow.Name) * 10;
+                double measure = Service.GetMeasure(TaxonRow.Name) * 10;
 
                 contextCompositionSplit.Enabled = (!double.IsNaN(measure) &&
                     age.LengthSample.Count > 0 &&

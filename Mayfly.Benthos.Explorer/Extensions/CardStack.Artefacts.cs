@@ -74,7 +74,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class SpeciesArtifact : ConsistencyChecker
     {
-        public TaxonomicIndex.TaxonRow SpeciesRow { get; private set; }
+        public TaxonomicIndex.TaxonRow TaxonRow { get; private set; }
 
         public bool ReferenceMissing { get; private set; }
 
@@ -83,9 +83,9 @@ namespace Mayfly.Benthos.Explorer
 
 
         public SpeciesArtifact(TaxonomicIndex.TaxonRow speciesRow) {
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
-            ReferenceMissing = !SettingsReader.TaxonomicIndex.Contains(speciesRow.Name);
+            ReferenceMissing = !ReaderSettings.TaxonomicIndex.Contains(speciesRow.Name);
         }
 
 
@@ -105,7 +105,7 @@ namespace Mayfly.Benthos.Explorer
         }
 
         public override string ToString() {
-            return base.ToString(SpeciesRow.Name);
+            return base.ToString(TaxonRow.Name);
         }
     }
 }

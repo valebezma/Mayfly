@@ -420,7 +420,7 @@ namespace Mayfly.Plankton.Explorer
                     continue;
                 }
 
-                TaxonomicIndex.SpeciesRow speciesRow = SpeciesIndex.Definition.FindByName(
+                TaxonomicIndex.TaxonRow speciesRow = SpeciesIndex.Definition.FindByName(
                     gridRow.Cells[columnSpcSpc.Index].Value as string);
 
                 if (speciesRow == null)
@@ -765,7 +765,7 @@ namespace Mayfly.Plankton.Explorer
                 Species.TaxonomicIndex speciesKey = new TaxonomicIndex();
                 foreach (Wild.Survey.DefinitionRow speciesRow in data.Species)
                 {
-                    Species.TaxonomicIndex.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
+                    Species.TaxonomicIndex.TaxonRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
                     newSpeciesRow.Species = speciesRow.Species;
                     speciesKey.Species.AddSpeciesRow(newSpeciesRow);
                 }

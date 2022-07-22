@@ -220,6 +220,9 @@
             this.toolStripSeparator24 = new System.Windows.Forms.ToolStripSeparator();
             this.menuCenosis = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemComposition = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCompositionSpecies = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCompositionLowest = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCompositionRanked = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCompare = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCompareComp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBrief = new System.Windows.Forms.ToolStripMenuItem();
@@ -284,9 +287,6 @@
             this.mathLog = new Mayfly.Mathematics.MathAdapter(this.components);
             this.mathCard = new Mayfly.Mathematics.MathAdapter(this.components);
             this.mathInd = new Mayfly.Mathematics.MathAdapter(this.components);
-            this.menuItemCompositionSpecies = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCompositionLowest = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCompositionRanked = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifacts)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -1480,6 +1480,21 @@
             resources.ApplyResources(this.menuItemComposition, "menuItemComposition");
             this.menuItemComposition.Click += new System.EventHandler(this.menuItemComposition_Click);
             // 
+            // menuItemCompositionSpecies
+            // 
+            this.menuItemCompositionSpecies.Name = "menuItemCompositionSpecies";
+            resources.ApplyResources(this.menuItemCompositionSpecies, "menuItemCompositionSpecies");
+            // 
+            // menuItemCompositionLowest
+            // 
+            this.menuItemCompositionLowest.Name = "menuItemCompositionLowest";
+            resources.ApplyResources(this.menuItemCompositionLowest, "menuItemCompositionLowest");
+            // 
+            // menuItemCompositionRanked
+            // 
+            this.menuItemCompositionRanked.Name = "menuItemCompositionRanked";
+            resources.ApplyResources(this.menuItemCompositionRanked, "menuItemCompositionRanked");
+            // 
             // menuItemCompare
             // 
             this.menuItemCompare.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1868,21 +1883,6 @@
             // mathInd
             // 
             this.mathInd.Sheet = this.spreadSheetInd;
-            // 
-            // menuItemCompositionSpecies
-            // 
-            this.menuItemCompositionSpecies.Name = "menuItemCompositionSpecies";
-            resources.ApplyResources(this.menuItemCompositionSpecies, "menuItemCompositionSpecies");
-            // 
-            // menuItemCompositionLowest
-            // 
-            this.menuItemCompositionLowest.Name = "menuItemCompositionLowest";
-            resources.ApplyResources(this.menuItemCompositionLowest, "menuItemCompositionLowest");
-            // 
-            // menuItemCompositionRanked
-            // 
-            this.menuItemCompositionRanked.Name = "menuItemCompositionRanked";
-            resources.ApplyResources(this.menuItemCompositionRanked, "menuItemCompositionRanked");
             // 
             // MainForm
             // 

@@ -13,7 +13,7 @@ using Mayfly.Extensions;
 using Mayfly.Controls;
 using Mayfly.Species;
 using System.Collections;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using static Mayfly.Fish.UserSettings;
 
 namespace Mayfly.Fish
@@ -328,51 +328,6 @@ namespace Mayfly.Fish
                 item.Click += redefineDomesticSpecies_Click;
                 contextItemRedefine.DropDownItems.Insert(0, item);
             }
-
-            //// Insert index
-            //contextRedefineAll.DropDownItems.Clear();
-            //contextRedefineAll.Visible = SpeciesIndex.Species.Count <= Species.AllowableSpeciesListLength;
-            //if (SpeciesIndex.Species.Count <= Species.AllowableSpeciesListLength)
-            //{
-            //    foreach (SpeciesKey.TaxonRow speciesRow in SpeciesIndex.Species.Rows)
-            //    {
-            //        ToolStripItem speciesItem = new ToolStripMenuItem();
-            //        speciesItem.Tag = speciesRow;
-            //        speciesItem.Text = speciesRow.CommonName;
-            //        speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
-            //        contextRedefineAll.DropDownItems.Add(speciesItem);
-            //    }
-
-            //    contextRedefineAll.SortItems();
-            //}
-
-            //foreach (SpeciesKey.BaseRow baseRow in SpeciesIndex.Base.Rows)
-            //{
-            //    ToolStripMenuItem baseItem = new ToolStripMenuItem();
-            //    baseItem.Text = baseRow.BaseName;
-
-            //    foreach (SpeciesKey.TaxonRow taxonRow in baseRow.GetTaxonRows())
-            //    {
-            //        ToolStripMenuItem taxonItem = new ToolStripMenuItem();
-            //        taxonItem.Text = taxonRow.TaxonName;
-
-            //        foreach (SpeciesKey.RepRow representativeRow in taxonRow.GetRepRows())
-            //        {
-            //            ToolStripItem speciesItem = new ToolStripMenuItem();
-            //            speciesItem.Tag = representativeRow.SpeciesRow;
-            //            speciesItem.Text = representativeRow.SpeciesRow.ShortName;
-            //            speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
-
-            //            taxonItem.DropDownItems.Add(speciesItem);
-            //        }
-
-            //        taxonItem.SortItems();
-            //        baseItem.DropDownItems.Add(taxonItem);
-            //    }
-
-            //    baseItem.SortItems();
-            //    contextItemRedefine.DropDownItems.Add(baseItem);
-            //}
         }
 
         private void RedefineSelected(Survey.LogRow logRow)
@@ -432,7 +387,7 @@ namespace Mayfly.Fish
             PrevDetailedMass = DetailedMass;
             PrevDetailedQuantity = DetailedQuantity;
 
-            if (SettingsReader.FixTotals)
+            if (ReaderSettings.FixTotals)
             {
                 Mass = DetailedMass / 1000;
                 Quantity = DetailedQuantity;

@@ -19,7 +19,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         WizardPopulation growthWizard;
 
@@ -36,12 +36,12 @@ namespace Mayfly.Fish.Explorer
             : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             wizardExplorer.ResetTitle(speciesRow.CommonName);
-            labelStart.ResetFormatted(SpeciesRow.CommonName);
+            labelStart.ResetFormatted(TaxonRow.CommonName);
 
-            Age ga = Service.GetGamingAge(SpeciesRow.Name);
+            Age ga = Service.GetGamingAge(TaxonRow.Name);
             if (ga != null) textBoxTr.Value = ga;
 
             Log.Write(EventType.WizardStarted, "MSY/R wizard is started for {0}.",
@@ -54,7 +54,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.MSYR.Title,
-                    SpeciesRow.FullNameReport))
+                    TaxonRow.FullNameReport))
             {
                 UseTableNumeration = true
             };
@@ -63,7 +63,7 @@ namespace Mayfly.Fish.Explorer
             {
                 report.AddSectionTitle(
                     string.Format(Resources.Reports.Sections.Growth.Title,
-                    SpeciesRow.FullNameReport));
+                    TaxonRow.FullNameReport));
                 growthWizard.AppendBasicSectionTo(report);
             }
 
@@ -96,7 +96,7 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonGrowth_Click(object sender, EventArgs e)
         {
-            growthWizard = new WizardPopulation(Data, SpeciesRow);
+            growthWizard = new WizardPopulation(Data, TaxonRow);
             growthWizard.ModelsCalculated += growthWizard_ModelConfirmed;
             growthWizard.Replace(this);
         }
@@ -129,7 +129,7 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonMortality_Click(object sender, EventArgs e)
         {
-            growthWizard = new WizardPopulation(Data, SpeciesRow);
+            growthWizard = new WizardPopulation(Data, TaxonRow);
             growthWizard.MortalityCalculated += mortalityWizard_MortalityCalculated;
             growthWizard.Replace(this);
         }
@@ -234,7 +234,7 @@ namespace Mayfly.Fish.Explorer
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
             Log.Write(EventType.WizardEnded, "MSY/R wizard is finished. Species: {0}, MSY/R = {1:N3}.",
-                SpeciesRow.Name, model.MaximumSustainableYieldPerRecruit);
+                TaxonRow.Name, model.MaximumSustainableYieldPerRecruit);
             if (!UserSettings.KeepWizard) Close();
         }
 

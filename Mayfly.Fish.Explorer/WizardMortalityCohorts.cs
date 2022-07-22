@@ -20,7 +20,7 @@ namespace Mayfly.Fish.Explorer
 
         private WizardGearSet gearWizard;
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         public List<Cohort> Cohorts;
 
@@ -49,10 +49,10 @@ namespace Mayfly.Fish.Explorer
         public WizardMortalityCohorts(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             wizardExplorer.ResetTitle(speciesRow.CommonName);
-            labelStart.ResetFormatted(SpeciesRow.CommonName);
+            labelStart.ResetFormatted(TaxonRow.CommonName);
         }
 
 
@@ -61,8 +61,8 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(string.Format(
                 Resources.Reports.Sections.MortalityCohorts.Title,
-                SpeciesRow.FullNameReport));
-            gearWizard.SelectedData.AddCommon(report, SpeciesRow);
+                TaxonRow.FullNameReport));
+            gearWizard.SelectedData.AddCommon(report, TaxonRow);
 
             report.UseTableNumeration = true;
 
@@ -84,10 +84,10 @@ namespace Mayfly.Fish.Explorer
         public void AddHistory(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.MortalityCohorts.Paragraph1,
-                SpeciesRow.FullNameReport, report.NextTableNumber);
+                TaxonRow.FullNameReport, report.NextTableNumber);
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.MortalityCohorts.Table1,
-                SpeciesRow.FullNameReport);
+                TaxonRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2, 2);
@@ -116,11 +116,11 @@ namespace Mayfly.Fish.Explorer
         public void AddMortality(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.MortalityCohorts.Paragraph2,
-                SpeciesRow.FullNameReport, report.NextTableNumber);
+                TaxonRow.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"CPUE(%) = a \times e^{-{Z} \times {t}}");
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.MortalityCohorts.Table2,
-                SpeciesRow.FullNameReport);
+                TaxonRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, .2);
@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            gearWizard = new WizardGearSet(Data, SpeciesRow);
+            gearWizard = new WizardGearSet(Data, TaxonRow);
             gearWizard.AfterDataSelected += gearWizard_AfterDataSelected;
             gearWizard.Replace(this);
         }
@@ -175,7 +175,7 @@ namespace Mayfly.Fish.Explorer
 
         private void cohortsDetector_DoWork(object sender, DoWorkEventArgs e)
         {
-            Cohorts = gearWizard.GearData.GetCohorts(SpeciesRow,
+            Cohorts = gearWizard.GearData.GetCohorts(TaxonRow,
                 gearWizard.SelectedSamplerType, gearWizard.WeightType, gearWizard.SelectedUnit.Variant);
         }
 
@@ -216,7 +216,7 @@ namespace Mayfly.Fish.Explorer
 
                 pageCohorts.SetNavigation(true);
 
-                AgeComposition ac = gearWizard.GearData.GetAgeComposition(SpeciesRow);
+                AgeComposition ac = gearWizard.GearData.GetAgeComposition(TaxonRow);
 
                 comboBoxAge.DataSource = ac;
                 comboBoxAge.SelectedItem = ac.MostAbundant;
@@ -304,7 +304,7 @@ namespace Mayfly.Fish.Explorer
         {
             pageReport.SetNavigation(false);
             Log.Write(EventType.WizardEnded, "Growth Wizard is finished for {0} with {1} models.",
-                SpeciesRow.Name, CatchModels.Count);
+                TaxonRow.Name, CatchModels.Count);
             reporter.RunWorkerAsync();
             e.Cancel = true;
         }

@@ -12,7 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static Mayfly.UserSettings;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using Mayfly.Wild.Controls;
 
 namespace Mayfly.Wild
@@ -403,7 +403,7 @@ namespace Mayfly.Wild
 
             if (SelectedSampler == null) {
                 data.Solitary.SetEqpIDNull();
-                SettingsReader.SelectedSampler = null;
+                ReaderSettings.SelectedSampler = null;
                 return;
             }
 

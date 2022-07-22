@@ -12,7 +12,7 @@ using System.IO;
 using System.Text;
 using Mayfly.Wild;
 using Mayfly.Species;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -73,18 +73,18 @@ namespace Mayfly.Benthos.Explorer
             spreadSheetInit.Rows.Clear();
             TotalUnweighted = 0;
 
-            foreach (Wild.Survey.DefinitionRow speciesRow in BadData.GetUnweightedSpecies())
+            foreach (Wild.Survey.DefinitionRow definitionRow in BadData.GetUnweightedSpecies())
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetInit);
-                gridRow.Cells[columnInitSpecies.Index].Value = speciesRow.Taxon;
-                gridRow.Cells[columnInitCount.Index].Value = speciesRow.TotalQuantity;
+                gridRow.Cells[columnInitSpecies.Index].Value = definitionRow.Taxon;
+                gridRow.Cells[columnInitCount.Index].Value = definitionRow.TotalQuantity;
 
-                int u = speciesRow.UnweightedIndividuals();
+                int u = definitionRow.UnweightedIndividuals();
                 if (u > 0) gridRow.Cells[columnInitUnweighted.Index].Value = u;
-                int a = speciesRow.AbstractIndividuals();
+                int a = definitionRow.AbstractIndividuals();
                 if (a > 0) gridRow.Cells[columnInitAbstract.Index].Value = a;
-                int t = speciesRow.Unweighted();
+                int t = definitionRow.Unweighted();
                 if (t > 0) gridRow.Cells[columnInitUnweightedTotal.Index].Value = t;
 
                 TotalUnweighted += t;
@@ -107,13 +107,13 @@ namespace Mayfly.Benthos.Explorer
         {
             spreadSheetExtra.Rows.Clear();
 
-            foreach (Wild.Survey.DefinitionRow speciesRow in NaturalData.Definition)
+            foreach (Wild.Survey.DefinitionRow definitionRow in NaturalData.Definition)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetExtra);
-                gridRow.Cells[columnExtraSpecies.Index].Value = speciesRow.Taxon;
-                gridRow.Cells[columnExtraCount.Index].Value = speciesRow.TotalQuantity;
-                gridRow.Cells[columnExtraRaw.Index].Value = speciesRow.GetAverageMass();
+                gridRow.Cells[columnExtraSpecies.Index].Value = definitionRow.Taxon;
+                gridRow.Cells[columnExtraCount.Index].Value = definitionRow.TotalQuantity;
+                gridRow.Cells[columnExtraRaw.Index].Value = definitionRow.GetAverageMass();
                 spreadSheetExtra.Rows.Add(gridRow);
             }
 
@@ -126,12 +126,12 @@ namespace Mayfly.Benthos.Explorer
 
             foreach (DataGridViewRow gridRow in spreadSheetExtra.Rows)
             {
-                Wild.Survey.DefinitionRow speciesRow = NaturalData.Definition.FindByName(
+                Wild.Survey.DefinitionRow definitionRow = NaturalData.Definition.FindByName(
                     (string)gridRow.Cells[columnExtraSpecies.Index].Value);
                 if (speciesRow == null) continue;
                 DataGridViewCell gridCell = gridRow.Cells[lengthColumn.Index];
 
-                List<Wild.Survey.IndividualRow> okRows = speciesRow.GetIndividualRows().GetMeasuredRows(NaturalData.Individual.LengthColumn);
+                List<Wild.Survey.IndividualRow> okRows = definitionRow.GetIndividualRows().GetMeasuredRows(NaturalData.Individual.LengthColumn);
 
                 if (okRows.Count > 0) gridCell.Value = okRows.GetCount();
             }
@@ -144,12 +144,12 @@ namespace Mayfly.Benthos.Explorer
 
                 foreach (DataGridViewRow gridRow in spreadSheetExtra.Rows)
                 {
-                    Wild.Survey.DefinitionRow speciesRow = NaturalData.Definition.FindByName(
+                    Wild.Survey.DefinitionRow definitionRow = NaturalData.Definition.FindByName(
                         (string)gridRow.Cells[columnExtraSpecies.Index].Value);
                     if (speciesRow == null) continue;
                     DataGridViewCell gridCell = gridRow.Cells[gridColumn.Index];
 
-                    List<Wild.Survey.IndividualRow> okRows = speciesRow.GetIndividualRows().GetMeasuredRows(dataColumn);
+                    List<Wild.Survey.IndividualRow> okRows = definitionRow.GetIndividualRows().GetMeasuredRows(dataColumn);
 
                     if (okRows.Count > 0) gridCell.Value = okRows.GetCount();
                 }
@@ -162,10 +162,10 @@ namespace Mayfly.Benthos.Explorer
 
                 foreach (DataGridViewRow gridRow in spreadSheetExtra.Rows)
                 {
-                    Wild.Survey.DefinitionRow speciesRow = NaturalData.Definition.FindByName(
+                    Wild.Survey.DefinitionRow definitionRow = NaturalData.Definition.FindByName(
                         (string)gridRow.Cells[columnExtraSpecies.Index].Value);
                     if (speciesRow == null) continue;
-                    Power model = NaturalData.SearchMassModel(variableRow, speciesRow.GetIndividualRows());
+                    Power model = NaturalData.SearchMassModel(variableRow, definitionRow.GetIndividualRows());
                     TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
 
                     if (model == null) continue;
@@ -299,9 +299,9 @@ namespace Mayfly.Benthos.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetAssociation.Rows)
             {
-                Wild.Survey.DefinitionRow speciesRow = BadData.Definition.FindByName((string)gridRow.Cells[columnAsscSpecies.Index].Tag);
+                Wild.Survey.DefinitionRow definitionRow = BadData.Definition.FindByName((string)gridRow.Cells[columnAsscSpecies.Index].Tag);
                 if (speciesRow == null) continue;
-                Service.SaveAssociates(speciesRow, Associates(speciesRow.KeyRecord));
+                Service.SaveAssociates(speciesRow, Associates(definitionRow.KeyRecord));
             }
         }
 
@@ -670,7 +670,7 @@ namespace Mayfly.Benthos.Explorer
             if (openNatural.ShowDialog(this) == DialogResult.OK)
             {
                 CardsToLoad.AddRange(IO.MaskedNames(openNatural.FileNames,
-                    new string[] { SettingsReader.Interface.Extension, Wild.UserSettings.InterfaceBio.Extension }));
+                    new string[] { ReaderSettings.Interface.Extension, Wild.UserSettings.InterfaceBio.Extension }));
                 LoadCards();
             }
         }
@@ -949,7 +949,7 @@ namespace Mayfly.Benthos.Explorer
 
             //foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
             //{
-            //    Data.DefinitionRow speciesRow = BadData.Definition.FindByName((string)gridRow.Cells[columnInitSpecies.Index].Value);
+            //    Data.DefinitionRow definitionRow = BadData.Definition.FindByName((string)gridRow.Cells[columnInitSpecies.Index].Value);
             //    if (speciesRow == null) continue;
 
             //    Report.AddSectionTitle(speciesRow.Species);
@@ -1259,7 +1259,7 @@ namespace Mayfly.Benthos.Explorer
         //{
         //    foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
         //    {
-        //        Data.DefinitionRow speciesRow = BadData.Definition.FindByName((string)gridRow.Cells[columnInitSpecies.Index].Value);
+        //        Data.DefinitionRow definitionRow = BadData.Definition.FindByName((string)gridRow.Cells[columnInitSpecies.Index].Value);
 
         //        if (speciesRow == null) continue;
 

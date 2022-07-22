@@ -45,7 +45,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (rank != null)
             {
-                Composition tax = stack.GetBasicTaxonomicComposition(SettingsReader.TaxonomicIndex, rank);
+                Composition tax = stack.GetBasicTaxonomicComposition(ReaderSettings.TaxonomicIndex, rank);
 
                 Category coarse = tax.Find((c) =>
                 {
@@ -109,7 +109,7 @@ namespace Mayfly.Benthos.Explorer
             bool first = true;
             foreach (Wild.Survey.CardRow cardRow in stack)
             {
-                if (first) { first = false; } else { report.BreakPage(SettingsReader.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None); }
+                if (first) { first = false; } else { report.BreakPage(ReaderSettings.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None); }
                 report.AddHeader(cardRow.FriendlyPath);
                 cardRow.AddReport(report, level);
             }

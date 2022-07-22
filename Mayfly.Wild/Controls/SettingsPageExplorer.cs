@@ -20,16 +20,16 @@ namespace Mayfly.Wild.Controls
             comboBoxDominance.SelectedIndex = UserSettings.Dominance;
             comboBoxDiversity.SelectedIndex = (int)UserSettings.Diversity;
 
-            checkBoxKeepWizards.Checked = SettingsExplorer.KeepWizard;
-            comboBoxReportCriticality.SelectedIndex = (int)SettingsExplorer.ReportCriticality;
-            checkBoxConsistency.Checked = SettingsExplorer.CheckConsistency;
+            checkBoxKeepWizards.Checked = ExplorerSettings.KeepWizard;
+            comboBoxReportCriticality.SelectedIndex = (int)ExplorerSettings.ReportCriticality;
+            checkBoxConsistency.Checked = ExplorerSettings.CheckConsistency;
         }
 
         public void SaveSettings() {
 
-            SettingsExplorer.KeepWizard = checkBoxKeepWizards.Checked;
-            SettingsExplorer.CheckConsistency = checkBoxConsistency.Checked;
-            SettingsExplorer.ReportCriticality = (ArtifactCriticality)comboBoxReportCriticality.SelectedIndex;
+            ExplorerSettings.KeepWizard = checkBoxKeepWizards.Checked;
+            ExplorerSettings.CheckConsistency = checkBoxConsistency.Checked;
+            ExplorerSettings.ReportCriticality = (ArtifactCriticality)comboBoxReportCriticality.SelectedIndex;
 
             UserSettings.Diversity = (DiversityIndex)comboBoxDiversity.SelectedIndex;
             UserSettings.Dominance = comboBoxDominance.SelectedIndex;

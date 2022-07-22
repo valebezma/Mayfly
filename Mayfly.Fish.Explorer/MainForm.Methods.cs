@@ -130,7 +130,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                SettingsReader.Interface.SaveDialog.FileName = FullStack.FriendlyName;
+                ReaderSettings.Interface.SaveDialog.FileName = FullStack.FriendlyName;
                 this.ResetText(FullStack.FriendlyName, EntryAssemblyInfo.Title);
 
                 Log.Write("{0} cards are under consideration (common path: {1}).",
@@ -797,7 +797,7 @@ namespace Mayfly.Fish.Explorer
             // Clear list
             menuItemSpcTaxon.DropDownItems.Clear();
 
-            if (SettingsReader.TaxonomicIndex == null) return;
+            if (ReaderSettings.TaxonomicIndex == null) return;
 
             // Fill list
             foreach (TaxonomicRank rank in TaxonomicRank.MajorRanks)
@@ -850,14 +850,14 @@ namespace Mayfly.Fish.Explorer
 
         private TaxonomicIndex.TaxonRow findSpeciesRow(DataGridViewRow gridRow)
         {
-            return rank == null ? SettingsReader.TaxonomicIndex.Taxon.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
+            return rank == null ? ReaderSettings.TaxonomicIndex.Taxon.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
         }
 
         private void updateSpeciesArtifacts(DataGridViewRow gridRow)
         {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             SpeciesConsistencyChecker artifact = findSpeciesRow(gridRow).CheckConsistency(FullStack);
 
@@ -991,7 +991,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             CardConsistencyChecker artifact = findCardRow(gridRow).CheckConsistency();
 
@@ -1303,7 +1303,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             LogConsistencyChecker artifact = findLogRow(gridRow).CheckConsistency();
 
@@ -1335,7 +1335,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (rank != null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             Wild.Survey.LogRow logRow = findLogRow(gridRow);
 
@@ -1604,7 +1604,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!SettingsExplorer.CheckConsistency) return;
+            if (!ExplorerSettings.CheckConsistency) return;
 
             IndividualConsistencyChecker artifact = findIndividualRow(gridRow).CheckConsistency();
 

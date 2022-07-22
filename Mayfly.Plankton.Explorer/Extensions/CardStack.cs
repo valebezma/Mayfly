@@ -96,7 +96,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 Wild.Survey.DefinitionRow speciesRow = stack.Parent.Definition.FindByName(category.Name);
 
-                category.SpeciesRow = speciesRow;
+                category.TaxonRow = speciesRow;
 
                 category.Quantity = (int)stack.Quantity(speciesRow);
                 category.Mass = stack.Mass(speciesRow);

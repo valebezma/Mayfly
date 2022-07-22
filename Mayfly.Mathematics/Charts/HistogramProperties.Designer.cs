@@ -313,6 +313,7 @@
             this.colorBoxColumn.Color = System.Drawing.Color.Empty;
             resources.ApplyResources(this.colorBoxColumn, "colorBoxColumn");
             this.colorBoxColumn.Name = "colorBoxColumn";
+            this.colorBoxColumn.ValueChanged += new System.EventHandler(this.valueChanged);
             // 
             // colorBoxFit
             // 
@@ -320,6 +321,7 @@
             this.colorBoxFit.Color = System.Drawing.Color.Empty;
             resources.ApplyResources(this.colorBoxFit, "colorBoxFit");
             this.colorBoxFit.Name = "colorBoxFit";
+            this.colorBoxFit.ValueChanged += new System.EventHandler(this.valueChanged);
             // 
             // HistogramProperties
             // 

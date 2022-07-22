@@ -15,9 +15,9 @@ namespace Mayfly.Extensions
 {
     public static class DataExtensionsBio
     {
-        public static void ApplyMassRecoveryModel(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow, Wild.Survey.VariableRow variableRow, Regression model)
+        public static void ApplyMassRecoveryModel(this Wild.Survey data, Wild.Survey.DefinitionRow definitionRow, Wild.Survey.VariableRow variableRow, Regression model)
         {
-            data.ApplyMassRecoveryModel(speciesRow.GetIndividualRows(), variableRow, model);
+            data.ApplyMassRecoveryModel(definitionRow.GetIndividualRows(), variableRow, model);
         }
 
         public static void ApplyMassRecoveryModel(this Wild.Survey data, IList<Wild.Survey.IndividualRow> individualRows, Wild.Survey.VariableRow variableRow, Regression model)
@@ -114,13 +114,13 @@ namespace Mayfly.Extensions
         ///// <param name="referenceData"></param>
         //public static void RecoverMasses(this Data data, Data referenceData)
         //{
-        //    foreach (Data.DefinitionRow speciesRow in data.Species)
+        //    foreach (Data.DefinitionRow definitionRow in data.Species)
         //    {
         //        #region Associates
 
         //        List<SpeciesKey.TaxonRow> associates = new List<SpeciesKey.TaxonRow>();
 
-        //        SpeciesKey.TaxonRow conSpecies = referenceData.Definition.FindByName(speciesRow.Species);
+        //        SpeciesKey.TaxonRow conSpecies = referenceData.Definition.FindByName(definitionRow.Species);
 
         //        if (conSpecies != null)
         //        {
@@ -373,9 +373,9 @@ namespace Mayfly.Extensions
 
 
 
-        public static int Quantity(this Wild.Survey.IndividualDataTable individual, Wild.Survey.DefinitionRow speciesRow, Wild.Survey.VariableRow variableRow)
+        public static int Quantity(this Wild.Survey.IndividualDataTable individual, Wild.Survey.DefinitionRow definitionRow, Wild.Survey.VariableRow variableRow)
         {
-            return individual.Quantity(speciesRow.Taxon, variableRow);
+            return individual.Quantity(definitionRow.Taxon, variableRow);
         }
 
         public static int Quantity(this Wild.Survey.IndividualDataTable individual, string species, Wild.Survey.VariableRow variableRow)

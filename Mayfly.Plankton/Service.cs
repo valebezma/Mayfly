@@ -10,7 +10,7 @@ namespace Mayfly.Plankton
     {
         public static Survey.SamplerRow Sampler(int id)
         {
-            return SettingsReader.SamplersIndex.Sampler.FindByID(id);
+            return ReaderSettings.SamplersIndex.Sampler.FindByID(id);
         }
 
         public static double GetStrate(double length)

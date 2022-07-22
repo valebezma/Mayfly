@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using Mayfly.Controls;
 
 namespace Mayfly.Wild.Controls
@@ -25,7 +25,7 @@ namespace Mayfly.Wild.Controls
 
             spreadSheetGears.Rows.Clear();
 
-            foreach (Survey.EquipmentRow unitRow in SettingsReader.Equipment.Equipment) {
+            foreach (Survey.EquipmentRow unitRow in ReaderSettings.Equipment.Equipment) {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetGears);
                 gridRow.Cells[columnSampler.Index].Value = unitRow.SamplerRow;

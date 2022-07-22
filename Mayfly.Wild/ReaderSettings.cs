@@ -16,7 +16,7 @@ namespace Mayfly.Wild
         Philogenetically = 4
     }
 
-    public static class SettingsReader
+    public static class ReaderSettings
     {
         public static FileSystemInterface Interface;
 

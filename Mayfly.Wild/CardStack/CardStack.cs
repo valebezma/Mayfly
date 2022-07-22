@@ -56,7 +56,7 @@ namespace Mayfly.Wild
 
         public CardStack(IEnumerable<Survey.CardRow> cardRows)
             : this() {
-            //this.Parent = ;
+
             this.AddRange(cardRows);
             this.Name = string.Format("{0}; {1}.",
                 this.GetWaterNames().Merge(),
@@ -68,6 +68,7 @@ namespace Mayfly.Wild
 
 
         public string ToShortDescription() {
+
             return string.Format("{0}; {1}; {2}.",
                 this.GetInvestigators().Merge(),
                 this.GetWaterNames().Merge(),
@@ -428,6 +429,141 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
+        public TaxonomicIndex GetSpeciesKey() {
+
+            TaxonomicIndex speciesKey = new TaxonomicIndex();
+
+            foreach (Survey.DefinitionRow dataSpcRow in getDefinitionRows()) {
+                TaxonomicIndex.TaxonRow speciesRow = speciesKey.Taxon.NewTaxonRow(dataSpcRow.Rank, dataSpcRow.Taxon);
+                TaxonomicIndex.TaxonRow equivalentRow = dataSpcRow.KeyRecord;
+
+                if (equivalentRow != null) {
+                    if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
+                    if (!equivalentRow.IsLocalNull()) speciesRow.Local = equivalentRow.Local;
+                }
+
+                //var logRows = dataSpcRow.GetLogRows();
+
+                //if (logRows.Length > 0)
+                //{
+                //    speciesRow.Description = "Species collected: ";
+
+                //    foreach (Data.LogRow logRow in logRows)
+                //    {
+                //        if (!logRow.CardRow.IsWaterIDNull())
+                //        {
+                //            speciesRow.Description += string.Format("at {0} ", logRow.CardRow.WaterRow.Presentation);
+                //        }
+
+                //        if (!logRow.CardRow.IsWhenNull())
+                //        {
+                //            speciesRow.Description += logRow.CardRow.When.ToString("d");
+                //        }
+
+                //        Sample lengths = data.Individual.LengthColumn.GetSample(logRow.GetIndividualRows());
+                //        Sample masses = data.Individual.MassColumn.GetSample(logRow.GetIndividualRows());
+                //        List<object> sexes = data.Individual.SexColumn.GetValues(logRow.GetIndividualRows(), true);
+
+                //        if (lengths.Count + masses.Count + sexes.Count > 0)
+                //        {
+                //            speciesRow.Description += ": ";
+
+                //            if (lengths.Count > 0)
+                //            {
+                //                speciesRow.Description += string.Format("L = {0} mm", lengths.ToString("E"));
+                //            }
+
+                //            if (masses.Count > 0)
+                //            {
+                //                speciesRow.Description += ", ";
+                //                speciesRow.Description += string.Format("W = {0} mg", masses.ToString("E"));
+                //            }
+
+                //            if (sexes.Count > 0)
+                //            {
+                //                speciesRow.Description += ", ";
+                //                speciesRow.Description += "sexes are ";
+                //                foreach (object sex in sexes)
+                //                {
+                //                    speciesRow.Description += new Sex((int)sex).ToString("C") + ", ";
+                //                }
+                //            }
+                //        }
+
+                //        speciesRow.Description += "; ";
+                //    }
+
+                //    speciesRow.Description = speciesRow.Description.TrimEnd("; ".ToCharArray()) + ".";
+                //}
+
+                speciesKey.Taxon.AddTaxonRow(speciesRow);
+
+                //if (Species.UserSettings.VisualConfirmationOnAutoUpdate)
+                //{
+                //    AddAutoSpecies editSpecies = new AddAutoSpecies(speciesRow);
+
+                //    if (editSpecies.ShowDialog() == DialogResult.OK)
+                //    {
+                //        speciesKey.Species.AddSpeciesRow(speciesRow);
+
+                //        //foreach (SpeciesKey.TaxonRow taxonRow in editSpecies.SelectedTaxon)
+                //        //{
+                //        //    speciesKey.Species.AddSpeciesRow(speciesRow);
+                //        //    dest.Rep.AddRepRow(taxonRow, destRow);
+                //        //}
+                //    }
+                //}
+                //else
+                //{
+                //    speciesKey.Species.AddSpeciesRow(speciesRow);
+                //}
+            }
+
+            return speciesKey;
+        }
+
+        public Survey.DefinitionRow[] GetUnweightedSpecies() {
+
+            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
+
+            foreach (Survey.LogRow logRow in Log) {
+                if (!logRow.IsMassNull()) continue;
+                if (!result.Contains(logRow.DefinitionRow)) {
+                    result.Add(logRow.DefinitionRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public Survey.DefinitionRow[] GetSpeciesWithUnweightedIndividuals() {
+
+            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
+
+            foreach (Survey.IndividualRow individualRow in Individual) {
+                if (!individualRow.IsMassNull()) continue;
+                if (!result.Contains(individualRow.LogRow.DefinitionRow)) {
+                    result.Add(individualRow.LogRow.DefinitionRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public Survey.DefinitionRow[] GetSpeciesForWeightRecovery() {
+
+            List<DefinitionRow> result = new List<DefinitionRow>();
+
+            foreach (LogRow logRow in Log) {
+
+                if (!logRow.IsMassNull()) continue;
+                if (!result.Contains(logRow.DefinitionRow)) {
+                    result.Add(logRow.DefinitionRow);
+                }
+            }
+
+            return result.ToArray();
+        }
 
 
         public override string ToString() {
@@ -475,6 +611,22 @@ namespace Mayfly.Wild
         public void AddCommon(Report report, string[] notices) => this.AddCommon(report, new string[] { }, new string[] { }, notices);
 
         public void AddCommon(Report report) => this.AddCommon(report, new string[] { }, new string[] { });
+
+        public Report GetCardReport(CardReportLevel level) {
+
+            Report report = new Report(string.Empty);
+
+            bool first = true;
+            foreach (Survey.CardRow cardRow in this) {
+                if (first) { first = false; } else { report.BreakPage(ReaderSettings.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None); }
+                report.AddHeader(cardRow.FriendlyPath);
+                cardRow.AddReport(report, level);
+            }
+
+            report.End();
+
+            return report;
+        }
 
 
         public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<TaxonomicIndex.TaxonRow, int> resultsCounter) {

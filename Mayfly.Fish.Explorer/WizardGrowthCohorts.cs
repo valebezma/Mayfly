@@ -18,7 +18,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         public List<Cohort> Cohorts;
 
@@ -50,7 +50,7 @@ namespace Mayfly.Fish.Explorer
         public WizardGrowthCohorts(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             wizardExplorer.ResetTitle(speciesRow.CommonName);
         }
@@ -61,8 +61,8 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(string.Format(
                 Resources.Reports.Sections.GrowthCohorts.Title,
-                SpeciesRow.FullNameReport));
-            Data.AddCommon(report, SpeciesRow);
+                TaxonRow.FullNameReport));
+            Data.AddCommon(report, TaxonRow);
 
             report.UseTableNumeration = true;
 
@@ -89,10 +89,10 @@ namespace Mayfly.Fish.Explorer
         public void AddHistory(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.GrowthCohorts.Paragraph1,
-                SpeciesRow.FullNameReport, report.NextTableNumber);
+                TaxonRow.FullNameReport, report.NextTableNumber);
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.GrowthCohorts.Table1,
-                SpeciesRow.FullNameReport);
+                TaxonRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2, 2);
@@ -127,11 +127,11 @@ namespace Mayfly.Fish.Explorer
         public void AddGrowth(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.GrowthCohorts.Paragraph2,
-                SpeciesRow.FullNameReport, report.NextTableNumber);
+                TaxonRow.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"L = {L_∞} (1 - e^{-K (t - {t_0})})");
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.GrowthCohorts.Table2,
-                SpeciesRow.FullNameReport);
+                TaxonRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, .2);
@@ -160,11 +160,11 @@ namespace Mayfly.Fish.Explorer
         public void AddMass(Report report)
         {
             //report.AddParagraph(Resources.Reports.Sections.GrowthCohorts.Paragraph3,
-            //    SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+            //    TaxonRow.FullNameReport, report.NextTableNumber);
             //report.AddEquation(@"W = {q} \times {L^{b}}");
 
             //Report.Table table1 = new Report.Table(Resources.Reports.Sections.GrowthCohorts.Table3,
-            //    SpeciesRow.KeyRecord.FullNameReport);
+            //    TaxonRow.FullNameReport);
 
             //table1.StartRow();
             //table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2);
@@ -189,7 +189,7 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-        
+
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
             spreadSheetCohorts.Rows.Clear();
@@ -201,7 +201,7 @@ namespace Mayfly.Fish.Explorer
 
         private void cohortsDetector_DoWork(object sender, DoWorkEventArgs e)
         {
-            Cohorts = Data.GetCohorts(SpeciesRow, FishSamplerType.None, GearWeightType.None, EffortExpression.Square);
+            Cohorts = Data.GetCohorts(TaxonRow, FishSamplerType.None, GearWeightType.None, EffortExpression.Square);
 
             GrowthModels.Clear();
             WeightModels.Clear();
@@ -381,7 +381,7 @@ namespace Mayfly.Fish.Explorer
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
             Log.Write(EventType.WizardEnded, "Cohorts growth wizard is finished for {0} with {1} equations.",
-                SpeciesRow.Name, GrowthModels.Count);
+                TaxonRow.Name, GrowthModels.Count);
             if (!UserSettings.KeepWizard) Close();
         }
 

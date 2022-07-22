@@ -129,9 +129,15 @@
     <Compile Include="Controls\SettingsPagePrediction.Designer.cs">
       <DependentUpon>SettingsPagePrediction.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsExplorer.cs" />
+    <Compile Include="Forms\Explorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Explorer.Designer.cs">
+      <DependentUpon>Explorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExplorerSettings.cs" />
     <Compile Include="Mass.cs" />
-    <Compile Include="SettingsReader.cs" />
+    <Compile Include="ReaderSettings.cs" />
     <Compile Include="Resources\Interface\Mass.ru.Designer.cs">
       <DependentUpon>Mass.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -311,9 +317,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Prompt.resx</DependentUpon>
     </Compile>
-    <Compile Include="Substrate.cs">
-      <DependentUpon>Substrate.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Controls\SizeGroup.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -376,11 +379,6 @@
       <DependentUpon>Sex.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Substrate.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Substrate.xsd</DependentUpon>
     </Compile>
     <Compile Include="Forms\SelectionValue.cs">
       <SubType>Form</SubType>
@@ -470,6 +468,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogReference.ru.resx">
       <DependentUpon>DialogReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Explorer.resx">
+      <DependentUpon>Explorer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Explorer.ru.resx">
+      <DependentUpon>Explorer.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Artifact.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -688,17 +694,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="Substrate.xsc">
-      <DependentUpon>Substrate.xsd</DependentUpon>
-    </None>
-    <None Include="Substrate.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Substrate.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Substrate.xss">
-      <DependentUpon>Substrate.xsd</DependentUpon>
-    </None>
     <None Include="Survey.xss">
       <DependentUpon>Survey.xsd</DependentUpon>
     </None>

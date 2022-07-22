@@ -460,7 +460,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
-        public TaxonomicIndex.TaxonRow SpeciesRow { get; set; }
+        public TaxonomicIndex.TaxonRow TaxonRow { get; set; }
 
         public bool MissingInReference { get; set; }
 
@@ -541,11 +541,11 @@ namespace Mayfly.Benthos.Explorer
 
         public SpeciesConsistencyChecker(TaxonomicIndex.TaxonRow speciesRow, CardStack stack)
         {
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             if (speciesRow == null) return;
 
-            MissingInReference = SpeciesRow.RowState == DataRowState.Detached;
+            MissingInReference = TaxonRow.RowState == DataRowState.Detached;
 
             List<LogConsistencyChecker> result = new List<LogConsistencyChecker>();
 
@@ -602,7 +602,7 @@ namespace Mayfly.Benthos.Explorer
 
         public override string ToString()
         {
-            return base.ToString(SpeciesRow.CommonName);
+            return base.ToString(TaxonRow.CommonName);
         }
     }
 }

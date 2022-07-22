@@ -120,13 +120,8 @@ namespace Mayfly.Wild
             File.WriteAllText(filename, GetXml());
         }
 
-        public static Survey FromClipboard() {
-            Survey data = new Survey();
-            data.ReadXml(new StringReader(Clipboard.GetText()));
-            return data;
-        }
-
         public string[] GetFilenames() {
+
             List<string> filenames = new List<string>();
 
             foreach (Survey.CardRow cardRow in this.Card) {
@@ -165,7 +160,8 @@ namespace Mayfly.Wild
         }
 
         public bool IsLoaded(string filename) {
-            foreach (Survey.CardRow cardRow in this.Card) {
+
+            foreach (CardRow cardRow in Card) {
                 if (cardRow.Path == null) continue;
                 if (cardRow.Path == filename) return true;
             }
@@ -173,26 +169,9 @@ namespace Mayfly.Wild
             return false;
         }
 
-        public static bool ContainsLog(string xml) {
-            try {
-                Survey data = new Survey();
-                data.ReadXml(new StringReader(xml));
-                return data.Log.Count > 0;
-            } catch { return false; }
-        }
-
-        public static bool ContainsIndividuals(string xml) {
-            try {
-                Survey data = new Survey();
-                data.ReadXml(new StringReader(xml));
-                return data.Individual.Count > 0;
-            } catch {
-                return false;
-            }
-        }
-
 
         public new Survey Copy() {
+
             Survey result = (Survey)((DataSet)this).Copy();
             result.SetAttributable();
             result.RefreshBios();
@@ -200,13 +179,15 @@ namespace Mayfly.Wild
         }
 
         public CardRow[] CopyTo(Survey extData) {
-            return this.CopyTo(extData, true);
+
+            return CopyTo(extData, true);
         }
 
         public CardRow[] CopyTo(Survey extData, bool inheritPath) {
+
             List<CardRow> result = new List<CardRow>();
 
-            foreach (FactorRow factorRow in this.Factor) {
+            foreach (FactorRow factorRow in Factor) {
                 if (extData.Factor.FindByFactor(factorRow.Factor) == null) {
                     FactorRow newFactorRow = extData.Factor.NewFactorRow();
                     newFactorRow.Factor = factorRow.Factor;
@@ -214,7 +195,8 @@ namespace Mayfly.Wild
                 }
             }
 
-            foreach (CardRow cardRow in this.Card) {
+            foreach (CardRow cardRow in Card) {
+
                 CardRow newCardRow = cardRow.CopyTo(extData);
 
                 result.Add(newCardRow);
@@ -230,148 +212,35 @@ namespace Mayfly.Wild
         }
 
 
-        public static TaxonomicIndex GetSpeciesKey(DefinitionRow[] dataSpcRows) {
-            TaxonomicIndex speciesKey = new TaxonomicIndex();
 
-            if (dataSpcRows.Length == 0) return speciesKey;
+        public static Survey FromClipboard() {
+            Survey data = new Survey();
+            data.ReadXml(new StringReader(Clipboard.GetText()));
+            return data;
+        }
 
-            //Survey data = (Survey)dataSpcRows[0].Table.DataSet;
+        public static bool ContainsLog(string xml) {
 
-            foreach (Survey.DefinitionRow dataSpcRow in dataSpcRows) {
-                TaxonomicIndex.TaxonRow speciesRow = speciesKey.Taxon.NewTaxonRow(dataSpcRow.Rank, dataSpcRow.Taxon);
-                TaxonomicIndex.TaxonRow equivalentRow = dataSpcRow.KeyRecord;
-
-                if (equivalentRow != null) {
-                    if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
-                    if (!equivalentRow.IsLocalNull()) speciesRow.Local = equivalentRow.Local;
-                }
-
-                //var logRows = dataSpcRow.GetLogRows();
-
-                //if (logRows.Length > 0)
-                //{
-                //    speciesRow.Description = "Species collected: ";
-
-                //    foreach (Data.LogRow logRow in logRows)
-                //    {
-                //        if (!logRow.CardRow.IsWaterIDNull())
-                //        {
-                //            speciesRow.Description += string.Format("at {0} ", logRow.CardRow.WaterRow.Presentation);
-                //        }
-
-                //        if (!logRow.CardRow.IsWhenNull())
-                //        {
-                //            speciesRow.Description += logRow.CardRow.When.ToString("d");
-                //        }
-
-                //        Sample lengths = data.Individual.LengthColumn.GetSample(logRow.GetIndividualRows());
-                //        Sample masses = data.Individual.MassColumn.GetSample(logRow.GetIndividualRows());
-                //        List<object> sexes = data.Individual.SexColumn.GetValues(logRow.GetIndividualRows(), true);
-
-                //        if (lengths.Count + masses.Count + sexes.Count > 0)
-                //        {
-                //            speciesRow.Description += ": ";
-
-                //            if (lengths.Count > 0)
-                //            {
-                //                speciesRow.Description += string.Format("L = {0} mm", lengths.ToString("E"));
-                //            }
-
-                //            if (masses.Count > 0)
-                //            {
-                //                speciesRow.Description += ", ";
-                //                speciesRow.Description += string.Format("W = {0} mg", masses.ToString("E"));
-                //            }
-
-                //            if (sexes.Count > 0)
-                //            {
-                //                speciesRow.Description += ", ";
-                //                speciesRow.Description += "sexes are ";
-                //                foreach (object sex in sexes)
-                //                {
-                //                    speciesRow.Description += new Sex((int)sex).ToString("C") + ", ";
-                //                }
-                //            }
-                //        }
-
-                //        speciesRow.Description += "; ";
-                //    }
-
-                //    speciesRow.Description = speciesRow.Description.TrimEnd("; ".ToCharArray()) + ".";
-                //}
-
-                speciesKey.Taxon.AddTaxonRow(speciesRow);
-
-                //if (Species.UserSettings.VisualConfirmationOnAutoUpdate)
-                //{
-                //    AddAutoSpecies editSpecies = new AddAutoSpecies(speciesRow);
-
-                //    if (editSpecies.ShowDialog() == DialogResult.OK)
-                //    {
-                //        speciesKey.Species.AddSpeciesRow(speciesRow);
-
-                //        //foreach (SpeciesKey.TaxonRow taxonRow in editSpecies.SelectedTaxon)
-                //        //{
-                //        //    speciesKey.Species.AddSpeciesRow(speciesRow);
-                //        //    dest.Rep.AddRepRow(taxonRow, destRow);
-                //        //}
-                //    }
-                //}
-                //else
-                //{
-                //    speciesKey.Species.AddSpeciesRow(speciesRow);
-                //}
+            try {
+                Survey data = new Survey();
+                data.ReadXml(new StringReader(xml));
+                return data.Log.Count > 0;
+            } catch {
+                return false;
             }
-
-            return speciesKey;
         }
 
-        public TaxonomicIndex GetSpeciesKey() {
-            return GetSpeciesKey((DefinitionRow[])Definition.Select());
-        }
+        public static bool ContainsIndividuals(string xml) {
 
-        public DefinitionRow[] GetUnweightedSpecies() {
-
-            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
-
-            foreach (Survey.LogRow logRow in Log) {
-                if (!logRow.IsMassNull()) continue;
-                if (!result.Contains(logRow.DefinitionRow)) {
-                    result.Add(logRow.DefinitionRow);
-                }
+            try {
+                Survey data = new Survey();
+                data.ReadXml(new StringReader(xml));
+                return data.Individual.Count > 0;
+            } catch {
+                return false;
             }
-
-            return result.ToArray();
         }
 
-        public DefinitionRow[] GetSpeciesWithUnweightedIndividuals() {
-
-            List<Survey.DefinitionRow> result = new List<Survey.DefinitionRow>();
-
-            foreach (Survey.IndividualRow individualRow in Individual) {
-                if (!individualRow.IsMassNull()) continue;
-                if (!result.Contains(individualRow.LogRow.DefinitionRow)) {
-                    result.Add(individualRow.LogRow.DefinitionRow);
-                }
-            }
-
-            return result.ToArray();
-        }
-
-        public DefinitionRow[] GetSpeciesForWeightRecovery() {
-
-            List<DefinitionRow> result = new List<DefinitionRow>();
-
-            foreach (LogRow logRow in Log) {
-
-                if (!logRow.IsMassNull()) continue;
-                if (!result.Contains(logRow.DefinitionRow)) {
-                    result.Add(logRow.DefinitionRow);
-                }
-            }
-
-            return result.ToArray();
-        }
 
 
         partial class IntestineDataTable
@@ -407,12 +276,12 @@ namespace Mayfly.Wild
         partial class DefinitionDataTable
         {
             public DefinitionRow FindByName(string value) {
-                foreach (DefinitionRow speciesRow in Rows) {
+                foreach (DefinitionRow definitionRow in Rows) {
                     if (speciesRow.IsNull(columnTaxon)) {
                         continue;
                     }
 
-                    if (speciesRow.Taxon == value) {
+                    if (definitionRow.Taxon == value) {
                         return speciesRow;
                     }
                 }
@@ -1204,17 +1073,17 @@ namespace Mayfly.Wild
                 }
 
                 if ((individualRows.Count + stratifiedRows.Count) > 0 && (level.HasFlag(CardReportLevel.Individuals) || level.HasFlag(CardReportLevel.Stratified))) {
-                    if (SettingsReader.BreakBeforeIndividuals) { report.BreakPage(); }
+                    if (ReaderSettings.BreakBeforeIndividuals) { report.BreakPage(); }
                     report.AddSectionTitle(Resources.Reports.Header.IndividualsLog);
                     foreach (LogRow logRow in GetLogRows()) {
                         string speciesPresentation = logRow.DefinitionRow.KeyRecord.FullNameReport;
                         logRow.AddReport(report, level, speciesPresentation, string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));
-                        if (SettingsReader.BreakBetweenSpecies && GetLogRows().Last() != logRow) { report.BreakPage(); }
+                        if (ReaderSettings.BreakBetweenSpecies && GetLogRows().Last() != logRow) { report.BreakPage(); }
                     }
                 }
 
                 if (individualRows.Count > 0 && level.HasFlag(CardReportLevel.Profile)) {
-                    if (SettingsReader.BreakBeforeIndividuals) { report.BreakPage(); }
+                    if (ReaderSettings.BreakBeforeIndividuals) { report.BreakPage(); }
                     individualRows.ToArray().AddReport(report, CardReportLevel.Profile, string.Empty);
                 }
             }
@@ -1462,7 +1331,7 @@ namespace Mayfly.Wild
 
             public TaxonomicIndex.TaxonRow KeyRecord {
                 get {
-                    TaxonomicIndex.TaxonRow spcRow = SettingsReader.TaxonomicIndex?.FindByName(this.Taxon);
+                    TaxonomicIndex.TaxonRow spcRow = ReaderSettings.TaxonomicIndex?.FindByName(this.Taxon);
                     if (spcRow == null) return TaxonomicIndex.GetFakeTaxon(this.Rank, this.Taxon);
                     if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
                     return spcRow;

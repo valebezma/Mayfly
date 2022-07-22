@@ -15,7 +15,7 @@ namespace Mayfly.Fish
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
-            Wild.SettingsReader.SetFeature("Fish", ".fcd", Wild.MassDegree.Kilogramm, Wild.MassDegree.Gramm);
+            Wild.ReaderSettings.SetFeature("Fish", ".fcd", Wild.MassDegree.Kilogramm, Wild.MassDegree.Gramm);
             Mayfly.UserSettings.SetApp(Properties.Resources.logo, Properties.Resources.sriif, Wild.Resources.Interface.Powered.SRIIF);
             Log.WriteAppStarted();
 

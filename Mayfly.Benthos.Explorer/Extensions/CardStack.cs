@@ -50,15 +50,15 @@ namespace Mayfly.Benthos.Explorer
             SpeciesComposition result = stack.GetBasicCenosisComposition();
 
             foreach (SpeciesSwarm category in result) {
-                category.Abundance = stack.GetAverageAbundance(category.SpeciesRow);
-                category.Biomass = stack.GetAverageBiomass(category.SpeciesRow);
+                category.Abundance = stack.GetAverageAbundance(category.TaxonRow);
+                category.Biomass = stack.GetAverageBiomass(category.TaxonRow);
             }
 
             return result;
         }
 
         public static TaxonomicComposition GetCenosisComposition(this CardStack stack, TaxonomicRank rank) {
-            TaxonomicComposition result = new TaxonomicComposition(stack.GetCenosisComposition(), SettingsReader.TaxonomicIndex, rank, true);
+            TaxonomicComposition result = new TaxonomicComposition(stack.GetCenosisComposition(), ReaderSettings.TaxonomicIndex, rank, true);
 
             foreach (SpeciesSwarmPool pool in result) {
                 pool.SamplesCount = stack.GetOccurrenceCases(pool.SpeciesRows);

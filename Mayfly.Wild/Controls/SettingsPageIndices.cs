@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System;
 using System.Windows.Forms;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using static Mayfly.Wild.UserSettings;
 using static Mayfly.UserSettings;
 using System.IO;

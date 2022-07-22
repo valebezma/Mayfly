@@ -26,7 +26,7 @@ namespace Mayfly.Plankton.Explorer
 
                 #region In key missing
 
-                TaxonomicIndex.SpeciesRow spcRow = SpeciesIndex.Definition.FindByName(
+                TaxonomicIndex.TaxonRow spcRow = SpeciesIndex.Definition.FindByName(
                     speciesRow.Species);
 
                 if (spcRow == null)
@@ -76,7 +76,7 @@ namespace Mayfly.Plankton.Explorer
 
             string speciesEntered = (string)gridRow.Cells[gridColumnTyping.Index].Value;
 
-            TaxonomicIndex.SpeciesRow speciesRow = speciesValidator.Find(speciesEntered);
+            TaxonomicIndex.TaxonRow speciesRow = speciesValidator.Find(speciesEntered);
 
             if (speciesRow == null)
             {

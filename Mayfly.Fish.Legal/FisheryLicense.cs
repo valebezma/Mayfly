@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Legal
                 LegalPapers.SpeciesRow speciesRow = Paper.Definition.FindByName(species);
                 if (speciesRow == null)
                 {
-                    Species.TaxonomicIndex.SpeciesRow refSpecies = speciesLogger.Find(species);
+                    Species.TaxonomicIndex.TaxonRow refSpecies = speciesLogger.Find(species);
                     speciesRow = Paper.Species.AddSpeciesRow(species, refSpecies == null ? species : refSpecies.Name);
                 }
 

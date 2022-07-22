@@ -131,12 +131,6 @@ namespace Mayfly.Mathematics.Charts
             if (Histogram != null) Histogram.Update();
         }
 
-        private void panelMarkerColor_Click(object sender, EventArgs e) {
-            colorDialogColumn.ShowDialog(this);
-            panelMarkerColor.BackColor = colorDialogColumn.Color;
-            valueChanged(ActiveControl, e);
-        }
-
         private void textBoxSeriesName_TextChanged(object sender, EventArgs e) {
             ResetTitle();
             FitName = string.Format(Resources.Interface.FitTitle, HistogramName);
@@ -150,12 +144,6 @@ namespace Mayfly.Mathematics.Charts
 
         private void pictureBoxUpper_Click(object sender, EventArgs e) {
             SelectedClassBorderType = BalanceSide.Right;
-            valueChanged(ActiveControl, e);
-        }
-
-        private void panelFitColor_Click(object sender, EventArgs e) {
-            colorDialogFit.ShowDialog(this);
-            panelFitColor.BackColor = colorDialogFit.Color;
             valueChanged(ActiveControl, e);
         }
 
@@ -176,18 +164,12 @@ namespace Mayfly.Mathematics.Charts
 
             trackBarFitWidth.Enabled =
             labelFitColor.Enabled =
-            panelFitColor.Enabled =
+            colorBoxFit.Enabled =
             labelFitWidth.Enabled =
             trackBarFitWidth.Enabled =
             checkBoxShowCount.Enabled =
             checkBoxShowFitResult.Enabled =
                 checkBoxShowFit.Checked && comboBoxFit.SelectedIndex > -1;
-
-            if (checkBoxShowFit.Checked) {
-                panelFitColor.BackColor = colorDialogFit.Color;
-            } else {
-                panelFitColor.BackColor = Color.Transparent;
-            }
 
             valueChanged(sender, e);
         }

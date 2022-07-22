@@ -14,13 +14,13 @@ namespace Mayfly.Species
 {
     public partial class SpeciesCard : Form
     {
-        public TaxonomicIndex.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
         public SpeciesCard(TaxonomicIndex.TaxonRow speciesRow)
         {
             InitializeComponent();
 
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             this.Text = speciesRow.FullName;
 

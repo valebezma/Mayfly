@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Mayfly.Fish.UserSettings;
 using static Mayfly.UserSettings;
-using static Mayfly.Wild.SettingsReader;
+using static Mayfly.Wild.ReaderSettings;
 using Mayfly.Wild;
 using Mayfly.Controls;
 

@@ -645,7 +645,7 @@ namespace Mayfly.Fish.Explorer
 
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
-        public TaxonomicIndex.TaxonRow SpeciesRow { get; set; }
+        public TaxonomicIndex.TaxonRow TaxonRow { get; set; }
 
         public SpeciesFeatureConsistencyChecker MassInspector { get; set; }
 
@@ -708,20 +708,20 @@ namespace Mayfly.Fish.Explorer
 
         public SpeciesConsistencyChecker(TaxonomicIndex.TaxonRow speciesRow, CardStack stack)
         {
-            SpeciesRow = speciesRow;
+            TaxonRow = speciesRow;
 
             if (speciesRow == null) return;
 
             int sampled = stack.QuantitySampled(speciesRow);
 
             AgeInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Age);
-            AgeInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.AgeColumn);
+            AgeInspector.UnmeasuredCount = sampled - stack.Treated(TaxonRow, stack.Parent.Individual.AgeColumn);
             var gm = stack.Parent.FindGrowthModel(speciesRow.Name);
             if (gm != null) AgeInspector.HasRegression = gm.CombinedData.IsRegressionOK;
             if (gm != null && gm.CombinedData.IsRegressionOK) AgeInspector.Outliers = gm.CombinedData.Regression.GetOutliers(gm.InternalData.Data, .99999);
 
             MassInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Mass);
-            MassInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.MassColumn);
+            MassInspector.UnmeasuredCount = sampled - stack.Treated(TaxonRow, stack.Parent.Individual.MassColumn);
             var mm = stack.Parent.FindMassModel(speciesRow.Name);
             if (mm != null) MassInspector.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
             if (mm != null && mm.CombinedData.IsRegressionOK) MassInspector.Outliers = mm.CombinedData.Regression.GetOutliers(mm.InternalData.Data, .99999);
@@ -787,7 +787,7 @@ namespace Mayfly.Fish.Explorer
 
         public override string ToString()
         {
-            return base.ToString(SpeciesRow.CommonName);
+            return base.ToString(TaxonRow.CommonName);
         }
     }
 }
