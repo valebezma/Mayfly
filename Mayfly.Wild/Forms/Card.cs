@@ -744,14 +744,6 @@ namespace Mayfly.Wild
             string currentSpc = TaxonomicIndexPath;
             int currentRecentCount = RecentSpeciesCount;
 
-            Mayfly.UserSettings.Settings.LoadSettingControls(
-                typeof(SettingsControlIndices),
-                typeof(SettingsControlEquipment),
-                typeof(SettingsControlLog),
-                typeof(SettingsControlFactors),
-                typeof(SettingsControlVariables),
-                typeof(SettingsControlPrint));
-
             if (Mayfly.UserSettings.Settings.ShowDialog(this) == DialogResult.OK) {
 
                 if (currentWaters != UserSettings.WatersIndexPath) {

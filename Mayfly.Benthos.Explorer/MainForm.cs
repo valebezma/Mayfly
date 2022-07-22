@@ -387,15 +387,6 @@ namespace Mayfly.Benthos.Explorer
 
         private void menuItemSettings_Click(object sender, EventArgs e) {
 
-            Mayfly.UserSettings.Settings.LoadSettingControls(
-                typeof(SettingsControlIndices),
-                typeof(SettingsControlEquipment),
-                typeof(SettingsControlLog),
-                typeof(SettingsControlFactors),
-                typeof(SettingsControlVariables),
-                typeof(SettingsControlPrint),
-                typeof(SettingsControlExplorer),
-                typeof(SettingsControlPrediction));
             Mayfly.UserSettings.Settings.ShowDialog();
         }
 

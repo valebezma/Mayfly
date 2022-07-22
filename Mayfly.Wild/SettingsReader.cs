@@ -3,7 +3,7 @@ using Mayfly.Species;
 using System;
 using System.IO;
 using static Mayfly.UserSettings;
-using System.Windows.Forms;
+using Mayfly.Wild.Controls;
 
 namespace Mayfly.Wild
 {
@@ -49,6 +49,15 @@ namespace Mayfly.Wild
             };
             LogMassDegree = logMassDegree;
             IndividualMassDegree = indMassDegree;
+
+            ExpandSettings(
+                typeof(SettingsPageIndices),
+                typeof(SettingsPageEquipment),
+                typeof(SettingsPageLog),
+                typeof(SettingsPageFactors),
+                typeof(SettingsPageVariables),
+                typeof(SettingsPagePrint)
+                );
         }
 
 

@@ -247,32 +247,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpeciesStats.resx</DependentUpon>
     </Compile>
-    <Compile Include="SettingsControlCatchability.cs">
+    <Compile Include="SettingsPageCatchability.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlCatchability.Designer.cs">
-      <DependentUpon>SettingsControlCatchability.cs</DependentUpon>
+    <Compile Include="SettingsPageCatchability.Designer.cs">
+      <DependentUpon>SettingsPageCatchability.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsControlMeasure.cs">
+    <Compile Include="SettingsPageMeasure.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlMeasure.Designer.cs">
-      <DependentUpon>SettingsControlMeasure.cs</DependentUpon>
+    <Compile Include="SettingsPageMeasure.Designer.cs">
+      <DependentUpon>SettingsPageMeasure.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsControlOther.cs">
+    <Compile Include="SettingsPageOther.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlOther.Designer.cs">
-      <DependentUpon>SettingsControlOther.cs</DependentUpon>
+    <Compile Include="SettingsPageOther.Designer.cs">
+      <DependentUpon>SettingsPageOther.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsControlPrediction.cs">
+    <Compile Include="SettingsPagePrediction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlReproduction.cs">
+    <Compile Include="SettingsPageReproduction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlReproduction.Designer.cs">
-      <DependentUpon>SettingsControlReproduction.cs</DependentUpon>
+    <Compile Include="SettingsPageReproduction.Designer.cs">
+      <DependentUpon>SettingsPageReproduction.cs</DependentUpon>
     </Compile>
     <Compile Include="WizardExtrapolations.cs">
       <SubType>Form</SubType>
@@ -678,20 +678,20 @@
     <EmbeddedResource Include="Resources\Reports\Sections\SpeciesStats.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControlCatchability.resx">
-      <DependentUpon>SettingsControlCatchability.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsPageCatchability.resx">
+      <DependentUpon>SettingsPageCatchability.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControlMeasure.resx">
-      <DependentUpon>SettingsControlMeasure.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsPageMeasure.resx">
+      <DependentUpon>SettingsPageMeasure.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControlOther.resx">
-      <DependentUpon>SettingsControlOther.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsPageOther.resx">
+      <DependentUpon>SettingsPageOther.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControlPrediction.resx">
-      <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsPagePrediction.resx">
+      <DependentUpon>SettingsPagePrediction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControlReproduction.resx">
-      <DependentUpon>SettingsControlReproduction.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsPageReproduction.resx">
+      <DependentUpon>SettingsPageReproduction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WizardExtrapolations.resx">
       <DependentUpon>WizardExtrapolations.cs</DependentUpon>

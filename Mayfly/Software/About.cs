@@ -61,11 +61,10 @@ namespace Mayfly.Software
 
         private void buttonLic_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException("Tell Valentin to implement license from About pass.");
-            //Settings settings = new Settings();
-            //settings.SetFriendlyDesktopLocation(this, FormLocation.NextToHost);
-            //settings.OpenFeatures();
-            //settings.ShowDialog();
+            Mayfly.UserSettings.Settings.Show();
+
+            ResourceManager resources = new ResourceManager(typeof(Controls.SettingsPageLicenses));
+            Mayfly.UserSettings.Settings.Show(resources.GetString("$this.Group"), resources.GetString("$this.Section"));
         }
 
         private void buttonFeedback_Click(object sender, EventArgs e)

@@ -14,6 +14,7 @@ using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.Text;
 using System.Windows.Forms;
+using Mayfly.Mathematics.Controls;
 
 namespace Mayfly.Mathematics
 {
@@ -1064,8 +1065,11 @@ namespace Mayfly.Mathematics
 
         private void itemSettings_Click(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
-            settings.Show();
+            Mayfly.UserSettings.ExpandSettings(
+                typeof(SettingsPageGeneral),
+                typeof(SettingsPageTests),
+                typeof(SettingsPageAppearance));
+            Mayfly.UserSettings.Settings.ShowDialog();
         }
 
         #endregion

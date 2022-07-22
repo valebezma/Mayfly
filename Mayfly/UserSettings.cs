@@ -1,4 +1,5 @@
-﻿using Mayfly.Extensions;
+﻿using Mayfly.Controls;
+using Mayfly.Extensions;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -216,12 +217,30 @@ namespace Mayfly
             return Registry.CurrentUser.CreateSubKey(path + "\\" + folders.Merge("\\"));
         }
 
+        private static List<Type> settingsSet = new List<Type>() {
+            
+            typeof(SettingsPageUser),
+            typeof(SettingsPageUI),
+            typeof(SettingsPageMaintenance),
+            typeof(SettingsPageLicenses) 
+        };
+
+        public static void ExpandSettings(params Type[] types) {
+
+            foreach (Type t in types) {
+
+                if (settingsSet.Contains(t)) continue;
+                settingsSet.Add(t);
+            }
+        }
+
         public static Software.Settings settings;
 
         public static Software.Settings Settings {
             get {
-                if (settings == null) {
-                    settings = new Software.Settings();
+                if (settings == null || settings.IsDisposed) {
+
+                    settings = new Software.Settings(settingsSet);
                 }
                 return settings;
             }

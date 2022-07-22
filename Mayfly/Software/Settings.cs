@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using Mayfly.Controls;
+using System.Collections.Generic;
 
 namespace Mayfly.Software
 {
@@ -11,32 +12,19 @@ namespace Mayfly.Software
 
 
 
-        public Settings() {
+        public Settings(List<Type> set) {
 
             InitializeComponent();
-            treeViewCatogories.Shine();
 
-            LoadSettingControls(
-                typeof(SettingsControlUser),
-                typeof(SettingsControlUI),
-                typeof(SettingsControlMaintenance),
-                typeof(SettingsControlLicenses)
-                );
-        }
-
-
-
-        public void LoadSettingControls(params Type[] controlTypes) {
-
-            foreach (Type t in controlTypes) {
+            foreach (Type t in set) {
 
                 currentControl = (UserControl)Activator.CreateInstance(t);
-                ((ISettingsControl)currentControl).LoadSettings();
+                ((ISettingsPage)currentControl).LoadSettings();
                 currentControl.Dock = DockStyle.Fill;
                 panelContent.Controls.Add(currentControl);
                 currentControl.Hide();
 
-                string group = ((SettingsControl)currentControl).Group;
+                string group = ((SettingsPage)currentControl).Group;
 
                 TreeNode[] tc = treeViewCatogories.Nodes.Find(group, false);
                 TreeNode tn = tc.Length > 0 ? tc[0] : null;
@@ -46,7 +34,7 @@ namespace Mayfly.Software
                     treeViewCatogories.Nodes.Add(tn);
                 }
 
-                string section = ((SettingsControl)currentControl).Section;
+                string section = ((SettingsPage)currentControl).Section;
 
                 tc = tn.Nodes.Find(section, false);
                 TreeNode tn1 = tc.Length > 0 ? tc[0] : null;
@@ -65,7 +53,30 @@ namespace Mayfly.Software
 
 
 
-        private void Settings_Load(object sender, EventArgs e) {
+        public void Show(string group, string section) {
+
+            TreeNode[] tc = treeViewCatogories.Nodes.Find(group, false);
+            TreeNode tn = tc.Length > 0 ? tc[0] : null;
+
+            if (tn == null) {
+                return;
+            }
+
+            tc = tn.Nodes.Find(section, false);
+            TreeNode tn1 = tc.Length > 0 ? tc[0] : null;
+
+            if (tn1 == null) {
+                return;
+            }
+
+            treeViewCatogories.SelectedNode = tn1;
+        }
+
+
+
+        private void settings_Load(object sender, EventArgs e) {
+
+            treeViewCatogories.Shine();
             treeViewCatogories.SelectedNode = treeViewCatogories.Nodes[0];
         }
 
@@ -100,7 +111,7 @@ namespace Mayfly.Software
 
         private void buttonApply_Click(object sender, EventArgs e) {
             foreach (UserControl c in panelContent.Controls) {
-                ((ISettingsControl)c).SaveSettings();
+                ((ISettingsPage)c).SaveSettings();
             }
         }
 

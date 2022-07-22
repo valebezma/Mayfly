@@ -46,6 +46,7 @@
             // buttonCancel
             // 
             resources.ApplyResources(this.buttonCancel, "buttonCancel");
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -83,8 +84,10 @@
             // 
             // Settings
             // 
+            this.AcceptButton = this.buttonOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancel;
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.treeViewCatogories);
             this.Controls.Add(this.panelButtons);
@@ -92,7 +95,7 @@
             this.MinimizeBox = false;
             this.Name = "Settings";
             this.ShowIcon = false;
-            this.Load += new System.EventHandler(this.Settings_Load);
+            this.Load += new System.EventHandler(this.settings_Load);
             this.panelButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 

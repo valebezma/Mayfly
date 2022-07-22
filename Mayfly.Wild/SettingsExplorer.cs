@@ -1,6 +1,7 @@
 ﻿using System;
 using static Mayfly.UserSettings;
 using System.Windows.Forms;
+using Mayfly.Wild.Controls;
 
 namespace Mayfly.Wild
 {
@@ -16,6 +17,11 @@ namespace Mayfly.Wild
             Interface = new FileSystemInterface(ext + "s", ".html") {
                 FolderPath = UserSettings.FieldDataFolder
             };
+
+            ExpandSettings(
+                typeof(SettingsPageExplorer),
+                typeof(SettingsPagePrediction)
+                );
         }
 
         public static bool AutoLoadBio {

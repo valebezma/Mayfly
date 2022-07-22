@@ -404,9 +404,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Controls.NumberBox numXp;
-        private Controls.NumberBox numYp;
-        private Controls.NumberBox numY;
-        private Controls.NumberBox numX;
+        private Mayfly.Controls.NumberBox numXp;
+        private Mayfly.Controls.NumberBox numYp;
+        private Mayfly.Controls.NumberBox numY;
+        private Mayfly.Controls.NumberBox numX;
     }
 }

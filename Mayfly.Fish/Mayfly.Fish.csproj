@@ -100,17 +100,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Header.resx</DependentUpon>
     </Compile>
-    <Compile Include="SettingsControlGears.cs">
+    <Compile Include="SettingsPageGears.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlGears.Designer.cs">
-      <DependentUpon>SettingsControlGears.cs</DependentUpon>
+    <Compile Include="SettingsPageGears.Designer.cs">
+      <DependentUpon>SettingsPageGears.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsControlStratified.cs">
+    <Compile Include="SettingsPageStratified.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SettingsControlStratified.Designer.cs">
-      <DependentUpon>SettingsControlStratified.cs</DependentUpon>
+    <Compile Include="SettingsPageStratified.Designer.cs">
+      <DependentUpon>SettingsPageStratified.cs</DependentUpon>
     </Compile>
     <Compile Include="UnitEffort.cs" />
     <Compile Include="Individual.cs">
@@ -208,11 +208,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControlGears.resx">
-      <DependentUpon>SettingsControlGears.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsPageGears.resx">
+      <DependentUpon>SettingsPageGears.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsControlStratified.resx">
-      <DependentUpon>SettingsControlStratified.cs</DependentUpon>
+    <EmbeddedResource Include="SettingsPageStratified.resx">
+      <DependentUpon>SettingsPageStratified.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -267,35 +267,35 @@
     <Compile Include="Controls\ProcessLook.Designer.cs">
       <DependentUpon>ProcessLook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControl.cs">
+    <Compile Include="Controls\SettingsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControl.Designer.cs">
-      <DependentUpon>SettingsControl.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPage.Designer.cs">
+      <DependentUpon>SettingsPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlUI.cs">
+    <Compile Include="Controls\SettingsPageUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlUI.Designer.cs">
-      <DependentUpon>SettingsControlUI.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageUI.Designer.cs">
+      <DependentUpon>SettingsPageUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlMaintenance.cs">
+    <Compile Include="Controls\SettingsPageMaintenance.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlMaintenance.Designer.cs">
-      <DependentUpon>SettingsControlMaintenance.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageMaintenance.Designer.cs">
+      <DependentUpon>SettingsPageMaintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlUser.cs">
+    <Compile Include="Controls\SettingsPageUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlUser.Designer.cs">
-      <DependentUpon>SettingsControlUser.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageUser.Designer.cs">
+      <DependentUpon>SettingsPageUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlLicenses.cs">
+    <Compile Include="Controls\SettingsPageLicenses.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlLicenses.Designer.cs">
-      <DependentUpon>SettingsControlLicenses.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageLicenses.Designer.cs">
+      <DependentUpon>SettingsPageLicenses.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\NumberExtensions.cs" />
@@ -367,7 +367,7 @@
     <Compile Include="Controls\SpreadSheetCalendarColumn.cs" />
     <Compile Include="Controls\SpreadSheetIconTextBoxColumn.cs" />
     <Compile Include="Controls\Taskbar.cs" />
-    <Compile Include="Controls\ISettingsControl.cs" />
+    <Compile Include="Controls\ISettingsPage.cs" />
     <Compile Include="Pictogram.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -588,20 +588,20 @@
     <EmbeddedResource Include="Controls\ProcessLook.resx">
       <DependentUpon>ProcessLook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControl.resx">
-      <DependentUpon>SettingsControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPage.resx">
+      <DependentUpon>SettingsPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlLicenses.resx">
-      <DependentUpon>SettingsControlLicenses.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageLicenses.resx">
+      <DependentUpon>SettingsPageLicenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlUI.resx">
-      <DependentUpon>SettingsControlUI.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageUI.resx">
+      <DependentUpon>SettingsPageUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlMaintenance.resx">
-      <DependentUpon>SettingsControlMaintenance.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageMaintenance.resx">
+      <DependentUpon>SettingsPageMaintenance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlUser.resx">
-      <DependentUpon>SettingsControlUser.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageUser.resx">
+      <DependentUpon>SettingsPageUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SpreadSheet.resx">
       <DependentUpon>SpreadSheet.cs</DependentUpon>

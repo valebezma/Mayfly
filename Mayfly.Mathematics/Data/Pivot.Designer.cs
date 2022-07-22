@@ -205,9 +205,9 @@
         private System.ComponentModel.BackgroundWorker calculator;
         private System.Windows.Forms.ListView listViewValue;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        public Controls.SortableListView sortableRowGroups;
+        public Mayfly.Controls.SortableListView sortableRowGroups;
         private System.Windows.Forms.ColumnHeader ColumnFactors;
-        public Controls.SortableListView sortableColumnGroups;
+        public Mayfly.Controls.SortableListView sortableColumnGroups;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ComboBox comboBoxFormat;
         private System.Windows.Forms.Label label1;

@@ -75,17 +75,17 @@
     <Compile Include="Compositions\LengthComposition.cs" />
     <Compile Include="Compositions\SpeciesComposition.cs" />
     <Compile Include="Compositions\TaxonomicComposition.cs" />
-    <Compile Include="Controls\SettingsControlEquipment.cs">
+    <Compile Include="Controls\SettingsPageEquipment.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlEquipment.Designer.cs">
-      <DependentUpon>SettingsControlEquipment.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageEquipment.Designer.cs">
+      <DependentUpon>SettingsPageEquipment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlExplorer.cs">
+    <Compile Include="Controls\SettingsPageExplorer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlExplorer.Designer.cs">
-      <DependentUpon>SettingsControlExplorer.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageExplorer.Designer.cs">
+      <DependentUpon>SettingsPageExplorer.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\LogProcessor.cs">
       <SubType>Component</SubType>
@@ -93,41 +93,41 @@
     <Compile Include="Controls\LogProcessor.Designer.cs">
       <DependentUpon>LogProcessor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlIndices.cs">
+    <Compile Include="Controls\SettingsPageIndices.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlIndices.Designer.cs">
-      <DependentUpon>SettingsControlIndices.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageIndices.Designer.cs">
+      <DependentUpon>SettingsPageIndices.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlLog.cs">
+    <Compile Include="Controls\SettingsPageLog.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlLog.Designer.cs">
-      <DependentUpon>SettingsControlLog.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageLog.Designer.cs">
+      <DependentUpon>SettingsPageLog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlFactors.cs">
+    <Compile Include="Controls\SettingsPageFactors.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlFactors.Designer.cs">
-      <DependentUpon>SettingsControlFactors.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageFactors.Designer.cs">
+      <DependentUpon>SettingsPageFactors.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlPrint.cs">
+    <Compile Include="Controls\SettingsPagePrint.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlPrint.Designer.cs">
-      <DependentUpon>SettingsControlPrint.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPagePrint.Designer.cs">
+      <DependentUpon>SettingsPagePrint.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlVariables.cs">
+    <Compile Include="Controls\SettingsPageVariables.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlVariables.Designer.cs">
-      <DependentUpon>SettingsControlVariables.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPageVariables.Designer.cs">
+      <DependentUpon>SettingsPageVariables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsControlPrediction.cs">
+    <Compile Include="Controls\SettingsPagePrediction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SettingsControlPrediction.Designer.cs">
-      <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
+    <Compile Include="Controls\SettingsPagePrediction.Designer.cs">
+      <DependentUpon>SettingsPagePrediction.cs</DependentUpon>
     </Compile>
     <Compile Include="SettingsExplorer.cs" />
     <Compile Include="Mass.cs" />
@@ -427,29 +427,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\SettingsControlEquipment.resx">
-      <DependentUpon>SettingsControlEquipment.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageEquipment.resx">
+      <DependentUpon>SettingsPageEquipment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlExplorer.resx">
-      <DependentUpon>SettingsControlExplorer.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageExplorer.resx">
+      <DependentUpon>SettingsPageExplorer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\LogProcessor.resx">
       <DependentUpon>LogProcessor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlIndices.resx">
-      <DependentUpon>SettingsControlIndices.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageIndices.resx">
+      <DependentUpon>SettingsPageIndices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlLog.resx">
-      <DependentUpon>SettingsControlLog.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageLog.resx">
+      <DependentUpon>SettingsPageLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlFactors.resx">
-      <DependentUpon>SettingsControlFactors.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageFactors.resx">
+      <DependentUpon>SettingsPageFactors.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlPrint.resx">
-      <DependentUpon>SettingsControlPrint.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPagePrint.resx">
+      <DependentUpon>SettingsPagePrint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SettingsControlVariables.resx">
-      <DependentUpon>SettingsControlVariables.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPageVariables.resx">
+      <DependentUpon>SettingsPageVariables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutData.resx">
       <DependentUpon>AboutData.cs</DependentUpon>
@@ -670,8 +670,8 @@
       <LastGenOutput>Prompt.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Prompt.ru.resx" />
-    <EmbeddedResource Include="Controls\SettingsControlPrediction.resx">
-      <DependentUpon>SettingsControlPrediction.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SettingsPagePrediction.resx">
+      <DependentUpon>SettingsPagePrediction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

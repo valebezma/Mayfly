@@ -162,9 +162,9 @@ namespace Mayfly.Species
 
         private void menuItemSettings_Click(object sender, EventArgs e) {
 
-            Mayfly.UserSettings.Settings.LoadSettingControls(
-                typeof(Controls.SettingsControlTree),
-                typeof(Controls.SettingsControlPrint));
+            Mayfly.UserSettings.ExpandSettings(
+                typeof(Controls.SettingsPageTree),
+                typeof(Controls.SettingsPagePrint));
 
             if (Mayfly.UserSettings.Settings.ShowDialog() == DialogResult.OK) {
                 taxaTreeView.HigherTaxonFormat = UserSettings.HigherTaxonNameFormat;

@@ -83,7 +83,7 @@ namespace Mayfly.Mathematics
         {
             get
             {
-                ResourceManager resources = new ResourceManager(typeof(Settings));
+                ResourceManager resources = new ResourceManager(typeof(Controls.SettingsPageTests));
                 switch (NormalityTest)
                 {
                     case 0:
@@ -104,7 +104,7 @@ namespace Mayfly.Mathematics
         {
             get
             {
-                ResourceManager resources = new ResourceManager(typeof(Settings));
+                ResourceManager resources = new ResourceManager(typeof(Controls.SettingsPageTests));
                 switch (HomogeneityTest)
                 {
                     case 0:
@@ -119,7 +119,7 @@ namespace Mayfly.Mathematics
         {
             get
             {
-                ResourceManager resources = new ResourceManager(typeof(Settings));
+                ResourceManager resources = new ResourceManager(typeof(Controls.SettingsPageTests));
                 switch (LsdIndex)
                 {
                     case 0:
